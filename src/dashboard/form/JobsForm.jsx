@@ -52,7 +52,7 @@ const JobsForm = () => {
                         </div>
                     </div>
                 </div>
-                <div class="-mx-3 md:flex mb-2">
+                <div class="-mx-3 md:flex mb-2 mt-2">
                     <div class="md:w-1/2 px-3 mb-6 md:mb-0">
                         <label class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2" for="grid-city">
                             EXPERIENCE
@@ -72,7 +72,7 @@ const JobsForm = () => {
                         <input type="text" name="floating_email" id="floating_email" className="pl-4 block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent rounded-xl p-2 border-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="Enter Skills" required />
                     </div>
                 </div>
-                <div class="-mx-3 md:flex mb-2">
+                <div class="-mx-3 md:flex mb-2 mt-2">
                     <div class="md:w-1/2 px-3 mb-6 md:mb-0">
                         <label class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2" for="grid-city">
                             WORK DAY
@@ -83,14 +83,14 @@ const JobsForm = () => {
                         <label class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2" for="grid-state">
                             WORK TIME
                         </label>
-                        <input type="text" name="floating_email" id="floating_email" className="pl-4 block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent rounded-xl p-2 border-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="Enter Work Time" required />
+                        <input type="time" name="floating_email" id="floating_email" className="pl-4 block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent rounded-xl p-2 border-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="Enter Work Time" required />
 
                     </div>
                     <div class="md:w-1/2 px-3">
                         <label class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2" for="grid-zip">
                             DATE
                         </label>
-                        <input type="text" name="floating_email" id="floating_email" className="pl-4 block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent rounded-xl p-2 border-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="Enter Date" required />
+                        <input type="date" name="floating_email" id="floating_email" className="pl-4 block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent rounded-xl p-2 border-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="Enter Date" required />
                     </div>
                     <div class="md:w-1/2 px-3 mb-6 md:mb-0">
                         <label class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2" for="grid-first-name">
@@ -105,7 +105,7 @@ const JobsForm = () => {
                         <input type="text" name="floating_email" id="floating_email" className="pl-4 block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent rounded-xl p-2 border-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="Enter Tags" required />
                     </div>
                 </div>
-                <div class="-mx-3 md:flex mb-2">
+                <div class="-mx-3 md:flex mb-2 mt-2">
                     <div class="md:w-1/2 px-3 mb-6 md:mb-0">
                         <label class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2" for="grid-city">
                             COMPANY ROLE
@@ -125,7 +125,7 @@ const JobsForm = () => {
                         <input type="text" name="floating_email" id="floating_email" className="pl-4 block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent rounded-xl p-2 border-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="Enter Salary" required />
                     </div>
                 </div>
-                <div class="-mx-3 md:flex mb-6">
+                <div class="-mx-3 md:flex mb-6 mt-2">
                     <div class="md:w-1/2 px-3 mb-6 md:mb-0">
                         <label class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2" for="grid-first-name">
                             LINK
