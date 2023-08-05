@@ -1,6 +1,6 @@
 import React from 'react'
 import PortalLayout from '../portalLayout/PortalLayout'
-import { BarChart, Bar, Tooltip, XAxis, YAxis, PieChart, Pie, LineChart, CartesianGrid, Legend, Line, ResponsiveContainer } from 'recharts';
+import { BarChart, Bar, Tooltip, XAxis, YAxis, PieChart, Pie, LineChart, CartesianGrid, Legend, Line, ResponsiveContainer,AreaChart,ReferenceLine,Area } from 'recharts';
 
 const card = [
   { name: "Seekers", amount: "200", style: "bg-[#3E85F4] rounded-xl text-white py-2 " },
@@ -25,19 +25,19 @@ const data01 = [
   { "name": "Group c", "value": 100 },
 
 ]
-const data02 = [
-  { "name": "Group A", "value": 2400 },
-  { "name": "Group A", "value": 2400 },
-  { "name": "Group A", "value": 2400 },
-  { "name": "Group A", "value": 2400 },
-]
+
 const data03 = [
-  { "month": "January", "uv": 1000, "pv": 1400, "amt": 2400 },
-  { "month": "Page A", "uv": 2000, "pv": 2400, "amt": 2400 },
-  { "month": "Page A", "uv": 3000, "pv": 3400, "amt": 2400 },
-  { "month": "Page A", "uv": 3000, "pv": 4400, "amt": 2400 },
-  { "month": "Page A", "uv": 4000, "pv": 6400, "amt": 2400 },
-  { "month": "Page A", "uv": 5000, "pv": 8400, "amt": 2400 },
+  {
+    "name": "Page A",
+    "uv": 4000,
+    "pv": 2400,
+    "amt": 2400
+  },
+  { "name": "Page A", "uv": 2000, "pv": 2400, "amt": 2400 },
+  { "name": "Page A", "uv": 3000, "pv": 3400, "amt": 2400 },
+  { "name": "Page A", "uv": 3000, "pv": 4400, "amt": 2400 },
+  { "name": "Page A", "uv": 4000, "pv": 6400, "amt": 2400 },
+  { "name": "Page A", "uv": 5000, "pv": 8400, "amt": 2400 },
 ]
 const form01 =[
 {id:'01',date:'11.02.23',amount:'200'},
@@ -100,23 +100,25 @@ const Dashboard = () => {
         </div>
         <center>
           <div className='mt-10 ml-[-1rem] py-2  bg-white border-2  rounded-xl shadow-xl shadow-blue-100 '>
-            <ResponsiveContainer width="100%" height={300}>
-              <LineChart width={630} height={250} data={data03}
-                margin={{ top: 5, right: 30, left: 20, bottom: 5 }} >
-                <CartesianGrid strokeDasharray="0 0" />
-                <XAxis dataKey="month" />
-                <YAxis />
-                <Tooltip />
-                <Legend />
-                <Line type="monotone" dataKey="pv" stroke="#8884d8" />
-                <Line type="monotone" dataKey="uv" stroke="#82ca9d" />
-              </LineChart>
-            </ResponsiveContainer>
+          <ResponsiveContainer width='100%' height="80%">
+    <AreaChart data={data03}
+      margin={{ top: 20, right: 30, left: 0, bottom: 0 }}>
+      <XAxis dataKey="name" />
+      <YAxis />
+      <CartesianGrid strokeDasharray="0 0" />
+      <Tooltip />
+      <ReferenceLine x="Page C" stroke="green" label="Min PAGE" />
+      {/* <ReferenceLine y={4000} label="Max" stroke="red" strokeDasharray="0 0" /> */}
+      <Area type="monotone" dataKey="uv" stroke="#8884d8" fill="#8884d8" />
+      <Legend />
+    </AreaChart>
+  </ResponsiveContainer>
           </div>
         </center>
         <div className='grid grid-cols-2 max-md:grid-cols-1 gap-10'>
-          <div className=" border-2 shadow-xl shadow-blue-100 mt-5 ">
-           <h1 className='text-center bg-green-500 text-white font-[500] text-[1.4rem]'>Transactions</h1>
+
+          <div className=" border-2 shadow-xl bg-green-500 rounded-xl shadow-blue-100 mt-5 ">
+           <h1 className='text-center  text-white font-[500] text-[1.4rem]'>Transactions</h1>
             <table className="w-[100%] text-sm text-left text-gray-500 dark:text-gray-400">
               <thead className="text-xs text-gray-700 uppercase bg-gray-200 dark:bg-gray-700 dark:text-gray-400">
                 <tr>
@@ -151,8 +153,8 @@ const Dashboard = () => {
             </table>
           </div>
 
-          <div className=" border-2 shadow-xl shadow-blue-100 mt-5 ">
-           <h1 className='text-center bg-green-500 text-white font-[500] text-[1.4rem]'>Reports</h1>
+          <div className=" border-2 shadow-xl bg-green-500 rounded-xl shadow-blue-100 mt-5 ">
+           <h1 className='text-center  text-white font-[500] text-[1.4rem]'>Reports</h1>
             <table className="w-[100%] text-sm text-left text-gray-500 dark:text-gray-400">
               <thead className="text-xs text-gray-700 uppercase bg-gray-200 dark:bg-gray-700 dark:text-gray-400">
                 <tr>
@@ -190,8 +192,8 @@ const Dashboard = () => {
         </div>
 
 
-        <div className=" border-2 shadow-xl shadow-blue-100 mt-10 ">
-           <h1 className='text-center bg-green-500 text-white font-[500] text-[1.4rem]'>Applied</h1>
+        <div className=" border-2 shadow-xl  bg-green-500 rounded-xl shadow-blue-100 mt-10 ">
+           <h1 className='text-center text-white font-[500] text-[1.4rem]'>Applied</h1>
             <table className="w-[100%] text-sm text-left text-gray-500 dark:text-gray-400">
               <thead className="text-xs text-gray-700 uppercase bg-gray-200 dark:bg-gray-700 dark:text-gray-400">
                 <tr>
