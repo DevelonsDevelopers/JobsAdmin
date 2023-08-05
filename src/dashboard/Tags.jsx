@@ -13,7 +13,7 @@ const tags = [
 const Tags = () => {
   return (
     <PortalLayout>
-       <h1 className='text-center bg-blue-600 text-white font-[600] mb-5 py-4 rounded-xl shadow-md shadow-blue-300 text-[1.5rem]'>COMPANY</h1>
+       <h1 className='text-center bg-blue-600 text-white font-[600] mb-5 py-4 rounded-xl shadow-md shadow-blue-300 text-[1.5rem]'>Tags</h1>
 
 <div className="w-[100%] max-md:h-full bg-white rounded-xl shadow-md  my-[3%] py-10 px-[6rem] max-md:px-2 flex flex-col justify-center bg-gray-100">
   <div className='flex  items-center'>

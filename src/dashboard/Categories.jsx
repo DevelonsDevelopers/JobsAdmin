@@ -50,8 +50,8 @@ const Categories = () => {
                 </td>
 
                 <td className="py-[2%] px-[4%] max-md:text-[.7rem] text-center">
-                  <span className="bg-green-600 text-white font-[500] py-2 px-[30%] max-md:w-[8%] rounded-md text-xs max-md:py-1 max-md:px-2 max-md:text-[0.6rem] cursor-pointer hover:bg-green-700 ">{value.status}</span>
-                </td>
+            <span className="bg-green-600 text-white font-[500] py-[3px] px-[10%] max-md:w-[8%] rounded-xl text-[0.6rem] max-md:py-1 max-md:px-2 max-md:text-[0.6rem] cursor-pointer hover:bg-green-700 ">{value.status}</span>
+          </td>
                 <td className="py-[2%] w-[4%] max-md:text-[.7rem] text-center">
                   <div className="flex item-center justify-center gap-3">
                     <div className="w-4 mr-2 transform hover:text-blue-500  hover:scale-110">
