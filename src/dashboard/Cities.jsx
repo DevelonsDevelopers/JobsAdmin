@@ -42,6 +42,7 @@ const Cities = () => {
       </td>
       <td className="py-[1%] w-[6%] w-[20%] max-md:text-[.7rem] text-center">
         <span className='font-bold'>{value.count}</span>
+        <span className='font-bold'>{value.count}</span>
       </td>
 
       <td className="py-[2%] px-[4%] max-md:text-[.7rem] text-center">
