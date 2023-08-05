@@ -20,7 +20,7 @@ const Tags = () => {
 
     <input type="search" name="" id="" placeholder='Search...' className='border-2 border-gray-400 pl-4 rounded-xl py-2 w-[18rem] ml-auto max-md:py-[7px] max-md:w-[10rem] max-md:text-[0.7rem]' />
 
-    <a href="/categories/add"> <button className="bg-blue-600 hover:bg-blue-700 cursor-pointer  max-md:text-[.6rem] py-2 px-[1rem] max-md:px-[1rem] max-md:py-[9px] text-white font-[600] max-md:font-[400] rounded-xl ml-[1rem] max-md:mr-10"  >
+    <a href="/tags/add"> <button className="bg-blue-600 hover:bg-blue-700 cursor-pointer  max-md:text-[.6rem] py-2 px-[1rem] max-md:px-[1rem] max-md:py-[9px] text-white font-[600] max-md:font-[400] rounded-xl ml-[1rem] max-md:mr-10"  >
       Add New
     </button>
     </a>
