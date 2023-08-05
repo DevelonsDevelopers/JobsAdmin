@@ -4,27 +4,38 @@ import PortalLayout from '../../portalLayout/PortalLayout'
 const CountriesForm = () => {
   return (
    <PortalLayout>
-       <h1 className='text-center bg-blue-600 text-white font-[600] mb-5 py-4 rounded-xl shadow-md shadow-blue-300 text-[1.5rem]'>ADD COUNTRY</h1>
-    <div className='bg-white p-4 rounded-xl'>
-
-        <form className='px-[20%] py-4  '>
-           
-            <div className="relative z-0 w-full mb-6 group">
-                <input type="text" name="floating_email" id="floating_email" className="pl-4 block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent rounded-xl p-2 border-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" Country" required />
-                  </div>
-            <div className="relative z-0 w-full mb-6 group">
-            <textarea id="message" name="message" class="w-full bg-white rounded-xl border-2 border-gray-300 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out focus:outline-none focus:ring-0 focus:border-blue-600 pee" placeholder='Description'></textarea>
-   
-                  </div>
-            <div className="relative z-0 w-full mb-6 group">
-                <input type="text" name="repeat_password" id="floating_repeat_password" className="block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent rounded-xl p-2 border-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer pl-4" placeholder="Paste Flag Link Here! " required />
-                 </div>
-           
-            <center>
-                <button type="submit" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-md w-full md:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 mt-10">Submit</button>
-            </center>
-        </form>
+       <h1 className='text-center bg-gradient-to-r from-sky-600 to-cyan-400  text-white font-[600] mb-5 py-4 rounded-xl shadow-md shadow-blue-300 text-[1.5rem]'>ADD COUNTRY</h1>
+    <div class="bg-white shadow-md rounded-xl px-8 pt-6 pb-8 mb-4 flex flex-col  my-2">
+  <div class="-mx-3 md:flex mb-6 justify-center">
+    <div class="md:w-[60%] px-3">
+      <label class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2" for="grid-Name">
+        Name
+      </label>
+      <input type="text" name="floating_email" id="floating_email" className="pl-4 block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent rounded-xl p-2 border-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="Enter Name" required />
     </div>
+  </div>
+  <div class="-mx-3 md:flex mb-6 justify-center">
+    <div class="md:w-[60%] px-3">
+      <label class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2" for="grid-Name">
+        Flag
+      </label>
+      <input type="text" name="floating_email" id="floating_email" className="pl-4 block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent rounded-xl p-2 border-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="Paste Flag Img URL ......" required />
+    </div>
+  </div>
+  <div class="-mx-3 md:flex mb-6 justify-center">
+    <div class="md:w-[60%] px-3">
+      <label class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2" for="grid-Name">
+        Description
+      </label>
+      <textarea class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded py-3 px-4 rounded-xl mb-3 border-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" id="grid-Name" type="text" placeholder="Enter Description"/>
+    </div>
+  </div>
+
+<div className='flex justify-center'>
+  <button className='bg-gradient-to-r from-sky-600 to-cyan-400 text-white font-[600] py-2 px-[3rem] mt-4 rounded-lg'>Submit</button>
+</div>
+
+</div>
 
    </PortalLayout>
   )

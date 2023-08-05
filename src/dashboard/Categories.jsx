@@ -31,7 +31,7 @@ const Categories = () => {
 
         </div>
         <div className="rounded-xl bg-gradient-to-r from-sky-600 to-cyan-400 border-2 border-blue-100 shadow-md shadow-blue-100  w-[100%] max-md:w-[100%]  mt-10 ">
-          <thead className=' rounded-t-lg'>
+          <thead className=''>
             <tr className=" text-white  uppercase text-sm leading-normal w-[100%]">
               <th className="py-[2%] w-[6%] max-md:text-[.6rem] max-md:font-[400] text-center max-md:w-[2%]">Name</th>
               <th className="py-[2%] w-[2%] max-md:text-[.6rem] max-md:font-[400] text-center max-md:w-[3%]">Jobs Count</th>
