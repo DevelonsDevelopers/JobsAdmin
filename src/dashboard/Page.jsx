@@ -27,12 +27,7 @@ const data01 = [
 ]
 
 const data03 = [
-  {
-    "name": "Page A",
-    "uv": 4000,
-    "pv": 2400,
-    "amt": 2400
-  },
+  { "name": "Page A", "uv": 4000, "pv": 2400, "amt": 2400  },
   { "name": "Page A", "uv": 2000, "pv": 2400, "amt": 2400 },
   { "name": "Page A", "uv": 3000, "pv": 3400, "amt": 2400 },
   { "name": "Page A", "uv": 3000, "pv": 4400, "amt": 2400 },
