@@ -23,9 +23,9 @@ import AppliedUsersFrom from "./dashboard/form/AppliedUsersFrom";
 import CountriesForm from "./dashboard/form/CountriesForm";
 import PlansForm from "./dashboard/form/PlansForm";
 import ReportsForm from "./dashboard/form/ReportsForm";
-import SeekersForm from "./dashboard/form/SeekersForm";
 import TagsForm from "./dashboard/form/TagsForm";
 import TransactionsForm from "./dashboard/form/TransactionsForm";
+import CitiesEdit from "./dashboard/edit/CitiesEdit";
 
 function App() {
   return (
@@ -58,9 +58,10 @@ function App() {
           <Route path="/countries/add" element={<CountriesForm/>} />
           <Route path="/plans/add" element={<PlansForm/>} />
           <Route path="/reports/add" element={<ReportsForm/>} />
-          <Route path="/seekers/add" element={<SeekersForm/>} />
           <Route path="/tags/add" element={<TagsForm/>} />
           <Route path="/transactions/add" element={<TransactionsForm/>} />
+
+          <Route path="/cities/edit" element={<CitiesEdit />} />
         </Routes>
       </BrowserRouter>
   );

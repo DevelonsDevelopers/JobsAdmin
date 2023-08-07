@@ -5,7 +5,7 @@ const JobsForm = () => {
     return (
         <PortalLayout>
             <h1 className='text-center bg-blue-600 text-white font-[600] mb-5 py-4 rounded-xl shadow-md shadow-blue-300 text-[1.5rem]'>ADD JOBS</h1>
-            <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 flex flex-col my-2">
+            <form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 flex flex-col my-2">
                 <div class="-mx-3 md:flex mb-6">
                     <div class="md:w-full px-3">
                         <label class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2" for="grid-Title">
@@ -148,8 +148,11 @@ const JobsForm = () => {
                         <textarea class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded py-3 px-4 rounded-xl mb-3 border-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" id="grid-Name" type="text" placeholder="Enter Description" />
                     </div>
                 </div>
+                <div className='flex justify-center'>
+                        <button className='bg-gradient-to-r from-sky-600 to-cyan-400 text-white font-[600] py-2 px-[3rem] mt-4 rounded-lg'>Submit</button>
+                    </div>
 
-            </div>
+            </form>
 
         </PortalLayout>
     )
