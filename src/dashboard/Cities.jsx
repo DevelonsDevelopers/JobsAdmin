@@ -40,7 +40,7 @@ const Cities = () => {
 
         </div>
         <DeleteModal open={open} setOpen={setOpen} />
-        <ViewModal open={openView} setOpen={setOpenView} title={"CITY VIEW"} data={data} />
+        <ViewModal open={openView} setOpen={setOpenView} title={"VIEW"} data={data} />
         <div className="rounded-xl bg-blue-600 border-2 border-blue-100 shadow-md shadow-blue-100  w-[100%] max-md:w-[100%]  mt-10 ">
           <thead className=' rounded-t-lg'>
             <tr className=" text-white  uppercase text-sm leading-normal w-[100%]">
