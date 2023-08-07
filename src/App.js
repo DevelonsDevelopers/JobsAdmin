@@ -26,6 +26,13 @@ import ReportsForm from "./dashboard/form/ReportsForm";
 import TagsForm from "./dashboard/form/TagsForm";
 import TransactionsForm from "./dashboard/form/TransactionsForm";
 import CitiesEdit from "./dashboard/edit/CitiesEdit";
+import CategoryEdit from "./dashboard/edit/CategoryEdit";
+import CompanyEdit from "./dashboard/edit/CompanyEdit";
+import CountryEdit from "./dashboard/edit/CountryEdit";
+import TagsEdit from "./dashboard/edit/TagsEdit";
+import JobsEdit from "./dashboard/edit/JobsEdit";
+import PlansEdit from "./dashboard/edit/PlansEdit";
+import UsersEdit from "./dashboard/edit/UsersEdit";
 
 function App() {
   return (
@@ -61,7 +68,14 @@ function App() {
           <Route path="/tags/add" element={<TagsForm/>} />
           <Route path="/transactions/add" element={<TransactionsForm/>} />
 
+          <Route path="/users/edit" element={<UsersEdit />} />
+          <Route path="/categories/edit" element={<CategoryEdit />} />
+          <Route path="/countries/edit" element={<CountryEdit />} />
           <Route path="/cities/edit" element={<CitiesEdit />} />
+          <Route path="/companies/edit" element={<CompanyEdit />} />
+          <Route path="/tags/edit" element={<TagsEdit />} />
+          <Route path="/jobs/edit" element={<JobsEdit />} />
+          <Route path="/plans/edit" element={<PlansEdit />} />
         </Routes>
       </BrowserRouter>
   );
