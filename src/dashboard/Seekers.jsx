@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { useState } from 'react'
 import PortalLayout from '../portalLayout/PortalLayout'
 import { BarChart, Bar, Tooltip, XAxis, YAxis, PieChart, Pie, LineChart, CartesianGrid, Legend, Line, ResponsiveContainer } from 'recharts';
+import SeekersView from './view/SeekersView';
 
 
 const appliedusers = [
@@ -14,6 +15,17 @@ const appliedusers = [
 ]
 
 const Seekers = () => {
+  const [open, setOpen] = useState(false);
+  const [openView, setOpenView] = useState(false);
+  const [view, setView] = useState(false);
+  
+  const [data, setData] = useState()
+
+  const handleClick = (value) => {
+    setOpenView(!open)
+    setData(value)
+  }
+  
   return (
     <PortalLayout>
       <h1 className='text-center bg-gradient-to-r from-sky-600 to-cyan-400 text-white font-[600] mb-5 py-4 rounded-xl shadow-md shadow-blue-300 text-[1.5rem]'>Seeker</h1>
@@ -38,6 +50,7 @@ const Seekers = () => {
         {/* <th className="py-[2%] w-[6%] max-md:text-[.6rem] max-md:font-[400] text-center">Status</th> */}
       </tr>
     </thead>
+    <SeekersView open={openView} setOpen={setOpenView} title={" VIEW"} data={data} />
     {appliedusers.map((value, index) => (
       <tbody className="text-gray-600 text-sm font-light w-[100%] bg-white ">
         <tr className={`border-b border-gray-300  ${index % 2 ? "bg-blue-100" : "bg-white"}`} >
@@ -54,7 +67,7 @@ const Seekers = () => {
 
           <td className="py-[2%] w-[4%] max-md:text-[.7rem] text-right pl-4">
 
-            <div className="w-4 mr-2 transform hover:text-blue-500  hover:scale-110">
+          <div className="w-4 mr-2 transform hover:text-blue-500  hover:scale-110" onClick={() => handleClick(value)}>
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />

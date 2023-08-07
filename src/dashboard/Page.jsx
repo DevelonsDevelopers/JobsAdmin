@@ -95,17 +95,16 @@ const Dashboard = () => {
         </div>
         <center>
           <div className='mt-10 ml-[-1rem] py-2  bg-white border-2  rounded-xl shadow-xl shadow-blue-100 '>
-          <ResponsiveContainer width='100%' height="80%">
-    <AreaChart data={data03}
+          <ResponsiveContainer width="100%" height={300}>
+          <AreaChart data={data03}
       margin={{ top: 20, right: 30, left: 0, bottom: 0 }}>
       <XAxis dataKey="name" />
       <YAxis />
-      <CartesianGrid strokeDasharray="0 0" />
+      <CartesianGrid strokeDasharray="3 3" />
       <Tooltip />
       <ReferenceLine x="Page C" stroke="green" label="Min PAGE" />
-      {/* <ReferenceLine y={4000} label="Max" stroke="red" strokeDasharray="0 0" /> */}
+      {/* <ReferenceLine y={4000} label="Max" stroke="red" strokeDasharray="3 3" /> */}
       <Area type="monotone" dataKey="uv" stroke="#8884d8" fill="#8884d8" />
-      <Legend />
     </AreaChart>
   </ResponsiveContainer>
           </div>

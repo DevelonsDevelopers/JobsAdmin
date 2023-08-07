@@ -1,7 +1,7 @@
 import { Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Modal, Typography } from '@mui/material'
 import React, { useState } from 'react'
 
-const ViewModal = ({ open, setOpen, title, data }) => {
+const CountryView = ({ open, setOpen, title, data }) => {
 
   const handleClose = () => {
     setOpen(!open)
@@ -35,4 +35,4 @@ const ViewModal = ({ open, setOpen, title, data }) => {
   )
 }
 
-export default ViewModal
+export default CountryView
