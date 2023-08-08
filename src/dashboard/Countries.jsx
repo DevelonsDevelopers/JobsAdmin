@@ -9,6 +9,24 @@ const country = [
   { name: "TECHNOMENT", count: '20', status: "Active", },
   { name: "A-TECH", count: '20', status: "Active", },
   { name: "C-TECH", count: '20', status: "Active", },
+  { name: "C-TECH", count: '20', status: "Active", },
+  { name: "C-TECH", count: '20', status: "Active", },
+  { name: "C-TECH", count: '20', status: "Active", },
+  { name: "C-TECH", count: '20', status: "Active", },
+  { name: "C-TECH", count: '20', status: "Active", },
+  { name: "C-TECH", count: '20', status: "Active", },
+  { name: "C-TECH", count: '20', status: "Active", },
+  { name: "C-TECH", count: '20', status: "Active", },
+  { name: "C-TECH", count: '20', status: "Active", },
+  { name: "C-TECH", count: '20', status: "Active", },
+  { name: "C-TECH", count: '20', status: "Active", },
+  { name: "C-TECH", count: '20', status: "Active", },
+  { name: "C-TECH", count: '20', status: "Active", },
+  { name: "C-TECH", count: '20', status: "Active", },
+  { name: "C-TECH", count: '20', status: "Active", },
+  { name: "C-TECH", count: '20', status: "Active", },
+  { name: "C-TECH", count: '20', status: "Active", },
+  { name: "C-TECH", count: '20', status: "Active", },
 
 ]
 
@@ -49,8 +67,8 @@ const Countries = () => {
         </div>
         <DeleteModal open={open} setOpen={setOpen} />
         <CountryView open={openView} setOpen={setOpenView} title={"VIEW"} data={data} />
-        <div className="rounded-xl bg-blue-600 border-2 border-blue-100 shadow-md shadow-blue-100  w-[100%] max-md:w-[100%]  mt-10 ">
-          <thead className=' rounded-t-lg'>
+        <div className="rounded-xl bg-blue-600 border-2 border-blue-100 overflow-y-auto h-[32rem] shadow-md shadow-blue-100  w-[100%] max-md:w-[100%]  mt-10 ">
+          <thead className=' rounded-t-lg '>
             <tr className=" text-white  uppercase text-sm leading-normal w-[100%]">
               <th className="py-[2%] w-[6%] max-md:text-[.6rem] max-md:font-[400] text-center max-md:w-[2%]">Name</th>
               <th className="py-[2%] w-[2%] max-md:text-[.6rem] max-md:font-[400] text-center max-md:w-[3%]">Jobs Count</th>
