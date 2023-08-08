@@ -11,8 +11,7 @@ const catagory = [
   { id: '01', name: "london", count: '20', status: "Active", },
   { id: '01', name: "london", count: '20', status: "Active", },
   { id: '01', name: "london", count: '20', status: "Active", },
-  { id: '01', name: "london", count: '20', status: "Active", },
-
+ 
 
 ]
 
@@ -73,10 +72,10 @@ const Categories = () => {
                   <span className="font-bold max-md:text-[.7rem] text-[13px] text-blue-500">{value.id}</span>
                 </td>
                 <td className="py-[2%] w-[10%]   border-r-[1px] border-t-[1px]   text-center">
-                  <span className="font-bold max-md:text-[.7rem] text-[13px] font-[350]">{value.name}</span>
+                  <span className=" max-md:text-[.7rem] text-[13px] font-[350]">{value.name}</span>
                 </td>
                 <td className="py-[1%] w-[2%]  max-md:text-[.7rem]  border-r-[1px] border-t-[1px]   text-center">
-                  <span className='font-bold text-[13px] font-[350]'>{value.count}</span>
+                  <span className=' text-[13px] font-[350]'>{value.count}</span>
                 </td>
 
                 <td className="py-[2%] max-md:text-[.7rem] w-[2%] border-r-[1px] border-t-[1px]   text-center">
