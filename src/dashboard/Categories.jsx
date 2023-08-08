@@ -1,10 +1,11 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import PortalLayout from '../portalLayout/PortalLayout'
 import DeleteModal from '../components/DeleteModal'
 
 import { Button, Dialog, DialogContent, DialogContentText, DialogTitle } from '@mui/material'
 import { useNavigate } from 'react-router-dom'
 import CategoryView from './view/CategoryView'
+import axios from 'axios'
 
 
 const catagory = [
@@ -25,11 +26,26 @@ const Categories = () => {
   const [view, setView] = useState(false);
   const router = useNavigate();
   const [data, setData] = useState()
+  const [getCategory, setGetCategories] = useState()
 
   const handleClick = (value) => {
     setOpenView(!open)
     setData(value)
   }
+
+  const getCategories = async () => {
+    try {
+      await axios.get("http://34.143.145.139:5001/categories").then(res => {
+        setGetCategories(res.data.data)
+      })
+    } catch (err) {
+      console.log(err.message)
+    }
+  }
+
+  useEffect(() => {
+    getCategories()
+  }, [])
 
   return (
     <PortalLayout>
@@ -65,8 +81,8 @@ const Categories = () => {
             </tr>
 
           </thead>
+          {getCategory?.map((value) => (
 
-          {catagory.map((value, index) => (
             <tbody className="text-[#000000] text-sm font-light w-[100%] bg-white ">
               <tr className='' >
                 <td className="py-[2%] w-[3%]   border-r-[1px] border-t-[1px]   text-center">
@@ -76,7 +92,10 @@ const Categories = () => {
                   <span className="font-bold max-md:text-[.7rem] text-[13px] font-[350]">{value.name}</span>
                 </td>
                 <td className="py-[1%] w-[2%]  max-md:text-[.7rem]  border-r-[1px] border-t-[1px]   text-center">
-                  <span className='font-bold text-[13px] font-[350]'>{value.count}</span>
+                  <span className='font-bold text-[13px] font-[350]'>{value.description}</span>
+                </td>
+                <td className="py-[1%] w-[2%]  max-md:text-[.7rem]  border-r-[1px] border-t-[1px]   text-center">
+                  <span className='font-bold text-[13px] font-[350]'>{value.image}</span>
                 </td>
 
                 <td className="py-[2%] max-md:text-[.7rem] w-[2%] border-r-[1px] border-t-[1px]   text-center">
