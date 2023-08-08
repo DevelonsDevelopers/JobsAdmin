@@ -1,7 +1,20 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import PortalLayout from '../../portalLayout/PortalLayout'
+import axios from 'axios'
 
-const CitiesForm = () => {
+
+
+const CitiesForm =  () => {
+  const [data, setData] = useState()
+
+  // const getData =  () => {
+  //   try{
+  //     const res = await axios.get("http://34.143.145.139:5001/cities")
+  //     console.log(res.data)
+  //   } catch(err){
+  //     console.log(err)
+  //   }
+  // } 
   return (
    <PortalLayout>
         <h1 className='text-center bg-gradient-to-r from-sky-600 to-cyan-400  text-white font-[600] mb-5 py-4 rounded-xl shadow-md shadow-blue-300 text-[1.5rem]'>ADD CITY</h1>
