@@ -6,6 +6,8 @@ import { Button, Dialog, DialogContent, DialogContentText, DialogTitle } from '@
 import { useNavigate } from 'react-router-dom'
 import CategoryView from './view/CategoryView'
 import axios from 'axios'
+import { useDispatch, useSelector } from 'react-redux'
+import { AllCategories } from '../store/actions/categoryActions'
 
 
 const catagory = [
@@ -26,25 +28,37 @@ const Categories = () => {
   const router = useNavigate();
   const [data, setData] = useState()
   const [getCategory, setGetCategories] = useState()
+  const dispatch = useDispatch()
+
+  const categories = useSelector(state => state.category.categories)
+  
+  useEffect(() => {
+    console.log(categories)
+  }, [categories])
+
+  useEffect(() =>{
+    dispatch(AllCategories())
+  }, [dispatch])
 
   const handleClick = (value) => {
     setOpenView(!open)
     setData(value)
   }
 
-  const getCategories = async () => {
-    try {
-      await axios.get("http://34.143.145.139:5001/categories").then(res => {
-        setGetCategories(res.data.data)
-      })
-    } catch (err) {
-      console.log(err.message)
-    }
-  }
 
-  useEffect(() => {
-    getCategories()
-  }, [])
+  // const getCategories = async () => {
+  //   try {
+  //     await axios.get("http://34.143.145.139:5001/categories/all").then(res => {
+  //       setGetCategories(res.data.data)
+  //     })
+  //   } catch (err) {
+  //     console.log(err.message)
+  //   }
+  // }
+
+  // useEffect(() => {
+  //   getCategories()
+  // }, [])
 
   return (
     <PortalLayout>
@@ -80,7 +94,7 @@ const Categories = () => {
             </tr>
 
           </thead>
-          {getCategory?.map((value) => (
+          {categories?.map((value) => (
 
             <tbody className="text-[#000000] text-sm font-light w-[100%] bg-white ">
               <tr className='' >

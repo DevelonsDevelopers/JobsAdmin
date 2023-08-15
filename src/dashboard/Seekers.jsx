@@ -1,7 +1,9 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import PortalLayout from '../portalLayout/PortalLayout'
 import { BarChart, Bar, Tooltip, XAxis, YAxis, PieChart, Pie, LineChart, CartesianGrid, Legend, Line, ResponsiveContainer } from 'recharts';
 import SeekersView from './view/SeekersView';
+import { useDispatch, useSelector } from 'react-redux';
+import { AllSeekers } from '../store/actions/seekerActions';
 
 
 const seeker = [
@@ -19,14 +21,28 @@ const Seekers = () => {
   const [open, setOpen] = useState(false);
   const [openView, setOpenView] = useState(false);
   const [view, setView] = useState(false);
-  
   const [data, setData] = useState()
+
+  const dispatch = useDispatch()
 
   const handleClick = (value) => {
     setOpenView(!open)
     setData(value)
   }
   
+
+  const seekers = useSelector(state => state.seeker.seekers)
+
+  useEffect(() => {
+    console.log(seekers)
+  }, [seekers])
+
+
+  useEffect(() => {
+    if(seekers !== null || seekers !== undefined || seekers.length !== 0){
+      dispatch(AllSeekers())
+    }
+  }, [dispatch])
   return (
     <PortalLayout>
        <h1 className='text-[3.125rem] font-[800] text-[#000] text-center max-md:text-[2rem] uppercase'>seeker</h1>
@@ -59,14 +75,14 @@ const Seekers = () => {
 
           </thead>
 
-          {seeker.map((value) => (
+          {seekers.map((value) => (
             <tbody className="text-[#000000] text-sm font-light w-[100%] bg-white ">
               <tr className='' >
                 <td className="py-[2%] w-[3%]   border-r-[1px] border-t-[1px]   text-center">
                   <span className="font-bold max-md:text-[.7rem] text-[13px] text-blue-500">{value.id}</span>
                 </td>
                 <td className="py-[2%] w-[10%]   border-r-[1px] border-t-[1px]   text-center">
-                  <span className=" max-md:text-[.7rem] text-[13px] font-[350]">{value.user}</span>
+                  <span className=" max-md:text-[.7rem] text-[13px] font-[350]">{value.username}</span>
                 </td>
                 <td className="py-[1%] w-[2%]  max-md:text-[.7rem]  border-r-[1px] border-t-[1px]   text-center">
                   <span className=' text-[13px] font-[350]'>{value.country}</span>

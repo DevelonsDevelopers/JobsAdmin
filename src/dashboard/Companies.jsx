@@ -1,8 +1,10 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import PortalLayout from '../portalLayout/PortalLayout'
 import DeleteModal from '../components/DeleteModal';
 import { useNavigate } from 'react-router-dom';
 import CompanyView from './view/CompanyView';
+import { useDispatch, useSelector } from 'react-redux';
+import { AllCompanies } from '../store/actions/companyActions';
 
 const company = [
   { id: '01', name: "london", count: '20', status: "Active", },
@@ -22,11 +24,18 @@ const Companies = () => {
   const router  = useNavigate();
   const [data, setData] = useState()
 
+  const dispatch = useDispatch()
+
   const handleClick = (value) => {
     setOpenView(!open)
     setData(value)
   }
 
+  const companies = useSelector(state => state.company.companies)
+
+  useEffect(() => {
+    dispatch(AllCompanies())
+  }, [dispatch])
   return (
     <PortalLayout>
      <h1 className='text-[3.125rem] font-[800] text-[#000] text-center max-md:text-[2rem] uppercase'>company</h1>
@@ -59,7 +68,7 @@ const Companies = () => {
 
           </thead>
 
-          {company.map((value, index) => (
+          {companies.map((value, index) => (
             <tbody className="text-[#000000] text-sm font-light w-[100%] bg-white ">
               <tr className='' >
                 <td className="py-[2%] w-[3%]   border-r-[1px] border-t-[1px]   text-center">

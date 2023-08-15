@@ -1,6 +1,8 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import PortalLayout from '../portalLayout/PortalLayout'
 import ReportsView from './view/ReportsView';
+import { useDispatch, useSelector } from 'react-redux';
+import { AllReports } from '../store/actions/reportActions';
 
 
 const reports = [
@@ -18,13 +20,27 @@ const Reports = () => {
   const [view, setView] = useState(false);
   const [data, setData] = useState()
 
+  const dispatch = useDispatch();
+
+  const reports = useSelector(state => state.report.reports)
+
+  useEffect(() => {
+    console.log(reports)
+  }, [reports])
+
+  useEffect(() => {
+    if(reports !== null || reports !== undefined || reports.length !== 0){
+      dispatch(AllReports())
+    }
+  }, [dispatch])
+
   const handleClick = (value) => {
     setOpenView(!open)
     setData(value)
   }
   return (
     <PortalLayout>
-      <h1 className='text-[3.125rem] font-[800] text-[#000] text-center max-md:text-[2rem] uppercase'>Transactions</h1>
+      <h1 className='text-[3.125rem] font-[800] text-[#000] text-center max-md:text-[2rem] uppercase'>Reports</h1>
 
 <div className="w-[100%] max-md:h-full  max-md:px-2 flex flex-col justify-center bg-gray-100">
 

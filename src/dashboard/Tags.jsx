@@ -1,8 +1,10 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import PortalLayout from '../portalLayout/PortalLayout'
 import DeleteModal from '../components/DeleteModal';
 import { useNavigate } from 'react-router-dom';
 import TagsView from './view/TagsView';
+import { useDispatch, useSelector } from 'react-redux';
+import { AllTags } from '../store/actions/tagActions';
 
 
 const tags = [
@@ -23,11 +25,24 @@ const Tags = () => {
   const router  = useNavigate();
   const [data, setData] = useState()
 
+  const dispatch = useDispatch()
+
   const handleClick = (value) => {
     setOpenView(!open)
     setData(value)
   }
 
+  const tags = useSelector(state => state.tag.tags)
+
+  useEffect(() => {
+    console.log(tags)
+  }, [tags])
+
+  useEffect(() => {
+    if(tags !== null || tags !== undefined || tags.length !== 0){
+      dispatch(AllTags())
+    }
+  }, [dispatch])
   return (
     <PortalLayout>
       
