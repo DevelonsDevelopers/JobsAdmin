@@ -33,6 +33,8 @@ import TagsEdit from "./dashboard/edit/TagsEdit";
 import JobsEdit from "./dashboard/edit/JobsEdit";
 import PlansEdit from "./dashboard/edit/PlansEdit";
 import UsersEdit from "./dashboard/edit/UsersEdit";
+import Login from "./dashboard/login/Login";
+import Register from "./dashboard/register/Register";
 
 function App() {
   return (
@@ -76,6 +78,8 @@ function App() {
           <Route path="/tags/edit" element={<TagsEdit />} />
           <Route path="/jobs/edit" element={<JobsEdit />} />
           <Route path="/plans/edit" element={<PlansEdit />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
         </Routes>
       </BrowserRouter>
   );
