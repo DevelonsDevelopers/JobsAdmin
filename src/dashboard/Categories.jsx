@@ -37,7 +37,9 @@ const Categories = () => {
   }, [categories])
 
   useEffect(() =>{
-    dispatch(AllCategories())
+    if (categories !== null || categories !== undefined || categories.length !== 0){
+      dispatch(AllCategories())
+    }
   }, [dispatch])
 
   const handleClick = (value) => {

@@ -1,30 +1,46 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import PortalLayout from '../portalLayout/PortalLayout'
 import AppliedViews from './view/AppliedViews';
+import { useDispatch, useSelector } from 'react-redux';
+import { AllAppliedUsers } from '../store/actions/appliedUserActions';
 
 
-const appliedusers = [
-  {id:'01', user: "Jane", job: "development", date: "10/04/2023" },
-  {id:'01', user: "Jane", job: "development", date: "10/04/2023" },
-  {id:'01', user: "Jane", job: "development", date: "10/04/2023" },
-  {id:'01', user: "Jane", job: "development", date: "10/04/2023" },
-  {id:'01', user: "Jane", job: "development", date: "10/04/2023" },
+// const appliedusers = [
+//   {id:'01', user: "Jane", job: "development", date: "10/04/2023" },
+//   {id:'01', user: "Jane", job: "development", date: "10/04/2023" },
+//   {id:'01', user: "Jane", job: "development", date: "10/04/2023" },
+//   {id:'01', user: "Jane", job: "development", date: "10/04/2023" },
+//   {id:'01', user: "Jane", job: "development", date: "10/04/2023" },
  
 
 
-]
+// ]
 
 
 const AppliedUsers = () => {
   const [open, setOpen] = useState(false);
   const [openView, setOpenView] = useState(false);
-
   const [data, setData] = useState()
+
+  const dispatch = useDispatch()
 
   const handleClick = (value) => {
     setOpenView(!open)
     setData(value)
   }
+
+  const appliedUsers = useSelector(state => state.appliedUser.appliedUsers)
+
+  
+  useEffect(() => {
+    console.log(appliedUsers)
+  }, [appliedUsers])
+
+  useEffect(() => {
+    if (appliedUsers !== null || appliedUsers !== undefined || appliedUsers.length !== 0){
+      dispatch(AllAppliedUsers())
+    }
+  }, [dispatch])
   
   return (
     <PortalLayout>
@@ -56,7 +72,7 @@ const AppliedUsers = () => {
 
           </thead>
 
-          {appliedusers.map((value, index) => (
+          {appliedUsers.map((value, index) => (
             <tbody className="text-[#000000] text-sm font-light w-[100%] bg-white ">
               <tr className='' >
                 <td className="py-[2%] w-[3%]   border-r-[1px] border-t-[1px]   text-center">
@@ -64,7 +80,7 @@ const AppliedUsers = () => {
                 </td>
                
                 <td className="py-[1%] w-[2%]  max-md:text-[.7rem]  border-r-[1px] border-t-[1px]   text-center">
-                  <span className=' text-[13px] font-[350]'>{value.user}</span>
+                  <span className=' text-[13px] font-[350]'>{value.name}</span>
                 </td>
                 <td className="py-[1%] w-[2%]  max-md:text-[.7rem]  border-r-[1px] border-t-[1px]   text-center">
                   <span className=' text-[13px] font-[350]'>{value.job}</span>

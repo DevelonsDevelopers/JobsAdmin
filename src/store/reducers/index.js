@@ -10,6 +10,7 @@ import seeker from "./seeker";
 import tag from "./tag";
 import transaction from "./transaction";
 import user from "./user";
+import appliedUser from "./appliedUsers";
 
 export default combineReducers({
      category,
@@ -22,5 +23,6 @@ export default combineReducers({
      seeker,
      tag,
      transaction,
-     user
+     user,
+     appliedUser
      })

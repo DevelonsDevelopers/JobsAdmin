@@ -37,4 +37,7 @@ export const ALL_TRANSACTIONS = "ALL_TRANSACTIONS";
 // USERS:=====
 export const ALL_USERS = "ALL_USERS";
 
+// APPLIEDUSERS:=====
+export const ALL_APPLIEDUSERS = "ALL_APPLIEDUSERS";
+
 
