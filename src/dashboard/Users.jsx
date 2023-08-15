@@ -1,8 +1,10 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import PortalLayout from '../portalLayout/PortalLayout'
 import DeleteModal from '../components/DeleteModal';
 import { useNavigate } from 'react-router-dom';
 import UsersView from './view/UsersView';
+import { useDispatch, useSelector } from 'react-redux';
+import { AllUsers } from '../store/actions/userActions';
 const users = [
   {id: "01", name: "Jane Doe", email: "jane@gmail.com",phone:'111-222-333', status: "Active",addres:'Help people interested in this repository understand your project by adding a README.'},
   {id: "01", name: "Jane Doe", email: "jane@gmail.com",phone:'111-222-333', status: "Active",addres:'Help people interested in this repository understand your project by adding a README.'},
@@ -17,10 +19,22 @@ const Users = () => {
   const [view, setView] = useState(false);
   const router = useNavigate();
   const [data, setData] = useState()
+
+  const dispatch = useDispatch();
+
+
   const handleClick = (value) => {
     setOpenView(!open)
     setData(value)
   }
+
+  const users = useSelector(state => state.user.users)
+
+  useEffect(() => {
+    if(users !== null || users !== undefined || users.length !== 0){
+      dispatch(AllUsers())
+    }
+  })
 
   return (
     <PortalLayout>

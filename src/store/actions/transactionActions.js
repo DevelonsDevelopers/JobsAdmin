@@ -3,7 +3,7 @@ import * as api from '../../store/index'
 
 
 
-export const AllTags = () => async (dispatch) => {
+export const AllTransactions = () => async (dispatch) => {
     try{
         dispatch ({ type: LOADING})
         const { data: { data }} = await api.fetchAllTransactions();

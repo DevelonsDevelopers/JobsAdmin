@@ -8,6 +8,8 @@ import plan from "./plan"
 import report from "./report";
 import seeker from "./seeker";
 import tag from "./tag";
+import transaction from "./transaction";
+import user from "./user";
 
 export default combineReducers({
      category,
@@ -18,5 +20,7 @@ export default combineReducers({
      plan,
      report,
      seeker,
-     tag
+     tag,
+     transaction,
+     user
      })

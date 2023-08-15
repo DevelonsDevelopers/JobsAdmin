@@ -1,6 +1,8 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import PortalLayout from '../portalLayout/PortalLayout'
 import TransactionsView from './view/TransactionsView'
+import { useDispatch, useSelector } from 'react-redux'
+import { AllTransactions } from '../store/actions/transactionActions'
 
 
 const transactions = [
@@ -8,20 +10,31 @@ const transactions = [
   {id:'01', date: "11/04/2023",  amount: "1000", type: "Credit", note: "aage string.",},
   {id:'01', date: "11/04/2023",  amount: "1000", type: "Credit", note: "aage string.",},
   {id:'01', date: "11/04/2023",  amount: "1000", type: "Credit", note: "aage string.",},
-
-
 ]
 const Transactions = () => {
   const [open, setOpen] = useState(false);
   const [openView, setOpenView] = useState(false);
   const [view, setView] = useState(false);
- 
   const [data, setData] = useState()
+
+  const dispatch = useDispatch();
 
   const handleClick = (value) => {
     setOpenView(!open)
     setData(value)
   }
+
+  const transactions = useSelector(state => state.transaction.transactions)
+
+  useEffect(() => {
+    console.log(transactions)
+  }, [transactions])
+
+  useEffect(() => {
+    if(transactions !== null || transactions !== undefined || transactions.length !== 0){
+      dispatch(AllTransactions())
+    }
+  }, [dispatch])
   return (
     <PortalLayout>
      <h1 className='text-[3.125rem] font-[800] text-[#000] text-center max-md:text-[2rem] uppercase'>Transactions</h1>
