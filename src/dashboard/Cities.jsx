@@ -1,8 +1,10 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import PortalLayout from '../portalLayout/PortalLayout'
 import DeleteModal from '../components/DeleteModal'
 import { useNavigate } from 'react-router-dom'
 import ViewModal from '../components/ViewModal'
+import { useDispatch, useSelector } from 'react-redux'
+import { AllCities } from '../store/actions/cityActions'
 
 
 const city = [
@@ -25,11 +27,25 @@ const Cities = () => {
   const router = useNavigate();
   const [data, setData] = useState()
 
+  const dispatch = useDispatch()
+
   const handleClick = (value) => {
     setOpenView(!open)
     setData(value)
   }
 
+  const cities = useSelector(state => state.city.cities)
+
+  useEffect(() => {
+    console.log(cities)
+  }, [cities])
+
+  useEffect(() => {
+    if (cities !== null || cities !== undefined || cities.length !== 0){
+      dispatch(AllCities())
+    }
+  }, [dispatch])
+  
   return (
     <PortalLayout>
       <h1 className='text-[3.125rem] font-[800] text-[#000] text-center max-md:text-[2rem] uppercase'>City</h1>
@@ -62,7 +78,7 @@ const Cities = () => {
 
           </thead>
 
-          {city.map((value, index) => (
+          {cities.map((value, index) => (
             <tbody className="text-[#000000] text-sm font-light w-[100%] bg-white ">
               <tr className='' >
                 <td className="py-[2%] w-[3%]   border-r-[1px] border-t-[1px]   text-center">

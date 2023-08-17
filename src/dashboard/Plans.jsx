@@ -1,8 +1,10 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import PortalLayout from '../portalLayout/PortalLayout'
 import DeleteModal from '../components/DeleteModal';
 import { useNavigate } from 'react-router-dom';
 import PlansView from './view/PlansView';
+import { useDispatch, useSelector } from 'react-redux';
+import { AllPlans } from '../store/actions/planActions';
 
 
 const plans = [
@@ -22,11 +24,20 @@ const Plans = () => {
   const router  = useNavigate();
   const [data, setData] = useState()
 
+  const dispatch = useDispatch();
+
+  
   const handleClick = (value) => {
     setOpenView(!open)
     setData(value)
   }
 
+  const plans = useSelector(state => state.plan.plans)
+
+  useEffect(() => {
+    dispatch(AllPlans())
+  }, [dispatch])
+  
   return (
     <PortalLayout>
       <h1 className='text-[3.125rem] font-[800] text-[#000] text-center max-md:text-[2rem] uppercase'>Plans</h1>

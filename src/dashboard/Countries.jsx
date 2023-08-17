@@ -1,8 +1,10 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import PortalLayout from '../portalLayout/PortalLayout'
 import DeleteModal from '../components/DeleteModal';
 import { useNavigate } from 'react-router-dom';
 import CountryView from './view/CountryView';
+import { useDispatch, useSelector } from 'react-redux';
+import { AllCountries } from '../store/actions/countryActions';
 
 const country = [
   { id: '01', name: "london", count: '20', status: "Active", },
@@ -29,12 +31,20 @@ const Countries = () => {
   const router = useNavigate();
   const [data, setData] = useState()
 
+  const dispatch = useDispatch();
+
   const handleClick = (value) => {
     setOpenView(!open)
     setData(value)
   }
 
+  const countries = useSelector(state => state.country.countries)
 
+  useEffect(() => {
+    if(countries !== null || countries !== undefined || countries.length !== 0){
+      dispatch(AllCountries())
+    }
+  }, [dispatch])
 
   return (
     <PortalLayout>
@@ -68,7 +78,7 @@ const Countries = () => {
 
           </thead>
 
-          {country.map((value, index) => (
+          {countries.map((value, index) => (
             <tbody className="text-[#000000] text-sm font-light w-[100%] bg-white ">
               <tr className='' >
                 <td className="py-[2%] w-[3%]   border-r-[1px] border-t-[1px]   text-center">
