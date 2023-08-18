@@ -17,6 +17,9 @@ const company = [
 
 ]
 const Companies = () => {
+   
+  const [loading ,setLoading] = useState(false);
+
 
   const [open, setOpen] = useState(false);
   const [openView, setOpenView] = useState(false);
@@ -34,10 +37,24 @@ const Companies = () => {
   const companies = useSelector(state => state.company.companies)
 
   useEffect(() => {
+    setLoading(true);
     dispatch(AllCompanies())
-  }, [dispatch])
+    setTimeout(() => {
+      setLoading(false)
+      
+    }, 800);
+  }, [dispatch]
+  );
   return (
     <PortalLayout>
+
+      {loading ?
+      <center> <div class="flex justify-center items-center h-screen">
+      <div class="animate-spin rounded-full h-16 w-16 border-t-4 border-blue-500"></div>
+    </div>
+</center>
+      : <>
+      
      <h1 className='text-[3.125rem] font-[800] text-[#000] text-center max-md:text-[2rem] uppercase'>company</h1>
 
 <div className="w-[100%] max-md:h-full  max-md:px-2 flex flex-col justify-center bg-gray-100">
@@ -115,6 +132,7 @@ const Companies = () => {
         <center>
         </center>
       </div>
+      </>  }
     </PortalLayout>
   )
 }
