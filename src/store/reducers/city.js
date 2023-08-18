@@ -11,7 +11,6 @@ const city = (state = {isLoading: true, success: false, error: false, cities: []
             return {...state, isLoading: false, success: false, error: true}
         case ALL_CITIES: 
             return {...state, cities: action.payload.cities}
-
         default:
             return state;
     }
