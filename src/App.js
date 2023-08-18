@@ -69,7 +69,7 @@ function App() {
           <Route path="/reports/add" element={<ReportsForm/>} />
           <Route path="/tags/add" element={<TagsForm/>} />
           <Route path="/transactions/add" element={<TransactionsForm/>} />
-
+          
           <Route path="/users/edit" element={<UsersEdit />} />
           <Route path="/categories/edit" element={<CategoryEdit />} />
           <Route path="/countries/edit" element={<CountryEdit />} />
