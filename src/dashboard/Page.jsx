@@ -8,6 +8,7 @@ import axios from 'axios';
 import { MdSettings } from "react-icons/md";
 import { RiAccountPinCircleFill } from "react-icons/ri";
 import { BsSunFill } from "react-icons/bs";
+import { useState } from 'react';
 
 const card = [
   { name: "Seekers", amount: "200", style: "bg-[#2994FF] rounded-xl text-white py-2 ", icon: RiUserSearchLine },
@@ -65,7 +66,7 @@ const form03 = [
 
 // const icons = [MdSettings, RiAccountPinCircleFill, BsSunFill];
 const Dashboard = () => {
-
+const [loading ,setLoading] = useState(false)
 
   // useEffect(() => {
   //   axios
@@ -76,19 +77,27 @@ const Dashboard = () => {
 
   const getDashborad = async () => {
     try {
+      setLoading(true)
       const res = await axios.get("http://34.143.145.139:5001/")
       console.log(res.data)
     }
     catch (err) {
+      setLoading(false)
       console.log(err.message)
     }
   }
 
   useEffect(() => {
+
     getDashborad()
+   
   }, [])
   return (
     <PortalLayout>
+      {loading ?  <center> <div class="flex justify-center items-center h-screen">
+      <div class="animate-spin rounded-full h-16 w-16 border-t-4 border-blue-500"></div>
+    </div>
+</center> : <>
       <div className='p-10 border-2 bg-white rounded-xl '>
         <div className='flex max-md:flex-col gap-3'>
           <div className='grid grid-cols-3 max-md:grid-cols-2 md:w-[70%] mb-5 gap-6'>
@@ -278,7 +287,7 @@ const Dashboard = () => {
 
 
       </div>
-
+      </>}
 
 
 

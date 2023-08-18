@@ -35,8 +35,10 @@ const Cities = () => {
   }
 
   const cities = useSelector(state => state.city.cities)
+  const loading = useSelector(state => state.city.isLoading)
 
   useEffect(() => {
+    
     console.log(cities)
   }, [cities])
 
@@ -48,6 +50,12 @@ const Cities = () => {
   
   return (
     <PortalLayout>
+
+{loading ?
+      <center> <div class="flex justify-center items-center h-screen">
+      <div class="animate-spin rounded-full h-16 w-16 border-t-4 border-blue-500"></div>
+    </div>
+</center> :<>
       <h1 className='text-[3.125rem] font-[800] text-[#000] text-center max-md:text-[2rem] uppercase'>City</h1>
 
       <div className="w-[100%] max-md:h-full  max-md:px-2 flex flex-col justify-center bg-gray-100">
@@ -127,6 +135,7 @@ const Cities = () => {
         <center>
         </center>
       </div>
+      </>}
     </PortalLayout>
   )
 }

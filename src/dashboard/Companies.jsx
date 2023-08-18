@@ -18,7 +18,7 @@ const company = [
 ]
 const Companies = () => {
    
-  const [loading ,setLoading] = useState(false);
+  
 
 
   const [open, setOpen] = useState(false);
@@ -35,16 +35,24 @@ const Companies = () => {
   }
 
   const companies = useSelector(state => state.company.companies)
+  const loading = useSelector(state => state.company.isLoading)
+
+const [nodata ,setNodata] =useState(false)
+
 
   useEffect(() => {
-    setLoading(true);
     dispatch(AllCompanies())
-    setTimeout(() => {
-      setLoading(false)
-      
-    }, 800);
-  }, [dispatch]
-  );
+    
+   
+  }, [dispatch] );
+
+  useEffect(() => {
+    if(companies?.length===0  ){
+      setNodata(true)
+      }
+      else{ setData(false) }
+  }, [companies])
+
   return (
     <PortalLayout>
 
@@ -53,7 +61,7 @@ const Companies = () => {
       <div class="animate-spin rounded-full h-16 w-16 border-t-4 border-blue-500"></div>
     </div>
 </center>
-      : <>
+      : <> {nodata ? <div>no data</div>:<>
       
      <h1 className='text-[3.125rem] font-[800] text-[#000] text-center max-md:text-[2rem] uppercase'>company</h1>
 
@@ -132,6 +140,7 @@ const Companies = () => {
         <center>
         </center>
       </div>
+      </>}
       </>  }
     </PortalLayout>
   )

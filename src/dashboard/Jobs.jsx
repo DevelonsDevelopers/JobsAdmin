@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import PortalLayout from '../portalLayout/PortalLayout'
 import DeleteModal from '../components/DeleteModal';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import JobsView from './view/JobsView';
 import { useDispatch, useSelector } from 'react-redux';
 import { AllJobs } from '../store/actions/jobActions';
@@ -33,7 +33,8 @@ const Jobs = () => {
   }
 
   const jobs = useSelector(state => state.job.jobs)
-
+  const loading = useSelector(state => state.job.isLoading)
+  const [nodata ,setNodata] =useState(false)
 
   useEffect(() => {
     console.log(jobs)
@@ -45,9 +46,33 @@ const Jobs = () => {
     }
   } , [dispatch])
 
-
+  useEffect(() => {
+    if(jobs?.length===0  ){
+      setNodata(true)
+      }
+      else{ setData(false) }
+  }, [jobs])
   return (
     <PortalLayout>
+{loading ?
+      <center> <div class="flex justify-center items-center h-screen">
+      <div class="animate-spin rounded-full h-16 w-16 border-t-4 border-blue-500"></div>
+    </div>
+</center>
+      : <> 
+      {nodata ?   <center> <div className=" pt-[10%]" > <img src="/assets/404.png" alt="no image" className="opacity-75 w-[60%] h-[50%]" />
+       <h1 className=" text-[2rem] text-gray-500 mt-[-4rem]" >No Data Found</h1>
+              <button
+                type="text"
+                className="mt-[3%] py-[1.3%] px-[3%]  text-white text-sm bg-orange-600  rounded-[2rem]"
+              >
+
+                <Link to='/categories/add'>
+                  Add New
+                </Link>
+              </button>
+
+            </div> </center> :<>
       <h1 className='text-[3.125rem] font-[800] text-[#000] text-center max-md:text-[2rem] uppercase'>jobs</h1>
 
       <div className="w-[100%] max-md:h-full  max-md:px-2 flex flex-col justify-center bg-gray-100">
@@ -140,6 +165,8 @@ const Jobs = () => {
         <center>
         </center>
       </div>
+      </>}
+      </>}
     </PortalLayout>
   )
 }
