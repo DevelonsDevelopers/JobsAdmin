@@ -17,6 +17,9 @@ const country = [
 
 ]
 
+
+
+
 const Countries = () => {
 const [search ,setSearch  ] =useState('')
 console.log(search)
@@ -85,7 +88,7 @@ console.log(search)
   <div className='flex justify-center mt-[3rem] w-[90%] m-auto'>
 
     <input type="search"  
-    // onChange={(e) => setSearch(e.target.value)} 
+    onChange={(e) => setSearch(e.target.value)} 
      name="" id="" placeholder='Search...' className='border-2 border-gray-600 pl-[4rem] rounded-[1.0625rem] py-2  w-[27.8125rem] mr-auto max-md:py-[1px] max-md:w-[15rem] max-md:text-[0.7rem] focus:outline-none focus:ring-0 focus:border-gray-900 peer' />
     <Link  to="/countries/add"> <button className="bg-[#0047FF] cursor-pointer  max-md:text-[.6rem] py-2 px-[1rem] max-md:px-[1rem] max-md:py-[5px] text-white font-[500] max-md:font-[400] rounded-[1.375rem] ml-auto "  >
       Add New
@@ -111,10 +114,10 @@ console.log(search)
           </thead>
 
           {countries
-          // .filter((value)=>{
-          //   return search.toLowerCase() === ''
-          //   ? value :value.name.toLowerCase().includes(search);
-          // })
+          .filter((value)=>{
+            return search.toLowerCase() === ''
+            ? value :value.name.toLowerCase().includes(search);
+          })
           .map((value, index) => (
             <tbody className="text-[#000000] text-sm font-light w-[100%] bg-white ">
               <tr className='' >
