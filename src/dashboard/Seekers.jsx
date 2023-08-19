@@ -6,54 +6,26 @@ import { useDispatch, useSelector } from 'react-redux';
 import { AllSeekers } from '../store/actions/seekerActions';
 
 
-const seeker = [
-  { id: '01', user: "Jane", country: "U.S", status: 'Active' },
-  { id: '01', user: "Jane", country: "U.S", status: 'Active' },
-  { id: '01', user: "Jane", country: "U.S", status: 'Active' },
-  { id: '01', user: "Jane", country: "U.S", status: 'Active' },
-  { id: '01', user: "Jane", country: "U.S", status: 'Active' },
-  { id: '01', user: "Jane", country: "U.S", status: 'Active' },
 
 
-]
+
+
 
 const Seekers = () => {
 
-
-
-  
-  const [currentPage, setCurrentPage] = useState(1);
-  const numbersPerPage = 6;
-  const lastIndex = currentPage * numbersPerPage;
-  const firstIndex = lastIndex - numbersPerPage;
-  const [numbers, setNumbers] = useState();
-  const [nPage, setNPage] = useState();
-  useEffect(() => {
-    if (nPage !== undefined) {
-      setNumbers([...Array(nPage + 1).keys()].slice(1));
-    }
-  }, [nPage])
-  function prevPage() {
-    if (currentPage !== 1) {
-      setCurrentPage(currentPage - 1);
-    }
-  }
-  function changeCurrentPage(id) {
-    setCurrentPage(id);
-  }
-  function nextPage() {
-    if (currentPage !== nPage) {
-      setCurrentPage(currentPage + 1);
-    }
-  }
-
-
-
+  const [currentPage, setCurrentPage] = useState(1)
+  const numbersPerPage = 5;
 
   const [open, setOpen] = useState(false);
   const [openView, setOpenView] = useState(false);
   const [view, setView] = useState(false);
   const [data, setData] = useState()
+
+  const [records, setRecords] = useState()
+  const [nPage, setPage] = useState()
+  const [Numbers, setNumbers] = useState()
+  const [lastIndex, setLastIndex] = useState()
+  const [firstIndex, setFirstIndex] = useState()
 
   const dispatch = useDispatch()
 
@@ -66,9 +38,25 @@ const Seekers = () => {
   const seekers = useSelector(state => state.seeker.seekers)
 
   useEffect(() => {
-    console.log(seekers)
-  }, [seekers])
+    setLastIndex(currentPage * numbersPerPage);
+  }, [currentPage])
 
+  useEffect(() => {
+    setFirstIndex(lastIndex - numbersPerPage);
+  }, [lastIndex])
+
+  useEffect(() => {
+    if (seekers){
+      setRecords(seekers.slice(firstIndex, lastIndex));
+      setPage(Math.ceil(seekers.length / numbersPerPage));
+    }
+  }, [seekers, firstIndex])
+
+  useEffect(() => {
+    if (nPage){
+      setNumbers([...Array(nPage + 1).keys()].slice(1))
+    }
+  }, [nPage])
 
   useEffect(() => {
     if (seekers !== null || seekers !== undefined || seekers.length !== 0) {
@@ -107,7 +95,7 @@ const Seekers = () => {
 
           </thead>
 
-          {seekers?.map((value, index) => (
+          {records?.map((value) => (
             <tbody className="text-[#000000] text-sm font-light w-[100%] bg-white ">
               <tr className='' >
                 <td className="py-[2%] w-[3%]   border-r-[1px] border-t-[1px]   text-center">
@@ -136,35 +124,57 @@ const Seekers = () => {
 
             </tbody>
           ))}
+
+
         </div>
+       
+        
+<nav className='m-auto mt-5' >
+  <ul class="flex items-center -space-x-px h-10 text-base">
+    <li>
+      <a href="#"  onClick={prevPage} class="flex items-center justify-center px-4 h-10 ml-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-l-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white" >
+        <span class="sr-only">Previous</span>
+        <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 1 1 5l4 4"/>
+        </svg>
+      </a>
+    </li>
+    { Numbers?.map((n, i) => (
+    <li>
+      <a href="#"  onClick= {changeCurrentPage} class="flex items-center justify-center px-4 h-10 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">{n}</a>
+    </li>
+    ))}
+    <li>
+      <a href="#"  onClick={nextPage} class="flex items-center justify-center px-4 h-10 leading-tight text-gray-500 bg-white border border-gray-300 rounded-r-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
+        <span class="sr-only">Next</span>
+        <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
+        </svg>
+      </a>
+    </li>
+  </ul>
+</nav>
+
 
       </div>
-        <nav className="mt-[5%] ">
-          <center>
-            <ul className="flex justify-center w-[50%]  p-[2%] gap-2">
-              <li className="h-10 w-5 font-400 text-[2rem]">
-                <a href="#" aria-label="Previous" onClick={prevPage}   >
-                  <span aria-hidden="true">&laquo;</span>
-                  <span className="sr-only ">Previous</span>
-                </a>
-              </li>
-              {numbers?.map((n, i) => (
-                <li className={`h-[10%] w-[20%] border-2 border-solid  rounded-full font-400 text-[1rem] ${currentPage === n ? "bg-slate-500 text-white" : "bg-white"}`} key={i} >
-                  <a href="#" onClick={() => changeCurrentPage(n)}>{n}</a>
-                </li>))}
-              <li className="h-10 w-5 font-400 text-[2rem]">
-                <a className="page-link" href="#" aria-label="Next" onClick={nextPage} >
-                  <span aria-hidden="true">&raquo;</span>
-                  <span className="sr-only">Next</span>
-                </a>
-              </li>
-            </ul>
-          </center>
-        </nav>
 
 
     </PortalLayout>
   )
+  function prevPage() {
+    if(currentPage !== 1){
+        setCurrentPage(currentPage - 1);
+    }
+  }
+  function changeCurrentPage(id) {
+    setCurrentPage(id)
+  }
+  function nextPage() {
+    if(currentPage !== nPage){
+        setCurrentPage(currentPage + 1)
+    }
+  }
+  
 }
 
 export default Seekers
