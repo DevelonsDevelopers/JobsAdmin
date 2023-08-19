@@ -7,19 +7,17 @@ import { useDispatch, useSelector } from 'react-redux'
 import { AllCities } from '../store/actions/cityActions'
 
 
-const city = [
-  { id: '01', name: "london", count: '20', status: "Active", },
-  { id: '01', name: "london", count: '20', status: "Active", },
-  { id: '01', name: "london", count: '20', status: "Active", },
-  { id: '01', name: "london", count: '20', status: "Active", },
-  { id: '01', name: "london", count: '20', status: "Active", },
-  { id: '01', name: "london", count: '20', status: "Active", },
-  { id: '01', name: "london", count: '20', status: "Active", },
-  { id: '01', name: "london", count: '20', status: "Active", },
-  { id: '01', name: "london", count: '20', status: "Active", },
-
-
-]
+// const city = [
+//   { id: '01', name: "london", count: '20', status: "Active", },
+//   { id: '01', name: "london", count: '20', status: "Active", },
+//   { id: '01', name: "london", count: '20', status: "Active", },
+//   { id: '01', name: "london", count: '20', status: "Active", },
+//   { id: '01', name: "london", count: '20', status: "Active", },
+//   { id: '01', name: "london", count: '20', status: "Active", },
+//   { id: '01', name: "london", count: '20', status: "Active", },
+//   { id: '01', name: "london", count: '20', status: "Active", },
+//   { id: '01', name: "london", count: '20', status: "Active", },
+// ]
 const Cities = () => {
   const [open, setOpen] = useState(false);
   const [openView, setOpenView] = useState(false);

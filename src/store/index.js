@@ -7,6 +7,35 @@ const API = axios.create({ baseURL: 'http://192.168.1.25:5001'})
 
 
 export const fetchAllCategories = () => API.get(`/categories/all`)
+export const fetchCategory = (id) => API.get(`/categories/get`, {
+    data: {
+        id: id,
+    }
+})
+export const createCategory = (category) => API.post(`/categories/create`, 
+    {
+        name: category.name,
+        description: category.description,
+        image: category.image,
+    }
+)
+export const updateCategory = (name, description,image,id) => API.put(`/categories/update`, {
+    data: {
+        name: name,
+        description: description,
+        image: image,
+        id: id,
+    }
+})
+export const deleteCategory = (id) => API.delete(`/categories/:delete`, {
+    data: {
+        id: id
+    }
+})
+
+
+
+
 export const fetchAllCities = () => API.get(`/cities/all`)
 export const fetchAllJobs = () => API.get(`/jobs/all`)
 export const fetchAllCompanies = () => API.get(`/companies/all`)
@@ -18,4 +47,8 @@ export const fetchAllTags = () => API.get(`/tags/all`)
 export const fetchAllTransactions = () => API.get(`/transactions/all`)
 export const fetchAllUsers = () => API.get(`/users/all`)
 export const fetchAllAppliedUsers = () => API.get(`/applied/all`)
+
+
+
+
 // export const fetchAllSeekers = () => API.get(`/seekers/all`)

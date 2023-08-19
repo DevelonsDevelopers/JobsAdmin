@@ -4,6 +4,10 @@ export const ERROR = "ERROR"
 
 // CATEGORIES:=====
 export const ALL_CATEGORIES = "ALL_CATEGORIES";
+export const GET_CATEGORY = "GET_CATEGORY";
+export const UPDATE_CATEGORY = "UPDATE_CATEGORY";
+export const DELETE_CATEGORY = "DELETE_CATEGORY";
+export const CREATE_CATEGORY = "CREATE_CATEGORY";
 
 // CITIES:=====
 export const ALL_CITIES = "ALL_CITIES";
