@@ -1,7 +1,25 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import PortalLayout from '../../portalLayout/PortalLayout'
+import { useDispatch, useSelector } from 'react-redux'
+import { updateCategory } from '../../store/actions/categoryActions';
+import { current } from '@reduxjs/toolkit';
+import { useNavigate, useParams } from 'react-router-dom';
 
 const CategoryEdit = () => {
+  // const category = useSelector((state) => currentId ? state.category.categories.find((c) => c.id === currentId) : null)
+  const params = useNavigate();
+  console.log(params)
+  // const { id } = route.params
+  // console.log (id)
+  // const dispatch = useDispatch();
+
+  // useEffect(() => {
+  //   dispatch(updateCategory(id))
+  // }, [dispatch])
+
+
+
+
   return (
     <PortalLayout>
     <h1 className='text-center bg-gradient-to-r from-sky-600 to-cyan-400  text-white font-[600] mb-5 py-4 rounded-xl shadow-md shadow-blue-300 text-[1.5rem]'>EDIT CATEGORY</h1>
