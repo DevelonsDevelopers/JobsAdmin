@@ -37,6 +37,10 @@ export const CREATE_COUNTRY = "CREATE_COUNTRY";
 
 // PLANS:=====
 export const ALL_PLANS = "ALL_PLANS";
+export const GET_PLAN = "GET_PLAN";
+export const UPDATE_PLAN = "UPDATE_PLAN";
+export const DELETE_PLAN = "DELETE_PLAN";
+export const CREATE_PLAN = "CREATE_PLAN";
 
 // REPORTS:=====
 export const ALL_REPORTS = "ALL_REPORTS";
@@ -46,14 +50,28 @@ export const ALL_SEEKERS = "ALL_SEEKERS";
 
 // TAGS:=====
 export const ALL_TAGS = "ALL_TAGS";
+export const GET_TAG = "GET_TAG";
+export const UPDATE_TAG = "UPDATE_TAG";
+export const DELETE_TAG = "DELETE_TAG";
+export const CREATE_TAG = "CREATE_TAG";
+
 
 // TRANSACTIONS:=====
 export const ALL_TRANSACTIONS = "ALL_TRANSACTIONS";
 
 // USERS:=====
 export const ALL_USERS = "ALL_USERS";
+export const GET_USER = "GET_USER";
+export const UPDATE_USER = "UPDATE_USER";
+export const DELETE_USER = "DELETE_USER";
+export const CREATE_USER = "CREATE_USER";
 
 // APPLIEDUSERS:=====
 export const ALL_APPLIEDUSERS = "ALL_APPLIEDUSERS";
+export const GET_APPLIEDUSER = "GET_APPLIEDUSER";
+export const GETJOB_APPLIEDUSER = "GETJOB_APPLIEDUSER";
+export const UPDATE_APPLIEDUSER = "UPDATE_APPLIEDUSER";
+export const DELETE_APPLIEDUSER = "DELETE_APPLIEDUSER";
+export const CREATE_APPLIEDUSER = "CREATE_APPLIEDUSER";
 
 

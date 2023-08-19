@@ -1,4 +1,4 @@
-import { ALL_TAGS, LOADING, SUCCESS } from '../../Utils/Constant';
+import { ALL_TAGS, CREATE_TAG, DELETE_TAG, GET_TAG, LOADING, SUCCESS, UPDATE_TAG } from '../../Utils/Constant';
 import * as api from '../../store/index'
 
 
@@ -11,5 +11,42 @@ export const AllTags = () => async (dispatch) => {
         dispatch({ type: SUCCESS })
     } catch(error) {
         console.log(error)
+    }
+}
+
+export const getTag = (id) => async (dispatch) => {
+    try{
+        const { data } = await api.fetchTag(id)
+        dispatch({ type: GET_TAG, payload: data})
+    } catch(error){
+        console.log(error)
+    }
+}
+
+export const createTag = (tag) => async (disptach) =>{
+    try{
+        const {data: {data}} = await api.createTag(tag)
+        disptach({ type: CREATE_TAG, payload: data})
+    }catch(error){
+        console.log(error)
+    }
+}
+
+export const updateTag = (id , tag) => async (dispatch) => {
+    try{
+        const {data: {data} } = await api.updateTag(id,tag)
+        dispatch({ type: UPDATE_TAG, payload: data})
+    }catch(error){
+        console.log(error)
+    }
+}
+
+export const deleteTag = (id) => async (dispatch) => {
+    try {
+        const { data } = await api.deleteTag(id)
+        console.log(id)
+        dispatch({ type: DELETE_TAG, payload: id})
+    } catch(error) {
+        console.log(error);
     }
 }

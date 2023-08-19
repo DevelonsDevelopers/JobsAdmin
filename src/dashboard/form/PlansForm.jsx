@@ -4,7 +4,7 @@ import PortalLayout from '../../portalLayout/PortalLayout'
 const PlansForm = () => {
   return (
   <PortalLayout>
-      <h1 className='text-center bg-blue-400 text-white font-[600] mb-5 py-4 rounded-xl shadow-md shadow-blue-300 text-[1.5rem]'>ADD USERS</h1>
+      <h1 className='text-center bg-blue-400 text-white font-[600] mb-5 py-4 rounded-xl shadow-md shadow-blue-300 text-[1.5rem]'>ADD PLANS</h1>
             <div className='bg-white p-4 rounded-xl'>
 
                 <form className='p-4'>

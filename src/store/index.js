@@ -39,7 +39,7 @@ export const fetchCity = (id) => API.get(`/cities/get` , {
         id: id
     }
 })
-export const fetchCountrybyCity = (country) => API.get(`/cities/get` , {
+export const fetchCountrybyCity = (country) => API.get(`/cities/country` , {
     data: {
         country: country
     }
@@ -48,14 +48,14 @@ export const createCity = (city) => API.post(`/cities/create` ,
     {
         name: city.name,
         description: city.description,
-        image: city.image,
+        country: city.country,
     }
 )
-export const updateCity = (name, description,image, id) => API.get(`/cities/update`, {
+export const updateCity = (name, description,country, id) => API.get(`/cities/update`, {
     data: {
         name: name,
         description: description,
-        image: image,
+        country: country,
         id: id,
     }
 })
@@ -130,18 +130,125 @@ export const deleteCountry = (id) => API.delete(`/countries/:delete`, {
 })
 // Plans
 export const fetchAllPlans = () => API.get(`/plans/all`)
+export const fetchPlan = (id) => API.get(`/plans/get`, {
+    data: {
+        id: id,
+    }
+}) 
+export const fetchTypebyPlan = (type) => API.get(`/plans/type`, {
+    data: {
+        type: type,
+    }
+}) 
+export const createPlan =(plan) => API.post(`/plans/create`, {
+    name: plan.name,
+    amount: plan.amount,
+    type: plan.type,
+    accounttype: plan.accounttype,
+    timeperiod: plan.timeperiod,
+    purpose: plan.purpose,
+})
+export const updatePlan = (name, amount, type, accounttype, timeperiod, purpose) => API.get(`/plans/update`, {
+    data: {
+        name: name,
+        amount: amount,
+        type: type,
+        accounttype: accounttype,
+        timeperiod: timeperiod,
+        purpose: purpose,
+    }
+})
+export const deletePlan = (id) => API.delete(`/plans/:delete`, {
+    data: {
+        id: id
+    }
+})
 // Reports
 export const fetchAllReports = () => API.get(`/reports/all`)
 // Seekers
 export const fetchAllSeekers = () => API.get(`/seekers/all`)
 //Tags
 export const fetchAllTags = () => API.get(`/tags/all`)
+export const fetchTag = (id) => API.get(`/tags/get`, {
+    data: {
+        id: id,
+    }
+}) 
+export const createTag =(tag) => API.post(`/tags/create`, {
+    name: tag.name,
+})
+export const updateTag = (name) => API.get(`/tags/update`, {
+    data: {
+        name: name,
+    }
+})
+export const deleteTag = (id) => API.delete(`/tags/:delete`, {
+    data: {
+        id: id
+    }
+})
 // Transactions
 export const fetchAllTransactions = () => API.get(`/transactions/all`)
 // Users
 export const fetchAllUsers = () => API.get(`/users/all`)
+export const fetchUser = (id) => API.get(`/users/get`, {
+    data: {
+        id: id,
+    }
+}) 
+export const createUser =(user) => API.post(`/users/create`, {
+    name: user.name,
+    username: user.username,
+    email: user.email,
+    password: user.password,
+    phone: user.phone,
+    address: user.address,
+})
+export const updateUser = (id,name, username, email, password, phone, address) => API.get(`/users/update`, {
+    data: {
+        name: name,
+        username: username,
+        email: email,
+        password: password,
+        phone: phone,
+        address: address,
+        id: id,
+    }
+})
+export const deleteUser = (id) => API.delete(`/users/:delete`, {
+    data: {
+        id: id
+    }
+})
 // AppliedUsers
 export const fetchAllAppliedUsers = () => API.get(`/applied/all`)
+export const fetchAppliedUser = (id) => API.get(`/applied/get`, {
+    data: {
+        id: id,
+    }
+}) 
+export const fetchJobbyAppliedUser = (job) => API.get(`/applied/job`, {
+    data: {
+        job: job,
+    }
+}) 
+export const createAppliedUser =(appliedUser) => API.post(`/applied/create`, {
+    user: appliedUser.user,
+    date: appliedUser.date,
+    proposal: appliedUser.proposal,
+})
+export const updateAppliedUser = (user, date, proposal) => API.get(`/applied/update`, {
+    data: {
+        user: user,
+        date: date,
+        proposal: proposal,
+    }
+})
+export const deleteAppliedUser = (id) => API.delete(`/applied/:delete`, {
+    data: {
+        id: id
+    }
+})
 
 
 

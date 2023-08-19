@@ -1,4 +1,4 @@
-import {  ALL_USERS, LOADING, SUCCESS } from '../../Utils/Constant';
+import {  ALL_USERS, CREATE_USER, DELETE_USER, GET_USER, LOADING, SUCCESS, UPDATE_USER } from '../../Utils/Constant';
 import * as api from '../../store/index'
 
 
@@ -11,5 +11,41 @@ export const AllUsers = () => async (dispatch) => {
         dispatch({ type: SUCCESS })
     } catch(error) {
         console.log(error)
+    }
+}
+export const getUser = (id) => async (dispatch) => {
+    try{
+        const { data } = await api.fetchUser(id)
+        dispatch({ type: GET_USER, payload: data})
+    } catch(error){
+        console.log(error)
+    }
+}
+
+export const createUser = (user) => async (disptach) =>{
+    try{
+        const {data: {data}} = await api.createUser(user)
+        disptach({ type: CREATE_USER, payload: data})
+    }catch(error){
+        console.log(error)
+    }
+}
+
+export const updateUser = (id , user) => async (dispatch) => {
+    try{
+        const {data: {data} } = await api.updateUser(id,user)
+        dispatch({ type: UPDATE_USER, payload: data})
+    }catch(error){
+        console.log(error)
+    }
+}
+
+export const DeleteUser = (id) => async (dispatch) => {
+    try {
+        const { data } = await api.deleteUser(id)
+        console.log(id)
+        dispatch({ type: DELETE_USER, payload: id})
+    } catch(error) {
+        console.log(error);
     }
 }
