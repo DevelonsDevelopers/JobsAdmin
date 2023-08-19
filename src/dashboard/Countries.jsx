@@ -17,13 +17,12 @@ const country = [
 
 ]
 
-
-
-
 const Countries = () => {
+const [search ,setSearch  ] =useState('')
+console.log(search)
+
 
   const [open, setOpen] = useState(false);
-  const [search , setSearch] = useState();
   const [openView, setOpenView] = useState(false);
   const [view, setView] = useState(false);
   const router = useNavigate();
@@ -56,6 +55,12 @@ const Countries = () => {
     setOpen(!open)
     setDeleteId(id)
   }
+  useEffect(() => {
+    if (countries?.length === 0) {
+      setNodata(true)
+    }
+    else { setData(false) }
+  }, [countries])
 
   return (
     <PortalLayout>
