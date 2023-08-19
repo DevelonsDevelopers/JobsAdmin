@@ -21,19 +21,30 @@ const card = [
 
 
 const data = [
-  { "day": "profit-01", "day2": "profit-01", "temperature": [-1, 0] },
-  { "day": "profit-01", "day2": "profit-01", "temperature": [-1, 10] },
-  { "day": "profit-01", "day2": "profit-01", "temperature": [-1, 40] },
-  { "day": "profit-01", "day2": "profit-01", "temperature": [-1, 70] },
-  { "day": "profit-01", "day2": "profit-01", "temperature": [-1, 20] },
-  { "day": "profit-01", "day2": "profit-01", "temperature": [-1, 10] },
-  { "day": "profit-01", "day2": "profit-01", "temperature": [-1, 50] },
+  { "day2": "profit-01", "profit": [1, 0] },
+  { "day2": "profit-01", "profit": [1, 10] },
+  { "day2": "profit-01", "profit": [1, 40] },
+  { "day2": "profit-01", "profit": [1, 70] },
+  { "day2": "profit-01", "profit": [1, 20] },
+  { "day2": "profit-01", "profit": [1, 10] },
+  { "day2": "profit-01", "profit": [1, 50] },
+  { "day2": "profit-01", "profit": [1, 50] },
+  { "day2": "profit-01", "profit": [1, 50] },
+  { "day2": "profit-01", "profit": [1, 100] },
+  { "day2": "profit-01", "profit": [1, 10] },
+  { "day2": "profit-01", "profit": [1, 40] },
+  { "day2": "profit-01", "profit": [1, 70] },
+  { "day2": "profit-01", "profit": [1, 20] },
+  { "day2": "profit-01", "profit": [1, 10] },
+  { "day2": "profit-01", "profit": [1, 50] },
+  { "day2": "profit-01", "profit": [1, 50] },
+  { "day2": "profit-01", "profit": [1, 50] },
 
 ]
 const data01 = [
-  { "name": "Group A", "value": 400, "at": 400 },
-  { "name": "Group b", "value": 500 },
-  { "name": "Group c", "value": 100 },
+  {  "value": 400,  },
+  {  "value": 500 },
+  // { "name": "Group c", "value": 100 },
 
 ]
 
@@ -119,10 +130,10 @@ const [loading ,setLoading] = useState(false)
             <span className=' ml-[2rem] font-[600] text-[1rem]'>Memory Status</span>
             <ResponsiveContainer width="100%" height={270}>
               <PieChart width={430} height={200} margin={{ top: 40, right: 20, bottom: 0, left: 20 }}>
-                <Pie data={data01} dataKey="value" nameKey="name" cx="50%" cy="50%" outerRadius={50} fill="#8884d8" />
-                <Pie data={data01} dataKey="value" nameKey="name" cx="50%" cy="50%" innerRadius={60} outerRadius={80} fill="blue" label />
+                <Pie data={data01} dataKey="value" nameKey="name" cx="50%" cy="50%" outerRadius={50} fill="#2994FF" />
+                <Pie data={data01} dataKey="value" nameKey="name" cx="50%" cy="50%" innerRadius={60} outerRadius={80} fill="#006ac6" label />
                 <Tooltip />
-                <Legend />
+                {/* <Legend /> */}
               </PieChart>
             </ResponsiveContainer>
           </div>
@@ -138,9 +149,9 @@ const [loading ,setLoading] = useState(false)
             <ResponsiveContainer width="100%" height={400}>
               <BarChart width={430} height={250} data={data} margin={{ top: 40, right: 20, bottom: 0, left: 20 }} >
                 <XAxis dataKey="day" />
-                <YAxis />
+                <YAxis  />
                 <Tooltip />
-                <Bar dataKey="temperature" fill="#8884d8" />
+                <Bar dataKey="profit" fill="#2994FF" />
                 <Legend />
               </BarChart>
             </ResponsiveContainer>
@@ -156,11 +167,11 @@ const [loading ,setLoading] = useState(false)
                 margin={{ top: 20, right: 30, left: 0, bottom: 0 }}>
                 <XAxis dataKey="name" />
                 <YAxis />
-                <CartesianGrid strokeDasharray="3 3" />
+                <CartesianGrid strokeDasharray="0 0" />
                 <Tooltip />
                 <ReferenceLine x="Page C" stroke="green" label="Min PAGE" />
                 {/* <ReferenceLine y={4000} label="Max" stroke="red" strokeDasharray="3 3" /> */}
-                <Area type="monotone" dataKey="uv" stroke="#8884d8" fill="#8884d8" />
+                <Area type="monotone" dataKey="uv" stroke="#2994FF" fill="#2994FF" />
               </AreaChart>
             </ResponsiveContainer>
           </div>
