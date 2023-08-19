@@ -1,4 +1,4 @@
-import { ALL_APPLIEDUSERS, LOADING, SUCCESS } from "../../Utils/Constant"
+import { ALL_APPLIEDUSERS, CREATE_APPLIEDUSER, DELETE_APPLIEDUSER, GETJOB_APPLIEDUSER, GET_APPLIEDUSER, LOADING, SUCCESS, UPDATE_APPLIEDUSER } from "../../Utils/Constant"
 import * as api from '../../store/index'
 
 
@@ -10,5 +10,50 @@ export const AllAppliedUsers = () => async(dispatch) => {
         dispatch ({ type: SUCCESS })
     } catch(error) {
         console.log(error)
+    }
+}
+
+export const getAppliedUser = (id) => async (dispatch) => {
+    try{
+        const { data } = await api.fetchCategory(id)
+        dispatch({ type: GET_APPLIEDUSER, payload: data})
+    } catch(error){
+        console.log(error)
+    }
+}
+export const getJobbyAppliedUser = (job) => async (dispatch) => {
+    try{
+        const { data } = await api.fetchJobbyAppliedUser(job)
+        dispatch({ type: GETJOB_APPLIEDUSER, payload: data})
+    } catch(error){
+        console.log(error)
+    }
+}
+
+export const createAppliedUser = (appliedUser) => async (disptach) =>{
+    try{
+        const {data: {data}} = await api.createAppliedUser(appliedUser)
+        disptach({ type: CREATE_APPLIEDUSER, payload: data})
+    }catch(error){
+        console.log(error)
+    }
+}
+
+export const updateAppliedUser = (id , appliedUser) => async (dispatch) => {
+    try{
+        const {data: {data} } = await api.updateAppliedUser(id,appliedUser)
+        dispatch({ type: UPDATE_APPLIEDUSER, payload: data})
+    }catch(error){
+        console.log(error)
+    }
+}
+
+export const DeleteAppliedUser = (id) => async (dispatch) => {
+    try {
+        const { data } = await api.deleteAppliedUser(id)
+        console.log(id)
+        dispatch({ type: DELETE_APPLIEDUSER, payload: id})
+    } catch(error) {
+        console.log(error);
     }
 }
