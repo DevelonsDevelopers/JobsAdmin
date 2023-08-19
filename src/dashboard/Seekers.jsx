@@ -4,6 +4,7 @@ import { BarChart, Bar, Tooltip, XAxis, YAxis, PieChart, Pie, LineChart, Cartesi
 import SeekersView from './view/SeekersView';
 import { useDispatch, useSelector } from 'react-redux';
 import { AllSeekers } from '../store/actions/seekerActions';
+import { Link } from 'react-router-dom';
 
 
 
@@ -12,6 +13,13 @@ import { AllSeekers } from '../store/actions/seekerActions';
 
 
 const Seekers = () => {
+// search===============
+const [search ,setSearch  ] = useState('')
+console.log(search)
+// =============
+
+
+
 
   const [currentPage, setCurrentPage] = useState(1)
   const numbersPerPage = 5;
@@ -46,14 +54,14 @@ const Seekers = () => {
   }, [lastIndex])
 
   useEffect(() => {
-    if (seekers){
+    if (seekers) {
       setRecords(seekers.slice(firstIndex, lastIndex));
       setPage(Math.ceil(seekers.length / numbersPerPage));
     }
   }, [seekers, firstIndex])
 
   useEffect(() => {
-    if (nPage){
+    if (nPage) {
       setNumbers([...Array(nPage + 1).keys()].slice(1))
     }
   }, [nPage])
@@ -71,11 +79,11 @@ const Seekers = () => {
 
         <div className='flex justify-center mt-[3rem] w-[90%] m-auto'>
 
-          <input type="search" name="" id="" placeholder='Search...' className='border-2 border-gray-600 pl-[4rem] rounded-[1.0625rem] py-2  w-[27.8125rem] mr-auto max-md:py-[1px] max-md:w-[15rem] max-md:text-[0.7rem] focus:outline-none focus:ring-0 focus:border-gray-900 peer' />
-          <a href="/categories/add"> <button className="bg-[#0047FF] cursor-pointer  max-md:text-[.6rem] py-2 px-[1rem] max-md:px-[1rem] max-md:py-[5px] text-white font-[600] max-md:font-[400] rounded-[1.375rem] ml-auto "  >
+          <input type="search"   onChange={(e) => setSearch(e.target.value)}  name="" id="" placeholder='Search...' className='border-2 border-gray-600 pl-[4rem] rounded-[1.0625rem] py-2  w-[27.8125rem] mr-auto max-md:py-[1px] max-md:w-[15rem] max-md:text-[0.7rem] focus:outline-none focus:ring-0 focus:border-gray-900 peer' />
+          <Link to="/seeker/add"> <button className="bg-[#0047FF] cursor-pointer  max-md:text-[.6rem] py-2 px-[1rem] max-md:px-[1rem] max-md:py-[5px] text-white font-[600] max-md:font-[400] rounded-[1.375rem] ml-auto "  >
             Add New
           </button>
-          </a>
+          </Link>
 
         </div>
 
@@ -124,57 +132,42 @@ const Seekers = () => {
 
             </tbody>
           ))}
-
-
         </div>
-       
-        
-<nav className='m-auto mt-5' >
-  <ul class="flex items-center -space-x-px h-10 text-base">
-    <li>
-      <a href="#"  onClick={prevPage} class="flex items-center justify-center px-4 h-10 ml-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-l-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white" >
-        <span class="sr-only">Previous</span>
-        <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 1 1 5l4 4"/>
-        </svg>
-      </a>
-    </li>
-    { Numbers?.map((n, i) => (
-    <li>
-      <a href="#"  onClick= {changeCurrentPage} class="flex items-center justify-center px-4 h-10 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">{n}</a>
-    </li>
-    ))}
-    <li>
-      <a href="#"  onClick={nextPage} class="flex items-center justify-center px-4 h-10 leading-tight text-gray-500 bg-white border border-gray-300 rounded-r-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
-        <span class="sr-only">Next</span>
-        <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
-        </svg>
-      </a>
-    </li>
-  </ul>
-</nav>
 
+        <nav className='m-auto mt-5' >
+          <ul class="flex items-center -space-x-px h-10 text-base">
+            <li>
+              <a href="#" onClick={prevPage} class="flex items-center justify-center px-4 h-10 ml-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-l-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white" >
+                <span class="sr-only">Previous</span>
+                <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 1 1 5l4 4" />
+                </svg>
+              </a>
+            </li>
+            {Numbers?.map((n, i) => (<li> <a href="#" onClick={changeCurrentPage} class="flex items-center justify-center px-4 h-10 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">{n}</a> </li>))}
 
+            <li>
+              <a href="#" onClick={nextPage} class="flex items-center justify-center px-4 h-10 leading-tight text-gray-500 bg-white border border-gray-300 rounded-r-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"> <span class="sr-only">Next</span><svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10"> <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4" /> </svg></a>
+            </li>
+          </ul>
+        </nav>
       </div>
-
-
     </PortalLayout>
   )
   function prevPage() {
-    if(currentPage !== 1){
-        setCurrentPage(currentPage - 1);
+    if (currentPage !== 1) {
+      setCurrentPage(currentPage - 1);
     }
   }
   function changeCurrentPage(id) {
     setCurrentPage(id)
   }
   function nextPage() {
-    if(currentPage !== nPage){
-        setCurrentPage(currentPage + 1)
+    if (currentPage !== nPage) {
+      setCurrentPage(currentPage + 1)
     }
   }
-  
+
 }
 
 export default Seekers
