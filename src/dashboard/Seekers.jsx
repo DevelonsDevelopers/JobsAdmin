@@ -7,17 +7,49 @@ import { AllSeekers } from '../store/actions/seekerActions';
 
 
 const seeker = [
-  {id:'01', user: "Jane", country: "U.S", status:'Active'},
-  {id:'01', user: "Jane", country: "U.S", status:'Active'},
-  {id:'01', user: "Jane", country: "U.S", status:'Active'},
-  {id:'01', user: "Jane", country: "U.S", status:'Active'},
-  {id:'01', user: "Jane", country: "U.S", status:'Active'},
-  {id:'01', user: "Jane", country: "U.S", status:'Active'},
+  { id: '01', user: "Jane", country: "U.S", status: 'Active' },
+  { id: '01', user: "Jane", country: "U.S", status: 'Active' },
+  { id: '01', user: "Jane", country: "U.S", status: 'Active' },
+  { id: '01', user: "Jane", country: "U.S", status: 'Active' },
+  { id: '01', user: "Jane", country: "U.S", status: 'Active' },
+  { id: '01', user: "Jane", country: "U.S", status: 'Active' },
 
 
 ]
 
 const Seekers = () => {
+
+
+
+  
+  const [currentPage, setCurrentPage] = useState(1);
+  const numbersPerPage = 6;
+  const lastIndex = currentPage * numbersPerPage;
+  const firstIndex = lastIndex - numbersPerPage;
+  const [numbers, setNumbers] = useState();
+  const [nPage, setNPage] = useState();
+  useEffect(() => {
+    if (nPage !== undefined) {
+      setNumbers([...Array(nPage + 1).keys()].slice(1));
+    }
+  }, [nPage])
+  function prevPage() {
+    if (currentPage !== 1) {
+      setCurrentPage(currentPage - 1);
+    }
+  }
+  function changeCurrentPage(id) {
+    setCurrentPage(id);
+  }
+  function nextPage() {
+    if (currentPage !== nPage) {
+      setCurrentPage(currentPage + 1);
+    }
+  }
+
+
+
+
   const [open, setOpen] = useState(false);
   const [openView, setOpenView] = useState(false);
   const [view, setView] = useState(false);
@@ -29,7 +61,7 @@ const Seekers = () => {
     setOpenView(!open)
     setData(value)
   }
-  
+
 
   const seekers = useSelector(state => state.seeker.seekers)
 
@@ -39,28 +71,28 @@ const Seekers = () => {
 
 
   useEffect(() => {
-    if(seekers !== null || seekers !== undefined || seekers.length !== 0){
+    if (seekers !== null || seekers !== undefined || seekers.length !== 0) {
       dispatch(AllSeekers())
     }
   }, [dispatch])
   return (
     <PortalLayout>
-       <h1 className='text-[3.125rem] font-[800] text-[#000] text-center max-md:text-[2rem] uppercase'>seeker</h1>
+      <h1 className='text-[3.125rem] font-[800] text-[#000] text-center max-md:text-[2rem] uppercase'>seeker</h1>
 
-<div className="w-[100%] max-md:h-full  max-md:px-2 flex flex-col justify-center bg-gray-100">
+      <div className="w-[100%] max-md:h-full  max-md:px-2 flex flex-col justify-center bg-gray-100">
 
-  <div className='flex justify-center mt-[3rem] w-[90%] m-auto'>
+        <div className='flex justify-center mt-[3rem] w-[90%] m-auto'>
 
-    <input type="search" name="" id="" placeholder='Search...' className='border-2 border-gray-600 pl-[4rem] rounded-[1.0625rem] py-2  w-[27.8125rem] mr-auto max-md:py-[1px] max-md:w-[15rem] max-md:text-[0.7rem] focus:outline-none focus:ring-0 focus:border-gray-900 peer' />
-    <a href="/categories/add"> <button className="bg-[#0047FF] cursor-pointer  max-md:text-[.6rem] py-2 px-[1rem] max-md:px-[1rem] max-md:py-[5px] text-white font-[600] max-md:font-[400] rounded-[1.375rem] ml-auto "  >
-      Add New
-    </button>
-    </a>
+          <input type="search" name="" id="" placeholder='Search...' className='border-2 border-gray-600 pl-[4rem] rounded-[1.0625rem] py-2  w-[27.8125rem] mr-auto max-md:py-[1px] max-md:w-[15rem] max-md:text-[0.7rem] focus:outline-none focus:ring-0 focus:border-gray-900 peer' />
+          <a href="/categories/add"> <button className="bg-[#0047FF] cursor-pointer  max-md:text-[.6rem] py-2 px-[1rem] max-md:px-[1rem] max-md:py-[5px] text-white font-[600] max-md:font-[400] rounded-[1.375rem] ml-auto "  >
+            Add New
+          </button>
+          </a>
 
-  </div>
-  
-    <SeekersView open={openView} setOpen={setOpenView} title={" VIEW"} data={data} />
-    <div className="rounded-xl p-5 bg-white w-[90%] m-auto max-md:w-[100%]  mt-6 ">
+        </div>
+
+        <SeekersView open={openView} setOpen={setOpenView} title={" VIEW"} data={data} />
+        <div className="rounded-xl p-5 bg-white w-[90%] m-auto max-md:w-[100%]  mt-6 ">
           <thead className='mt-10'>
 
             <tr className=" uppercase  text-sm leading-normal w-[100%]">
@@ -75,7 +107,7 @@ const Seekers = () => {
 
           </thead>
 
-          {seekers.map((value) => (
+          {seekers?.map((value, index) => (
             <tbody className="text-[#000000] text-sm font-light w-[100%] bg-white ">
               <tr className='' >
                 <td className="py-[2%] w-[3%]   border-r-[1px] border-t-[1px]   text-center">
@@ -91,7 +123,7 @@ const Seekers = () => {
                 <td className="py-[2%] max-md:text-[.7rem] w-[2%] border-r-[1px] border-t-[1px]   text-center">
                   <span className="bg-green-600 text-white font-[500] py-[3px] px-[10px] max-md:w-[8%] rounded-xl text-[0.6rem] max-md:py-1 max-md:px-2 max-md:text-[0.6rem] cursor-pointer hover:bg-green-700 ">{value.status}</span>
                 </td>
-                
+
 
                 <td className="py-[2%] w-[1%] max-md:text-[.7rem]  border-t-[1px]   ">
                   <div className="w-4 m-auto transform hover:text-blue-500  hover:scale-110 " onClick={() => handleClick(value)}>   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" >
@@ -106,8 +138,29 @@ const Seekers = () => {
           ))}
         </div>
 
-
-</div>
+      </div>
+        <nav className="mt-[5%] ">
+          <center>
+            <ul className="flex justify-center w-[50%]  p-[2%] gap-2">
+              <li className="h-10 w-5 font-400 text-[2rem]">
+                <a href="#" aria-label="Previous" onClick={prevPage}   >
+                  <span aria-hidden="true">&laquo;</span>
+                  <span className="sr-only ">Previous</span>
+                </a>
+              </li>
+              {numbers?.map((n, i) => (
+                <li className={`h-[10%] w-[20%] border-2 border-solid  rounded-full font-400 text-[1rem] ${currentPage === n ? "bg-slate-500 text-white" : "bg-white"}`} key={i} >
+                  <a href="#" onClick={() => changeCurrentPage(n)}>{n}</a>
+                </li>))}
+              <li className="h-10 w-5 font-400 text-[2rem]">
+                <a className="page-link" href="#" aria-label="Next" onClick={nextPage} >
+                  <span aria-hidden="true">&raquo;</span>
+                  <span className="sr-only">Next</span>
+                </a>
+              </li>
+            </ul>
+          </center>
+        </nav>
 
 
     </PortalLayout>
