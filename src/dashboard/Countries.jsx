@@ -23,7 +23,7 @@ const country = [
 const Countries = () => {
 
   const [open, setOpen] = useState(false);
-
+  const [search , setSearch] = useState();
   const [openView, setOpenView] = useState(false);
   const [view, setView] = useState(false);
   const router = useNavigate();
