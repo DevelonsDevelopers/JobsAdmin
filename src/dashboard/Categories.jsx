@@ -64,22 +64,6 @@ const Categories = () => {
   // { state: {data: value.id}})
   }
 
-
-
-  // const getCategories = async () => {
-  //   try {
-  //     await axios.get("http://34.143.145.139:5001/categories/all").then(res => {
-  //       setGetCategories(res.data.data)
-  //     })
-  //   } catch (err) {
-  //     console.log(err.message)
-  //   }
-  // }
-
-  // useEffect(() => {
-  //   getCategories()
-  // }, [])
-
   return (
     <PortalLayout>
 

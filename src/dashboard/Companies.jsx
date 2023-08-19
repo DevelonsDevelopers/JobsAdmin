@@ -42,8 +42,6 @@ const [nodata ,setNodata] =useState(false)
 
   useEffect(() => {
     dispatch(AllCompanies())
-    
-   
   }, [dispatch] );
 
   useEffect(() => {
@@ -61,7 +59,11 @@ const [nodata ,setNodata] =useState(false)
       <div class="animate-spin rounded-full h-16 w-16 border-t-4 border-blue-500"></div>
     </div>
 </center>
-      : <> {nodata ? <div>no data</div>:<>
+      : <> 
+      {/* {nodata ? <div>no data</div> */}
+      :
+
+      <>
       
      <h1 className='text-[3.125rem] font-[800] text-[#000] text-center max-md:text-[2rem] uppercase'>company</h1>
 
@@ -70,7 +72,7 @@ const [nodata ,setNodata] =useState(false)
   <div className='flex justify-center mt-[3rem] w-[90%] m-auto'>
 
     <input type="search" name="" id="" placeholder='Search...' className='border-2 border-gray-600 pl-[4rem] rounded-[1.0625rem] py-2  w-[27.8125rem] mr-auto max-md:py-[1px] max-md:w-[15rem] max-md:text-[0.7rem]' />
-    <a href="/categories/add"> <button className="bg-[#0047FF] cursor-pointer  max-md:text-[.6rem] py-2 px-[1rem] max-md:px-[1rem] max-md:py-[5px] text-white font-[600] max-md:font-[400] rounded-[1.375rem] ml-auto "  >
+    <a href="/companies/add"> <button className="bg-[#0047FF] cursor-pointer  max-md:text-[.6rem] py-2 px-[1rem] max-md:px-[1rem] max-md:py-[5px] text-white font-[600] max-md:font-[400] rounded-[1.375rem] ml-auto "  >
       Add New
     </button>
     </a>
@@ -140,8 +142,10 @@ const [nodata ,setNodata] =useState(false)
         <center>
         </center>
       </div>
-      </>}
-      </>  }
+      </>
+       {/* } */}
+      </>  
+      }
     </PortalLayout>
   )
 }

@@ -4,7 +4,7 @@ import DeleteModal from '../components/DeleteModal';
 import { Link, useNavigate } from 'react-router-dom';
 import CountryView from './view/CountryView';
 import { useDispatch, useSelector } from 'react-redux';
-import { AllCountries } from '../store/actions/countryActions';
+import { AllCountries, deleteCountry } from '../store/actions/countryActions';
 
 const country = [
   { id: '01', name: "london", count: '20', status: "Active", },
@@ -22,14 +22,13 @@ const country = [
 
 const Countries = () => {
 
-
-
-
   const [open, setOpen] = useState(false);
+
   const [openView, setOpenView] = useState(false);
   const [view, setView] = useState(false);
   const router = useNavigate();
-  const [data, setData] = useState()
+  const [data, setData] = useState();
+  const [deleteId, setDeleteId] = useState();
 
   const dispatch = useDispatch();
 
@@ -46,6 +45,16 @@ const Countries = () => {
     }
   }, [dispatch])
 
+  const DeleteCountry =(id) => {
+    dispatch(deleteCountry(id))
+    setOpen(!open)
+  }
+
+  const handleDelete = (id) => {
+    setOpen(!open)
+    setDeleteId(id)
+  }
+
   return (
     <PortalLayout>
      <h1 className='text-[3.125rem] font-[800] text-[#000] text-center max-md:text-[2rem] uppercase'>Country</h1>
@@ -55,13 +64,13 @@ const Countries = () => {
   <div className='flex justify-center mt-[3rem] w-[90%] m-auto'>
 
     <input type="search" name="" id="" placeholder='Search...' className='border-2 border-gray-600 pl-[4rem] rounded-[1.0625rem] py-2  w-[27.8125rem] mr-auto max-md:py-[1px] max-md:w-[15rem] max-md:text-[0.7rem]' />
-    <Link  to="/categories/add"> <button className="bg-[#0047FF] cursor-pointer  max-md:text-[.6rem] py-2 px-[1rem] max-md:px-[1rem] max-md:py-[5px] text-white font-[600] max-md:font-[400] rounded-[1.375rem] ml-auto "  >
+    <Link  to="/countries/add"> <button className="bg-[#0047FF] cursor-pointer  max-md:text-[.6rem] py-2 px-[1rem] max-md:px-[1rem] max-md:py-[5px] text-white font-[600] max-md:font-[400] rounded-[1.375rem] ml-auto "  >
       Add New
     </button>
     </Link>
 
   </div>
-        <DeleteModal open={open} setOpen={setOpen} />
+        <DeleteModal open={open} setOpen={setOpen} ID={deleteId} deleteFunction={DeleteCountry}/>
         <CountryView open={openView} setOpen={setOpenView} title={"VIEW"} data={data} />
         <div className="rounded-xl p-5 bg-white w-[90%] m-auto max-md:w-[100%]  mt-6 ">
           <thead className='mt-10'>
@@ -102,7 +111,7 @@ const Countries = () => {
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
                       </svg>
                     </div>
-                    <div className="w-4 mr-2 transform hover:text-blue-500  hover:scale-110" onClick={() => setOpen(true)}>
+                    <div className="w-4 mr-2 transform hover:text-blue-500  hover:scale-110" onClick={() => handleDelete(value.id)}>
                       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="red">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
                       </svg>

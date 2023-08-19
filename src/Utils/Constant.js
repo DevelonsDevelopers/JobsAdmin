@@ -11,7 +11,11 @@ export const CREATE_CATEGORY = "CREATE_CATEGORY";
 
 // CITIES:=====
 export const ALL_CITIES = "ALL_CITIES";
-
+export const GET_CITY = "GET_CITY";
+export const GETCOUNTRY_CITY = "GETCOUNTRY_CITY"
+export const UPDATE_CITY = "UPDATE_CITY";
+export const DELETE_CITY = "DELETE_CITY";
+export const CREATE_CITY = "CREATE_CITY";
 
 // JOBS:=====
 export const ALL_JOBS = "ALL_JOBS";
@@ -19,9 +23,17 @@ export const ALL_JOBS = "ALL_JOBS";
 
 // COMPANIES:=====
 export const ALL_COMPANIES = "ALL_COMPANIES";
+export const GET_COMPANY = "GET_COMPANY";
+export const UPDATE_COMPANY = "UPDATE_COMPANY";
+export const DELETE_COMPANY = "DELETE_COMPANY";
+export const CREATE_COMPANY = "CREATE_COMPANY";
 
 // COUNTRIES:=====
 export const ALL_COUNTRIES = "ALL_COUNTRIES";
+export const GET_COUNTRY = "GET_COUNTRY";
+export const UPDATE_COUNTRY = "UPDATE_COUNTRY";
+export const DELETE_COUNTRY = "DELETE_COUNTRY";
+export const CREATE_COUNTRY = "CREATE_COUNTRY";
 
 // PLANS:=====
 export const ALL_PLANS = "ALL_PLANS";
