@@ -42,10 +42,10 @@ const data = [
 
 ]
 const data01 = [
-  { "value": 400, },
-  { "value": 500 },
-  { "value": 100 },
-  { "value": 500 },
+  { "value": 400,'value2':200 },
+  { "value": 200,'value2':300 },
+  { "value": 600,'value2':400 },
+
 
 
 ]
@@ -131,7 +131,7 @@ const Dashboard = () => {
               <span className=' ml-[2rem] font-[600] text-[1rem]'>Memory Status</span>
               <ResponsiveContainer width="100%" height={240}>
                 <PieChart width={430} height={200} margin={{ top: 40, right: 20, bottom: 0, left: 20 }}>
-                  <Pie data={data01} dataKey="value" nameKey="name" cx="50%" cy="50%" outerRadius={40} fill="#2994FF" />
+                  <Pie data={data01} dataKey="value2" nameKey="name" cx="50%" cy="50%" outerRadius={40} fill="#2994FF" />
                   <Pie data={data01} dataKey="value" nameKey="name" cx="50%" cy="50%" innerRadius={60} outerRadius={70} fill="#4D38E3" label />
                   <Tooltip />
 
