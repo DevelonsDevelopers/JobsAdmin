@@ -6,25 +6,24 @@ import CountryView from './view/CountryView';
 import { useDispatch, useSelector } from 'react-redux';
 import { AllCountries, deleteCountry } from '../store/actions/countryActions';
 
-const country = [
-  { id: '01', name: "london", count: '20', status: "Active", },
-  { id: '01', name: "london", count: '20', status: "Active", },
-  { id: '01', name: "london", count: '20', status: "Active", },
-  { id: '01', name: "london", count: '20', status: "Active", },
-  { id: '01', name: "london", count: '20', status: "Active", },
-  { id: '01', name: "london", count: '20', status: "Active", },
- 
 
-]
 
 
 
 
 const Countries = () => {
-const [search ,setSearch  ] = useState('')
-console.log(search)
+  // search=========
 
 
+  const Filter = (event) =>{
+    setRecords(records.filter( f => f.name.toLowerCase().includes(event.target.value)))
+
+  }
+
+
+
+
+  
   const [open, setOpen] = useState(false);
   const [openView, setOpenView] = useState(false);
   const [view, setView] = useState(false);
@@ -65,12 +64,53 @@ console.log(search)
     else { setData(false) }
   }, [countries])
 
+// pagination=======================
+const [currentPage, setCurrentPage] = useState(1)
+const numbersPerPage = 4;
+const [records, setRecords] = useState()
+const [nPage, setPage] = useState()
+const [Numbers, setNumbers] = useState()
+const [lastIndex, setLastIndex] = useState()
+const [firstIndex, setFirstIndex] = useState()
+
+useEffect(() => {
+  setLastIndex(currentPage * numbersPerPage);
+}, [currentPage])
+
+useEffect(() => {
+  setFirstIndex(lastIndex - numbersPerPage);
+}, [lastIndex])
+
+useEffect(() => {
+  if (countries) {
+    setRecords(countries.slice(firstIndex, lastIndex));
+    setPage(Math.ceil(countries.length / numbersPerPage));
+  }
+}, [countries, firstIndex])
+
+useEffect(() => {
+  if (nPage) {
+    setNumbers([...Array(nPage + 1).keys()].slice(1))
+  }
+}, [nPage])
+
+useEffect(() => {
+  if (countries !== null || countries !== undefined || countries.length !== 0) {
+    dispatch(AllCountries())
+  }
+}, [dispatch])
+
+// =======================
+
+
+
+
   return (
     <PortalLayout>
 
 {loading ?
         <center> <div class="flex justify-center items-center h-screen">
-          <div class="animate-spin rounded-full h-16 w-16 border-t-4 border-blue-500"></div>
+          <div class="animate-spin rounded-full h-16 w-16 border-t-4   border-blue-500"></div>
         </div>
         </center>
         : <>
@@ -88,7 +128,7 @@ console.log(search)
   <div className='flex justify-center mt-[3rem] w-[90%] m-auto'>
 
     <input type="search"  
-    onChange={(e) => setSearch(e.target.value)} 
+    onChange={Filter} 
      name="" id="" placeholder='Search...' className='border-2 border-gray-600 pl-[4rem] rounded-[1.0625rem] py-2  w-[27.8125rem] mr-auto max-md:py-[1px] max-md:w-[15rem] max-md:text-[0.7rem] focus:outline-none focus:ring-0 focus:border-gray-900 peer' />
     <Link  to="/countries/add"> <button className="bg-[#0047FF] cursor-pointer  max-md:text-[.6rem] py-2 px-[1rem] max-md:px-[1rem] max-md:py-[5px] text-white font-[500] max-md:font-[400] rounded-[1.375rem] ml-auto "  >
       Add New
@@ -113,12 +153,7 @@ console.log(search)
 
           </thead>
 
-          {countries
-          .filter((value)=>{
-            return search.toLowerCase() === ''
-            ? value :value.name.toLowerCase().includes(search);
-          })
-          .map((value, index) => (
+          {records?.map((value, index) => (
             <tbody className="text-[#000000] text-sm font-light w-[100%] bg-white ">
               <tr className='' >
                 <td className="py-[2%] w-[3%]   border-r-[1px] border-t-[1px]   text-center">
@@ -162,6 +197,23 @@ console.log(search)
             </tbody>
           ))}
         </div>
+        <nav className='m-auto mt-5' >
+          <ul class="flex items-center -space-x-px h-10 text-base">
+            <li>
+              <a href="#" onClick={prevPage} class="flex items-center justify-center px-4 h-10 ml-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-l-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white" >
+                <span class="sr-only">Previous</span>
+                <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 1 1 5l4 4" />
+                </svg>
+              </a>
+            </li>
+            {Numbers?.map((n, i) => (<li> <a href="#" onClick={() => changeCurrentPage(n)} class="flex items-center justify-center px-4 h-10 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">{n}</a> </li>))}
+
+            <li>
+              <Link to="#" onClick={nextPage} class="flex items-center justify-center px-4 h-10 leading-tight text-gray-500 bg-white border border-gray-300 rounded-r-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"> <span class="sr-only">Next</span><svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10"> <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4" /> </svg></Link>
+            </li>
+          </ul>
+        </nav>
 
         <center>
         </center>
@@ -171,6 +223,19 @@ console.log(search)
       </>}
     </PortalLayout>
   )
+  function prevPage() {
+    if (currentPage !== 1) {
+      setCurrentPage(currentPage - 1);
+    }
+  }
+  function changeCurrentPage(id) {
+    setCurrentPage(id)
+  }
+  function nextPage() {
+    if (currentPage !== nPage) {
+      setCurrentPage(currentPage + 1)
+    }
+  }
 }
 
 export default Countries

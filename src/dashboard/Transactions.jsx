@@ -5,13 +5,16 @@ import { useDispatch, useSelector } from 'react-redux'
 import { AllTransactions } from '../store/actions/transactionActions'
 
 
-const transactions = [
-  {id:'01', date: "11/04/2023",  amount: "1000", type: "Credit", note: "aage string.",},
-  {id:'01', date: "11/04/2023",  amount: "1000", type: "Credit", note: "aage string.",},
-  {id:'01', date: "11/04/2023",  amount: "1000", type: "Credit", note: "aage string.",},
-  {id:'01', date: "11/04/2023",  amount: "1000", type: "Credit", note: "aage string.",},
-]
+
 const Transactions = () => {
+// search===============
+const [search ,setSearch  ] = useState('')
+console.log(search)
+// =============
+ 
+
+
+
   const [open, setOpen] = useState(false);
   const [openView, setOpenView] = useState(false);
   const [view, setView] = useState(false);
@@ -43,11 +46,9 @@ const Transactions = () => {
 
   <div className='flex justify-center mt-[3rem] w-[90%] m-auto'>
 
-    <input type="search" name="" id="" placeholder='Search...' className='border-2 border-gray-600 pl-[4rem] rounded-[1.0625rem] py-2  w-[27.8125rem] mr-auto max-md:py-[1px] max-md:w-[15rem] max-md:text-[0.7rem] focus:outline-none focus:ring-0 focus:border-gray-900 peer' />
-    <a href="/categories/add"> <button className="bg-[#0047FF] cursor-pointer  max-md:text-[.6rem] py-2 px-[1rem] max-md:px-[1rem] max-md:py-[5px] text-white font-[600] max-md:font-[400] rounded-[1.375rem] ml-auto "  >
-      Add New
-    </button>
-    </a>
+    <input type="search" onChange={(e) => setSearch(e.target.value)}
+     name="" id="" placeholder='Search...' className='border-2 border-gray-600 pl-[4rem] rounded-[1.0625rem] py-2  w-[27.8125rem] mr-auto max-md:py-[1px] max-md:w-[15rem] max-md:text-[0.7rem] focus:outline-none focus:ring-0 focus:border-gray-900 peer' />
+   
 
   </div>
     <TransactionsView open={openView} setOpen={setOpenView} title={" VIEW"} data={data} />
@@ -66,7 +67,12 @@ const Transactions = () => {
 
           </thead>
 
-          {transactions.map((value, index) => (
+          {transactions.
+             filter((value)=>{
+            return search.toLowerCase() === ''
+            ? value : value.type.toLowerCase().includes(search);
+          })
+          .map((value, index) => (
             <tbody className="text-[#000000] text-sm font-light w-[100%] bg-white ">
               <tr className='' >
                 <td className="py-[2%] w-[1%]   border-r-[1px] border-t-[1px]   text-center">
