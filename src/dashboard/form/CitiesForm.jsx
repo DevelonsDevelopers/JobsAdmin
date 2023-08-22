@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import PortalLayout from '../../portalLayout/PortalLayout'
 import axios from 'axios'
-import { useDispatch } from 'react-redux'
-import { createCity } from '../../store/actions/cityActions'
+import { useDispatch, useSelector } from 'react-redux'
+import { createCity, getCountrybyCity } from '../../store/actions/cityActions'
 import { useNavigate } from 'react-router-dom'
+import { AllCountries } from '../../store/actions/countryActions'
 
 
 
@@ -15,12 +16,33 @@ const CitiesForm =  () => {
   const ClickInput = (e) => [
     setCityData(prev => ({...prev, [e.target.name]: e.target.value}))
   ]
-  console.log(ClickInput)
+  // console.log(ClickInput)
 
   const handleSubmit = () => {
     dispatch(createCity(cityData))
     navigate('/cities')
   }
+
+  const countries = useSelector(state => state.country.countries)
+    
+  useEffect(() => {
+    console.log(countries)
+  }, [countries])
+
+  useEffect(() => {
+    if (countries !== null || countries !== undefined || countries.length !== 0){
+      dispatch(AllCountries())
+    }
+  }, [dispatch])
+
+  const countriesbycity = useSelector(state=> state.city.cities)
+  useEffect(() => {
+    console.log(countriesbycity)
+  }, [countriesbycity])
+
+  useEffect(() => {
+    dispatch(getCountrybyCity())
+  }, [dispatch])
 
   return (
    <PortalLayout>

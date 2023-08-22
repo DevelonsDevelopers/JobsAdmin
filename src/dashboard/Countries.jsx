@@ -36,6 +36,9 @@ const Countries = () => {
   }
 
   const countries = useSelector(state => state.country.countries)
+  useEffect(() => {
+    console.log(countries)
+  }, [countries])
   const loading = useSelector(state => state.country.isLoading)
   const [nodata, setNodata] = useState(false)
 
@@ -145,7 +148,6 @@ useEffect(() => {
               <th className="py-[2%] border-r-[1px] border-b-[2px] border-b-black w-[2%] max-md:text-[.6rem] max-md:font-[400] text-center text-[13px]">Status</th>
               <th className="py-[2%] border-r-[1px] border-b-[2px] border-b-black  w-[2%] max-md:text-[.6rem] max-md:font-[400] text-center text-[13px]">Actions</th>
               <th className="py-[2%]   border-b-[2px] border-b-black  w-[1%] max-md:text-[.6rem] max-md:font-[400] text-center"></th>
-
             </tr>
 
           </thead>

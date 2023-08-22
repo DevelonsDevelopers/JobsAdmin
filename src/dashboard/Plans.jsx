@@ -35,6 +35,9 @@ console.log(search)
   const plans = useSelector(state => state.plan.plans)
 
   useEffect(() => {
+    console.log(plans)
+  }, [plans])
+  useEffect(() => {
     dispatch(AllPlans())
   }, [dispatch])
   
@@ -92,14 +95,14 @@ console.log(search)
                   <span className="font-bold max-md:text-[.7rem] text-[13px] font-[300] ">{value.amount}</span>
                 </td>
                 <td className="py-[2%] w-[3%]   border-r-[1px] border-t-[1px]   text-center">
-                  <span className="font-bold max-md:text-[.7rem] text-[13px] font-[300] ">{value.user}</span>
+                  <span className="font-bold max-md:text-[.7rem] text-[13px] font-[300] ">{value.type}</span>
                 </td>
                 <td className="py-[2%] w-[3%]   border-r-[1px] border-t-[1px]   text-center">
                   <span className="font-bold max-md:text-[.7rem] text-[13px] font-[300] ">{value.purpose}</span>
                 </td>
                 
-                <td className="py-[1%] w-[2%]  max-md:text-[.7rem]  border-r-[1px] border-t-[1px]   text-center">
-                  <span className='text-[13px] font-[350]'>{value.period}</span>
+                <td className="py-[1%] w-[2%]  max-md:text-[.7rem]  border-r-[1px] border-t-[1px] text-center">
+                  <span className='text-[13px] font-[350]'>{value.timeperiod}</span>
                 </td>
 
                 <td className="py-[2%] max-md:text-[.7rem] w-[2%] border-r-[1px] border-t-[1px]   text-center">
