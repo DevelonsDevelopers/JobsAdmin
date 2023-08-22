@@ -11,12 +11,12 @@ import { BsSunFill } from "react-icons/bs";
 import { useState } from 'react';
 
 const card = [
-  { name: "Seekers", amount: "500", style: "bg-[#4D38E3] rounded-xl  text-white py-2 shadow-xl shadow-gray-300 ", icon: RiUserSearchLine },
-  { name: "Providers", amount: "700", style: "bg-[#47A9FA] rounded-xl  text-white py-2 shadow-xl shadow-gray-300 ", icon: RiAccountPinCircleFill },
-  { name: "Applied", amount: "900", style: "bg-[#8AC942] rounded-xl  text-white py-2 shadow-xl shadow-gray-300 ", icon: BiUserCheck },
-  { name: "Users paid", amount: "150", style: "bg-[#1AD185] rounded-xl  text-white py-2 shadow-xl shadow-gray-300 ", icon: BsSunFill },
-  { name: "Offers accepted", amount: "500", style: "bg-[#fcbf49] rounded-xl  text-white py-2 shadow-xl shadow-gray-300 ", icon: BsSunFill },
-  { name: "Offers rejected", amount: "20", style: "bg-[#f77f00] rounded-xl  text-white py-2 shadow-xl shadow-gray-300 ", icon: BsSunFill },
+  { name: "Seekers", amount: "500", style: "bg-[#4D38E3] rounded-xl  text-white mt-[-3rem] h-[6.5rem] shadow-xl shadow-gray-300 ", icon: RiUserSearchLine },
+  { name: "Providers", amount: "700", style: "bg-[#47A9FA] rounded-xl  text-white mt-[-3rem] h-[6.5rem] shadow-xl shadow-gray-300 ", icon: RiAccountPinCircleFill },
+  { name: "Applied", amount: "900", style: "bg-[#8AC942] rounded-xl  text-white mt-[-3rem] h-[6.5rem] shadow-xl shadow-gray-300 ", icon: BiUserCheck },
+  { name: "Users paid", amount: "150", style: "bg-[#1AD185] rounded-xl  text-white mt-[-3rem] h-[6.5rem] shadow-xl shadow-gray-300 ", icon: BsSunFill },
+  { name: "Offers accepted", amount: "500", style: "bg-[#fcbf49] rounded-xl  text-white mt-[-3rem] h-[6.5rem] shadow-xl shadow-gray-300 ", icon: BsSunFill },
+  { name: "Offers rejected", amount: "20", style: "bg-[#f77f00] rounded-xl  text-white mt-[-3rem] h-[6.5rem] shadow-xl shadow-gray-300 ", icon: BsSunFill },
 ]
 
 
@@ -112,16 +112,16 @@ const Dashboard = () => {
       </div>
       </center> : <>
         <div className='p-10 border-2  rounded-xl  bg-white'>
-          <div className='flex max-md:flex-col gap-3'>
-            <div className='grid grid-cols-3 max-md:grid-cols-2 md:w-[70%] mb-5 gap-6'>
+          <div className='flex max-md:flex-col gap-6'>
+            <div className='grid grid-cols-3 max-md:grid-cols-2 md:w-[70%] gap-6 mt-[5.7rem]'>
               {card.map((value) => {
                 return (
                   <div className={value.style}>
                     <ul className='flex flex-row-reverse  '>
-                      <li><value.icon className='w-25 text-[3rem] mb-[-.7rem] ml-auto' /></li>
+                      <li><value.icon className='w-25 text-[3rem] mb-[-2rem] pr-4 pt-2 ml-auto' /></li>
                     </ul>
-                    <h1 className='text-left ml-5 mt-6 text-[1rem] font-[500]'>{value.name}</h1>
-                    <h1 className='text-left ml-5 mt-[-0.5rem] text-[2rem] font-[700]'>{value.amount}</h1>
+                    <h1 className='text-left ml-5 mt-6 text-[1rem] font-[600]'>{value.name}</h1>
+                    <h1 className='text-left ml-5 mt-[-0.5rem] text-[2rem] font-[700] '>{value.amount}</h1>
                   </div>
                 )
               })}
@@ -202,7 +202,6 @@ const Dashboard = () => {
           <div className='grid  grid-cols-2 max-md:grid-cols-1 gap-10'>
             <div className=" border-2 shadow-xl  bg-white p-5 rounded-xl shadow-gray-300 md:mt-10 ">
               <span className=' ml-[1.5rem]  font-[600] text-[1rem]'>Applied</span>
-
               {/* <h1 className='text-center text-white font-[500] text-[1.4rem]'>Applied</h1> */}
               <table className="w-[100%] mt-3 text-sm text-left text-gray-500 dark:text-gray-400">
                 <thead className="text-xs text-white uppercase bg-[#2994FF] dark:bg-gray-700 dark:text-gray-400">
@@ -241,7 +240,7 @@ const Dashboard = () => {
               <span className=' ml-[1.6rem]  font-[600] text-[1rem]'>Reports</span>
 
               {/* <h1 className='text-center  text-white font-[500] text-[1.4rem]'>Reports</h1> */}
-              <table className="w-[100%] mt-3 text-sm text-left text-gray-500 dark:text-gray-400">
+              <table className="w-[100%] mt-3 text-sm text-left  text-gray-500 dark:text-gray-400">
                 <thead className="text-xs text-white uppercase  bg-[#2994FF] dark:bg-gray-700 dark:text-gray-400">
                   <tr>
                     <th scope="col" className="px-6 max-md:px-2 py-3">
