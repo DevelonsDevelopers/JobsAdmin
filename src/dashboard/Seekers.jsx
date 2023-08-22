@@ -21,19 +21,20 @@ console.log(search)
 
 
 
-  const [currentPage, setCurrentPage] = useState(1)
-  const numbersPerPage = 5;
+    const [currentPage, setCurrentPage] = useState(1)
+    const numbersPerPage = 5;
+    const [records, setRecords] = useState()
+    const [nPage, setPage] = useState()
+    const [Numbers, setNumbers] = useState()
+    const [lastIndex, setLastIndex] = useState()
+    const [firstIndex, setFirstIndex] = useState()
 
+
+    
   const [open, setOpen] = useState(false);
   const [openView, setOpenView] = useState(false);
   const [view, setView] = useState(false);
   const [data, setData] = useState()
-
-  const [records, setRecords] = useState()
-  const [nPage, setPage] = useState()
-  const [Numbers, setNumbers] = useState()
-  const [lastIndex, setLastIndex] = useState()
-  const [firstIndex, setFirstIndex] = useState()
 
   const dispatch = useDispatch()
 
@@ -44,6 +45,7 @@ console.log(search)
 
 
   const seekers = useSelector(state => state.seeker.seekers)
+  const loading = useSelector(state => state.seeker.isLoading)
 
   useEffect(() => {
     setLastIndex(currentPage * numbersPerPage);
@@ -71,8 +73,15 @@ console.log(search)
       dispatch(AllSeekers())
     }
   }, [dispatch])
+
   return (
     <PortalLayout>
+      {loading ?
+        <center> <div class="flex justify-center items-center h-screen">
+          <div class="animate-spin rounded-full h-16 w-16 border-t-4 border-blue-500"></div>
+        </div>
+        </center>
+        : <>
       <h1 className='text-[3.125rem] font-[800] text-[#000] text-center max-md:text-[2rem] uppercase'>seeker</h1>
 
       <div className="w-[100%] max-md:h-full  max-md:px-2 flex flex-col justify-center bg-gray-100">
@@ -81,7 +90,6 @@ console.log(search)
 
           <input type="search"   onChange={(e) => setSearch(e.target.value)}  name="" id="" placeholder='Search...' className='border-2 border-gray-600 pl-[4rem] rounded-[1.0625rem] py-2  w-[27.8125rem] mr-auto max-md:py-[1px] max-md:w-[15rem] max-md:text-[0.7rem] focus:outline-none focus:ring-0 focus:border-gray-900 peer' />
           
-
         </div>
 
         <SeekersView open={openView} setOpen={setOpenView} title={" VIEW"} data={data} />
@@ -100,8 +108,13 @@ console.log(search)
 
           </thead>
 
-          {records?.map((value) => (
-            <tbody className="text-[#000000] text-sm font-light w-[100%] bg-white ">
+          {records?.
+          filter((value)=>{
+            return search.toLowerCase() === ''
+            ? value :value.name.toLowerCase().includes(search);
+          })
+          .map((value, index) => (
+              <tbody className="text-[#000000] text-sm font-light w-[100%] bg-white ">
               <tr className='' >
                 <td className="py-[2%] w-[3%]   border-r-[1px] border-t-[1px]   text-center">
                   <span className="font-bold max-md:text-[.7rem] text-[13px] text-blue-500">{value.id}</span>
@@ -141,14 +154,16 @@ console.log(search)
                 </svg>
               </a>
             </li>
-            {Numbers?.map((n, i) => (<li> <a href="#" onClick={changeCurrentPage} class="flex items-center justify-center px-4 h-10 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">{n}</a> </li>))}
+            {Numbers?.map((n, i) => (<li> <a href="#" onClick={() => changeCurrentPage(n)} class="flex items-center justify-center px-4 h-10 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">{n}</a> </li>))}
 
             <li>
-              <a href="#" onClick={nextPage} class="flex items-center justify-center px-4 h-10 leading-tight text-gray-500 bg-white border border-gray-300 rounded-r-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"> <span class="sr-only">Next</span><svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10"> <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4" /> </svg></a>
+              <Link to="#" onClick={nextPage} class="flex items-center justify-center px-4 h-10 leading-tight text-gray-500 bg-white border border-gray-300 rounded-r-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"> <span class="sr-only">Next</span><svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10"> <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4" /> </svg></Link>
             </li>
           </ul>
         </nav>
+
       </div>
+      </>}
     </PortalLayout>
   )
   function prevPage() {

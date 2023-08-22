@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import PortalLayout from '../portalLayout/PortalLayout'
 import DeleteModal from '../components/DeleteModal'
-
-import { Button, Dialog, DialogContent, DialogContentText, DialogTitle } from '@mui/material'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import CategoryView from './view/CategoryView'
 import axios from 'axios'
 import { useDispatch, useSelector } from 'react-redux'
@@ -20,7 +18,8 @@ const catagory = [
 
 const Categories = () => {
 
-  const [search, setSearch] = useState()
+  const [search, setSearch] = useState('')
+
 
   const [open, setOpen] = useState(false);
   const [openView, setOpenView] = useState(false);
@@ -76,11 +75,11 @@ const Categories = () => {
 
         <div className='flex justify-center mt-[3rem] w-[90%] m-auto'>
 
-          <input onChange={(e) => setSearch(e.target.value)} type="search" name="" id="" placeholder='Search...' className='border-2 border-gray-600 pl-[4rem] rounded-[1.0625rem] py-2  w-[27.8125rem] mr-auto max-md:py-[1px] max-md:w-[15rem] max-md:text-[0.7rem] focus:outline-none focus:ring-0 focus:border-gray-900 peer' />
-          <a href="/categories/add"> <button className="bg-[#0047FF] cursor-pointer  max-md:text-[.6rem] py-2 px-[1rem] max-md:px-[1rem] max-md:py-[5px] text-white font-[600] max-md:font-[400] rounded-[1.375rem] ml-auto "  >
+          <input  onChange={(e) => setSearch(e.target.value)}type="search" name="" id="" placeholder='Search...' className='border-2 border-gray-600 pl-[4rem] rounded-[1.0625rem] py-2  w-[27.8125rem] mr-auto max-md:py-[1px] max-md:w-[15rem] max-md:text-[0.7rem] focus:outline-none focus:ring-0 focus:border-gray-900 peer' />
+          <Link to="/categories/add"> <button className="bg-[#0047FF] cursor-pointer  max-md:text-[.6rem] py-2 px-[1rem] max-md:px-[1rem] max-md:py-[5px] text-white font-[600] max-md:font-[400] rounded-[1.375rem] ml-auto "  >
             Add New
           </button>
-          </a>
+          </Link>
 
         </div>
 
