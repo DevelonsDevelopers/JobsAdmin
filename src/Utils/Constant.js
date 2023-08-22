@@ -19,6 +19,14 @@ export const CREATE_CITY = "CREATE_CITY";
 
 // JOBS:=====
 export const ALL_JOBS = "ALL_JOBS";
+export const GET_JOB = "GET_JOB";
+export const GETCATEGORY_JOB = "GETCATEGORY_JOB";
+export const GETCOUNTRY_JOB = "GETCOUNTRY_JOB";
+export const GETCITY_JOB = "GETCITY_JOB";
+export const GETCOMPANY_JOB = "GETCOMPANY_JOB";
+export const CREATE_JOB = "CREATE_JOB";
+export const UPDATE_JOB = "UPDATE_JOB";
+export const DELETE_JOB = "DELETE_JOB";
 
 
 // COMPANIES:=====

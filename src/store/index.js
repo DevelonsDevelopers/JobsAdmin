@@ -66,6 +66,80 @@ export const deleteCity = (id) => API.delete(`/cities/:delete`, {
 })
 //Jobs
 export const fetchAllJobs = () => API.get(`/jobs/all`)
+export const fetchJob = (id) => API.get(`/jobs/get` , {
+    data: {
+        id: id,
+    }
+})
+export const fetchCategorybyJob =(category) => API.get(`/jobs/category`, {
+    data: {
+        category: category,
+    }
+})
+export const fetchCountrybyJob =(id) => API.get(`/jobs/country`, {
+    data: {
+        id: id,
+    }
+})
+export const fetchCitybyJob =(id) => API.get(`/jobs/city`, {
+    data: {
+        id: id,
+    }
+})
+export const fetchCompanybyJob =(id) => API.get(`/jobs/company`, {
+    data: {
+        id: id,
+    }
+})
+export const createJob =(job) => API.post(`/jobs/create`, {
+    category: job.category,
+    country: job.country,
+    city: job.city,
+    title: job.title,
+    company: job.company,
+    designation: job.designation,
+    salary: job.salary,
+    description: job.description,
+    link: job.link,
+    type: job.type,
+    workdays: job.workdays,
+    worktime: job.worktime,
+    address: job.address,
+    experience: job.experience,
+    qualification: job.qualification,
+    skills: job.skills,
+    date: job.date,
+    tags: job.tags,
+
+})
+export const updateJob = (id,category, country, city, title, company, designation, salary, description, link, type, workdays, worktime, address, experience, qualification, skills, date, tags) => API.put(`/jobs/update`, {
+    data: {
+        category: category,
+        country: country,
+        city: city,
+        title: title,
+        company: company,
+        designation: designation,
+        salary: salary,
+        description: description,
+        link: link,
+        type: type,
+        workdays: workdays,
+        worktime: worktime,
+        address: address,
+        experience: experience,
+        qualification: qualification,
+        skills: skills,
+        date: date,
+        tags: tags,
+        id: id,
+    }
+})
+export const deleteJob = (id) => API.delete(`/jobs/:delete`, {
+    data: {
+        id: id
+    }
+})
 // Companies
 export const fetchAllCompanies = () => API.get(`/companies/all`)
 export const fetchCompany = (id) => API.get(`/companies/get`, {
@@ -73,6 +147,8 @@ export const fetchCompany = (id) => API.get(`/companies/get`, {
         id: id,
     }
 }) 
+
+
 export const createCompany =(company) => API.post(`/companies/create`, {
     name: company.name,
     size: company.size,

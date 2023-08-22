@@ -17,7 +17,6 @@ const Countries = () => {
 
   const Filter = (event) =>{
     setRecords(records.filter( f => f.name.toLowerCase().includes(event.target.value)))
-
   }
 
 
