@@ -1,4 +1,4 @@
-import { ALL_JOBS, LOADING, SUCCESS } from "../../Utils/Constant";
+import { ALL_JOBS, CREATE_JOB, DELETE_JOB, GETCATEGORY_JOB, GETCITY_JOB, GETCOMPANY_JOB, GETCOUNTRY_JOB, GET_JOB, LOADING, SUCCESS, UPDATE_JOB } from "../../Utils/Constant";
 import * as api from '../../store/index'
 
 
@@ -11,5 +11,77 @@ export const AllJobs = () => async (dispatch) => {
         dispatch({ type: SUCCESS })
     } catch(error) {
         console.log(error)
+    }
+}
+
+export const getJob = (id) => async (dispatch) => {
+    try{
+        const { data } = await api.fetchJob(id)
+        dispatch({ type: GET_JOB, payload: data})
+    }catch(error) {
+        console.log(error)
+    }
+}
+
+export const getCategorybyJob = (category) => async (dispatch) => {
+    try{
+        const { data } = await api.fetchCategorybyJob(category)
+        dispatch({ type: GETCATEGORY_JOB, payload: data})
+    } catch(error){
+        console.log(error)
+    }
+}
+
+export const getCountrybyJob = (country) => async (dispatch) => {
+    try{
+        const { data } = await api.fetchCountrybyJob(country)
+        dispatch({ type: GETCOUNTRY_JOB, payload: data})
+    } catch(error){
+        console.log(error)
+    }
+}
+export const getCitybyJob = (city) => async (dispatch) => {
+    try{
+        const { data } = await api.fetchCitybyJob(city)
+        dispatch({ type: GETCITY_JOB, payload: data})
+    } catch(error){
+        console.log(error)
+    }
+}
+
+export const getCompanybyJob = (company) => async (dispatch) => {
+    try{
+        const { data } = await api.fetchCompanybyJob(company)
+        dispatch({ type: GETCOMPANY_JOB, payload: data})
+    } catch(error){
+        console.log(error)
+    }
+}
+
+export const createJob = (job) => async (disptach) =>{
+    try{
+        const {data: {data}} = await api.createJob(job)
+        disptach({ type: CREATE_JOB, payload: data})
+    }catch(error){
+        console.log(error)
+    }
+}
+
+export const updateJob = (id , job) => async (dispatch) => {
+    try{
+        const {data: {data} } = await api.updateJob(id, job)
+        dispatch({ type: UPDATE_JOB, payload: data})
+    }catch(error){
+        console.log(error)
+    }
+}
+
+export const DeleteJob = (id) => async (dispatch) => {
+    try {
+        const { data } = await api.deleteJob(id)
+        console.log(id)
+        dispatch({ type: DELETE_JOB, payload: id})
+    } catch(error) {
+        console.log(error);
     }
 }

@@ -8,13 +8,13 @@ import { AllCountries } from '../../store/actions/countryActions'
 
 
 
-const CitiesForm =  () => {
-  const [cityData, setCityData] = useState({name: '', description: '', country: ''})
+const CitiesForm = () => {
+  const [cityData, setCityData] = useState({ name: '', description: '', country: '' })
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const ClickInput = (e) => [
-    setCityData(prev => ({...prev, [e.target.name]: e.target.value}))
+    setCityData(prev => ({ ...prev, [e.target.name]: e.target.value }))
   ]
   // console.log(ClickInput)
 
@@ -24,18 +24,18 @@ const CitiesForm =  () => {
   }
 
   const countries = useSelector(state => state.country.countries)
-    
+
   useEffect(() => {
     console.log(countries)
   }, [countries])
 
   useEffect(() => {
-    if (countries !== null || countries !== undefined || countries.length !== 0){
+    if (countries !== null || countries !== undefined || countries.length !== 0) {
       dispatch(AllCountries())
     }
   }, [dispatch])
 
-  const countriesbycity = useSelector(state=> state.city.cities)
+  const countriesbycity = useSelector(state => state.city.cities)
   useEffect(() => {
     console.log(countriesbycity)
   }, [countriesbycity])
@@ -93,7 +93,7 @@ const CitiesForm =  () => {
 
 
 
-   </PortalLayout>
+    </PortalLayout>
   )
 }
 
