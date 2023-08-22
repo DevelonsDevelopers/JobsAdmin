@@ -17,7 +17,6 @@ const jobs = [
 
 ]
 
-
 const Jobs = () => {
   const [open, setOpen] = useState(false);
   const [openView, setOpenView] = useState(false);
@@ -47,7 +46,7 @@ const Jobs = () => {
   }, [dispatch])
 
   useEffect(() => {
-    if (jobs?.length === 0) {
+    if (jobs !== null || jobs !== undefined || jobs.length !== 0) {
       setNodata(true)
     }
     else { setData(false) }

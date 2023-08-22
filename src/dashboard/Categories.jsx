@@ -101,10 +101,10 @@ const Categories = () => {
 
           </thead>
           {categories
-          .filter((value)=>{
-            return search.toLowerCase() === ''
-            ? value :value.name.toLowerCase().includes(search);
-          })
+          // .filter((value)=>{
+          //   return search.toLowerCase() === ''
+          //   ? value :value.name.toLowerCase().includes(search);
+          // })
           .map((value) => (
 
             <tbody className="text-[#000000] text-sm font-light w-[100%] bg-white ">

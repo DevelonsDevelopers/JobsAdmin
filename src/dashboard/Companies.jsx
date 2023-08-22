@@ -38,7 +38,9 @@ const Companies = () => {
   const loading = useSelector(state => state.company.isLoading)
 
 const [nodata ,setNodata] =useState(false)
-
+  useEffect(() =>{
+    console.log(companies)
+  }, [companies])
 
   useEffect(() => {
     dispatch(AllCompanies())
