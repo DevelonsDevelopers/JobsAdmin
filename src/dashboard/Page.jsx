@@ -11,12 +11,12 @@ import { BsSunFill } from "react-icons/bs";
 import { useState } from 'react';
 
 const card = [
-  { name: "Seekers", amount: "500", style: "bg-[#4D38E3] rounded-xl  text-white mt-[-3rem] h-[6.5rem] shadow-xl shadow-gray-300 ", icon: RiUserSearchLine },
-  { name: "Providers", amount: "700", style: "bg-[#47A9FA] rounded-xl  text-white mt-[-3rem] h-[6.5rem] shadow-xl shadow-gray-300 ", icon: RiAccountPinCircleFill },
-  { name: "Applied", amount: "900", style: "bg-[#8AC942] rounded-xl  text-white mt-[-3rem] h-[6.5rem] shadow-xl shadow-gray-300 ", icon: BiUserCheck },
-  { name: "Users paid", amount: "150", style: "bg-[#1AD185] rounded-xl  text-white mt-[-3rem] h-[6.5rem] shadow-xl shadow-gray-300 ", icon: BsSunFill },
-  { name: "Offers accepted", amount: "500", style: "bg-[#fcbf49] rounded-xl  text-white mt-[-3rem] h-[6.5rem] shadow-xl shadow-gray-300 ", icon: BsSunFill },
-  { name: "Offers rejected", amount: "20", style: "bg-[#f77f00] rounded-xl  text-white mt-[-3rem] h-[6.5rem] shadow-xl shadow-gray-300 ", icon: BsSunFill },
+  { name: "Seekers", amount: "500", style: "bg-[#4D38E3] rounded-xl  text-white mt-[-3rem] max-md:mt-0 h-[6.5rem] shadow-xl shadow-gray-300 ", icon: RiUserSearchLine },
+  { name: "Providers", amount: "700", style: "bg-[#47A9FA] rounded-xl  text-white mt-[-3rem] max-md:mt-0 h-[6.5rem] shadow-xl shadow-gray-300 ", icon: RiAccountPinCircleFill },
+  { name: "Applied", amount: "900", style: "bg-[#8AC942] rounded-xl  text-white mt-[-3rem] max-md:mt-0 h-[6.5rem] shadow-xl shadow-gray-300 ", icon: BiUserCheck },
+  { name: "Users paid", amount: "150", style: "bg-[#1AD185] rounded-xl  text-white mt-[-3rem] max-md:mt-0 h-[6.5rem] shadow-xl shadow-gray-300 ", icon: BsSunFill },
+  { name: "Offers accepted", amount: "500", style: "bg-[#fcbf49] rounded-xl  text-white mt-[-3rem] max-md:mt-0 h-[6.5rem] shadow-xl shadow-gray-300 ", icon: BsSunFill },
+  { name: "Offers rejected", amount: "20", style: "bg-[#f77f00] rounded-xl  text-white mt-[-3rem] max-md:mt-0 h-[6.5rem] shadow-xl shadow-gray-300 ", icon: BsSunFill },
 ]
 
 
@@ -42,9 +42,9 @@ const data = [
 
 ]
 const data01 = [
-  { "value": 400,'value2':200 },
-  { "value": 200,'value2':300 },
-  { "value": 600,'value2':400 },
+  { "value": 400, 'value2': 200 },
+  { "value": 200, 'value2': 300 },
+  { "value": 600, 'value2': 400 },
 
 
 
@@ -77,16 +77,10 @@ const form03 = [
 
 ]
 
-// const icons = [MdSettings, RiAccountPinCircleFill, BsSunFill];
 const Dashboard = () => {
   const [loading, setLoading] = useState(false)
 
-  // useEffect(() => {
-  //   axios
-  //   .get("http://34.143.145.139:5001/")
-  //   .then((res) => console.log(res)) 
-  //   .catch((err) => console.log(err))
-  // })
+
 
   const getDashborad = async () => {
     try {
@@ -161,10 +155,9 @@ const Dashboard = () => {
               </ResponsiveContainer>
             </div>
 
-            <div className=" border-2 shadow-xl  p-5 bg-white rounded-xl shadow-xl shadow-gray-300 mt-5 h-[300px] ">
+            <div className=" border-2 shadow-xl  max-md:w-[100%] max-md:mb-[30px] p-5 bg-white rounded-xl shadow-xl shadow-gray-300 mt-5 h-[300px] ">
               <span className=' ml-[1.6rem]  font-[600] text-[1rem]'>Transactions</span>
 
-              {/* <h1 className='text-center  text-black font-[500] text-[1.4rem]'>Transactions</h1> */}
               <table className="w-[100%] mt-3 text-sm text-left text-gray-500 dark:text-gray-400">
                 <thead className="text-xs text-white uppercase bg-[#2994FF] dark:bg-gray-700 dark:text-white">
                   <tr>
@@ -202,7 +195,6 @@ const Dashboard = () => {
           <div className='grid  grid-cols-2 max-md:grid-cols-1 gap-10'>
             <div className=" border-2 shadow-xl  bg-white p-5 rounded-xl shadow-gray-300 md:mt-10 ">
               <span className=' ml-[1.5rem]  font-[600] text-[1rem]'>Applied</span>
-              {/* <h1 className='text-center text-white font-[500] text-[1.4rem]'>Applied</h1> */}
               <table className="w-[100%] mt-3 text-sm text-left text-gray-500 dark:text-gray-400">
                 <thead className="text-xs text-white uppercase bg-[#2994FF] dark:bg-gray-700 dark:text-gray-400">
                   <tr>
@@ -236,10 +228,8 @@ const Dashboard = () => {
                 </tbody>
               </table>
             </div>
-            <div className=" border-2 shadow-xl bg-white p-5 rounded-xl shadow-gray-300 mt-5 ">
+            <div className=" border-2 shadow-xl bg-white p-5 rounded-xl shadow-gray-300 mt-5 max-md:mt-[-17px] ">
               <span className=' ml-[1.6rem]  font-[600] text-[1rem]'>Reports</span>
-
-              {/* <h1 className='text-center  text-white font-[500] text-[1.4rem]'>Reports</h1> */}
               <table className="w-[100%] mt-3 text-sm text-left  text-gray-500 dark:text-gray-400">
                 <thead className="text-xs text-white uppercase  bg-[#2994FF] dark:bg-gray-700 dark:text-gray-400">
                   <tr>
