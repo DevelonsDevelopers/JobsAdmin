@@ -41,6 +41,7 @@ console.log(search)
   }
 
   const tags = useSelector(state => state.tag.tags)
+  const loading = useSelector(state => state.tag.isLoading)
 
   useEffect(() => {
     console.log(tags)
@@ -60,11 +61,62 @@ console.log(search)
     setOpen(!open)
     setDeleteId(id)
   }
+// pagination===============
+const [currentPage, setCurrentPage] = useState(1)
+const numbersPerPage = 5;
+const [records, setRecords] = useState()
+const [nPage, setPage] = useState()
+const [Numbers, setNumbers] = useState()
+const [lastIndex, setLastIndex] = useState()
+const [firstIndex, setFirstIndex] = useState()
 
+useEffect(() => {
+  setLastIndex(currentPage * numbersPerPage);
+}, [currentPage])
 
+useEffect(() => {
+  setFirstIndex(lastIndex - numbersPerPage);
+}, [lastIndex])
+
+useEffect(() => {
+  if (tags) {
+    setRecords(tags.slice(firstIndex, lastIndex));
+    setPage(Math.ceil(tags.length / numbersPerPage));
+  }
+}, [tags, firstIndex])
+
+useEffect(() => {
+  if (nPage) {
+    setNumbers([...Array(nPage + 1).keys()].slice(1))
+  }
+}, [nPage])
+// =================
+// nodata============
+const[nodata ,setNodata] = useState(false)
+useEffect(() =>{
+if (tags?.length===null) {
+  setNodata(true)
+} else {
+  setNodata(false)
+  
+}
+},[tags])
   return (
     <PortalLayout>
-      
+      {loading?
+      <center> <div class="flex justify-center items-center h-screen">
+      <div class="animate-spin rounded-full h-16 w-16 border-t-4 border-blue-500"></div>
+    </div>
+</center> :
+<>
+{nodata? <center> <div className=" pt-[10%]" > <img src="/assets/nodata3.png" alt="no image" className="opacity-75 w-[60%] h-[50%] mt-[-10%]" />
+            <h1 className=" text-[2rem] text-gray-500 mt-[-4rem] pt-10" >No Data Found</h1>
+         <div className='mt-[2rem]'>   <Link to='/tags/add' className=" py-[1.3%] px-[3%]  text-white text-sm bg-blue-600  rounded-[2rem] "  >   Add New  </Link>
+         </div>
+
+          </div> </center> 
+          :
+           <> 
        <h1 className='text-[3.125rem] font-[800] text-[#000] text-center max-md:text-[2rem] uppercase'>tags</h1>
 
 <div className="w-[100%] max-md:h-full  max-md:px-2 flex flex-col justify-center bg-gray-100">
@@ -96,7 +148,7 @@ console.log(search)
 
           </thead>
 
-          {tags.
+          {records?.
             filter((value)=>{
             return search.toLowerCase() === ''
             ? value :value.name.toLowerCase().includes(search);
@@ -145,12 +197,44 @@ console.log(search)
             </tbody>
           ))}
         </div>
+        <nav className='m-auto mt-5' >
+          <ul class="flex items-center -space-x-px h-10 text-base">
+            <li>
+              <a href="#" onClick={prevPage} class="flex items-center justify-center px-4 h-10 ml-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-l-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white" >
+                <span class="sr-only">Previous</span>
+                <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 1 1 5l4 4" />
+                </svg>
+              </a>
+            </li>
+            {Numbers?.map((n, i) => (<li> <a href="#" onClick={() => changeCurrentPage(n)} class="flex items-center justify-center px-4 h-10 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">{n}</a> </li>))}
+
+            <li>
+              <Link to="#" onClick={nextPage} class="flex items-center justify-center px-4 h-10 leading-tight text-gray-500 bg-white border border-gray-300 rounded-r-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"> <span class="sr-only">Next</span><svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10"> <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4" /> </svg></Link>
+            </li>
+          </ul>
+        </nav>
 
   <center>
   </center>
 </div>
+</>}
+</>}
     </PortalLayout>
   )
+  function prevPage() {
+    if (currentPage !== 1) {
+      setCurrentPage(currentPage - 1);
+    }
+  }
+  function changeCurrentPage(id) {
+    setCurrentPage(id)
+  }
+  function nextPage() {
+    if (currentPage !== nPage) {
+      setCurrentPage(currentPage + 1)
+    }
+  }
 }
 
 export default Tags
