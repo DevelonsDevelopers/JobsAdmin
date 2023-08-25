@@ -3,15 +3,16 @@ import PortalLayout from '../portalLayout/PortalLayout'
 import ReportsView from './view/ReportsView';
 import { useDispatch, useSelector } from 'react-redux';
 import { AllReports } from '../store/actions/reportActions';
+import { Link } from 'react-router-dom';
 
 
 const reports = [
-  {id:'01', date: "11/04/2023",  job: "100", view: "Design", note: "Nothing",},
-  {id:'01', date: "11/04/2023",  job: "100", view: "Design", note: "Nothing",},
-  {id:'01', date: "11/04/2023",  job: "100", view: "Design", note: "Nothing",},
-  {id:'01', date: "11/04/2023",  job: "100", view: "Design", note: "Nothing",},
-  {id:'01', date: "11/04/2023",  job: "100", view: "Design", note: "Nothing",},
-  {id:'01', date: "11/04/2023",  job: "100", view: "Design", note: "Nothing",},
+  { id: '01', date: "11/04/2023", job: "100", view: "Design", note: "Nothing", },
+  { id: '01', date: "11/04/2023", job: "100", view: "Design", note: "Nothing", },
+  { id: '01', date: "11/04/2023", job: "100", view: "Design", note: "Nothing", },
+  { id: '01', date: "11/04/2023", job: "100", view: "Design", note: "Nothing", },
+  { id: '01', date: "11/04/2023", job: "100", view: "Design", note: "Nothing", },
+  { id: '01', date: "11/04/2023", job: "100", view: "Design", note: "Nothing", },
 
 ]
 const Reports = () => {
@@ -23,13 +24,14 @@ const Reports = () => {
   const dispatch = useDispatch();
 
   const reports = useSelector(state => state.report.reports)
+  const loading = useSelector(state => state.report.isLoading)
 
   useEffect(() => {
     console.log(reports)
   }, [reports])
 
   useEffect(() => {
-    if(reports !== null || reports !== undefined || reports.length !== 0){
+    if (reports !== null || reports !== undefined || reports.length !== 0) {
       dispatch(AllReports())
     }
   }, [dispatch])
@@ -38,23 +40,76 @@ const Reports = () => {
     setOpenView(!open)
     setData(value)
   }
+
+  //pagination=============================
+  const [currentPage, setCurrentPage] = useState(1)
+  const numbersPerPage = 5;
+  const [records, setRecords] = useState()
+  const [nPage, setPage] = useState()
+  const [Numbers, setNumbers] = useState()
+  const [lastIndex, setLastIndex] = useState()
+  const [firstIndex, setFirstIndex] = useState()
+
+
+  useEffect(() => {
+    setLastIndex(currentPage * numbersPerPage);
+  }, [currentPage])
+
+  useEffect(() => {
+    setFirstIndex(lastIndex - numbersPerPage);
+  }, [lastIndex])
+
+  useEffect(() => {
+    if (reports) {
+      setRecords(reports.slice(firstIndex, lastIndex));
+      setPage(Math.ceil(reports.length / numbersPerPage));
+    }
+  }, [reports, firstIndex])
+
+  useEffect(() => {
+    if (nPage) {
+      setNumbers([...Array(nPage + 1).keys()].slice(1))
+    }
+  }, [nPage])
+
+    // nodata===============
+    const [nodata ,setNodata] =useState(false)
+    useEffect(()=>{
+  if (reports?.length===0) {
+  setNodata(true)
+  } else {
+  setNodata(false)
+  
+  }
+    },[])
+  
+
   return (
     <PortalLayout>
+      {loading? <center> <div class="flex justify-center items-center h-screen">
+          <div class="animate-spin rounded-full h-16 w-16 border-t-4 border-blue-500"></div>
+        </div>
+        </center>
+        : <>
+       { nodata ? <center> <div className=" pt-[10%]" > <img src="/assets/nodata3.png" alt="no image" className="opacity-75 w-[60%] h-[50%] mt-[-10%]" />
+            <h1 className=" text-[2rem] text-gray-500 mt-[-4rem] pt-10" >No Reports Found</h1>
+         
+          </div> </center> : <>
       <h1 className='text-[3.125rem] font-[800] text-[#000] text-center max-md:text-[2rem] uppercase'>Reports</h1>
 
-<div className="w-[100%] max-md:h-full  max-md:px-2 flex flex-col justify-center bg-gray-100">
+      <div className="w-[100%] max-md:h-full  max-md:px-2 flex flex-col justify-center bg-gray-100">
 
-  <div className='flex justify-center mt-[3rem] w-[90%] m-auto'>
+        <div className='flex justify-center mt-[3rem] w-[90%] m-auto'>
 
-    <input type="search" name="" id="" placeholder='Search...' className='border-2 border-gray-600 pl-[4rem] rounded-[1.0625rem] py-2  w-[27.8125rem] mr-auto max-md:py-[1px] max-md:w-[15rem] max-md:text-[0.7rem] focus:outline-none focus:ring-0 focus:border-gray-900 peer' />
-    {/* <a href="/categories/add"> <button className="bg-[#0047FF] cursor-pointer  max-md:text-[.6rem] py-2 px-[1rem] max-md:px-[1rem] max-md:py-[5px] text-white font-[600] max-md:font-[400] rounded-[1.375rem] ml-auto "  >
+          <input type="search" name="" id="" placeholder='Search...' className='border-2 border-gray-600 pl-[4rem] rounded-[1.0625rem] py-2  w-[27.8125rem] mr-auto max-md:py-[1px] max-md:w-[15rem] max-md:text-[0.7rem] focus:outline-none focus:ring-0 focus:border-gray-900 peer' />
+          {/* <a href="/categories/add"> <button className="bg-[#0047FF] cursor-pointer  max-md:text-[.6rem] py-2 px-[1rem] max-md:px-[1rem] max-md:py-[5px] text-white font-[600] max-md:font-[400] rounded-[1.375rem] ml-auto "  >
       Add New
     </button>
     </a> */}
 
-  </div>
-    <ReportsView open={openView} setOpen={setOpenView} title={" VIEW"} data={data} />
-    <div className="rounded-xl p-5 bg-white w-[90%] m-auto max-md:w-[100%]  mt-6 ">
+        </div>
+        <ReportsView open={openView} setOpen={setOpenView} title={" VIEW"} data={data} />
+        <div className="rounded-xl p-5 bg-white w-[90%] m-auto max-md:w-[100%]  mt-6 ">
           <thead className='mt-10'>
 
             <tr className=" uppercase  text-sm leading-normal w-[100%]">
@@ -63,13 +118,13 @@ const Reports = () => {
               <th className="py-[2%] border-r-[1px] border-b-[2px] border-b-black  w-[3%] max-md:text-[.6rem] max-md:font-[400] text-center max-md:w-[2%]  text-[13px]">Job </th>
               <th className="py-[2%] border-r-[1px] border-b-[2px] border-b-black  w-[3%] max-md:text-[.6rem] max-md:font-[400] text-center max-md:w-[2%]  text-[13px]">ViewJob </th>
               <th className="py-[2%] border-r-[1px] border-b-[2px] border-b-black  w-[3%] max-md:text-[.6rem] max-md:font-[400] text-center max-md:w-[2%]  text-[13px]">Note </th>
-             
-             
+
+
             </tr>
 
           </thead>
 
-          {reports.map((value, index) => (
+          {records?.map((value, index) => (
             <tbody className="text-[#000000] text-sm font-light w-[100%] bg-white ">
               <tr className='' >
                 <td className="py-[2%] w-[1%]   border-r-[1px] border-t-[1px]   text-center">
@@ -87,8 +142,8 @@ const Reports = () => {
                 <td className="py-[2%] w-[3%]   border-r-[1px] border-t-[1px]   text-center">
                   <span className="font-bold max-md:text-[.7rem] text-[13px] font-[300] ">{value.note}</span>
                 </td>
-                
-                 
+
+
 
                 <td className="py-[2%] w-[1%] max-md:text-[.7rem]  border-t-[1px]   ">
                   <div className="w-4 m-auto transform hover:text-blue-500  hover:scale-110 " onClick={() => handleClick(value)}>   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" >
@@ -102,13 +157,44 @@ const Reports = () => {
             </tbody>
           ))}
         </div>
+        <nav className='m-auto mt-5' >
+          <ul class="flex items-center -space-x-px h-10 text-base">
+            <li>
+              <a href="#" onClick={prevPage} class="flex items-center justify-center px-4 h-10 ml-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-l-lg hover:bg-gray-100 hover:text-gray-700  " >
+                <span class="sr-only">Previous</span>
+                <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 1 1 5l4 4" />
+                </svg>
+              </a>
+            </li>
+            {Numbers?.map((n, i) => (<li> <a href="#" onClick={() => changeCurrentPage(n)} class="flex items-center justify-center px-4 h-10 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700  ">{n}</a> </li>))}
 
+            <li>
+              <Link to="#" onClick={nextPage} class="flex items-center justify-center px-4 h-10 leading-tight text-gray-500 bg-white border border-gray-300 rounded-r-lg hover:bg-gray-100 hover:text-gray-700  "> <span class="sr-only">Next</span><svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10"> <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4" /> </svg></Link>
+            </li>
+          </ul>
+        </nav>
 
-  <center>
-  </center>
-</div>
+        <center>
+        </center>
+      </div>
+      </>}
+      </>}
     </PortalLayout>
   )
+  function prevPage() {
+    if (currentPage !== 1) {
+      setCurrentPage(currentPage - 1);
+    }
+  }
+  function changeCurrentPage(id) {
+    setCurrentPage(id)
+  }
+  function nextPage() {
+    if (currentPage !== nPage) {
+      setCurrentPage(currentPage + 1)
+    }
+  }
 }
 
 export default Reports

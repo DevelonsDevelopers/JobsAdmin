@@ -158,8 +158,8 @@ const Dashboard = () => {
             <div className=" border-2 shadow-xl  max-md:w-[100%] max-md:mb-[30px] p-5 bg-white rounded-xl shadow-xl shadow-gray-300 mt-5 h-[300px] ">
               <span className=' ml-[1.6rem]  font-[600] text-[1rem]'>Transactions</span>
 
-              <table className="w-[100%] mt-3 text-sm text-left text-gray-500 dark:text-gray-400">
-                <thead className="text-xs text-white uppercase bg-[#2994FF] dark:bg-gray-700 dark:text-white">
+              <table className="w-[100%] mt-3 text-sm text-left text-gray-500 :text-gray-400">
+                <thead className="text-xs text-white uppercase bg-[#2994FF] :bg-gray-700 :text-white">
                   <tr>
                     <th scope="col" className="px-6 py-3">
                       Id
@@ -175,8 +175,8 @@ const Dashboard = () => {
                 </thead>
                 <tbody>
                   {form01.map((value, index) => (
-                    <tr className={`bg-white border-b dark:bg-gray-800 dark:border-gray-700  ${index % 2 ? 'bg-[#A4D2FF]' : 'bg-[#FFDF9F]'}`}>
-                      <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                    <tr className={`bg-white border-b :bg-gray-800 :border-gray-700  ${index % 2 ? 'bg-[#A4D2FF]' : 'bg-[#FFDF9F]'}`}>
+                      <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap :text-white">
                         {value.id}
                       </th>
                       <td className="px-6 py-4">
@@ -195,8 +195,8 @@ const Dashboard = () => {
           <div className='grid  grid-cols-2 max-md:grid-cols-1 gap-10'>
             <div className=" border-2 shadow-xl  bg-white p-5 rounded-xl shadow-gray-300 md:mt-10 ">
               <span className=' ml-[1.5rem]  font-[600] text-[1rem]'>Applied</span>
-              <table className="w-[100%] mt-3 text-sm text-left text-gray-500 dark:text-gray-400">
-                <thead className="text-xs text-white uppercase bg-[#2994FF] dark:bg-gray-700 dark:text-gray-400">
+              <table className="w-[100%] mt-3 text-sm text-left text-gray-500 :text-gray-400">
+                <thead className="text-xs text-white uppercase bg-[#2994FF] :bg-gray-700 :text-gray-400">
                   <tr>
                     <th scope="col" className="px-6 max-md:px-2 py-3">
                       Job
@@ -212,8 +212,8 @@ const Dashboard = () => {
                 </thead>
                 <tbody>
                   {form03.map((value, index) => (
-                    <tr className={`bg-white border-b dark:bg-gray-800 dark:border-gray-700 ${index % 2 ? 'bg-[#A4D2FF]' : 'bg-[#FFDF9F]'}`}>
-                      <th scope="row" className="px-6 max-md:px-2 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                    <tr className={`bg-white border-b :bg-gray-800 :border-gray-700 ${index % 2 ? 'bg-[#A4D2FF]' : 'bg-[#FFDF9F]'}`}>
+                      <th scope="row" className="px-6 max-md:px-2 py-4 font-medium text-gray-900 whitespace-nowrap :text-white">
                         {value.job}
                       </th>
                       <td className="px-6 max-md:px-2 py-4">
@@ -230,8 +230,8 @@ const Dashboard = () => {
             </div>
             <div className=" border-2 shadow-xl bg-white p-5 rounded-xl shadow-gray-300 mt-5 max-md:mt-[-17px] ">
               <span className=' ml-[1.6rem]  font-[600] text-[1rem]'>Reports</span>
-              <table className="w-[100%] mt-3 text-sm text-left  text-gray-500 dark:text-gray-400">
-                <thead className="text-xs text-white uppercase  bg-[#2994FF] dark:bg-gray-700 dark:text-gray-400">
+              <table className="w-[100%] mt-3 text-sm text-left  text-gray-500 :text-gray-400">
+                <thead className="text-xs text-white uppercase  bg-[#2994FF] :bg-gray-700 :text-gray-400">
                   <tr>
                     <th scope="col" className="px-6 max-md:px-2 py-3">
                       Job
@@ -247,8 +247,8 @@ const Dashboard = () => {
                 </thead>
                 <tbody>
                   {form02.map((value, index) => (
-                    <tr className={`bg-white border-b dark:bg-gray-800 dark:border-gray-700 ${index % 2 ? 'bg-[#A4D2FF]' : 'bg-[#FFDF9F]'}`}>
-                      <th scope="row" className="px-6 max-md:px-2 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                    <tr className={`bg-white border-b :bg-gray-800 :border-gray-700 ${index % 2 ? 'bg-[#A4D2FF]' : 'bg-[#FFDF9F]'}`}>
+                      <th scope="row" className="px-6 max-md:px-2 py-4 font-medium text-gray-900 whitespace-nowrap :text-white">
                         {value.job}
                       </th>
                       <td className="px-6 max-md:px-2 py-4">
