@@ -15,7 +15,7 @@ export const AllUsers = () => async (dispatch) => {
 }
 export const getUser = (id) => async (dispatch) => {
     try{
-        const { data } = await api.fetchUser(id)
+        const { data: { data } } = await api.fetchUser(id)
         dispatch({ type: GET_USER, payload: data})
     } catch(error){
         console.log(error)
@@ -33,7 +33,7 @@ export const createUser = (user) => async (disptach) =>{
 
 export const updateUser = (id , user) => async (dispatch) => {
     try{
-        const {data: {data} } = await api.updateUser(id,user)
+        const { data } = await api.updateUser(id, user.name, user.username, user.email, user.password, user.phone, user.address)
         dispatch({ type: UPDATE_USER, payload: data})
     }catch(error){
         console.log(error)

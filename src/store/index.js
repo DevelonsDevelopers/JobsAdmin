@@ -71,10 +71,10 @@ export const createCity = (city) => API.post(`/cities/create`,
     }
 )
 export const updateCity = (name, country, description, id) => API.put(`/cities/update`, {
-        name: name,
-        description: description,
-        country: country,
-        id: id,
+    name: name,
+    description: description,
+    country: country,
+    id: id,
 })
 export const deleteCity = (id) => API.delete(`/cities/delete`, {
     data: {
@@ -196,11 +196,10 @@ export const deleteCompany = (id) => API.delete(`/companies/delete`, {
 
 // Plans
 export const fetchAllPlans = () => API.get(`/plans/all`)
-export const fetchPlan = (id) => API.get(`/plans/get`, {
-    data: {
+export const fetchPlan = (id) => API.post(`/plans/get`,
+    {
         id: id,
-    }
-})
+    })
 export const fetchTypebyPlan = (type) => API.get(`/plans/type`, {
     data: {
         type: type,
@@ -214,15 +213,14 @@ export const createPlan = (plan) => API.post(`/plans/create`, {
     timeperiod: plan.timeperiod,
     purpose: plan.purpose,
 })
-export const updatePlan = (name, amount, type, accounttype, timeperiod, purpose) => API.get(`/plans/update`, {
-    data: {
-        name: name,
-        amount: amount,
-        type: type,
-        accounttype: accounttype,
-        timeperiod: timeperiod,
-        purpose: purpose,
-    }
+export const updatePlan = (id, name, amount, type, accounttype, timeperiod, purpose) => API.put(`/plans/update`, {
+    id: id,
+    name: name,
+    amount: amount,
+    type: type,
+    accounttype: accounttype,
+    timeperiod: timeperiod,
+    purpose: purpose,
 })
 export const deletePlan = (id) => API.delete(`/plans/delete`, {
     data: {
@@ -236,14 +234,14 @@ export const fetchAllSeekers = () => API.get(`/seekers/all`)
 //Tags
 export const fetchAllTags = () => API.get(`/tags/all`)
 export const fetchTag = (id) => API.post(`/tags/get`, {
-        id: id,
+    id: id,
 })
 export const createTag = (tag) => API.post(`/tags/create`, {
     name: tag.name,
 })
-export const updateTag = (id,name) => API.put(`/tags/update`, {
-        id: id,
-        name: name,
+export const updateTag = (id, name) => API.put(`/tags/update`, {
+    id: id,
+    name: name,
 })
 export const deleteTag = (id) => API.delete(`/tags/delete`, {
     data: {
@@ -254,11 +252,10 @@ export const deleteTag = (id) => API.delete(`/tags/delete`, {
 export const fetchAllTransactions = () => API.get(`/transactions/all`)
 // Users
 export const fetchAllUsers = () => API.get(`/users/all`)
-export const fetchUser = (id) => API.get(`/users/get`, {
-    data: {
+export const fetchUser = (id) => API.post(`/users/get`,
+    {
         id: id,
-    }
-})
+    })
 export const createUser = (user) => API.post(`/users/create`, {
     name: user.name,
     username: user.username,
@@ -267,17 +264,16 @@ export const createUser = (user) => API.post(`/users/create`, {
     phone: user.phone,
     address: user.address,
 })
-export const updateUser = (id, name, username, email, password, phone, address) => API.get(`/users/update`, {
-    data: {
+export const updateUser = (id, name, username, email, password, phone, address) => API.put(`/users/update`,
+    {
+        id: id,
         name: name,
         username: username,
         email: email,
         password: password,
         phone: phone,
         address: address,
-        id: id,
-    }
-})
+    })
 export const deleteUser = (id) => API.delete(`/users/delete`, {
     data: {
         id: id
