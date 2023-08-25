@@ -7,7 +7,7 @@ import { AllCountries, getCountry } from '../../store/actions/countryActions';
 import { AllCities } from '../../store/actions/cityActions';
 
 const CompaniesForm = () => {
-  const [companyData, setCompanyData] = useState({ name: '', size: '', city: '', country: '', phone: '', email: '', password: '', headquter: '', type: '' });
+  const [companyData, setCompanyData] = useState({ name: '', size: '', city: '', country: '', phone: '', email: '', password: '', headquater: '', type: '' });
   // const [country, setCountry] = useState()
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -124,9 +124,9 @@ const CompaniesForm = () => {
           <div className="-mx-3 ">
             <div className="w-[100%]  px-3">
               <label className="block uppercase tracking-wide text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4" for="grid-Name">
-                HeadQuarter
+                HeadQuater
               </label>
-              <textarea name='headquarter' rows='4' onChange={ClickInput} className="appearance-none block w-full bg-gray-50  border-gray-lighter rounded py-3 px-4 rounded-[9px] mb-3 border-[0.7px] border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer text-[14px]" id="grid-Name" type="text" placeholder="Enter HeadQuarter Addres" />
+              <textarea name='headquater' rows='4' onChange={ClickInput} className="appearance-none block w-full bg-gray-50  border-gray-lighter rounded py-3 px-4 rounded-[9px] mb-3 border-[0.7px] border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer text-[14px]" id="grid-Name" type="text" placeholder="Enter HeadQuarter Addres" />
             </div>
           </div>
         </div>

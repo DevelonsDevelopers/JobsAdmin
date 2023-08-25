@@ -2,7 +2,7 @@ import axios from "axios"
 
 
 
-const API = axios.create({ baseURL: 'http://192.168.1.16:5001'})
+const API = axios.create({ baseURL: 'http://192.168.1.25:5001'})
 
 
 //Categories
@@ -161,10 +161,9 @@ export const deleteJob = (id) => API.delete(`/jobs/delete`, {
 })
 // Companies
 export const fetchAllCompanies = () => API.get(`/companies/all`)
-export const fetchCompany = (id) => API.get(`/companies/get`, {
-    data: {
+export const fetchCompany = (id) => API.post(`/companies/get`,
+ {
         id: id,
-    }
 }) 
 
 
@@ -176,11 +175,10 @@ export const createCompany =(company) => API.post(`/companies/create`, {
     phone: company.phone,
     email: company.email,
     password: company.password,
-    headquter: company.headquter,
+    headquater: company.headquater,
     type: company.type,
 })
-export const updateCompany = (id,name, size, city, country, phone, email, password, headquter, type) => API.get(`/companies/update`, {
-    data: {
+export const updateCompany = (id,name, size, city, country, phone, email, password, headquater, type) => API.put(`/companies/update`, {
         name: name,
         size: size,
         city: city,
@@ -188,10 +186,9 @@ export const updateCompany = (id,name, size, city, country, phone, email, passwo
         phone: phone,
         email: email,
         password: password,
-        headquter: headquter,
+        headquater: headquater,
         type: type,
         id: id,
-    }
 })
 export const deleteCompany = (id) => API.delete(`/companies/:delete`, {
     data: {
