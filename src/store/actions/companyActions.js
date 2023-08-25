@@ -14,7 +14,7 @@ export const AllCompanies = () => async (dispatch) => {
 
 export const getCompany = (id) => async (dispatch) => {
     try{
-        const { data } = await api.fetchCompany(id);
+        const { data: { data } } = await api.fetchCompany(id);
         dispatch ({ type: GET_COMPANY, payload: data})
     } catch(error){
         console.log(error)
@@ -32,7 +32,8 @@ export const createCompany = (company) => async (disptach) => {
 
 export const updateCompany = (id , company) => async (dispatch) => {
     try{
-        const { data: {data}} = await api.updateCompany(id , company)
+        const { data } = await api.updateCompany(id, company.city, company.country, company.email, company.headquater,  company.name,  company.phone,  company.size, company.type)
+        console.log(data)
         dispatch({ type: UPDATE_COMPANY, payload: data})
     }catch(error){
         console.log(error)
