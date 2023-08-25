@@ -4,19 +4,19 @@ import DeleteModal from '../components/DeleteModal';
 import { Link, useNavigate } from 'react-router-dom';
 import PlansView from './view/PlansView';
 import { useDispatch, useSelector } from 'react-redux';
-import { AllPlans } from '../store/actions/planActions';
+import { AllPlans, DeletePlan } from '../store/actions/planActions';
+import { deleteTag } from '../store';
 
 
 
 const Plans = () => {
   // search===============
   const [search, setSearch] = useState('')
-  console.log(search)
-  // =============
+  // console.log(search)
+  // ============
 
-
-
-
+  const [deleteId, setDeleteId] = useState();
+  const navigate = useNavigate();
 
   const [open, setOpen] = useState(false);
   const [openView, setOpenView] = useState(false);
@@ -35,9 +35,9 @@ const Plans = () => {
   const plans = useSelector(state => state.plan.plans)
   const loading = useSelector(state => state.plan.isLoading)
 
-  useEffect(() => {
-    console.log(plans)
-  }, [plans])
+  // useEffect(() => {
+  //   console.log(plans)
+  // }, [plans])
   useEffect(() => {
     dispatch(AllPlans())
   }, [dispatch])
@@ -82,6 +82,20 @@ setNodata(false)
 }
   },[])
 
+  const handleDelete =(id)=> {
+    setDeleteId(id)
+    setOpen(!open)
+  }
+
+  const deletePlan = (id) => {
+    dispatch(DeletePlan(id))
+    setOpen(!open)
+  }
+
+  const handleEdit =(id)=> {
+    router("/plans/edit", {state: {ID: id}})
+  }
+
   return (
     <PortalLayout>
       {loading? <center> <div class="flex justify-center items-center h-screen">
@@ -111,7 +125,7 @@ setNodata(false)
           </Link>
 
         </div>
-        <DeleteModal open={open} setOpen={setOpen} />
+        <DeleteModal open={open} setOpen={setOpen} ID={deleteId} deleteFunction={deletePlan} />
         <PlansView open={openView} setOpen={setOpenView} title={" VIEW"} data={data} />
         <div className="rounded-xl p-5 bg-white w-[90%] m-auto max-md:w-[100%]  mt-6 max-md:overflow-auto ">
           <thead className='mt-10'>
@@ -165,12 +179,12 @@ setNodata(false)
                   <td className="py-[2%] w-[2%] max-md:text-[.7rem]  border-r-[1px] border-t-[1px]   text-center">
                     <div className="flex item-center justify-center gap-3">
 
-                      <div className="w-4 mr-2 transform hover:text-blue-500  hover:scale-110" onClick={() => router("/plans/edit")}>
+                      <div className="w-4 mr-2 transform hover:text-blue-500  hover:scale-110" onClick={() => handleEdit(value.id)}>
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="blue">
                           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
                         </svg>
                       </div>
-                      <div className="w-4 mr-2 transform hover:text-blue-500  hover:scale-110" onClick={() => setOpen(true)}>
+                      <div className="w-4 mr-2 transform hover:text-blue-500  hover:scale-110" onClick={() => handleDelete(value.id)}>
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="red">
                           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
                         </svg>

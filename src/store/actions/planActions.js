@@ -16,7 +16,7 @@ export const AllPlans = () => async (dispatch) => {
 
 export const getPlan = (id) => async (dispatch) => {
     try{
-        const { data } = await api.fetchPlan(id)
+        const { data: { data } } = await api.fetchPlan(id)
         dispatch({ type: GET_PLAN, payload: data})
     } catch(error){
         console.log(error)
@@ -34,7 +34,7 @@ export const createPlan = (plan) => async (disptach) =>{
 
 export const updatePlan = (id , plan) => async (dispatch) => {
     try{
-        const {data: {data} } = await api.updatePlan(id, plan)
+        const { data } = await api.updatePlan(id, plan.name, plan.amount, plan.type, plan.accounttype, plan.timeperiod, plan.purpose)
         dispatch({ type: UPDATE_PLAN, payload: data})
     }catch(error){
         console.log(error)
