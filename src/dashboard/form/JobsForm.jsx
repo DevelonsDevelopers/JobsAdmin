@@ -57,7 +57,7 @@ const JobsForm = () => {
     }, [fetchCitybyCountry])
 
     useEffect(() => {
-        if (country){
+        if (country) {
             dispatch(getCitybyCountry(country))
         }
     }, [dispatch, country])
@@ -73,7 +73,7 @@ const JobsForm = () => {
                         <label class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2 " for="grid-Title">
                             Title
                         </label>
-                        <input onChange={ClickInput} type="text" name="title" id="floating_Title" className="pl-4 block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent rounded-xl p-2 border-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="Enter Title" required />
+                        <input onChange={ClickInput} type="text" name="title" id="floating_Title" className="pl-4 block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent rounded-xl p-2 border-2 border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="Enter Title" required />
                     </div>
                 </div>
                 <div class="-mx-3 md:flex mb-2">
@@ -82,20 +82,20 @@ const JobsForm = () => {
                             CATEGORY
                         </label>
                         <div class="relative">
-                        <select onChange={ClickInput} name='category' class="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" id="grid-state">
-                            <option>Select Country</option>
-                            {categories?.map((value) => {
-                                return <option>{value.name}</option>
-                            })}
+                            <select onChange={ClickInput} name='category' class="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" id="grid-state">
+                                <option>Select Country</option>
+                                {categories?.map((value) => {
+                                    return <option>{value.name}</option>
+                                })}
 
-                        </select>
+                            </select>
                         </div>
                     </div>
                     <div class="md:w-1/2 px-3">
                         <label class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2" for="grid-state">
                             COUNTRY
                         </label>
-                        <select onChange={ClickInput} name='country' class="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" id="grid-state">
+                        <select onChange={ClickInput} name='country' class="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" id="grid-state">
                             <option>Select Country</option>
                             {countries?.map((value) => {
                                 return <option value={value.id}>{value.name}</option>
@@ -108,7 +108,7 @@ const JobsForm = () => {
                             CITY
                         </label>
                         <div class="relative">
-                            <select onChange={ClickInput} name='city' class="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" id="grid-state">
+                            <select onChange={ClickInput} name='city' class="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" id="grid-state">
                                 <option>Select City</option>
                                 {fetchCitybyCountry.data?.map((value) => {
                                     return <option >{value.name}</option>
@@ -123,19 +123,19 @@ const JobsForm = () => {
                         <label class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2" for="grid-city">
                             EXPERIENCE
                         </label>
-                        <input name='experience' onChange={ClickInput} type="text" id="floating_email" className="pl-4 block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent rounded-xl p-2 border-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="Enter Experience" required />
+                        <input name='experience' onChange={ClickInput} type="text" id="floating_email" className="pl-4 block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent rounded-xl p-2 border-2 border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="Enter Experience" required />
                     </div>
                     <div class="md:w-1/2 px-3">
                         <label class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2" for="grid-state">
                             QUALIFICATION
                         </label>
-                        <input name='qualification' onChange={ClickInput} type="text" id="floating_email" className="pl-4 block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent rounded-xl p-2 border-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="Enter Qualification" required />
+                        <input name='qualification' onChange={ClickInput} type="text" id="floating_email" className="pl-4 block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent rounded-xl p-2 border-2 border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="Enter Qualification" required />
                     </div>
                     <div class="md:w-1/2 px-3">
                         <label class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2" for="grid-zip">
                             SKILLS
                         </label>
-                        <input name='skills' onChange={ClickInput} type="text" id="floating_email" className="pl-4 block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent rounded-xl p-2 border-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="Enter Skills" required />
+                        <input name='skills' onChange={ClickInput} type="text" id="floating_email" className="pl-4 block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent rounded-xl p-2 border-2 border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="Enter Skills" required />
                     </div>
                 </div>
                 <div class="-mx-3 md:flex mb-2 mt-2">
@@ -143,32 +143,32 @@ const JobsForm = () => {
                         <label class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2" for="grid-city">
                             WORK DAY
                         </label>
-                        <input name='days' onChange={ClickInput} type="text" id="floating_email" className="pl-4 block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent rounded-xl p-2 border-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="Enter Work Day" required />
+                        <input name='days' onChange={ClickInput} type="text" id="floating_email" className="pl-4 block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent rounded-xl p-2 border-2 border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="Enter Work Day" required />
                     </div>
                     <div class="md:w-1/2 px-3">
                         <label class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2" for="grid-state">
                             WORK TIME
                         </label>
-                        <input name='time' type="time" id="floating_email" className="pl-4 block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent rounded-xl p-2 border-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="Enter Work Time" required />
+                        <input name='time' type="time" id="floating_email" className="pl-4 block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent rounded-xl p-2 border-2 border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="Enter Work Time" required />
 
                     </div>
                     <div class="md:w-1/2 px-3">
                         <label class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2" for="grid-zip">
                             DATE
                         </label>
-                        <input name='date' type="date" id="floating_email" className="pl-4 block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent rounded-xl p-2 border-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="Enter Date" required />
+                        <input name='date' type="date" id="floating_email" className="pl-4 block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent rounded-xl p-2 border-2 border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="Enter Date" required />
                     </div>
                     <div class="md:w-1/2 px-3 mb-6 md:mb-0">
                         <label class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2" for="grid-first-name">
                             ADDRESS
                         </label>
-                        <input onChange={ClickInput} type="text" name="address" id="floating_email" className="pl-4 block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent rounded-xl p-2 border-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="Enter Address" required />
+                        <input onChange={ClickInput} type="text" name="address" id="floating_email" className="pl-4 block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent rounded-xl p-2 border-2 border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="Enter Address" required />
                     </div>
                     <div class="md:w-1/2 px-3">
                         <label class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2" for="grid-last-name">
                             TAGS
                         </label>
-                        <input onChange={ClickInput} type="text" name="tags" id="floating_email" className="pl-4 block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent rounded-xl p-2 border-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="Enter Tags" required />
+                        <input onChange={ClickInput} type="text" name="tags" id="floating_email" className="pl-4 block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent rounded-xl p-2 border-2 border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="Enter Tags" required />
                     </div>
                 </div>
                 <div class="-mx-3 md:flex mb-2 mt-2">
@@ -176,19 +176,19 @@ const JobsForm = () => {
                         <label class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2" for="grid-city">
                             COMPANY ROLE
                         </label>
-                        <input onChange={ClickInput} type="text" name="role" id="floating_email" className="pl-4 block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent rounded-xl p-2 border-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="Enter Company Role" required />
+                        <input onChange={ClickInput} type="text" name="role" id="floating_email" className="pl-4 block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent rounded-xl p-2 border-2 border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="Enter Company Role" required />
                     </div>
                     <div class="md:w-1/2 px-3">
                         <label class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2" for="grid-state">
                             DESIGNATION
                         </label>
-                        <input onChange={ClickInput} type="text" name="designation" id="floating_email" className="pl-4 block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent rounded-xl p-2 border-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="Enter Designation" required />
+                        <input onChange={ClickInput} type="text" name="designation" id="floating_email" className="pl-4 block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent rounded-xl p-2 border-2 border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="Enter Designation" required />
                     </div>
                     <div class="md:w-1/2 px-3">
                         <label class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2" for="grid-zip">
                             SALARY
                         </label>
-                        <input onChange={ClickInput} type="text" name="salary" id="floating_email" className="pl-4 block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent rounded-xl p-2 border-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="Enter Salary" required />
+                        <input onChange={ClickInput} type="text" name="salary" id="floating_email" className="pl-4 block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent rounded-xl p-2 border-2 border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="Enter Salary" required />
                     </div>
                 </div>
                 <div class="-mx-3 md:flex mb-6 mt-2">
@@ -196,13 +196,13 @@ const JobsForm = () => {
                         <label class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2" for="grid-first-name">
                             LINK
                         </label>
-                        <input onChange={ClickInput} type="text" name="link" id="floating_email" className="pl-4 block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent rounded-xl p-2 border-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="Enter Link" required />
+                        <input onChange={ClickInput} type="text" name="link" id="floating_email" className="pl-4 block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent rounded-xl p-2 border-2 border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="Enter Link" required />
                     </div>
                     <div class="md:w-1/2 px-3">
                         <label class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2" for="grid-last-name">
                             TYPE
                         </label>
-                        <input onChange={ClickInput} type="text" name="type" id="floating_email" className="pl-4 block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent rounded-xl p-2 border-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="Enter Type" required />
+                        <input onChange={ClickInput} type="text" name="type" id="floating_email" className="pl-4 block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent rounded-xl p-2 border-2 border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="Enter Type" required />
                     </div>
                 </div>
 
@@ -211,7 +211,7 @@ const JobsForm = () => {
                         <label class="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2" for="grid-Name">
                             Description
                         </label>
-                        <textarea name='description' class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded py-3 px-4 rounded-xl mb-3 border-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" id="grid-Name" onChange={ClickInput} type="text" placeholder="Enter Description" />
+                        <textarea name='description' class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded py-3 px-4 rounded-xl mb-3 border-2 border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" id="grid-Name" onChange={ClickInput} type="text" placeholder="Enter Description" />
                     </div>
                 </div>
                 <div className='flex justify-center'>
