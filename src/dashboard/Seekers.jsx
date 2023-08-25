@@ -73,7 +73,16 @@ console.log(search)
       dispatch(AllSeekers())
     }
   }, [dispatch])
-
+// nodata===========
+const [nodata ,setNodata] = useState(false)
+useEffect(()=>{
+if (seekers?.lenght===0) {
+  setNodata(true)
+} else {
+  setNodata(false)
+  
+}
+},[seekers])
   return (
     <PortalLayout>
       {loading ?
@@ -82,6 +91,13 @@ console.log(search)
         </div>
         </center>
         : <>
+        {nodata? <center> <div className=" pt-[10%]" > <img src="/assets/nodata3.png" alt="no image" className="opacity-75 w-[60%] h-[50%] mt-[-10%]" />
+            <h1 className=" text-[2rem] text-gray-500 mt-[-4rem] pt-10" >No Seeker Found</h1>
+        
+
+          </div> </center> 
+          :
+           <>
       <h1 className='text-[3.125rem] font-[800] text-[#000] text-center max-md:text-[2rem] uppercase'>seeker</h1>
 
       <div className="w-[100%] max-md:h-full  max-md:px-2 flex flex-col justify-center bg-gray-100">
@@ -163,6 +179,7 @@ console.log(search)
         </nav>
 
       </div>
+      </>}
       </>}
     </PortalLayout>
   )
