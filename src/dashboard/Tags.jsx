@@ -101,7 +101,11 @@ if (tags?.length===null) {
   
 }
 },[tags])
-  return (
+
+  const handleEdit=(id)=> {
+    router("/tags/edit", { state: {ID : id}})
+  }
+return (
     <PortalLayout>
       {loading?
       <center> <div class="flex justify-center items-center h-screen">
@@ -172,7 +176,7 @@ if (tags?.length===null) {
                 <td className="py-[2%] w-[2%] max-md:text-[.7rem]  border-r-[1px] border-t-[1px]   text-center">
                   <div className="flex item-center justify-center gap-3">
 
-                    <div className="w-4 mr-2 transform hover:text-blue-500  hover:scale-110" onClick={() => router("/tags/edit")}>
+                    <div className="w-4 mr-2 transform hover:text-blue-500  hover:scale-110" onClick={() => handleEdit(value.id)}>
                       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="blue">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
                       </svg>

@@ -1,18 +1,20 @@
 import React, { useEffect, useState } from 'react'
 import PortalLayout from '../../portalLayout/PortalLayout'
-import { useLocation } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
-import { getCity } from '../../store/actions/cityActions'
+import { getCity, updateCity } from '../../store/actions/cityActions'
+import { AllCountries } from '../../store/actions/countryActions'
 
 const CitiesEdit = () => {
 
   const [cityData, setCityData] = useState({name: '', country: '', description: ''})
 
   const dispatch = useDispatch()
+  const navigate = useNavigate();
 
   const params = useLocation()
   const id = params.state.ID
-  console.log(id)
+  // console.log(id)
 
   const city = useSelector(state => state.city.city)
 
@@ -20,14 +22,29 @@ const CitiesEdit = () => {
     // console.log(city)
     if(city){
       setCityData({ name: city?.name, country: city?.country, description: city?.description})
+      // console.log(cityData)
     }
 }, [city])
-console.log(cityData)
-
 
   useEffect(() => {
     dispatch(getCity(id))
   }, [dispatch])
+
+  const countries = useSelector(state => state.country.countries)
+
+  useEffect(() => {
+    dispatch(AllCountries())
+  }, [dispatch])
+
+  const ClickInput =(e) => {
+    setCityData(prev => ({...prev,[e.target.name]: e.target.value}))
+  }
+
+  const handleSubmit = () => {
+    dispatch(updateCity(id, cityData))
+    navigate('/cities')
+  }
+
 
   return (
    <PortalLayout>
@@ -43,14 +60,17 @@ console.log(cityData)
                     <label className="block text-left tracking-wide text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4" for="grid-first-name">
                       Name
                     </label>
-                    <input type="text" name="name" id="floating_email" className="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="Enter city" required />
+                    <input value={cityData.name} onChange={ClickInput} type="text" name="name" id="floating_email" className="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="Enter city" required />
                   </div>
                   <div className="w-[50%] px-3  mt-5 mb-6 md:mb-0">
                     <label className="block  text-left tracking-wide text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4" for="grid-first-name">
                       Country
                     </label>
-                    <select name='country' class="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" id="grid-state">
-                         <option disabled hidden selected>Select Country</option>
+                    <select value={cityData.country} onChange={ClickInput} name='country' class="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" id="grid-state">
+                         {/* <option disabled hidden selected>Select Country</option> */}
+                         {countries.map((value) => (
+                           <option value={value.id}>{value.name}</option>
+                         ))}
                      
                     </select>               
                      </div>
@@ -60,14 +80,14 @@ console.log(cityData)
                     <label className="block text-left uppercase tracking-wide text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4" for="grid-Name">
                       Description
                     </label>
-                    <textarea name='description' rows='7' className="appearance-none block w-full bg-gray-50  border-gray-lighter rounded py-3 px-4 rounded-[9px] mb-3 border-[0.7px] border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer text-[14px]" id="grid-Name" type="text" placeholder="Enter Description" />
+                    <textarea value={cityData.description} onChange={ClickInput} name='description' rows='7' className="appearance-none block w-full bg-gray-50  border-gray-lighter rounded py-3 px-4 rounded-[9px] mb-3 border-[0.7px] border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer text-[14px]" id="grid-Name" type="text" placeholder="Enter Description" />
                   </div>
                 </div>
               </div>
 
             </div>
             <div className='flex justify-center'>
-              <input type='submit'  className='bg-gradient-to-r from-sky-600 to-cyan-400 cursor-pointer text-white font-[500] py-2 px-[2.4rem] mt-4 rounded-lg text-[1rem]' value="Submit" />
+              <input onClick={handleSubmit} type='submit'  className='bg-gradient-to-r from-sky-600 to-cyan-400 cursor-pointer text-white font-[500] py-2 px-[2.4rem] mt-4 rounded-lg text-[1rem]' value="Submit" />
             </div>
           </form>
         </center>

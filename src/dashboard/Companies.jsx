@@ -39,9 +39,9 @@ const Companies = () => {
   const loading = useSelector(state => state.company.isLoading)
 
 const [nodata ,setNodata] =useState(false)
-  useEffect(() =>{
-    console.log(companies)
-  }, [companies])
+  // useEffect(() =>{
+  //   console.log(companies)
+  // }, [companies])
 
   useEffect(() => {
     dispatch(AllCompanies())
@@ -122,7 +122,7 @@ const [nodata ,setNodata] =useState(false)
                   <span className=" max-md:text-[.7rem] text-[13px] font-[350]">{value.name}</span>
                 </td>
                 <td className="py-[1%] w-[2%]  max-md:text-[.7rem]  border-r-[1px] border-t-[1px]   text-center">
-                  <span className=' text-[13px] font-[350]'>{value.count}</span>
+                  <span className=' text-[13px] font-[350]'>{value.country}</span>
                 </td>
 
                 <td className="py-[2%] max-md:text-[.7rem] w-[2%] border-r-[1px] border-t-[1px]   text-center">

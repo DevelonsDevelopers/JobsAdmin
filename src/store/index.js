@@ -2,29 +2,29 @@ import axios from "axios"
 
 
 
-const API = axios.create({ baseURL: 'http://192.168.1.25:5001'})
+const API = axios.create({ baseURL: 'http://192.168.1.25:5001' })
 
 
 //Categories
 export const fetchAllCategories = () => API.get(`/categories/all`)
-export const fetchCategory = (id) => API.post(`/categories/get`, 
+export const fetchCategory = (id) => API.post(`/categories/get`,
     {
         id: id,
     })
-export const createCategory = (category) => API.post(`/categories/create`, 
+export const createCategory = (category) => API.post(`/categories/create`,
     {
         name: category.name,
         description: category.description,
         image: category.image,
     }
 )
-export const updateCategory = (name, description,image,id) => API.put(`/categories/update`, 
-     {
+export const updateCategory = (name, description, image, id) => API.put(`/categories/update`,
+    {
         name: name,
         description: description,
         image: image,
         id: id
-})
+    })
 export const deleteCategory = (id) => API.delete(`/categories/delete`, {
     data: {
         id: id
@@ -32,22 +32,22 @@ export const deleteCategory = (id) => API.delete(`/categories/delete`, {
 })
 // Countries
 export const fetchAllCountries = () => API.get(`/countries/all`)
-export const fetchCountry = (id) => API.post(`/countries/get`, 
-{
+export const fetchCountry = (id) => API.post(`/countries/get`,
+    {
         id: id,
-}) 
-export const createCountry =(country) => API.post(`/countries/create`, {
+    })
+export const createCountry = (country) => API.post(`/countries/create`, {
     name: country.name,
     description: country.description,
     flag: country.flag,
 })
-export const updateCountry = (id,name, description,flag) => API.put(`/countries/update`, 
-{
+export const updateCountry = (id, name, description, flag) => API.put(`/countries/update`,
+    {
         name: name,
         description: description,
         flag: flag,
-        id: id,    
-})
+        id: id,
+    })
 
 export const deleteCountry = (id) => API.delete(`/countries/delete`, {
     data: {
@@ -56,27 +56,25 @@ export const deleteCountry = (id) => API.delete(`/countries/delete`, {
 })
 // Cities
 export const fetchAllCities = () => API.get(`/cities/all`)
-export const fetchCity = (id) => API.post(`/cities/get` , 
-{
+export const fetchCity = (id) => API.post(`/cities/get`,
+    {
         id: id
+    })
+export const fetchCitybyCountry = (country) => API.post(`/cities/country`, {
+    country: country
 })
-export const fetchCitybyCountry = (country) => API.post(`/cities/country` , {
-        country: country
-})
-export const createCity = (city) => API.post(`/cities/create` , 
+export const createCity = (city) => API.post(`/cities/create`,
     {
         name: city.name,
         description: city.description,
         country: city.country,
     }
 )
-export const updateCity = (name, description,country, id) => API.get(`/cities/update`, {
-    data: {
+export const updateCity = (name, country, description, id) => API.put(`/cities/update`, {
         name: name,
         description: description,
         country: country,
         id: id,
-    }
 })
 export const deleteCity = (id) => API.delete(`/cities/delete`, {
     data: {
@@ -85,32 +83,32 @@ export const deleteCity = (id) => API.delete(`/cities/delete`, {
 })
 //Jobs
 export const fetchAllJobs = () => API.get(`/jobs/all`)
-export const fetchJob = (id) => API.get(`/jobs/get` , {
+export const fetchJob = (id) => API.get(`/jobs/get`, {
     data: {
         id: id,
     }
 })
-export const fetchCategorybyJob =(category) => API.get(`/jobs/category`, {
+export const fetchCategorybyJob = (category) => API.get(`/jobs/category`, {
     data: {
         category: category,
     }
 })
-export const fetchCountrybyJob =(id) => API.get(`/jobs/country`, {
+export const fetchCountrybyJob = (id) => API.get(`/jobs/country`, {
     data: {
         id: id,
     }
 })
-export const fetchCitybyJob =(id) => API.get(`/jobs/city`, {
+export const fetchCitybyJob = (id) => API.get(`/jobs/city`, {
     data: {
         id: id,
     }
 })
-export const fetchCompanybyJob =(id) => API.get(`/jobs/company`, {
+export const fetchCompanybyJob = (id) => API.get(`/jobs/company`, {
     data: {
         id: id,
     }
 })
-export const createJob =(job) => API.post(`/jobs/create`, {
+export const createJob = (job) => API.post(`/jobs/create`, {
     category: job.category,
     country: job.country,
     city: job.city,
@@ -131,7 +129,7 @@ export const createJob =(job) => API.post(`/jobs/create`, {
     tags: job.tags,
 
 })
-export const updateJob = (id,category, country, city, title, company, designation, salary, description, link, type, workdays, worktime, address, experience, qualification, skills, date, tags) => API.put(`/jobs/update`, {
+export const updateJob = (id, category, country, city, title, company, designation, salary, description, link, type, workdays, worktime, address, experience, qualification, skills, date, tags) => API.put(`/jobs/update`, {
     data: {
         category: category,
         country: country,
@@ -162,12 +160,12 @@ export const deleteJob = (id) => API.delete(`/jobs/delete`, {
 // Companies
 export const fetchAllCompanies = () => API.get(`/companies/all`)
 export const fetchCompany = (id) => API.post(`/companies/get`,
- {
+    {
         id: id,
-}) 
+    })
 
 
-export const createCompany =(company) => API.post(`/companies/create`, {
+export const createCompany = (company) => API.post(`/companies/create`, {
     name: company.name,
     size: company.size,
     city: company.city,
@@ -178,19 +176,19 @@ export const createCompany =(company) => API.post(`/companies/create`, {
     headquater: company.headquater,
     type: company.type,
 })
-export const updateCompany = (id,name, size, city, country, phone, email, password, headquater, type) => API.put(`/companies/update`, {
+export const updateCompany = (id, name, size, city, country, phone, email, headquater, type) => API.put(`/companies/update`,
+    {
+        id: id,
         name: name,
         size: size,
         city: city,
         country: country,
         phone: phone,
         email: email,
-        password: password,
         headquater: headquater,
         type: type,
-        id: id,
-})
-export const deleteCompany = (id) => API.delete(`/companies/:delete`, {
+    })
+export const deleteCompany = (id) => API.delete(`/companies/delete`, {
     data: {
         id: id
     }
@@ -202,13 +200,13 @@ export const fetchPlan = (id) => API.get(`/plans/get`, {
     data: {
         id: id,
     }
-}) 
+})
 export const fetchTypebyPlan = (type) => API.get(`/plans/type`, {
     data: {
         type: type,
     }
-}) 
-export const createPlan =(plan) => API.post(`/plans/create`, {
+})
+export const createPlan = (plan) => API.post(`/plans/create`, {
     name: plan.name,
     amount: plan.amount,
     type: plan.type,
@@ -237,18 +235,15 @@ export const fetchAllReports = () => API.get(`/reports/all`)
 export const fetchAllSeekers = () => API.get(`/seekers/all`)
 //Tags
 export const fetchAllTags = () => API.get(`/tags/all`)
-export const fetchTag = (id) => API.get(`/tags/get`, {
-    data: {
+export const fetchTag = (id) => API.post(`/tags/get`, {
         id: id,
-    }
-}) 
-export const createTag =(tag) => API.post(`/tags/create`, {
+})
+export const createTag = (tag) => API.post(`/tags/create`, {
     name: tag.name,
 })
-export const updateTag = (name) => API.get(`/tags/update`, {
-    data: {
+export const updateTag = (id,name) => API.put(`/tags/update`, {
+        id: id,
         name: name,
-    }
 })
 export const deleteTag = (id) => API.delete(`/tags/delete`, {
     data: {
@@ -263,8 +258,8 @@ export const fetchUser = (id) => API.get(`/users/get`, {
     data: {
         id: id,
     }
-}) 
-export const createUser =(user) => API.post(`/users/create`, {
+})
+export const createUser = (user) => API.post(`/users/create`, {
     name: user.name,
     username: user.username,
     email: user.email,
@@ -272,7 +267,7 @@ export const createUser =(user) => API.post(`/users/create`, {
     phone: user.phone,
     address: user.address,
 })
-export const updateUser = (id,name, username, email, password, phone, address) => API.get(`/users/update`, {
+export const updateUser = (id, name, username, email, password, phone, address) => API.get(`/users/update`, {
     data: {
         name: name,
         username: username,
@@ -294,13 +289,13 @@ export const fetchAppliedUser = (id) => API.get(`/applied/get`, {
     data: {
         id: id,
     }
-}) 
+})
 export const fetchJobbyAppliedUser = (job) => API.get(`/applied/job`, {
     data: {
         job: job,
     }
-}) 
-export const createAppliedUser =(appliedUser) => API.post(`/applied/create`, {
+})
+export const createAppliedUser = (appliedUser) => API.post(`/applied/create`, {
     user: appliedUser.user,
     date: appliedUser.date,
     proposal: appliedUser.proposal,

@@ -3,10 +3,12 @@ import PortalLayout from '../../portalLayout/PortalLayout'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { getCompany, updateCompany } from '../../store/actions/companyActions';
 import { useDispatch, useSelector } from 'react-redux';
+import { AllCountries } from '../../store/actions/countryActions';
+import { AllCities } from '../../store/actions/cityActions';
 
 const CompanyEdit = () => {
 
-  const [companyData, setCompanyData] = useState({city: '', country: '', email: '', headquater: '', name: '', phone: '', size: '', type: ''})
+  const [companyData, setCompanyData] = useState({city: '', country: '', email: '', password: '', headquater: '', name: '', phone: '', size: '', type: ''})
 
   const dispatch = useDispatch()
   const navigate = useNavigate()
@@ -27,7 +29,7 @@ const CompanyEdit = () => {
   useEffect(() => {
     if(company){
       setCompanyData({city: company?.city, country: company?.country, email: company?.email, headquater: company?.headquater, name: company?.name, phone: company?.phone, size: company?.size, type: company?.type})
-      console.log(companyData)
+      // console.log(companyData)
     }
   }, [company])
 
@@ -36,9 +38,23 @@ const CompanyEdit = () => {
   }
 
   const handleSubmit = () => {
-    dispatch(updateCompany())
+    dispatch(updateCompany(id, companyData))
     navigate('/companies')
   }
+  console.log(companyData)
+
+  const countries = useSelector(state => state.country.countries)
+
+  useEffect(() => {
+    dispatch(AllCountries())
+  }, [dispatch])
+
+  const cities = useSelector(state => state.city.cities)
+
+  useEffect(() => {
+    dispatch(AllCities())
+  }, [dispatch])
+
 
   return (
   <PortalLayout>
@@ -54,7 +70,7 @@ const CompanyEdit = () => {
         </div>
 
         <div className='grid grid-cols-2 gap-10 mt-2'>
-          <div className="-mx-3 mt-[-1.2rem] mb-6">
+          <div className="-mx-3 mt-[-1.2rem]">
             <div className="w-[100%] px-3 mb-6 md:mb-0">
               <label className="block  tracking-wide text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4" for="grid-first-name">
                 Email
@@ -78,10 +94,12 @@ const CompanyEdit = () => {
               <label className="block text-left tracking-wide text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4" for="grid-first-name">
                 Country
               </label>
-              <select value={companyData.country} onChange={ClickInput}  name='country' class="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" id="grid-state">
-                <option>Select Country</option>
-               
-                  <option hidden disabled selected >Enter Your Country</option>
+              <select  value={companyData.country} onChange={ClickInput}  name='country' class="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" id="grid-state">
+                {/* <option>Select Country</option> */}
+                {countries?.map((value) => {
+                  return <option value={value.id}>{value.name}</option>
+                })}
+                  {/* <option hidden disabled selected >Enter Your Country</option> */}
                
 
               </select>
@@ -90,9 +108,12 @@ const CompanyEdit = () => {
               <label className="block text-left tracking-wide text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4" for="grid-first-name">
                 City
               </label>
-              <select value={companyData.city} onChange={ClickInput}  name='city' class="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" id="grid-state">
-                <option>Select City</option>
-                <option hidden disabled selected >Enter Your City</option>
+              <select value={companyData.city}  onChange={ClickInput}  name='city' class="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" id="grid-state">
+                {/* <option >Select City</option> */}
+                {cities?.map((value) => {
+                  return <option value={value.id}>{value.name}</option>
+                })}
+                {/* <option hidden disabled selected >Enter Your City</option> */}
 
               </select>
           </div>

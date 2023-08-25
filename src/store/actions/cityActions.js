@@ -17,6 +17,7 @@ export const AllCities = () => async (dispatch) => {
 export const getCity = (id) => async (dispatch) => {
     try{
         const { data: { data } } = await api.fetchCity(id)
+        console.log(id)
         dispatch({ type: GET_CITY, payload: data})
     } catch(error){
         console.log(error)
@@ -45,7 +46,8 @@ export const createCity = (city) => async (disptach) =>{
 
 export const updateCity = (id , city) => async (dispatch) => {
     try{
-        const {data: {data} } = await api.updateCity(id, city)
+        const { data } = await api.updateCity(city.name, city.country, city.description, id)
+        console.log(data)
         dispatch({ type: UPDATE_CITY, payload: data})
     }catch(error){
         console.log(error)

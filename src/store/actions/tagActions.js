@@ -16,7 +16,7 @@ export const AllTags = () => async (dispatch) => {
 
 export const getTag = (id) => async (dispatch) => {
     try{
-        const { data } = await api.fetchTag(id)
+        const { data: { data } } = await api.fetchTag(id)
         dispatch({ type: GET_TAG, payload: data})
     } catch(error){
         console.log(error)
@@ -34,7 +34,7 @@ export const createTag = (tag) => async (disptach) =>{
 
 export const updateTag = (id , tag) => async (dispatch) => {
     try{
-        const {data: {data} } = await api.updateTag(id,tag)
+        const { data } = await api.updateTag( id, tag.name)
         dispatch({ type: UPDATE_TAG, payload: data})
     }catch(error){
         console.log(error)

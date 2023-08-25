@@ -75,6 +75,15 @@ const CompaniesForm = () => {
 
         </div>
 
+        <div className="-mx-3 mt-[-1.2rem] mb-6">
+          <div className="w-[100%] px-3 mb-6 md:mb-0 mt-5">
+            <label className="block  tracking-wide text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4" for="grid-first-name">
+              Password
+            </label>
+            <input type="password" name="password" id="floating_email" onChange={ClickInput} className="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="Enter Company Name" required />
+          </div>
+        </div>
+
         <div class="grid grid-cols-2 gap-10 mt-[-12px]">
           <div class="md:w-[100%] ">
               <label className="block text-left tracking-wide text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4" for="grid-first-name">

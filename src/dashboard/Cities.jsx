@@ -29,9 +29,9 @@ const Cities = () => {
 
 
 
-  useEffect(() => {
-    console.log(cities)
-  }, [cities])
+  // useEffect(() => {
+  //   console.log(cities)
+  // }, [cities])
 
   useEffect(() => {
     if (cities !== null || cities !== undefined || cities.length !== 0){

@@ -22,9 +22,10 @@ const CountryEdit = () => {
   }, [dispatch])
 
   useEffect(() => {
+    console.log(country)
     if (country) {
       setCountryData({ name: country?.name, flag: country?.flag, description: country?.description })
-      console.log(countryData)
+      // console.log(countryData)
     }
   }, [country])
 
