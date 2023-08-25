@@ -14,7 +14,7 @@ export const AllCategories = () => async (dispatch) => {
 
 export const getCategory = (id) => async (dispatch) => {
     try{
-        const { data } = await api.fetchCategory(id)
+        const { data: { data } } = await api.fetchCategory(id)
         dispatch({ type: GET_CATEGORY, payload: data})
     } catch(error){
         console.log(error)
@@ -30,9 +30,10 @@ export const createCategory = (category) => async (disptach) =>{
     }
 }
 
-export const updateCategory = (id , category) => async (dispatch) => {
+export const updateCategory = (id, category) => async (dispatch) => {
     try{
-        const {data: {data} } = await api.updateCategory(id,category)
+        const { data } = await api.updateCategory(category.name, category.image, category.description, id)
+        console.log(data)
         dispatch({ type: UPDATE_CATEGORY, payload: data})
     }catch(error){
         console.log(error)

@@ -1,7 +1,27 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import PortalLayout from '../../portalLayout/PortalLayout'
+import { useSelector } from 'react-redux'
 
-const TagsEdit = () => {
+const TagsEdit = (currentId) => {
+  const [tagsData, setTagsData] = useState({ name: '' })
+
+  const tags = useSelector((state) => currentId ? state.tag.tags.find((c) => c.id === currentId): null)
+      
+  useEffect(() => {
+    console.log(tags)
+  }, [tags])
+
+  useEffect(() => {
+    setTagsData(tags)
+  }, [tags])
+
+
+
+  console.log(tagsData)
+
+
+
+
   return (
   <PortalLayout>
        <h1 className='text-center bg-gradient-to-r from-sky-600 to-cyan-400  text-white font-[600] mb-5 py-4 rounded-xl shadow-md shadow-blue-300 text-[1.5rem]'>EDIT TAG</h1>

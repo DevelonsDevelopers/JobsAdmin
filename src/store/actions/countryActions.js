@@ -15,7 +15,7 @@ export const AllCountries =()=> async(dispatch) => {
 
 export const getCountry = (id) => async (dispatch) => {
     try{
-        const { data } = await api.fetchCountry(id);
+        const { data: { data } } = await api.fetchCountry(id);
         dispatch ({ type: GET_COUNTRY, payload: data})
     } catch(error){
         console.log(error)
@@ -33,7 +33,8 @@ export const createCountry = (country) => async (disptach) => {
 
 export const updateCountry = (id , country) => async (dispatch) => {
     try{
-        const { data: {data}} = await api.updateCountry(id , country)
+        const { data } = await api.updateCountry(id , country.name, country.flag, country.description)
+        console.log(data)
         dispatch({ type: UPDATE_COUNTRY, payload: data})
     }catch(error){
         console.log(error)

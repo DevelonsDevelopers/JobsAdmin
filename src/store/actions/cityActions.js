@@ -16,16 +16,16 @@ export const AllCities = () => async (dispatch) => {
 
 export const getCity = (id) => async (dispatch) => {
     try{
-        const { data } = await api.fetchCity(id)
+        const { data: { data } } = await api.fetchCity(id)
         dispatch({ type: GET_CITY, payload: data})
     } catch(error){
         console.log(error)
     }
 }
 
-export const getCountrybyCity = (country) => async (dispatch) => {
+export const getCitybyCountry = (country) => async (dispatch) => {
     try{
-        const { data } = await api.fetchCountrybyCity(country)
+        const { data } = await api.fetchCitybyCountry(country)
         dispatch({ type: GETCOUNTRY_CITY, payload: data})
     } catch(error){
         console.log(error)
@@ -34,7 +34,9 @@ export const getCountrybyCity = (country) => async (dispatch) => {
 
 export const createCity = (city) => async (disptach) =>{
     try{
+        console.log(city)
         const {data: {data}} = await api.createCity(city)
+        console.log(city)
         disptach({ type: CREATE_CITY, payload: data})
     }catch(error){
         console.log(error)

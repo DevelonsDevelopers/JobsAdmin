@@ -1,7 +1,34 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import PortalLayout from '../../portalLayout/PortalLayout'
+import { useLocation } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
+import { getCity } from '../../store/actions/cityActions'
 
 const CitiesEdit = () => {
+
+  const [cityData, setCityData] = useState({name: '', country: '', description: ''})
+
+  const dispatch = useDispatch()
+
+  const params = useLocation()
+  const id = params.state.ID
+  console.log(id)
+
+  const city = useSelector(state => state.city.city)
+
+  useEffect(() => {
+    // console.log(city)
+    if(city){
+      setCityData({ name: city?.name, country: city?.country, description: city?.description})
+    }
+}, [city])
+console.log(cityData)
+
+
+  useEffect(() => {
+    dispatch(getCity(id))
+  }, [dispatch])
+
   return (
    <PortalLayout>
         <h1 className='text-center bg-gradient-to-r from-sky-600 to-cyan-400  text-white font-[600] mb-5 py-4 rounded-xl shadow-md shadow-blue-300 text-[1.5rem]'>EDIT CITY</h1>

@@ -61,14 +61,12 @@ const Categories = () => {
   }
 
   const handleEdit = (id) => {
-  router("/categories/edit",)
-  // { state: {data: value.id}})
+  router("/categories/edit",{ state: {ID: id}})
+  // 
   }
 
   return (
     <PortalLayout>
-
-
       <h1 className='text-[3.125rem] font-[800] text-[#000] text-center max-md:text-[2rem]'>Categories</h1>
 
       <div className="w-[100%] max-md:h-full  max-md:px-2 flex flex-col justify-center bg-gray-100">
@@ -127,12 +125,7 @@ const Categories = () => {
                 <td className="py-[2%] w-[2%] max-md:text-[.7rem]  border-r-[1px] border-t-[1px]   text-center">
                   <div className="flex item-center justify-center gap-3">
 
-                    {/* <div className="w-4 mr-2 transform hover:text-blue-500  hover:scale-110" onClick={() => router("/categories/edit", { state: {data: value.id}})}>
-                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="blue">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
-                      </svg>
-                    </div> */}
-                    <div className="w-4 mr-2 transform hover:text-blue-500  hover:scale-110" onClick={handleEdit}>
+                    <div className="w-4 mr-2 transform hover:text-blue-500  hover:scale-110" onClick={() => handleEdit(value.id)}>
                       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="blue">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
                       </svg>
