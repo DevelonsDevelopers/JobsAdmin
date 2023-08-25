@@ -14,7 +14,7 @@ const city = (state = { isLoading: true, success: false, error: false, cities: [
         case GET_CITY:
             return { ...state, city: action.payload }
         case GETCOUNTRY_CITY:
-            return {...state, cities: action.payload}
+            return {...state, citybycountry: action.payload}
         case CREATE_CITY:
             return { ...state, cities: [...state.cities, action.payload] }
         case UPDATE_CITY:

@@ -26,7 +26,8 @@ export const getCity = (id) => async (dispatch) => {
 
 export const getCitybyCountry = (country) => async (dispatch) => {
     try{
-        const { data } = await api.fetchCitybyCountry(country)
+        const { data: { data } } = await api.fetchCitybyCountry(country)
+        console.log(data)
         dispatch({ type: GETCOUNTRY_CITY, payload: data})
     } catch(error){
         console.log(error)

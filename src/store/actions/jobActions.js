@@ -16,7 +16,8 @@ export const AllJobs = () => async (dispatch) => {
 
 export const getJob = (id) => async (dispatch) => {
     try{
-        const { data } = await api.fetchJob(id)
+        const { data: { data } } = await api.fetchJob(id)
+        // console.log(id)
         dispatch({ type: GET_JOB, payload: data})
     }catch(error) {
         console.log(error)
@@ -60,7 +61,7 @@ export const getCompanybyJob = (company) => async (dispatch) => {
 
 export const createJob = (job) => async (disptach) =>{
     try{
-        const {data: {data}} = await api.createJob(job)
+        const { data: { data } } = await api.createJob(job)
         disptach({ type: CREATE_JOB, payload: data})
     }catch(error){
         console.log(error)
@@ -69,7 +70,8 @@ export const createJob = (job) => async (disptach) =>{
 
 export const updateJob = (id , job) => async (dispatch) => {
     try{
-        const {data: {data} } = await api.updateJob(id, job)
+        const { data } = await api.updateJob(id, job.category, job.country, job.city, job.title, job.company, job.designation, job.salary, job.description, job.link, job.type, job.workdays, job.worktime, job.address, job.experience, job.qualification, job.skills, job.date, job.tags)
+        console.log(id)
         dispatch({ type: UPDATE_JOB, payload: data})
     }catch(error){
         console.log(error)
