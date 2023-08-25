@@ -41,7 +41,7 @@ export const createCountry =(country) => API.post(`/countries/create`, {
     description: country.description,
     flag: country.flag,
 })
-export const updateCountry = (name, description,flag, id) => API.put(`/countries/update`, 
+export const updateCountry = (id,name, description,flag) => API.put(`/countries/update`, 
 {
         name: name,
         description: description,
