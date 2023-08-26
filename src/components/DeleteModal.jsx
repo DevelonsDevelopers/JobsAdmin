@@ -22,7 +22,7 @@ const DeleteModal = ({open, setOpen, ID , deleteFunction}) => {
                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
                 </svg>
                 <h3 className="mb-5 text-lg font-normal text-gray-500 :text-gray-400">Are you sure you want to delete ?</h3>
-                <button onClick={()  => deleteFunction(ID)} data-modal-hide="popup-modal" type="button" className="  bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 text-white font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center mr-2">
+                <button onClick={()  => deleteFunction(ID)} data-modal-hide="popup-modal" type="button" className="  bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 text-white font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center mr-2 border-[2px] border-red-600">
                     Yes, I'm sure
                 </button>
                 <button  onClick={handleClose} data-modal-hide="popup-modal" type="button" className="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border-[2px] border-gray-400 text-sm font-[600] px-5 py-2.5 hover:text-gray-900 focus:z-10 :bg-gray-700 :text-gray-300 :border-gray-500 :hover:  :hover:bg-gray-600 :focus:ring-gray-600">No, cancel</button>
