@@ -43,7 +43,7 @@ const Reports = () => {
 
   //pagination=============================
   const [currentPage, setCurrentPage] = useState(1)
-  const numbersPerPage = 5;
+  const numbersPerPage = 10;
   const [records, setRecords] = useState()
   const [nPage, setPage] = useState()
   const [Numbers, setNumbers] = useState()
@@ -134,13 +134,13 @@ const Reports = () => {
                   <span className="font-bold max-md:text-[.7rem] text-[13px] font-[300] ">{value.date}</span>
                 </td>
                 <td className="py-[2%] w-[3%]   border-r-[1px] border-t-[1px]   text-center">
-                  <span className="font-bold max-md:text-[.7rem] text-[13px] font-[300] ">{value.job}</span>
+                  <span className="font-bold max-md:text-[.7rem] text-[13px] font-[300] ">{value.name}</span>
                 </td>
                 <td className="py-[2%] w-[3%]   border-r-[1px] border-t-[1px]   text-center">
-                  <span className="font-bold max-md:text-[.7rem] text-[13px] font-[300] ">{value.view}</span>
+                  <span className="font-bold max-md:text-[.7rem] text-[13px] font-[300] ">{value.feedback}</span>
                 </td>
                 <td className="py-[2%] w-[3%]   border-r-[1px] border-t-[1px]   text-center">
-                  <span className="font-bold max-md:text-[.7rem] text-[13px] font-[300] ">{value.note}</span>
+                  <span className="font-bold max-md:text-[.7rem] text-[13px] font-[300] ">{value.salary}</span>
                 </td>
 
 

@@ -68,7 +68,7 @@ const Categories = () => {
 
   	//pagination=============================
 	const [currentPage, setCurrentPage] = useState(1)
-  const numbersPerPage = 5;
+  const numbersPerPage = 10;
   const [records, setRecords] = useState()
   const [nPage, setPage] = useState()
   const [Numbers, setNumbers] = useState()
@@ -166,9 +166,9 @@ if (categories?.length === 0) {
                 <td className="py-[1%] w-[2%]  max-md:text-[.7rem]  border-r-[1px] border-t-[1px]   text-center">
                   <span className='font-bold text-[13px] font-[350]'>{value.description}</span>
                 </td>
-                <td className="py-[1%] w-[2%]  max-md:text-[.7rem]  border-r-[1px] border-t-[1px]   text-center">
+                {/* <td className="py-[1%] w-[2%]  max-md:text-[.7rem]  border-r-[1px] border-t-[1px]   text-center">
                   <span className='font-bold text-[13px] font-[350]'>{value.image}</span>
-                </td>
+                </td> */}
 
                 <td className="py-[2%] max-md:text-[.7rem] w-[2%] border-r-[1px] border-t-[1px]   text-center">
                   <span className="bg-green-600 text-white font-[500] py-[3px] px-[10px] max-md:w-[8%] rounded-xl text-[0.6rem] max-md:py-1 max-md:px-2 max-md:text-[0.6rem] cursor-pointer hover:bg-green-700 ">{value.status}</span>
