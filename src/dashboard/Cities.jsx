@@ -150,7 +150,7 @@ if (cities?.length===0) {
                   <span className=" max-md:text-[.7rem] text-[13px] font-[350]">{value.name}</span>
                 </td>
                 <td className="py-[1%] w-[2%]  max-md:text-[.7rem]  border-r-[1px] border-t-[1px]   text-center">
-                  <span className=' text-[13px] font-[350]'>{value.description}</span>
+                  <span className=' text-[13px] font-[350]'>{value.jobs}</span>
                 </td>
 
                 <td className="py-[2%] max-md:text-[.7rem] w-[2%] border-r-[1px] border-t-[1px]   text-center">
