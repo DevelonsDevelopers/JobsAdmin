@@ -63,7 +63,7 @@ console.log(search)
   }
 // pagination===============
 const [currentPage, setCurrentPage] = useState(1)
-const numbersPerPage = 5;
+const numbersPerPage = 10;
 const [records, setRecords] = useState()
 const [nPage, setPage] = useState()
 const [Numbers, setNumbers] = useState()

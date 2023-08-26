@@ -44,7 +44,7 @@ const AppliedUsers = () => {
 
   //pagination=============================
   const [currentPage, setCurrentPage] = useState(1)
-  const numbersPerPage = 5;
+  const numbersPerPage = 10;
   const [records, setRecords] = useState()
   const [nPage, setPage] = useState()
   const [Numbers, setNumbers] = useState()
@@ -77,9 +77,9 @@ const AppliedUsers = () => {
 const [nodata,setNodata] = useState(false)
 useEffect(()=>{
 if (appliedUsers?.length===0) {
-  setNodata(false)
-} else {
   setNodata(true)
+} else {
+  setNodata(false)
   
 }
 },[appliedUsers])

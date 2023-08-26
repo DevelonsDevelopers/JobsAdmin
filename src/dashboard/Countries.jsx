@@ -67,7 +67,7 @@ const Countries = () => {
 
 // pagination=======================
 const [currentPage, setCurrentPage] = useState(1)
-const numbersPerPage = 4;
+const numbersPerPage = 10;
 const [records, setRecords] = useState()
 const [nPage, setPage] = useState()
 const [Numbers, setNumbers] = useState()
