@@ -45,6 +45,10 @@ console.log(search)
 
 
   const seekers = useSelector(state => state.seeker.seekers)
+
+  // useEffect(() => [
+  //   console.log(seekers)
+  // ], [seekers])
   const loading = useSelector(state => state.seeker.isLoading)
 
   useEffect(() => {
