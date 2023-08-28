@@ -1,31 +1,67 @@
 import { Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Modal, Typography } from '@mui/material'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { getPlan } from '../../store/actions/planActions'
 
-const PlansView = ({ open, setOpen, title, data }) => {
+const PlansView = ({ open, setOpen, title, data, ID }) => {
+
+  const dispatch = useDispatch()
+
+  const plan = useSelector(state => state.plan.plan)
+  useEffect(() => {
+    console.log(plan)
+  }, [plan])
+
+  useEffect(() => {
+    dispatch(getPlan(ID))
+  }, [dispatch, ID])
 
   const handleClose = () => {
     setOpen(!open)
   }
 
   return (
-    <Dialog className='w-[100%] p-[5%] rounded-lg' onClose={handleClose} aria-labelledby="customized-dialog-title" PaperProps={{ style: { borderRadius: 20, padding: 15 } }} open={open}>
-      <DialogTitle id="customized-dialog-title" onClose={handleClose} className='!m-auto'>
-        {title}
+    <Dialog className='!h-[full] rounded-lg' onClose={handleClose} aria-labelledby="customized-dialog-title" PaperProps={{ style: { borderRadius: 20, paddingTop: 15, paddingBottom: 15, width: 500, } }} open={open}>
+      <DialogTitle id="customized-dialog-title" onClose={handleClose} className='!m-auto !mt-[-1rem] !font-[700] !text-[2.2rem] '>
+        {plan?.name}
       </DialogTitle>
-   <hr />
-      <DialogContent className='my-[4%] mx-[10%] items-center'>
-        <p>  City Name:  </p>
-        <hr />
-        <p >{data?.name}</p>
-        <DialogContentText>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab, nulla.</DialogContentText>
-        <p className='pt-4'> Total Jobs Count: </p>
-        <hr />
-        <p >{data?.count}</p>
-        <DialogContentText>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab, nulla.</DialogContentText>
+   <div className=' border-[1px] my-[0.5rem] py-[0.5rem] px-[1.5rem] !bg-gray-100 border-gray-300' >
+      <DialogContent className=' items-center w-[100%] '>
+        <div className='flex justify-between '>
+        <span className='!font-[800] text-[15px]'> Name:  </span>
+        <span className='font-[600] ml-auto text-gray-600 text-[13px] ' >{plan?.name}</span>
+        </div>
+        <hr className='mt-2 mb-2' />
+        <div className='flex justify-between '>
+        <span className='!font-[800] text-[15px]'> Account Type:  </span>
+        <span className='font-[600] ml-auto text-gray-600 text-[13px] ' >{plan?.accounttype}</span>
+        </div>
+        <hr className='mt-2 mb-2' />
+        <div className='flex justify-between '>
+        <span className='!font-[800] text-[15px]'> Amount:  </span>
+        <span className='font-[600] ml-auto text-gray-600 text-[13px] ' >{plan?.amount}</span>
+        </div>
+        <hr className='mt-2 mb-2' />
+        <div className='flex justify-between '>
+        <span className='!font-[800] text-[15px]'> Type:  </span>
+        <span className='font-[600] ml-auto text-gray-600 text-[13px] ' >{plan?.type}</span>
+        </div>
+        <hr className='mt-2 mb-2' />
+        <div className='flex justify-between '>
+        <span className='!font-[800] text-[15px]'> Purpose:  </span>
+        <span className='font-[600] ml-auto text-gray-600 text-[13px] ' >{plan?.purpose}</span>
+        </div>
+        <hr className='mt-2 mb-2' />
+        <div className='flex justify-between '>
+        <span className='!font-[800] text-[15px]'> Timeperiod:  </span>
+        <span className='font-[600] ml-auto text-gray-600 text-[13px] ' >{plan?.timeperiod}</span>
+        </div>
+        <hr className='mt-2 mb-2' />
+        
       </DialogContent>
-      <hr />
-        <div className='!m-auto pb-5 pt-5 '>
-          <button variant="text" className='text-white bg-blue-500 p-2 rounded-xl ' onClick={handleClose}>
+      </div> 
+        <div className='!m-auto py-2 '>
+          <button variant="text" className='text-white bg-blue-500 px-8 py-2 rounded-xl !mb-[-3rem] font' onClick={handleClose}>
             Cancel
           </button>
 

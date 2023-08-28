@@ -1,4 +1,4 @@
-import { ALL_APPLIEDUSERS, ERROR, LOADING, SUCCESS } from "../../Utils/Constant"
+import { ALL_APPLIEDUSERS, ERROR, GET_APPLIEDUSER, LOADING, SUCCESS } from "../../Utils/Constant"
 
 
 const appliedUser = (state = {isLoading: true, success: false, error: false, appliedUsers: []}, action) =>{
@@ -11,6 +11,8 @@ const appliedUser = (state = {isLoading: true, success: false, error: false, app
             return {...state, isLoading: false, success: false, error: true}
         case ALL_APPLIEDUSERS:
             return {...state, appliedUsers: action.payload.appliedUsers}
+        case GET_APPLIEDUSER:
+            return {...state, appliedUser: action.payload}
         default:
             return state;
 

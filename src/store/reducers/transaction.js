@@ -1,4 +1,4 @@
-import {  ALL_TRANSACTIONS, ERROR, LOADING, SUCCESS } from "../../Utils/Constant"
+import {  ALL_TRANSACTIONS, ERROR, GET_TRANSACTION, LOADING, SUCCESS } from "../../Utils/Constant"
 
 
 const transaction = (state = {isLoading: true, success: false, error: false, transactions: []}, action) =>{
@@ -11,6 +11,8 @@ const transaction = (state = {isLoading: true, success: false, error: false, tra
             return {...state, isLoading: false, success: false, error: true}
         case ALL_TRANSACTIONS:
             return {...state, transactions: action.payload.transactions}
+        case GET_TRANSACTION:
+            return {...state, transaction: action.payload}
         default:
             return state;
 

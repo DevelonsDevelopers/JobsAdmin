@@ -15,7 +15,7 @@ export const AllAppliedUsers = () => async(dispatch) => {
 
 export const getAppliedUser = (id) => async (dispatch) => {
     try{
-        const { data } = await api.fetchCategory(id)
+        const { data: {data} } = await api.fetchAppliedUser(id)
         dispatch({ type: GET_APPLIEDUSER, payload: data})
     } catch(error){
         console.log(error)

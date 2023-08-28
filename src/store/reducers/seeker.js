@@ -1,4 +1,4 @@
-import { ALL_JOBS, ALL_PLANS, ALL_SEEKERS, ERROR, LOADING, SUCCESS } from "../../Utils/Constant"
+import { ALL_JOBS, ALL_PLANS, ALL_SEEKERS, ERROR, GET_SEEKER, LOADING, SUCCESS } from "../../Utils/Constant"
 
 
 const seeker = (state = {isLoading: true, success: false, error: false, seekers: []}, action) =>{
@@ -11,6 +11,8 @@ const seeker = (state = {isLoading: true, success: false, error: false, seekers:
             return {...state, isLoading: false, success: false, error: true}
         case ALL_SEEKERS:
             return {...state, seekers: action.payload.seekers}
+        case GET_SEEKER:
+            return {...state, seeker: action.payload}
         default:
             return state;
 

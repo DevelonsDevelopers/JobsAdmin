@@ -52,9 +52,16 @@ export const CREATE_PLAN = "CREATE_PLAN";
 
 // REPORTS:=====
 export const ALL_REPORTS = "ALL_REPORTS";
-
+export const GET_REPORT = "GET_REPORT";
+export const UPDATE_REPORT = "UPDATE_REPORT";
+export const DELETE_REPORT = "DELETE_REPORT";
+export const CREATE_REPORT = "CREATE_REPORT";
 // SEEKERS:=====
 export const ALL_SEEKERS = "ALL_SEEKERS";
+export const GET_SEEKER = "GET_SEEKER";
+export const UPDATE_SEEKER = "UPDATE_SEEKER";
+export const DELETE_SEEKER = "DELETE_SEEKER";
+export const CREATE_SEEKER = "CREATE_SEEKER";
 
 // TAGS:=====
 export const ALL_TAGS = "ALL_TAGS";
@@ -66,6 +73,10 @@ export const CREATE_TAG = "CREATE_TAG";
 
 // TRANSACTIONS:=====
 export const ALL_TRANSACTIONS = "ALL_TRANSACTIONS";
+export const GET_TRANSACTION = "GET_TRANSACTION";
+export const UPDATE_TRANSACTION = "UPDATE_TRANSACTION";
+export const DELETE_TRANSACTION = "DELETE_TRANSACTION";
+export const CREATE_TRANSACTION = "CREATE_TRANSACTION";
 
 // USERS:=====
 export const ALL_USERS = "ALL_USERS";

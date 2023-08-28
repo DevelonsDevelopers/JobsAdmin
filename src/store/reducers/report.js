@@ -1,4 +1,4 @@
-import { ALL_JOBS, ALL_PLANS, ALL_REPORTS, ERROR, LOADING, SUCCESS } from "../../Utils/Constant"
+import { ALL_JOBS, ALL_PLANS, ALL_REPORTS, ERROR, GET_REPORT, LOADING, SUCCESS } from "../../Utils/Constant"
 
 
 const report = (state = {isLoading: true, success: false, error: false, reports: []}, action) =>{
@@ -11,6 +11,8 @@ const report = (state = {isLoading: true, success: false, error: false, reports:
             return {...state, isLoading: false, success: false, error: true}
         case ALL_REPORTS:
             return {...state, reports: action.payload.reports}
+        case GET_REPORT:
+            return {...state, report: action.payload}
         default:
             return state;
 

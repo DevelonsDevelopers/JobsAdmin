@@ -227,8 +227,16 @@ export const deletePlan = (id) => API.delete(`/plans/delete`, {
 })
 // Reports
 export const fetchAllReports = () => API.get(`/reports/all`)
+export const fetchReport = (id) => API.post(`/reports/get`,
+    {
+        id: id,
+    })
 // Seekers
 export const fetchAllSeekers = () => API.get(`/seekers/all`)
+export const fetchSeeker = (id) => API.post(`/seekers/get`,
+    {
+        id: id,
+    })
 //Tags
 export const fetchAllTags = () => API.get(`/tags/all`)
 export const fetchTag = (id) => API.post(`/tags/get`, {
@@ -248,6 +256,10 @@ export const deleteTag = (id) => API.delete(`/tags/delete`, {
 })
 // Transactions
 export const fetchAllTransactions = () => API.get(`/transactions/all`)
+export const fetchTransaction = (id) => API.post(`/transactions/get`,
+    {
+        id: id,
+    })
 // Users
 export const fetchAllUsers = () => API.get(`/users/all`)
 export const fetchUser = (id) => API.post(`/users/get`,
@@ -279,10 +291,9 @@ export const deleteUser = (id) => API.delete(`/users/delete`, {
 })
 // AppliedUsers
 export const fetchAllAppliedUsers = () => API.get(`/applied/all`)
-export const fetchAppliedUser = (id) => API.get(`/applied/get`, {
-    data: {
+export const fetchAppliedUser = (id) => API.post(`/applied/get`,
+{
         id: id,
-    }
 })
 export const fetchJobbyAppliedUser = (job) => API.get(`/applied/job`, {
     data: {
