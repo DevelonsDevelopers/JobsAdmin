@@ -2,7 +2,7 @@ import axios from "axios"
 
 
 
-const API = axios.create({ baseURL: 'http://192.168.1.16:5001' })
+const API = axios.create({ baseURL: 'http://192.168.1.25:5001' })
 
 
 //Categories

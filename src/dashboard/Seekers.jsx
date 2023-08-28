@@ -45,6 +45,10 @@ console.log(search)
 
 
   const seekers = useSelector(state => state.seeker.seekers)
+
+  // useEffect(() => [
+  //   console.log(seekers)
+  // ], [seekers])
   const loading = useSelector(state => state.seeker.isLoading)
 
   useEffect(() => {
@@ -141,11 +145,11 @@ if (seekers?.lenght===0) {
                 </td>
 
                 <td className="py-[2%] max-md:text-[.7rem] w-[2%] border-r-[1px] border-t-[1px]   text-center">
-                  <span className="bg-green-600 text-white font-[500] py-[3px] px-[10px] max-md:w-[8%] rounded-xl text-[0.6rem] max-md:py-1 max-md:px-2 max-md:text-[0.6rem] cursor-pointer hover:bg-green-700 ">{value.status}</span>
+                  <span className="bg-green-600 text-white font-[500] py-[3px] px-[10px] max-md:w-[8%] rounded-xl text-[0.6rem] max-md:py-1 max-md:px-2 max-md:text-[0.6rem] cursor-pointer hover:bg-green-700">{value.status}</span>
                 </td>
 
 
-                <td className="py-[2%] w-[1%] max-md:text-[.7rem]  border-t-[1px]   ">
+                <td className="py-[2%] w-[1%] max-md:text-[.7rem]  border-t-[1px]">
                   <div className="w-4 m-auto transform hover:text-blue-500  hover:scale-110 " onClick={() => handleClick(value)}>   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" >
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
