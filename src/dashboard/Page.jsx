@@ -62,6 +62,8 @@ const form01 = [
   { id: '01', date: '11.02.23', amount: '200' },
   { id: '01', date: '11.02.23', amount: '200' },
   { id: '01', date: '11.02.23', amount: '200' },
+  { id: '01', date: '11.02.23', amount: '200' },
+  { id: '01', date: '11.02.23', amount: '200' },
 
 ]
 const form02 = [
@@ -139,7 +141,7 @@ const Dashboard = () => {
 
 
 
-          <div className='flex max-md:flex-col  max-md:grid-cols-1 gap-10 items-center'>
+          <div className='flex max-md:flex-col  max-md:grid-cols-1 gap-8 items-center'>
             <div className='mt-10 w-[70%] max-md:w-[100%] py-2 bg-white border-2  rounded-xl shadow-xl shadow-gray-300 '>
               <ResponsiveContainer width="100%" height={350}>
                 <AreaChart data={data03}
@@ -155,7 +157,7 @@ const Dashboard = () => {
               </ResponsiveContainer>
             </div>
 
-            <div className=" border-2 shadow-xl  max-md:w-[100%] max-md:mb-[30px] p-5 bg-white rounded-xl shadow-xl shadow-gray-300 mt-5 h-[300px] ">
+            <div className=" border-2 shadow-xl  max-md:w-[100%] max-md:mb-[30px] p-5 bg-white rounded-xl shadow-xl shadow-gray-300 mt-10 h-[370px] ">
               <span className=' ml-[1.6rem]  font-[600] text-[1rem]'>Transactions</span>
 
               <table className="w-[100%] mt-3 text-sm text-left text-gray-500 :text-gray-400">
@@ -193,7 +195,7 @@ const Dashboard = () => {
             </div>
           </div>
           <div className='grid  grid-cols-2 max-md:grid-cols-1 gap-10'>
-            <div className=" border-2 shadow-xl  bg-white p-5 rounded-xl shadow-gray-300 md:mt-10 ">
+          <div className=" border-2 shadow-xl bg-white p-5 rounded-xl shadow-gray-300 mt-5 max-md:mt-[-17px] ">
               <span className=' ml-[1.5rem]  font-[600] text-[1rem]'>Applied</span>
               <table className="w-[100%] mt-3 text-sm text-left text-gray-500 :text-gray-400">
                 <thead className="text-xs text-white uppercase bg-[#2994FF] :bg-gray-700 :text-gray-400">
