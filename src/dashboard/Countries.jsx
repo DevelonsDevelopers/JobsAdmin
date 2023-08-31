@@ -4,7 +4,7 @@ import DeleteModal from '../components/DeleteModal';
 import { Link, useNavigate } from 'react-router-dom';
 import CountryView from './view/CountryView';
 import { useDispatch, useSelector } from 'react-redux';
-import { AllCountries, deleteCountry } from '../store/actions/countryActions';
+import { AllCountries, countryStatus, deleteCountry } from '../store/actions/countryActions';
 
 
 
@@ -106,6 +106,17 @@ useEffect(() => {
   router("/countries/edit", { state: {ID: id}})
  }
 
+ const UpdateStatus = (id, status) => {
+  let st = 0;
+  if (status === 1){
+    st = 0;
+  } else {
+    st = 1;
+  }
+  console.log('click')
+  dispatch(countryStatus(id, st))
+}
+
 
 
 
@@ -174,7 +185,7 @@ useEffect(() => {
                 </td>
 
                 <td className="py-[2%] max-md:text-[.7rem] w-[2%] border-r-[1px] border-t-[1px]   text-center">
-                  <span className="bg-green-600 text-white font-[500] py-[3px] px-[10px] max-md:w-[8%] rounded-xl text-[0.6rem] max-md:py-1 max-md:px-2 max-md:text-[0.6rem] cursor-pointer hover:bg-green-700 ">{value.status}</span>
+                  <span onClick={() => UpdateStatus(value.id, value.status)} className={`bg-green-600 text-white font-[500] py-[3px] px-[10px] max-md:w-[8%] rounded-xl text-[0.6rem] max-md:py-1 max-md:px-2 max-md:text-[0.6rem] cursor-pointer ${value.status === 1 ? 'bg-green-500': 'bg-red-500'} `}>{value.status === 1 ? 'Enable' : 'Disable'}</span>
                 </td>
                 <td className="py-[2%] w-[2%] max-md:text-[.7rem]  border-r-[1px] border-t-[1px]   text-center">
                   <div className="flex item-center justify-center gap-3">

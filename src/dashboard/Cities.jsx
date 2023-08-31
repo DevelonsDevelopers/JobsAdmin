@@ -4,7 +4,7 @@ import DeleteModal from '../components/DeleteModal'
 import { Link, useNavigate } from 'react-router-dom'
 import ViewModal from '../components/ViewModal'
 import { useDispatch, useSelector } from 'react-redux'
-import { AllCities, DeleteCity } from '../store/actions/cityActions'
+import { AllCities, DeleteCity, statusCity } from '../store/actions/cityActions'
 import { AllCountries } from '../store/actions/countryActions'
 import CityModal from './view/CitiyView'
 
@@ -31,9 +31,9 @@ const Cities = () => {
 
 
 
-  // useEffect(() => {
-  //   console.log(cities)
-  // }, [cities])
+  useEffect(() => {
+    console.log(cities)
+  }, [cities])
 
   useEffect(() => {
     if (cities !== null || cities !== undefined || cities.length !== 0){
@@ -53,6 +53,17 @@ const Cities = () => {
   const handleEdit = (id) => {
     router("/cities/edit",{ state: {ID: id}})
     // 
+    }
+
+    const UpdateStatus = (id, status) => {
+      let st = 0;
+      if (status === 1){
+        st = 0;
+      } else {
+        st = 1;
+      }
+      console.log('click')
+      dispatch(statusCity(id, st))
     }
 
 	//pagination=============================
@@ -156,7 +167,7 @@ if (cities?.length===0) {
                 </td>
 
                 <td className="py-[2%] max-md:text-[.7rem] w-[2%] border-r-[1px] border-t-[1px]   text-center">
-                  <span className="bg-green-600 text-white font-[500] py-[3px] px-[10px] max-md:w-[8%] rounded-xl text-[0.6rem] max-md:py-1 max-md:px-2 max-md:text-[0.6rem] cursor-pointer hover:bg-green-700 ">{value.status}</span>
+                  <span onClick={() => UpdateStatus(value.id, value.status)} className={`bg-green-600 text-white font-[500] py-[3px] px-[10px] max-md:w-[8%] rounded-xl text-[0.6rem] max-md:py-1 max-md:px-2 max-md:text-[0.6rem] cursor-pointer hover:bg-green-700 ${value.status === 1 ? 'bg-green-500' : 'bg-red-500'}`}>{value.status === 1 ? 'Enable' : 'Disable'}</span>
                 </td>
                 <td className="py-[2%] w-[2%] max-md:text-[.7rem]  border-r-[1px] border-t-[1px]   text-center">
                   <div className="flex item-center justify-center gap-3">

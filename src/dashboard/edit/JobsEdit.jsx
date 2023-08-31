@@ -201,7 +201,7 @@ const JobsEdit = () => {
               </div>
             </div>
             <div className="-mx-3 mt-[-1.2rem] mb-6">
-              <div className="w-[100%] px-3 mb-6 md:mb-0">
+              <div className="w-[100%] px-3 mb-6  :mb-0">
                 <label className="block  tracking-wide text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4" for="grid-first-name">
                   Work Day
                 </label>

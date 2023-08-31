@@ -1,4 +1,4 @@
-import { ALL_COMPANIES, CREATE_COMPANIES, CREATE_COMPANY, DELETE_COMPANIES, DELETE_COMPANY, ERROR, GET_COMPANIES, GET_COMPANY, LOADING, SUCCESS, UPDATE_COMPANIES, UPDATE_COMPANY } from "../../Utils/Constant";
+import { ALL_COMPANIES, COMPANY_STATUS, CREATE_COMPANIES, CREATE_COMPANY, DELETE_COMPANIES, DELETE_COMPANY, ERROR, GET_COMPANIES, GET_COMPANY, LOADING, SUCCESS, UPDATE_COMPANIES, UPDATE_COMPANY } from "../../Utils/Constant";
 
 
 
@@ -18,6 +18,8 @@ const company = (state = {isLoading: true, success: false, error: false , compan
             return {...state, companies: [...state.companies, action.payload] } 
         case UPDATE_COMPANY:
             return {...state, companies: state.companies.map((company) => (company.id === action.payload.id ? action.payload: company))}
+            case COMPANY_STATUS:
+                return { ...state, companies: state.companies.map((company) => (company.id === action.payload.id ? { ...company, status: action.payload.status } : company)) }
         case DELETE_COMPANY:
             return {...state, companies: state.companies.filter((company) => (company.id !== action.payload))}
         default: 

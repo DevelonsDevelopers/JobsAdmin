@@ -4,7 +4,7 @@ import DeleteModal from '../components/DeleteModal';
 import { Link, useNavigate } from 'react-router-dom';
 import UsersView from './view/UsersView';
 import { useDispatch, useSelector } from 'react-redux';
-import { AllUsers, DeleteUser } from '../store/actions/userActions';
+import { AllUsers, DeleteUser, userStatus } from '../store/actions/userActions';
 import UserView from './view/UsersView';
 const users = [
   { id: "01", name: "Jane Doe", email: "jane@gmail.com", phone: '111-222-333', status: "Active", addres: 'Help people interested in this repository understand your project by adding a README.' },
@@ -102,6 +102,17 @@ if (users?.length===0) {
     router("/users/edit", {state: {ID: id}})
   }
 
+  const UpdateStatus = (id, status) => {
+    let st = 0;
+    if (status === 1){
+      st = 0;
+    } else {
+      st = 1;
+    }
+    console.log('click')
+    dispatch(userStatus(id, st))
+  }
+
   return (
     <PortalLayout>
 {loading ? <center> <div class="flex justify-center items-center h-screen">
@@ -168,7 +179,7 @@ if (users?.length===0) {
                   </td>
 
                   <td className="py-[2%] max-md:text-[.7rem] w-[2%] border-r-[1px] border-t-[1px]   text-center">
-                    <span className="bg-green-600 text-white font-[500] py-[3px] px-[10px] max-md:w-[8%] rounded-xl text-[0.6rem] max-md:py-1 max-md:px-2 max-md:text-[0.6rem] cursor-pointer hover:bg-green-700 ">{value.status}</span>
+                    <span onClick={() => UpdateStatus(value.id, value.status)} className={`bg-green-600 text-white font-[500] py-[3px] px-[10px] max-md:w-[8%] rounded-xl text-[0.6rem] max-md:py-1 max-md:px-2 max-md:text-[0.6rem] cursor-pointer ${value.status === 1 ? 'bg-green-500': 'bg-red-500'} `}>{value.status === 1 ? 'Enable': 'Disable'}</span>
                   </td>
                   <td className="py-[2%] w-[2%] max-md:text-[.7rem]  border-r-[1px] border-t-[1px]   text-center">
                     <div className="flex item-center justify-center gap-3">

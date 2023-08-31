@@ -14,11 +14,14 @@ const city = (state = { isLoading: true, success: false, error: false, cities: [
         case GET_CITY:
             return { ...state, city: action.payload }
         case GETCOUNTRY_CITY:
-            return {...state, citybycountry: action.payload}
+            return { ...state, citybycountry: action.payload }
         case CREATE_CITY:
             return { ...state, cities: [...state.cities, action.payload] }
         case UPDATE_CITY:
             return { ...state, cities: state.cities.map((city) => (city.id === action.payload.id ? action.payload : city)) }
+        case UPDATE_CITY:
+            console.log(action.payload)
+            return { ...state, cities: state.cities.map((city) => (city.id === action.payload.id ? { ...city, status: action.payload.status } : city)) }
         case DELETE_CITY:
             return { ...state, cities: state.cities.filter((city) => city.id !== action.payload) }
         default:

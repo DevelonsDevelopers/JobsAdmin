@@ -1,4 +1,4 @@
-import { ALL_JOBS, ALL_PLANS, CREATE_PLAN, DELETE_PLAN, ERROR, GET_PLAN, LOADING, SUCCESS, UPDATE_PLAN } from "../../Utils/Constant"
+import { ALL_JOBS, ALL_PLANS, CREATE_PLAN, DELETE_PLAN, ERROR, GET_PLAN, LOADING, PLANS_STATUS, SUCCESS, UPDATE_PLAN } from "../../Utils/Constant"
 
 
 const plan = (state = { isLoading: true, success: false, error: false, plans: [] }, action) => {
@@ -17,6 +17,8 @@ const plan = (state = { isLoading: true, success: false, error: false, plans: []
             return { ...state, plans: [...state.plans, action.payload] }
         case UPDATE_PLAN:
             return { ...state, plans: state.plans.map((plan) => (plan.id === action.payload.id ? action.payload : plan)) }
+        case PLANS_STATUS:
+                return { ...state, plans: state.plans.map((plan) => (plan.id === action.payload.id ? { ...plan, status: action.payload.status } : plan)) }
         case DELETE_PLAN:
             return { ...state, plans: state.plans.filter((plan) => plan.id !== action.payload)}
         default:

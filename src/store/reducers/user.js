@@ -1,4 +1,4 @@
-import { ALL_USERS, CREATE_USER, DELETE_USER, ERROR, GET_USER, LOADING, SUCCESS, UPDATE_USER } from "../../Utils/Constant"
+import { ALL_USERS, CREATE_USER, DELETE_USER, ERROR, GET_USER, LOADING, SUCCESS, UPDATE_USER, USER_STATUS } from "../../Utils/Constant"
 
 
 const user = (state = { isLoading: true, success: false, error: false, users: [] }, action) => {
@@ -17,6 +17,8 @@ const user = (state = { isLoading: true, success: false, error: false, users: []
             return { ...state, users: [...state.users, action.payload] }
         case UPDATE_USER:
             return { ...state, users: state.users.map((user) => (user.id === action.payload.id ? action.payload : user)) }
+            case USER_STATUS:
+                return { ...state, users: state.users.map((user) => (user.id === action.payload.id ? { ...user, status: action.payload.status } : user)) }
         case DELETE_USER:
             return { ...state, users: state.users.filter((user) => user.id !== action.payload) }
         default:

@@ -6,12 +6,17 @@ import { useNavigate } from 'react-router-dom'
 
 const CategoryForm = () => {
   const [categoryData, setCategoryData] = useState({ name: '', description: '', image: '' })
+  const [image, setImage] = useState('')
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
   const inputClick = (e) => {
     setCategoryData(prev => ({ ...prev, [e.target.name]: e.target.value }))
+    if(e.target.name === image){
+      setImage(e.target.files[0])
+    }
   }
+  console.log(image)
   // console.log(categoryData)
 
 
@@ -57,7 +62,7 @@ const CategoryForm = () => {
                   <p className="mb-2 text-sm text-gray-500 "><span className="font-semibold">Click to upload</span> or drag and drop</p>
                   <p className="text-xs text-gray-500 ">SVG, PNG, JPG or GIF</p>
                 </div>
-                <input id="dropzone-file" type="file" className="hidden" onChange={inputClick} />
+                <input id="dropzone-file" type="file" name='image' className="hidden" onChange={inputClick} />
               </label>
             </div>
 
@@ -65,7 +70,7 @@ const CategoryForm = () => {
 
 
           <div className='flex justify-center'>
-            <input type='submit' onClick={handleSubmit} className='bg-gradient-to-r from-sky-600 to-cyan-400 cursor-pointer text-white font-[500] py-2 px-[2.4rem] mt-4 rounded-lg text-[1rem]' value="Submit" />
+            <input type='submit' onClick={handleSubmit} className='bg-gradient-to-r from-sky-600 to-cyan-400 cursor-pointer text-white font-[500] py-2 px-[2.4rem] mt-4  rounded-lg text-[1rem]' value="Submit" />
           </div>
         </form>
 

@@ -1,4 +1,4 @@
-import { ALL_PLANS, CREATE_PLAN, DELETE_PLAN, GET_PLAN, LOADING, SUCCESS, UPDATE_PLAN } from "../../Utils/Constant";
+import { ALL_PLANS, CREATE_PLAN, DELETE_PLAN, GET_PLAN, LOADING, PLANS_STATUS, SUCCESS, UPDATE_PLAN } from "../../Utils/Constant";
 import * as api from '../../store/index'
 
 
@@ -36,6 +36,16 @@ export const updatePlan = (id , plan) => async (dispatch) => {
     try{
         const { data } = await api.updatePlan(id, plan.name, plan.amount, plan.type, plan.accounttype, plan.timeperiod, plan.purpose)
         dispatch({ type: UPDATE_PLAN, payload: data})
+    }catch(error){
+        console.log(error)
+    }
+}
+
+export const PlanStatus = (id, status) => async (dispatch) => {
+    try{
+        const { data } = await api.planStatus(id, status)
+        console.log(data)
+        dispatch({ type: PLANS_STATUS, payload: { id: id, status: status }})
     }catch(error){
         console.log(error)
     }

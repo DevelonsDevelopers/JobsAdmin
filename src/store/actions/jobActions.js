@@ -1,4 +1,4 @@
-import { ALL_JOBS, CREATE_JOB, DELETE_JOB, GETCATEGORY_JOB, GETCITY_JOB, GETCOMPANY_JOB, GETCOUNTRY_JOB, GET_JOB, LOADING, SUCCESS, UPDATE_JOB } from "../../Utils/Constant";
+import { ALL_JOBS, CREATE_JOB, DELETE_JOB, GETCATEGORY_JOB, GETCITY_JOB, GETCOMPANY_JOB, GETCOUNTRY_JOB, GET_JOB, JOBS_STATUS, LOADING, SUCCESS, UPDATE_JOB } from "../../Utils/Constant";
 import * as api from '../../store/index'
 
 
@@ -73,6 +73,16 @@ export const updateJob = (id , job) => async (dispatch) => {
         const { data } = await api.updateJob(id, job.category, job.country, job.city, job.title, job.company, job.designation, job.salary, job.description, job.link, job.type, job.workdays, job.worktime, job.address, job.experience, job.qualification, job.skills, job.date, job.tags)
         console.log(id)
         dispatch({ type: UPDATE_JOB, payload: data})
+    }catch(error){
+        console.log(error)
+    }
+}
+
+export const jobStatus = (id, status) => async (dispatch) => {
+    try{
+        const { data } = await api.jobStatus(id, status)
+        console.log(data)
+        dispatch({ type: JOBS_STATUS, payload: { id: id, status: status }})
     }catch(error){
         console.log(error)
     }

@@ -1,4 +1,4 @@
-import {  ALL_CITIES, CREATE_CITY, DELETE_CITY, GETCOUNTRY_CITY, GET_CITY, LOADING, SUCCESS, UPDATE_CITY } from "../../Utils/Constant"
+import {  ALL_CITIES, CITY_STATUS, CREATE_CITY, DELETE_CITY, GETCOUNTRY_CITY, GET_CITY, LOADING, SUCCESS, UPDATE_CITY } from "../../Utils/Constant"
 import * as api from '../../store/index'
 
 
@@ -50,6 +50,17 @@ export const updateCity = (id , city) => async (dispatch) => {
         const { data } = await api.updateCity(city.name, city.country, city.description, id)
         console.log(data)
         dispatch({ type: UPDATE_CITY, payload: data})
+    }catch(error){
+        console.log(error)
+    }
+}
+
+
+export const statusCity = (id , status) => async (dispatch) => {
+    try{
+        const { data } = await api.cityStatus(id, status)
+        console.log(data)
+        dispatch({ type: CITY_STATUS, payload: {id: id, status: status}})
     }catch(error){
         console.log(error)
     }

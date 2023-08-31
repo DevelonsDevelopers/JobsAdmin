@@ -57,7 +57,7 @@ const CitiesForm = () => {
                     <label className="block text-left tracking-wide  text-[0.7rem] font-[600] mb-[3px] ml-4" for="grid-first-name">
                       Name
                     </label>
-                    <input type="text" name="name" id="floating_email" onChange={ClickInput} className="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-300 appearance-none  text-white  border-gray-600  focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="Enter city" required />
+                    <input type="text" name="name" id="floating_email" onChange={ClickInput} className="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-300 appearance-none  border-gray-600  focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="Enter city" required />
                   </div>
                   <div className="w-[50%] px-3  mt-5 mb-6 md:mb-0">
                     <label className="block  text-left tracking-wide  text-[0.7rem] font-[600] mb-[3px] ml-4" for="grid-first-name">

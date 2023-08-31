@@ -1,4 +1,4 @@
-import { ALL_REPORTS, ALL_SEEKERS, GET_SEEKER, LOADING, SUCCESS } from "../../Utils/Constant";
+import { ALL_REPORTS, ALL_SEEKERS, GET_SEEKER, LOADING, SEEKER_STATUS, SUCCESS } from "../../Utils/Constant";
 import * as api from '../../store/index'
 
 
@@ -10,6 +10,16 @@ export const AllSeekers = () => async (dispatch) => {
         dispatch({ type: ALL_SEEKERS, payload: { seekers: data }})
         dispatch({ type: SUCCESS })
     } catch(error) {
+        console.log(error)
+    }
+}
+
+export const seekerStatus = (id, status) => async (dispatch) => {
+    try{
+        const { data } = await api.seekerStatus(id, status)
+        console.log(data)
+        dispatch({ type: SEEKER_STATUS, payload: { id: id, status: status }})
+    }catch(error){
         console.log(error)
     }
 }

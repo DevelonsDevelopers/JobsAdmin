@@ -1,4 +1,4 @@
-import { ALL_TAGS, CREATE_TAG, DELETE_TAG, ERROR, GET_TAG, LOADING, SUCCESS, UPDATE_TAG } from "../../Utils/Constant"
+import { ALL_TAGS, CREATE_TAG, DELETE_TAG, ERROR, GET_TAG, LOADING, SUCCESS, TAG_STATUS, UPDATE_TAG } from "../../Utils/Constant"
 
 
 const tag = (state = { isLoading: true, success: false, error: false, tags: [] }, action) => {
@@ -17,6 +17,8 @@ const tag = (state = { isLoading: true, success: false, error: false, tags: [] }
             return { ...state, tags: [...state.tags, action.payload] }
         case UPDATE_TAG:
             return { ...state, tags: state.tags.map((tag) => (tag.id === action.payload.id ? action.payload : tag)) }
+        case TAG_STATUS:
+            return { ...state, tags: state.tags.map((tag) => (tag.id === action.payload.id ? {...tag, status: action.payload.status} : tag)) }
         case DELETE_TAG:
             return { ...state, tags: state.tags.filter((tag) => tag.id !== action.payload) }
         default:

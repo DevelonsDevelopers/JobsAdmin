@@ -3,7 +3,7 @@ import PortalLayout from '../portalLayout/PortalLayout'
 import { BarChart, Bar, Tooltip, XAxis, YAxis, PieChart, Pie, LineChart, CartesianGrid, Legend, Line, ResponsiveContainer } from 'recharts';
 import SeekersView from './view/SeekersView';
 import { useDispatch, useSelector } from 'react-redux';
-import { AllSeekers } from '../store/actions/seekerActions';
+import { AllSeekers, seekerStatus } from '../store/actions/seekerActions';
 import { Link } from 'react-router-dom';
 
 
@@ -87,6 +87,20 @@ if (seekers?.lenght===0) {
   
 }
 },[seekers])
+
+
+const UpdateStatus = (id, status) => {
+  let st = 0;
+  if (status === 1){
+    st = 0;
+  } else {
+    st = 1;
+  }
+  console.log('click')
+  dispatch(seekerStatus(id, st))
+}
+
+
   return (
     <PortalLayout>
       {loading ?
@@ -145,7 +159,7 @@ if (seekers?.lenght===0) {
                 </td>
 
                 <td className="py-[2%] max-md:text-[.7rem] w-[2%] border-r-[1px] border-t-[1px]   text-center">
-                  <span className="bg-green-600 text-white font-[500] py-[3px] px-[10px] max-md:w-[8%] rounded-xl text-[0.6rem] max-md:py-1 max-md:px-2 max-md:text-[0.6rem] cursor-pointer hover:bg-green-700">{value.status}</span>
+                  <span onClick={() => UpdateStatus(value.id, value.status)} className={`bg-green-600 text-white font-[500] py-[3px] px-[10px] max-md:w-[8%] rounded-xl text-[0.6rem] max-md:py-1 max-md:px-2 max-md:text-[0.6rem] cursor-pointer ${value.status === 1 ? 'bg-green-500': 'bg-red-500'} `}>{value.status === 1 ? 'Enable' : 'Disable'}</span>
                 </td>
 
 

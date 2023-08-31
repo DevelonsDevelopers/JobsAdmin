@@ -25,6 +25,11 @@ export const updateCategory = (name, description, image, id) => API.put(`/catego
         image: image,
         id: id
     })
+export const updateStatus = ( id,status ) => API.put(`/categories/status`,
+    {
+        id: id,
+        status: status
+    })
 export const deleteCategory = (id) => API.delete(`/categories/delete`, {
     data: {
         id: id
@@ -47,6 +52,12 @@ export const updateCountry = (id, name, description, flag) => API.put(`/countrie
         description: description,
         flag: flag,
         id: id,
+    })
+
+    export const countryStatus = ( id,status ) => API.put(`/countries/status`,
+    {
+        id: id,
+        status: status
     })
 
 export const deleteCountry = (id) => API.delete(`/countries/delete`, {
@@ -76,6 +87,12 @@ export const updateCity = (name, country, description, id) => API.put(`/cities/u
     country: country,
     id: id,
 })
+
+export const cityStatus = ( id,status ) => API.put(`/cities/status`,
+    {
+        id: id,
+        status: status
+    })
 export const deleteCity = (id) => API.delete(`/cities/delete`, {
     data: {
         id: id
@@ -150,6 +167,13 @@ export const updateJob = (id, category, country, city, title, company, designati
     date: date,
     tags: tags,
 })
+
+export const jobStatus = ( id,status ) => API.put(`/jobs/status`,
+    {
+        id: id,
+        status: status
+    })
+
 export const deleteJob = (id) => API.delete(`/jobs/delete`, {
     data: {
         id: id
@@ -186,6 +210,13 @@ export const updateCompany = (id, name, size, city, country, phone, email, headq
         headquater: headquater,
         type: type,
     })
+
+    export const companyStatus = ( id,status ) => API.put(`/companies/status`,
+    {
+        id: id,
+        status: status
+    })
+
 export const deleteCompany = (id) => API.delete(`/companies/delete`, {
     data: {
         id: id
@@ -220,6 +251,11 @@ export const updatePlan = (id, name, amount, type, accounttype, timeperiod, purp
     timeperiod: timeperiod,
     purpose: purpose,
 })
+export const planStatus = ( id,status ) => API.put(`/plans/status`,
+    {
+        id: id,
+        status: status
+    })
 export const deletePlan = (id) => API.delete(`/plans/delete`, {
     data: {
         id: id
@@ -231,11 +267,23 @@ export const fetchReport = (id) => API.post(`/reports/get`,
     {
         id: id,
     })
+
+    export const reportsStatus = ( id,status ) => API.put(`/reports/status`,
+    {
+        id: id,
+        status: status
+    })
 // Seekers
 export const fetchAllSeekers = () => API.get(`/seekers/all`)
 export const fetchSeeker = (id) => API.post(`/seekers/get`,
     {
         id: id,
+    })
+
+    export const seekerStatus = ( id,status ) => API.put(`/seekers/status`,
+    {
+        id: id,
+        status: status
     })
 //Tags
 export const fetchAllTags = () => API.get(`/tags/all`)
@@ -249,6 +297,11 @@ export const updateTag = (id, name) => API.put(`/tags/update`, {
     id: id,
     name: name,
 })
+export const tagStatus = ( id,status ) => API.put(`/tags/status`,
+    {
+        id: id,
+        status: status
+    })
 export const deleteTag = (id) => API.delete(`/tags/delete`, {
     data: {
         id: id
@@ -259,6 +312,12 @@ export const fetchAllTransactions = () => API.get(`/transactions/all`)
 export const fetchTransaction = (id) => API.post(`/transactions/get`,
     {
         id: id,
+    })
+
+    export const transactionStatus = ( id,status ) => API.put(`/transactions/status`,
+    {
+        id: id,
+        status: status
     })
 // Users
 export const fetchAllUsers = () => API.get(`/users/all`)
@@ -283,6 +342,12 @@ export const updateUser = (id, name, username, email, password, phone, address) 
         password: password,
         phone: phone,
         address: address,
+    })
+
+    export const userStatus = ( id,status ) => API.put(`/users/status`,
+    {
+        id: id,
+        status: status
     })
 export const deleteUser = (id) => API.delete(`/users/delete`, {
     data: {
@@ -312,6 +377,11 @@ export const updateAppliedUser = (user, date, proposal) => API.get(`/applied/upd
         proposal: proposal,
     }
 })
+export const appliedUserStatus = ( id,status ) => API.put(`/applied/status`,
+    {
+        id: id,
+        status: status
+    })
 export const deleteAppliedUser = (id) => API.delete(`/applied/delete`, {
     data: {
         id: id

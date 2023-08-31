@@ -11,16 +11,35 @@ import { AllCompanies } from '../../store/actions/companyActions'
 const JobsForm = () => {
     const [jobData, setJobData] = useState({ category: '', country: '', city: '', title: '', company: '', designation: '', salary: '', description: '', link: '', type: '', workdays: '', worktime: '', address: '', experience: '', qualification: '', skills: '', date: '', tags: '' })
     const [country, setCountry] = useState()
+    const [tagValue, setTagValue] = useState("");
+    const [tags, setTags] = useState([])
+
     const dispatch = useDispatch()
     const navigate = useNavigate()
+
+    const addTags = (e) => {
+      if(e.keyCode === 32 && tagValue ) {
+        setTags([...tags, tagValue])
+        setTagValue("")
+      }
+    }
+    console.log(tagValue)
 
     const ClickInput = (e) => {
         setJobData(prev => ({ ...prev, [e.target.name]: e.target.value }))
         if (e.target.name === 'country'){
             setCountry(e.target.value)
         }
+        else if (e.target.name === 'skills'){
+          setTagValue(e.target.value)
+        }
     }
-    console.log(jobData)
+
+    const deleteTag = (val) => {
+      let remainTags = tags.filter((t) => t !== val)
+      setTags(remainTags)
+    }
+    // console.log(jobData)
 
     const handleSubmit = (e) => {
         e.preventDefault()
@@ -198,9 +217,28 @@ const JobsForm = () => {
                 <label className="block  tracking-wide text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4" for="grid-first-name">
                   Skills
                 </label>
-                <input type="text" name="skills" id="floating_email" onChange={ClickInput} className="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="Enter Email" required />
+                <div name="skills" className='  w-full flex text-sm text-gray-900 bg-gray-50 rounded-[9px] flex-wrap appearance-none  border-2 border-black border-[0.7px] border-gray-300 focus:outline-none focus:ring-0 focus:border-blue-600 peer'>
+                    {tags.map((item, index) => (
+                      <button onClick={() => deleteTag(item)} className=' m-3  text-white bg-black outline-none border-none px-4 py-1 rounded-lg' key={index}>
+                        {item}
+                        <span  className='ml-5'>X</span>
+                        </button>
+                    ))}
+                <input type="text" name="skills" value={tagValue} id="floating_email" onKeyDown={addTags} onChange={ClickInput } className= "pl-4 py-[9px] px-0 bg-gray-50 border-none  focus:outline-none w-full " placeholder="Enter Email" required />
+                </div>
               </div>
             </div>
+            {/* <div className="-mx-3 mt-[-1.2rem] mb-6">
+              <div className="w-[100%] px-3 mb-6 md:mb-0">
+                <label className="block  tracking-wide text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4" for="grid-first-name">
+                  Skills
+                </label>
+                <div className=' w-full text-sm text-gray-900 bg-gray-50 rounded-[9px]  appearance-none  border-2 border-black border-[0.7px] border-gray-300 focus:outline-none focus:ring-0 focus:border-blue-600 peer'>
+                <input type="text" name="skills" id="floating_email" onChange={ClickInput} className= "pl-4 py-[9px] px-0 bg-gray-50 border-none focus:outline-none w-full " placeholder="Enter Email" required />
+                </div>
+              </div>
+            </div> */}
+           
             <div className="-mx-3 mt-[-1.2rem] mb-6">
               <div className="w-[100%] px-3 mb-6 md:mb-0">
                 <label className="block  tracking-wide text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4" for="grid-first-name">

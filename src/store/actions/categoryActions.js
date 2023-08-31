@@ -1,5 +1,5 @@
 import * as api from '../../store/index'
-import { ALL_CATEGORIES, CREATE_CATEGORY, DELETE_CATEGORY, GET_CATEGORY, LOADING, SUCCESS, UPDATE_CATEGORY } from '../../Utils/Constant';
+import { ALL_CATEGORIES, CREATE_CATEGORY, DELETE_CATEGORY, GET_CATEGORY, LOADING, SUCCESS, UPDATE_CATEGORY, UPDATE_STATUS } from '../../Utils/Constant';
 
 export const AllCategories = () => async (dispatch) => {
     try {
@@ -35,6 +35,16 @@ export const updateCategory = (id, category) => async (dispatch) => {
         const { data } = await api.updateCategory(category.name, category.image, category.description, id)
         console.log(data)
         dispatch({ type: UPDATE_CATEGORY, payload: data})
+    }catch(error){
+        console.log(error)
+    }
+}
+
+export const updateStatus = (id, status) => async (dispatch) => {
+    try{
+        const { data } = await api.updateStatus(id, status)
+        console.log(data)
+        dispatch({ type: UPDATE_STATUS, payload: { id: id, status: status }})
     }catch(error){
         console.log(error)
     }

@@ -1,4 +1,4 @@
-import {  ALL_USERS, CREATE_USER, DELETE_USER, GET_USER, LOADING, SUCCESS, UPDATE_USER } from '../../Utils/Constant';
+import {  ALL_USERS, CREATE_USER, DELETE_USER, GET_USER, LOADING, SUCCESS, UPDATE_USER, USER_STATUS } from '../../Utils/Constant';
 import * as api from '../../store/index'
 
 
@@ -35,6 +35,16 @@ export const updateUser = (id , user) => async (dispatch) => {
     try{
         const { data } = await api.updateUser(id, user.name, user.username, user.email, user.password, user.phone, user.address)
         dispatch({ type: UPDATE_USER, payload: data})
+    }catch(error){
+        console.log(error)
+    }
+}
+
+export const userStatus = (id, status) => async (dispatch) => {
+    try{
+        const { data } = await api.userStatus(id, status)
+        console.log(data)
+        dispatch({ type: USER_STATUS, payload: { id: id, status: status }})
     }catch(error){
         console.log(error)
     }

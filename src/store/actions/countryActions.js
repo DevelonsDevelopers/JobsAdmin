@@ -1,5 +1,5 @@
 import * as api from '../../store/index'
-import { ALL_COUNTRIES, CREATE_COUNTRY, DELETE_COUNTRY, GET_COUNTRY, LOADING, SUCCESS, UPDATE_COUNTRY } from "../../Utils/Constant"
+import { ALL_COUNTRIES, COUNTRY_STATUS, CREATE_COUNTRY, DELETE_COUNTRY, GET_COUNTRY, LOADING, SUCCESS, UPDATE_COUNTRY } from "../../Utils/Constant"
 
 
 export const AllCountries =()=> async(dispatch) => {
@@ -36,6 +36,16 @@ export const updateCountry = (id , country) => async (dispatch) => {
         const { data } = await api.updateCountry(id , country.name, country.flag, country.description)
         console.log(data)
         dispatch({ type: UPDATE_COUNTRY, payload: data})
+    }catch(error){
+        console.log(error)
+    }
+}
+
+export const countryStatus = (id, status) => async (dispatch) => {
+    try{
+        const { data } = await api.countryStatus(id, status)
+        console.log(data)
+        dispatch({ type: COUNTRY_STATUS, payload: { id: id, status: status }})
     }catch(error){
         console.log(error)
     }
