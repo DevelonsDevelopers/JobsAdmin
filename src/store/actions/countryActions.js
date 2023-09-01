@@ -33,7 +33,7 @@ export const createCountry = (country) => async (disptach) => {
 
 export const updateCountry = (id , country) => async (dispatch) => {
     try{
-        const { data } = await api.updateCountry(id , country.name, country.flag, country.description)
+        const { data } = await api.updateCountry(id , country.name, country.description, country.flag)
         console.log(data)
         dispatch({ type: UPDATE_COUNTRY, payload: data})
     }catch(error){

@@ -56,11 +56,11 @@ export const updateCity = (id , city) => async (dispatch) => {
 }
 
 
-export const statusCity = (id , status) => async (dispatch) => {
+export const cityStatus = (id, status) => async (dispatch) => {
     try{
         const { data } = await api.cityStatus(id, status)
         console.log(data)
-        dispatch({ type: CITY_STATUS, payload: {id: id, status: status}})
+        dispatch({ type: CITY_STATUS, payload: { id: id, status: status }})
     }catch(error){
         console.log(error)
     }

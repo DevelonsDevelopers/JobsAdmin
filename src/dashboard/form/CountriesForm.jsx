@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom'
 import { createCountry } from '../../store/actions/countryActions'
 
 const CountriesForm = () => {
-  const [countryData, setCountryData] = useState({ name: '', flag: '', description: '' })
+  const [countryData, setCountryData] = useState({ name: '', description: '', flag: '' })
   const dispatch = useDispatch();
   const navigate = useNavigate();
 

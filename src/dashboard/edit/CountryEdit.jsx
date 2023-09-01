@@ -6,7 +6,7 @@ import { getCountry, updateCountry } from '../../store/actions/countryActions';
 
 const CountryEdit = () => {
 
-  const [countryData, setCountryData] = useState({ name: '', flag: '', description: '' })
+  const [countryData, setCountryData] = useState({ name: '', description: '', flag: '' })
   const dispatch = useDispatch()
   const navigate = useNavigate();
 
@@ -24,7 +24,7 @@ const CountryEdit = () => {
   useEffect(() => {
     console.log(country)
     if (country) {
-      setCountryData({ name: country?.name, flag: country?.flag, description: country?.description })
+      setCountryData({ name: country?.name,  description: country?.description, flag: country?.flag })
       // console.log(countryData)
     }
   }, [country])

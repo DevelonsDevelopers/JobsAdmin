@@ -18,11 +18,11 @@ export const createCategory = (category) => API.post(`/categories/create`,
         image: category.image,
     }
 )
-export const updateCategory = (name, description, image, id) => API.put(`/categories/update`,
+export const updateCategory = (name,  image,description, id) => API.put(`/categories/update`,
     {
         name: name,
-        description: description,
         image: image,
+        description: description,
         id: id
     })
 export const updateStatus = ( id,status ) => API.put(`/categories/status`,
@@ -99,7 +99,7 @@ export const deleteCity = (id) => API.delete(`/cities/delete`, {
     }
 })
 //Jobs
-export const fetchAllJobs = () => API.get(`/jobs/all`)
+export const fetchAllJobs = () => API.put(`/jobs/all`)
 export const fetchJob = (id) => API.post(`/jobs/get`,
     {
         id: id,

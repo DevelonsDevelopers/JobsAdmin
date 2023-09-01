@@ -33,12 +33,12 @@ const CityModal = ({ open, setOpen, title, data,ID }) => {
         </div>
         <hr className='mt-2 mb-2' />
         <div className='flex justify-between '>
-        <span className='!font-[800] text-[15px]'> image:  </span>
+        <span className='!font-[800] text-[15px]'> Country:  </span>
         <span className='font-[600] ml-auto text-gray-600 text-[13px] ' >{city?.country_name}</span>
         </div>
         <hr className='mt-2 mb-2' />
         <div className='flex justify-between '>
-        <span className='!font-[800] text-[15px]'> description:  </span>
+        <span className='!font-[800] text-[15px] mr-4'> Description:  </span>
         <span className='font-[600] ml-auto text-gray-600 text-[13px] ' >{city?.description}</span>
         </div>
         <hr className='mt-2 mb-2' />

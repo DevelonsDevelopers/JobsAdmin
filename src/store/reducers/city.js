@@ -1,4 +1,4 @@
-import { ALL_CITIES, CREATE_CITY, DELETE_CITY, ERROR, GETCOUNTRY_CITY, GET_CITY, LOADING, SUCCESS, UPDATE_CITY } from "../../Utils/Constant";
+import { ALL_CITIES, CITY_STATUS, CREATE_CITY, DELETE_CITY, ERROR, GETCOUNTRY_CITY, GET_CITY, LOADING, SUCCESS, UPDATE_CITY } from "../../Utils/Constant";
 
 
 const city = (state = { isLoading: true, success: false, error: false, cities: [] }, action) => {
@@ -19,7 +19,7 @@ const city = (state = { isLoading: true, success: false, error: false, cities: [
             return { ...state, cities: [...state.cities, action.payload] }
         case UPDATE_CITY:
             return { ...state, cities: state.cities.map((city) => (city.id === action.payload.id ? action.payload : city)) }
-        case UPDATE_CITY:
+        case CITY_STATUS:
             console.log(action.payload)
             return { ...state, cities: state.cities.map((city) => (city.id === action.payload.id ? { ...city, status: action.payload.status } : city)) }
         case DELETE_CITY:

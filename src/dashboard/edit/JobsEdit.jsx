@@ -89,7 +89,7 @@ const JobsEdit = () => {
               <input value={jobData.title} type="text" name="title" id="floating_email" onChange={ClickInput} className="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="Enter Company Name" required />
             </div>
           </div>
-          <div className="-mx-3 mt-[-1.2rem] mb-6">
+          <div className=" mt-[-1.2rem] mb-6">
           <div class="md:w-[100%] ">
                 <label className="block text-left tracking-wide text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4" for="grid-first-name">
                   Company

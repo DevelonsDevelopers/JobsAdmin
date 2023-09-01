@@ -4,18 +4,21 @@ import { useDispatch, useSelector } from 'react-redux'
 import { createCompany } from '../../store/actions/companyActions';
 import { useNavigate } from 'react-router-dom';
 import { AllCountries, getCountry } from '../../store/actions/countryActions';
-import { AllCities } from '../../store/actions/cityActions';
+import { AllCities, getCitybyCountry } from '../../store/actions/cityActions';
 
 const CompaniesForm = () => {
   const [companyData, setCompanyData] = useState({ name: '', size: '', city: '', country: '', phone: '', email: '', password: '', headquater: '', type: '' });
-  // const [country, setCountry] = useState()
+  const [country, setCountry] = useState('')
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const ClickInput = (e) => {
     setCompanyData(prev => ({ ...prev, [e.target.name]: e.target.value }))
+    if (e.target.name === 'country'){
+      setCountry(e.target.value)
   }
-  console.log(companyData)
+  }
+  // console.log(companyData)
 
   const handleSubmit = () => {
     dispatch(createCompany(companyData))
@@ -23,18 +26,30 @@ const CompaniesForm = () => {
   }
 
   const countries = useSelector(state => state.country.countries)
-  useEffect(() => {
-    console.log(countries)
-  }, [countries])
+  // useEffect(() => {
+  //   console.log(countries)
+  // }, [countries])
 
   useEffect(() => {
     dispatch(AllCountries())
   }, [dispatch])
 
-  const cities = useSelector(state => state.city.cities)
+  const cityByCountry = useSelector(state => state.city.citybycountry)
+
+  // useEffect(() => {
+  //   console.log(cityByCountry);
+  // }, [cityByCountry])
   useEffect(() => {
-    console.log(cities)
-  }, [cities])
+    // console.log(country)
+    if(country){
+      dispatch(getCitybyCountry(country))
+    }
+  }, [dispatch, country])
+
+  const cities = useSelector(state => state.city.cities)
+  // useEffect(() => {
+  //   console.log(cities)
+  // }, [cities])
 
   useEffect(() => {
     dispatch(AllCities())
@@ -80,7 +95,7 @@ const CompaniesForm = () => {
             <label className="block  tracking-wide text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4" for="grid-first-name">
               Password
             </label>
-            <input type="password" name="password" id="floating_email" onChange={ClickInput} className="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="Enter Company Name" required />
+            <input type="password" name="password" id="floating_email" onChange={ClickInput} className="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="Enter Password" required />
           </div>
         </div>
 
@@ -103,7 +118,7 @@ const CompaniesForm = () => {
               </label>
               <select onChange={ClickInput} name='city' class="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" id="grid-state">
                 <option>Select City</option>
-                {cities?.map((value) => {
+                {cityByCountry?.map((value) => {
                   return <option value={value.id}>{value.name}</option>
                 })}
 

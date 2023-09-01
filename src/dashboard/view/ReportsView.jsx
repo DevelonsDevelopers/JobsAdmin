@@ -87,7 +87,7 @@ const ReportsView = ({ open, setOpen, title, data, ID }) => {
         </div>
         <hr className='mt-2 mb-2' />
         <div className='flex justify-between '>
-        <span className='!font-[800] text-[15px]'> Feedback:  </span>
+        <span className='!font-[800] text-[15px]  mr-4'> Feedback:  </span>
         <span className='font-[600] ml-auto text-gray-600 text-[13px] ' >{report?.feedback}</span>
         </div>
         <hr className='mt-2 mb-2' />        
