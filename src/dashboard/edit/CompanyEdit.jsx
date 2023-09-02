@@ -4,11 +4,12 @@ import { useLocation, useNavigate } from 'react-router-dom'
 import { getCompany, updateCompany } from '../../store/actions/companyActions';
 import { useDispatch, useSelector } from 'react-redux';
 import { AllCountries } from '../../store/actions/countryActions';
-import { AllCities } from '../../store/actions/cityActions';
+import { AllCities, getCitybyCountry } from '../../store/actions/cityActions';
 
 const CompanyEdit = () => {
 
   const [companyData, setCompanyData] = useState({city: '', country: '', email: '', password: '', headquater: '', name: '', phone: '', size: '', type: ''})
+  const [country, setCountry] = useState('')
 
   const dispatch = useDispatch()
   const navigate = useNavigate()
@@ -35,13 +36,16 @@ const CompanyEdit = () => {
 
   const ClickInput = (e) => {
     setCompanyData(prev => ({...prev,[e.target.name]: e.target.value}))
+    if (e.target.name === 'country'){
+      setCountry(e.target.value)
+  }
   }
 
   const handleSubmit = () => {
     dispatch(updateCompany(id, companyData))
     navigate('/companies')
   }
-  console.log(companyData)
+  // console.log(companyData)
 
   const countries = useSelector(state => state.country.countries)
 
@@ -49,16 +53,28 @@ const CompanyEdit = () => {
     dispatch(AllCountries())
   }, [dispatch])
 
-  const cities = useSelector(state => state.city.cities)
+  const cityByCountry = useSelector(state => state.city.citybycountry)
 
   useEffect(() => {
-    dispatch(AllCities())
-  }, [dispatch])
+    console.log(cityByCountry)
+  }, [cityByCountry])
+  useEffect(() => {
+    console.log(country)
+    if(country){
+      dispatch(getCitybyCountry(country))
+    }
+  }, [dispatch, country])
+
+  // const cities = useSelector(state => state.city.cities)
+
+  // useEffect(() => {
+  //   dispatch(AllCities())
+  // }, [dispatch])
 
 
   return (
   <PortalLayout>
-       <h1 className='text-center bg-gradient-to-r from-sky-600 to-cyan-400    font-[600] mb-5 py-4 rounded-xl shadow-md shadow-blue-300 text-[1.5rem]'>EDIT COMPANY</h1>
+       <h1 className='text-center bg-gradient-to-r from-sky-600 to-cyan-400    font-[600] mb-5 py-4 text-white rounded-xl shadow-md shadow-blue-300 text-[1.5rem]'>EDIT COMPANY</h1>
        <form class="bg-white shadow-md rounded-xl px-[10rem] pt-6 pb-8 mb-4 flex flex-col  my-2">
         <div className="-mx-3 mt-[-1.2rem] mb-6">
           <div className="w-[100%] px-3 mb-6 md:mb-0 mt-5">
@@ -109,12 +125,9 @@ const CompanyEdit = () => {
                 City
               </label>
               <select value={companyData.city}  onChange={ClickInput}  name='city' class="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-300 appearance-none     border-gray-600  focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" id="grid-state">
-                {/* <option >Select City</option> */}
-                {cities?.map((value) => {
+                {cityByCountry?.map((value) => {
                   return <option value={value.id}>{value.name}</option>
                 })}
-                {/* <option hidden disabled selected >Enter Your City</option> */}
-
               </select>
           </div>
         </div>
@@ -143,7 +156,7 @@ const CompanyEdit = () => {
               <label className="block uppercase tracking-wide text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4" for="grid-Name">
                 HeadQuarter
               </label>
-              <textarea value={companyData.headquater} onChange={ClickInput} name='headquater' rows='4'  className="appearance-none block w-full bg-gray-50  border-gray-lighter rounded py-3 px-4 rounded-[9px] mb-3 border-[0.7px] border-gray-300 appearance-none     border-gray-600  focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer text-[14px]" id="grid-Name" type="text" placeholder="Enter HeadQuarter Addres" />
+              <input value={companyData.headquater} onChange={ClickInput} type="text" name="headquater" id="floating_email"  className="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-300 appearance-none     border-gray-600  focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="Enter Company Name" required />
             </div>
           </div>
         </div>
@@ -151,7 +164,7 @@ const CompanyEdit = () => {
 
 
         <div className='flex justify-center'>
-          <button onClick={handleSubmit} className='bg-gradient-to-r from-sky-600 to-cyan-400   font-[600] py-2 px-[3rem] mt-4 rounded-lg'>Submit</button>
+          <button onClick={handleSubmit} className='bg-gradient-to-r from-sky-600 to-cyan-400 text-white  font-[600] py-2 px-[3rem] mt-4 rounded-lg'>Submit</button>
         </div>
 
       </form>

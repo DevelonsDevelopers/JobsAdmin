@@ -9,6 +9,8 @@ const Topbar = ({ showNav, setShowNav }) => {
 
   const router = useNavigate();
 
+  
+
   //   const handleSignOut = () => {
   //     signOut()
   //     router.push('/')
@@ -46,7 +48,7 @@ const Topbar = ({ showNav, setShowNav }) => {
                   </div>
               </div>
               <center>
-              <button className='text-center w-[50%] rounded-xl bg-blue-400 text-white font-[700] py-1 mb-5 mt-3 shadow-md text-[1rem]'>Logout</button>
+              <button onClick={() => router('/login')} className='text-center w-[50%] rounded-xl bg-blue-400 text-white font-[700] py-1 mb-5 mt-3 shadow-md text-[1rem]'>Logout</button>
               </center>
 
             </Popover.Panel>

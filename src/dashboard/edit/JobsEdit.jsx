@@ -9,10 +9,50 @@ import { getCitybyCountry } from '../../store/actions/cityActions'
 import { getJob, updateJob } from '../../store/actions/jobActions'
 
 const JobsEdit = () => {
-    const [jobData, setJobData] = useState({ category: '', country: '', city: '', title: '', company: '', designation: '', salary: '', description: '', link: '', type: '', workdays: '', worktime: '', address: '', experience: '', qualification: '', skills: '', date: '', tags: '' })
+    const [jobData, setJobData] = useState({ category: '', country: '', city: '', title: '', company: '', designation: '', salary: '', role: '', description: '', link: '', type: '', workdays: '', worktime: '', address: '', experience: '', qualification: '', skills: '', date: '', tags: '' })
     const [country, setCountry] = useState()
     const dispatch = useDispatch()
     const navigate = useNavigate()
+
+    const [tagValue, setTagValue] = useState("");
+    const [tags, setTags] = useState([])
+    const [skillValue, setSkillValue] = useState("");
+    const [skills, setSkills] = useState([])
+
+
+    const deleteTag = (val) => {
+      let remainTags = tags.filter((t) => t !== val)
+      setTags(remainTags)
+    }
+
+    const deleteSkill = (val) => {
+      let remainSkills = skills.filter((t) => t !== val)
+      setSkills(remainSkills)
+    }
+
+    const addTags = (e) => {
+      if(e.keyCode === 13 || e.keyCode === 32  && tagValue) {
+        setTags([...tags, tagValue])
+        setTagValue("")
+      }
+    }
+
+    const addSkills = (e) => {
+      if(e.keyCode === 13 || e.keyCode === 32 && skillValue) {
+        setSkills([...skills, skillValue])
+        setSkillValue("") 
+      }
+    }
+
+    useEffect(() => {
+      console.log(tags)
+      setJobData({...jobData, tags: tags.toString()})
+    }, [tags])
+
+    useEffect(() => {
+      console.log(skills)
+      setJobData({...jobData, skills: skills.toString()})
+    }, [skills])
 
     const params = useLocation();
     const id = params.state.ID;
@@ -28,15 +68,27 @@ const JobsEdit = () => {
 
     useEffect(() => {
         if(job){
-            setJobData({ category: job?.category, country: job?.country, city: job?.city, title: job?.title, company: job?.company, designation: job?.designation, salary: job?.salary, description: job?.description, link: job?.link, type: job?.type, workdays: job?.workdays, worktime: job?.worktime, address: job?.address, experience: job?.experience, qualification: job?.qualification, skills: job?.skills, date: job?.date, tags: job?.tags})
+          setTags((job?.tags).split(','))
+          setSkills((job?.skills).split(','))
+            setJobData({ category: job?.category, country: job?.country, city: job?.city, title: job?.title, company: job?.company, designation: job?.designation, salary: job?.salary, role: job?.role ,description: job?.description, link: job?.link, type: job?.type, workdays: job?.workdays, worktime: job?.worktime, address: job?.address, experience: job?.experience, qualification: job?.qualification, skills: job?.skills, date: job?.date, tags: job?.tags})
         }
     }, [job])
     console.log(jobData)
 
     const ClickInput = (e) => {
+      
+      if (e.target.name !== 'skills' || e.target.name !== 'tags'){
         setJobData(prev => ({ ...prev, [e.target.name]: e.target.value }))
-        if (e.target.name === 'country'){
-            setCountry(e.target.value)
+      }
+      if (e.target.name === 'country'){
+        setCountry(e.target.value)
+    }
+    
+         if (e.target.name === 'skills'){
+          setSkillValue(e.target.value)
+        }
+         if (e.target.name === 'tags'){
+          setTagValue(e.target.value)
         }
     }
     // console.log(jobData)
@@ -178,7 +230,16 @@ const JobsEdit = () => {
                   <label className="block  tracking-wide text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4" for="grid-first-name">
                     Tags
                   </label>
-                  <input value={jobData.tags} type="text" name="tags" id="floating_email" onChange={ClickInput} className="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="Enter Company Size" required />
+                  {/* <input value={jobData.tags} type="text" name="tags" id="floating_email" onChange={ClickInput} className="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="Enter Company Size" required /> */}
+                  <div name="tags" className='  w-full flex text-sm text-gray-900 bg-gray-50 rounded-[9px] flex-wrap appearance-none  border-2 border-black border-[0.7px] border-gray-300 focus:outline-none focus:ring-0 focus:border-blue-600 peer'>
+                    {tags.map((item, index) => (
+                      <button onClick={() => deleteTag(item)} className=' m-2 text-white bg-black outline-none border-none px-4 py-1 rounded-lg' key={index}>
+                        {item}
+                        <span  className='ml-5'>X</span>
+                        </button>
+                    ))}
+                <input type="text" name="tags" value={tagValue} onKeyDown={addTags} onChange={ClickInput}  id="floating_email"   className= "pl-4 py-[9px] px-0 bg-gray-50 border-none  focus:outline-none w-full " placeholder="Enter Skills" required />
+                </div>
                 </div>
               </div>
   
@@ -197,7 +258,16 @@ const JobsEdit = () => {
                 <label className="block  tracking-wide text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4" for="grid-first-name">
                   Skills
                 </label>
-                <input value={jobData.skills} type="text" name="skills" id="floating_email" onChange={ClickInput} className="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="Enter Email" required />
+                {/* <input value={jobData.skills} type="text" name="skills" id="floating_email" onChange={ClickInput} className="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="Enter Email" required /> */}
+                <div name="skills" className='  w-full flex text-sm text-gray-900 bg-gray-50 rounded-[9px] flex-wrap appearance-none  border-2 border-black border-[0.7px] border-gray-300 focus:outline-none focus:ring-0 focus:border-blue-600 peer'>
+                    {skills.map((item, index) => (
+                      <button onClick={() => deleteSkill(item)} className=' m-2 text-white bg-black outline-none border-none px-4 py-1 rounded-lg' key={index}>
+                        {item}
+                        <span  className='ml-5'>X</span>
+                        </button>
+                    ))}
+                <input type="text" name="skills" value={skillValue} onKeyDown={addSkills} onChange={ClickInput}  id="floating_email"   className= "pl-4 py-[9px] px-0 bg-gray-50 border-none  focus:outline-none w-full " placeholder="Enter Skills" required />
+                </div> 
               </div>
             </div>
             <div className="-mx-3 mt-[-1.2rem] mb-6">

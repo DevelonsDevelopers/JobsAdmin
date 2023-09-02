@@ -45,6 +45,9 @@ const Jobs = () => {
       dispatch(AllJobs())
     }
   }, [dispatch])
+  useEffect(() => {
+    console.log(jobs)
+  }, [jobs])
 
   useEffect(() => {
     if (jobs?.length === 0) {

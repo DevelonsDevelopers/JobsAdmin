@@ -1,6 +1,19 @@
-import React from "react"
+import React, { useState } from "react"
+import { useNavigate } from "react-router-dom"
 
 const Login = () => {
+  const [loginData, setLoginData] = useState({email: '', password: ''})
+
+  const navigate = useNavigate()
+
+  const handleChange = (e) => {
+    setLoginData(prev => ({ ...prev, [e.target.name]: e.target.value}))
+  }
+
+  const handleSubmit = () => {
+    navigate('/')
+  }
+
   return (
     <>
       <div>
@@ -10,13 +23,13 @@ const Login = () => {
            <center>
            <div className='bg-white rounded-md p-[10px] w-[40%] text-[18px] relative top-[-250px]'><br />
             <h1 className='text-[22px]'>Log in to your account</h1><br />
-            <input type="email" placeholder='Enter Your Email' className='shadow-lg border-slate-100	 rounded-[12px] pr-[176px] pl-[10px] border-[1px] pt-[11px] pb-[11px]'/><br /><br />
-            <input type="password" placeholder='Password' className='shadow-lg border-slate-100	 rounded-[12px] pr-[176px] pl-[10px] border-[1px] pt-[11px] pb-[11px]'/><br />
+            <input type="email" name="email" onChange={handleChange} placeholder='Enter Your Email' className='shadow-lg border-slate-100	 rounded-[12px] pr-[176px] pl-[10px] border-[1px] pt-[11px] pb-[11px]'/><br /><br />
+            <input type="password" name="password" onChange={handleChange} placeholder='Password' className='shadow-lg border-slate-100	 rounded-[12px] pr-[176px] pl-[10px] border-[1px] pt-[11px] pb-[11px]'/><br />
             <span className='flex ml-[5.1rem]'>
             <input type="checkbox" name="Stay Logged In" id="" className='mt-[1.6rem]' /><p className='ml-[0.5rem] mt-[1.35rem] text-[15px]'>Stay Logged In</p>
             <a href="#" className='text-[15px] text-blue-500 mt-[1.35rem] ml-[7.5rem]'>Forgot Password?</a>
             </span><br />
-            <button className='pl-[140px] pr-[140px] rounded-[30px] text-[30px] bg-blue-600 text-white pt-[6px] pb-[6px]'>
+            <button onClick={handleSubmit} className='pl-[140px] pr-[140px] rounded-[30px] text-[30px] bg-blue-600 text-white pt-[6px] pb-[6px]'>
               Log In
             </button>
             

@@ -9,40 +9,72 @@ import { AllCategories } from '../../store/actions/categoryActions'
 import { AllCompanies } from '../../store/actions/companyActions'
 
 const JobsForm = () => {
-    const [jobData, setJobData] = useState({ category: '', country: '', city: '', title: '', company: '', designation: '', salary: '', description: '', link: '', type: '', workdays: '', worktime: '', address: '', experience: '', qualification: '', skills: '', date: '', tags: '' })
+    const [jobData, setJobData] = useState({ category: '', country: '', city: '', title: '', company: '', designation: '', salary: '', role: '', description: '', link: '', type: '', workdays: '', worktime: '', address: '', experience: '', qualification: '', skills: '', date: '', tags: '' })
     const [country, setCountry] = useState()
     const [tagValue, setTagValue] = useState("");
     const [tags, setTags] = useState([])
+    const [skillValue, setSkillValue] = useState("");
+    const [skills, setSkills] = useState([])
 
     const dispatch = useDispatch()
     const navigate = useNavigate()
 
     const addTags = (e) => {
-      if(e.keyCode === 32 && tagValue ) {
+      if(e.keyCode === 13 || e.keyCode === 32  && tagValue) {
         setTags([...tags, tagValue])
         setTagValue("")
       }
     }
-    console.log(tagValue)
+    
+    const addSkills = (e) => {
+      if(e.keyCode === 13 || e.keyCode === 32 && skillValue) {
+        setSkills([...skills, skillValue])
+        setSkillValue("")
+      }
+    }
+    useEffect(() => {
+      console.log(tags)
+      setJobData({...jobData, tags: tags.toString()})
+    }, [tags])
+
+    useEffect(() => {
+      console.log(skills)
+      setJobData({...jobData, skills: skills.toString()})
+    }, [skills])
 
     const ClickInput = (e) => {
+      
+      if (e.target.name !== 'skills' || e.target.name !== 'tags'){
         setJobData(prev => ({ ...prev, [e.target.name]: e.target.value }))
-        if (e.target.name === 'country'){
-            setCountry(e.target.value)
+      }
+      if (e.target.name === 'country'){
+        setCountry(e.target.value)
+    }
+    
+         if (e.target.name === 'skills'){
+          setSkillValue(e.target.value)
         }
-        else if (e.target.name === 'skills'){
+         if (e.target.name === 'tags'){
           setTagValue(e.target.value)
         }
     }
+    console.log(jobData)
 
     const deleteTag = (val) => {
       let remainTags = tags.filter((t) => t !== val)
       setTags(remainTags)
     }
+    const deleteSkill = (val) => {
+      let remainskills = skills.filter((t) => t !== val)
+      setSkills(remainskills)
+    }
     // console.log(jobData)
 
     const handleSubmit = (e) => {
+      if(e.keyCode === 13){
         e.preventDefault()
+        return false
+      }
         dispatch(createJob(jobData))
         navigate('/jobs')
     }
@@ -100,13 +132,13 @@ const JobsForm = () => {
     return (
         <PortalLayout>
         <h1 className='text-center bg-gradient-to-r from-sky-600 to-cyan-400  text-white font-[600] mb-5 py-4 rounded-xl shadow-md shadow-blue-300 text-[1.5rem]'>ADD JOBS</h1>
-        <form class="bg-white shadow-md rounded-xl px-[10rem] pt-6 pb-8 mb-4 flex flex-col  my-2">
+        <div class="bg-white shadow-md rounded-xl px-[10rem] pt-6 pb-8 mb-4 flex flex-col  my-2">
           <div className="-mx-3 mt-[-1.2rem] mb-6">
             <div className="w-[100%] px-3 mb-6 md:mb-0 mt-5">
               <label className="block  tracking-wide text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4" for="grid-first-name">
                 Title
               </label>
-              <input type="text" name="title" id="floating_email" onChange={ClickInput} className="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="Enter Company Name" required />
+              <input type="text" name="title" id="floating_email" onChange={ClickInput} className="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="Enter Title" required />
             </div>
           </div>
           <div className="mt-[-1.2rem] mb-6">
@@ -198,7 +230,16 @@ const JobsForm = () => {
                   <label className="block  tracking-wide text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4" for="grid-first-name">
                     Tags
                   </label>
-                  <input type="text" name="tags" id="floating_email" onChange={ClickInput} className="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="Enter Tags" required />
+                  {/* <input type="text" name="tags" id="floating_email" onChange={ClickInput} className="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="Enter Tags" required /> */}
+                  <div name="tags" className='  w-full flex text-sm text-gray-900 bg-gray-50 rounded-[9px] flex-wrap appearance-none  border-2 border-black border-[0.7px] border-gray-300 focus:outline-none focus:ring-0 focus:border-blue-600 peer'>
+                    {tags.map((item, index) => (
+                      <button onClick={() => deleteTag(item)} className=' m-2 text-white bg-black outline-none border-none px-4 py-1 rounded-lg' key={index}>
+                        {item}
+                        <span  className='ml-5'>X</span>
+                        </button>
+                    ))}
+                <input type="text" name="tags" value={tagValue} onChange={ClickInput}  id="floating_email" onKeyDown={addTags}  className= "pl-4 py-[9px] px-0 bg-gray-50 border-none  focus:outline-none w-full " placeholder="Enter Skills" required />
+                </div>
                 </div>
               </div>
   
@@ -218,13 +259,13 @@ const JobsForm = () => {
                   Skills
                 </label>
                 <div name="skills" className='  w-full flex text-sm text-gray-900 bg-gray-50 rounded-[9px] flex-wrap appearance-none  border-2 border-black border-[0.7px] border-gray-300 focus:outline-none focus:ring-0 focus:border-blue-600 peer'>
-                    {tags.map((item, index) => (
-                      <button onClick={() => deleteTag(item)} className=' m-3  text-white bg-black outline-none border-none px-4 py-1 rounded-lg' key={index}>
+                    {skills.map((item, index) => (
+                      <button onClick={() => deleteSkill(item)} className=' m-2 text-white bg-black outline-none border-none px-4 py-1 rounded-lg' key={index}>
                         {item}
                         <span  className='ml-5'>X</span>
                         </button>
                     ))}
-                <input type="text" name="skills" value={tagValue} id="floating_email" onKeyDown={addTags} onChange={ClickInput } className= "pl-4 py-[9px] px-0 bg-gray-50 border-none  focus:outline-none w-full " placeholder="Enter Skills" required />
+                <input type="text" name="skills" value={skillValue} onChange={ClickInput}  id="floating_email" onKeyDown={addSkills}  className= "pl-4 py-[9px] px-0 bg-gray-50 border-none  focus:outline-none w-full " placeholder="Enter Skills" required />
                 </div>
               </div>
             </div>
@@ -321,7 +362,7 @@ const JobsForm = () => {
             <button onClick={handleSubmit} className='bg-gradient-to-r from-sky-600 to-cyan-400 text-white font-[600] py-2 px-[3rem] mt-4 rounded-lg'>Submit</button>
           </div>
   
-        </form>
+        </div>
   
       </PortalLayout>
     )

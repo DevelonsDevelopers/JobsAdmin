@@ -20,7 +20,6 @@ const city = (state = { isLoading: true, success: false, error: false, cities: [
         case UPDATE_CITY:
             return { ...state, cities: state.cities.map((city) => (city.id === action.payload.id ? action.payload : city)) }
         case CITY_STATUS:
-            console.log(action.payload)
             return { ...state, cities: state.cities.map((city) => (city.id === action.payload.id ? { ...city, status: action.payload.status } : city)) }
         case DELETE_CITY:
             return { ...state, cities: state.cities.filter((city) => city.id !== action.payload) }

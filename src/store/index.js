@@ -99,7 +99,7 @@ export const deleteCity = (id) => API.delete(`/cities/delete`, {
     }
 })
 //Jobs
-export const fetchAllJobs = () => API.put(`/jobs/all`)
+export const fetchAllJobs = () => API.post(`/jobs/all`)
 export const fetchJob = (id) => API.post(`/jobs/get`,
     {
         id: id,
@@ -133,6 +133,7 @@ export const createJob = (job) => API.post(`/jobs/create`,
         company: job.company,
         designation: job.designation,
         salary: job.salary,
+        role: job.role,
         description: job.description,
         link: job.link,
         type: job.type,
@@ -146,7 +147,7 @@ export const createJob = (job) => API.post(`/jobs/create`,
         tags: job.tags,
 
     })
-export const updateJob = (id, category, country, city, title, company, designation, salary, description, link, type, workdays, worktime, address, experience, qualification, skills, date, tags) => API.put(`/jobs/update`, {
+export const updateJob = (id, category, country, city, title, company, designation, salary, role, description, link, type, workdays, worktime, address, experience, qualification, skills, date, tags) => API.put(`/jobs/update`, {
     id: id,
     category: category,
     country: country,
@@ -155,6 +156,7 @@ export const updateJob = (id, category, country, city, title, company, designati
     company: company,
     designation: designation,
     salary: salary,
+    role: role,
     description: description,
     link: link,
     type: type,
