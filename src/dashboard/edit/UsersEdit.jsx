@@ -35,9 +35,14 @@ const UsersEdit = () => {
     setUserData(prev => ({...prev,[e.target.name]: e.target.value}))
   }
 
-  const handleSubmit = () => {
-    dispatch(updateUser(id , userData))
-    navigate('/users')
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if(userData.name && userData.username && userData.email && userData.password && userData.phone && userData.address){
+      dispatch(updateUser(userData))
+      navigate('/users')
+    } else{
+      alert('plz fill the data')
+    }
   }
 
 

@@ -13,9 +13,14 @@ const CountriesForm = () => {
     setCountryData(prev => ({ ...prev, [e.target.name]: e.target.value }))
   }
 
-  const handleSubmit = () => {
-    dispatch(createCountry(countryData))
-    navigate('/countries')
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    if(countryData.name && countryData.description && countryData.flag){
+      dispatch(createCountry(countryData))
+      navigate('/countries')
+    } else{
+      alert('plz fill the data')
+    }
   }
 
 

@@ -6,6 +6,18 @@ import { useNavigate } from 'react-router-dom';
 import { AllCountries, getCountry } from '../../store/actions/countryActions';
 import { AllCities, getCitybyCountry } from '../../store/actions/cityActions';
 
+
+const options = [
+  {name: 'Swedish', value: 'sv'},
+  {name: 'English', value: 'en'},
+  {
+      type: 'group',
+      name: 'Group name',
+      items: [
+          {name: 'Spanish', value: 'es'},
+      ]
+  },
+];
 const CompaniesForm = () => {
   const [companyData, setCompanyData] = useState({ name: '', size: '', city: '', country: '', phone: '', email: '', password: '', headquater: '', type: '' });
   const [country, setCountry] = useState('')
@@ -14,15 +26,20 @@ const CompaniesForm = () => {
 
   const ClickInput = (e) => {
     setCompanyData(prev => ({ ...prev, [e.target.name]: e.target.value }))
-    if (e.target.name === 'country'){
+    if (e.target.name === 'country') {
       setCountry(e.target.value)
+    }
   }
-  }
-  // console.log(companyData)
+  console.log(companyData)
 
-  const handleSubmit = () => {
-    dispatch(createCompany(companyData))
-    navigate('/companies')
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    if(companyData.name && companyData.size && companyData.city && companyData.country && companyData.phone && companyData.email && companyData.password && companyData.headquater && companyData.type ){
+      dispatch(createCompany(companyData))
+      navigate('/companies')
+    } else{
+      alert('plz fill the data')
+    }
   }
 
   const countries = useSelector(state => state.country.countries)
@@ -41,7 +58,7 @@ const CompaniesForm = () => {
   // }, [cityByCountry])
   useEffect(() => {
     // console.log(country)
-    if(country){
+    if (country) {
       dispatch(getCitybyCountry(country))
     }
   }, [dispatch, country])
@@ -101,28 +118,28 @@ const CompaniesForm = () => {
 
         <div class="grid grid-cols-2 gap-10 mt-[-12px]">
           <div class="md:w-[100%] ">
-              <label className="block text-left tracking-wide text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4" for="grid-first-name">
-                Country
-              </label>
-              <select onChange={ClickInput} name='country' class="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" id="grid-state">
-                <option>Select Country</option>
-                {countries?.map((value) => {
-                  return <option value={value.id}>{value.name}</option>
-                })}
+            <label className="block text-left tracking-wide text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4" for="grid-first-name">
+              Country
+            </label>
+            <select onChange={ClickInput} name='country' class="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" id="grid-state">
+              <option>Select Country</option>
+              {countries?.map((value) => {
+                return <option value={value.id}>{value.name}</option>
+              })}
 
-              </select>
+            </select>
           </div>
           <div class="md:w-[100%] ">
-              <label className="block text-left tracking-wide text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4" for="grid-first-name">
-                City
-              </label>
-              <select onChange={ClickInput} name='city' class="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" id="grid-state">
-                <option>Select City</option>
-                {cityByCountry?.map((value) => {
-                  return <option value={value.id}>{value.name}</option>
-                })}
+            <label className="block text-left tracking-wide text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4" for="grid-first-name">
+              City
+            </label>
+            <select onChange={ClickInput} name='city' class="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" id="grid-state">
+              <option>Select City</option>
+              {cityByCountry?.map((value) => {
+                return <option value={value.id}>{value.name}</option>
+              })}
 
-              </select>
+            </select>
           </div>
         </div>
         <div className='flex-col mt-4'>
@@ -132,7 +149,11 @@ const CompaniesForm = () => {
                 <label className="block  tracking-wide text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4" for="grid-first-name">
                   Type
                 </label>
-                <input type="text" name="type" id="floating_email" onChange={ClickInput} className="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="Enter Company Type" required />
+                <select onChange={ClickInput} name='type' class="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" id="grid-state">
+                  <option>Select Type</option>
+                  <option>Individual</option>
+                  <option>Organization</option>
+                </select>
               </div>
             </div>
             <div className="-mx-3 mt-[-1.2rem] mb-6">
@@ -150,7 +171,7 @@ const CompaniesForm = () => {
               <label className="block uppercase tracking-wide text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4" for="grid-Name">
                 HeadQuater
               </label>
-              <input type="text" name="headquater" id="floating_email" onChange={ClickInput} className="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="Enter Company Size" required />
+              <input type="text" name="headquater" id="floating_email" onChange={ClickInput} className="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="Enter Address" required />
             </div>
           </div>
         </div>

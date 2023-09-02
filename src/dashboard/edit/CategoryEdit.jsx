@@ -27,8 +27,12 @@ const CategoryEdit = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    dispatch(updateCategory(id,categoryData))
-    navigate('/categories')
+    if(categoryData.name && categoryData.image && categoryData.description){
+      dispatch(updateCategory(id,categoryData))
+      navigate('/categories')
+    } else{
+      alert('plz fill the data')
+    }
   }
 
   const ClickInput = (e) => {

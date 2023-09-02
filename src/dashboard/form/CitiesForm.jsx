@@ -19,8 +19,12 @@ const CitiesForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    dispatch(createCity(cityData))
-    navigate('/cities')
+    if(cityData.name && cityData.description && cityData.country){
+      dispatch(createCity(cityData))
+      navigate('/cities')
+    } else{
+      alert('plz fill the data')
+    }
   }
 
   const countries = useSelector(state => state.country.countries)

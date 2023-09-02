@@ -31,8 +31,12 @@ const CountryEdit = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    dispatch(updateCountry(id,countryData))
-    navigate('/countries')
+    if(countryData.name && countryData.description && countryData.flag){
+      dispatch(updateCountry(id, countryData))
+      navigate('/countries')
+    } else{
+      alert('plz fill the data')
+    }
   }
 
   const ClickInput = (e) => {

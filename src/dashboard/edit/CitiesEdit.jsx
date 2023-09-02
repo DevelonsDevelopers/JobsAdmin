@@ -40,9 +40,14 @@ const CitiesEdit = () => {
     setCityData(prev => ({...prev,[e.target.name]: e.target.value}))
   }
 
-  const handleSubmit = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    if(cityData.name && cityData.description && cityData.country){
     dispatch(updateCity(id, cityData))
     navigate('/cities')
+    } else{
+      alert('plz fill the data')
+    }
   }
 
 

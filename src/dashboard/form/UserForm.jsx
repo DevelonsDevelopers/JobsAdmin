@@ -6,7 +6,7 @@ import { createUser } from '../../store/actions/userActions';
 
 
 const UserForm = () => {
-  const [userData, setUserData] = useState({ name: '', username: '', email: '', password: '', phoen: '', address: '' });
+  const [userData, setUserData] = useState({ name: '', username: '', email: '', password: '', phone: '', address: '' });
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -18,8 +18,12 @@ const UserForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(createUser(userData))
-    navigate('/users')
+    if(userData.name && userData.username && userData.email && userData.password && userData.phone && userData.address){
+      dispatch(createUser(userData))
+      navigate('/users')
+    } else{
+      alert('plz fill the data')
+    }
   }
   return (
     <PortalLayout>

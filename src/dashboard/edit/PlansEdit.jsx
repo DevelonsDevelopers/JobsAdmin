@@ -30,9 +30,12 @@ const PlansEdit = () => {
     }
   }, [plan])
 
-  const handleSubmit = () => {
-    dispatch(updatePlan(id, planData))
-    navigate('/plans')
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    if(planData.name && planData.amount && planData.type && planData.accounttype && planData.timeperiod && planData.purpose){
+      dispatch(updatePlan(id,planData))
+      navigate('/plans')
+    }
   }
 
   const ClickInput = (e) => {

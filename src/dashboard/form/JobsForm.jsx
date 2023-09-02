@@ -19,6 +19,17 @@ const JobsForm = () => {
     const dispatch = useDispatch()
     const navigate = useNavigate()
 
+    const handleSubmit = (e) => {
+      e.preventDefault()
+      if(jobData.category && jobData.country && jobData.city && jobData.title && jobData.company && jobData.designation && jobData.salary && jobData.role && jobData.description && jobData.link && jobData.type && jobData.workdays && jobData.worktime && jobData.address && jobData.experience && jobData.qualification && jobData.skills && jobData.date && jobData.tags){
+        dispatch(createJob(jobData))
+        navigate('/jobs')
+      } else{
+        alert('plz fill the data')
+      }
+    }
+
+
     const addTags = (e) => {
       if(e.keyCode === 13 || e.keyCode === 32  && tagValue) {
         setTags([...tags, tagValue])
@@ -70,14 +81,6 @@ const JobsForm = () => {
     }
     // console.log(jobData)
 
-    const handleSubmit = (e) => {
-      if(e.keyCode === 13){
-        e.preventDefault()
-        return false
-      }
-        dispatch(createJob(jobData))
-        navigate('/jobs')
-    }
 
     const countries = useSelector(state => state.country.countries)
     // useEffect(() => {
@@ -181,7 +184,13 @@ const JobsForm = () => {
               <label className="block  tracking-wide text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4" for="grid-first-name">
                 Type
               </label>
-              <input type="text" name="type" id="floating_email" onChange={ClickInput} className="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="Enter Type" required />
+              {/* <input type="text" name="type" id="floating_email" onChange={ClickInput} className="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="Enter Type" required /> */}
+              <select onChange={ClickInput} name='type' class="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" id="grid-state">
+                <option>Select Type</option>
+                   <option>Full-Time</option>
+                   <option>Part-Time</option>
+                   <option>Remote</option>
+              </select> 
             </div>
           </div>
   

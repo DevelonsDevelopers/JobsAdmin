@@ -124,9 +124,14 @@ const JobsEdit = () => {
         }
     }, [dispatch, country])
 
-    const handleSubmit =() => {
+    const handleSubmit =(e) => {
+      e.preventDefault()
+      if(jobData.category && jobData.country && jobData.city && jobData.title && jobData.company && jobData.designation && jobData.salary && jobData.role && jobData.description && jobData.link && jobData.type && jobData.workdays && jobData.worktime && jobData.address && jobData.experience && jobData.qualification && jobData.skills && jobData.date && jobData.tags){
         dispatch(updateJob(id, jobData))
         navigate('/jobs')
+      } else{
+        alert('plz fill the data')
+      }
     }
 
     return (
@@ -181,7 +186,13 @@ const JobsEdit = () => {
               <label className="block  tracking-wide text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4" for="grid-first-name">
                 Type
               </label>
-              <input value={jobData.type} type="text" name="type" id="floating_email" onChange={ClickInput} className="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="Enter Company Name" required />
+              {/* <input value={jobData.type} type="text" name="type" id="floating_email" onChange={ClickInput} className="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="Enter Company Name" required /> */}
+              <select value={jobData.type} onChange={ClickInput} name='type' class="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" id="grid-state">
+                <option>Select Type</option>
+                   <option>Full-Time</option>
+                   <option>Part-Time</option>
+                   <option>Remote</option>
+              </select> 
             </div>
           </div>
   

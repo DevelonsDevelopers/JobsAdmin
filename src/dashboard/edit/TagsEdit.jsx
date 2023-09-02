@@ -36,9 +36,14 @@ const TagsEdit = () => {
     setTagData(prev => ({ ...prev, [e.target.name]: e.target.value }))
   }
 
-  const handleSubmit = () => {
-    dispatch(updateTag(id, tagData))
-    navigate('/tags')
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    if(tagData.name){
+      dispatch(updateTag(id, tagData))
+      navigate('/tags')
+    } else{
+      alert('plz fill the data')
+    }
   }
 
 

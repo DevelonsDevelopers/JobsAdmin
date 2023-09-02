@@ -21,9 +21,14 @@ const CategoryForm = () => {
 
 
 
-  const handleSubmit = () => {
-    dispatch(createCategory(categoryData))
-    navigate('/categories')
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    if(categoryData.name && categoryData.description && categoryData.image){
+      dispatch(createCategory(categoryData))
+      navigate('/categories')
+    } else{
+      alert('plz fill the data')
+    }
   }
 
   // console.log(handleSubmit)

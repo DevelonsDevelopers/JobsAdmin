@@ -14,9 +14,14 @@ const TagsForm = () => {
     setTagData(prev => ({ ...prev, [e.target.name]: e.target.value }))
   }
   console.log(tagData)
-  const handleSubmit = () => {
-    dispatch(createTag(tagData));
-    navigate('/tags')
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    if(tagData.name){
+      dispatch(createTag(tagData));
+      navigate('/tags')
+    } else{
+      alert("plz fill the data")
+    }
   }
   return (
     <PortalLayout>

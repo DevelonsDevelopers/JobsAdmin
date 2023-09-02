@@ -60,7 +60,7 @@ const CompanyView = ({ open, setOpen, title, data, ID }) => {
         </div>
         <hr className='mt-2 mb-2' />
         <div className='flex justify-between '>
-        <span className='!font-[800] text-[15px]'> Headquater:  </span>
+        <span className='!font-[800] text-[15px] mr-2'> Headquater:  </span>
         <span className='font-[600] ml-auto text-gray-600 text-[13px] ' >{company?.headquater}</span>
         </div>
         <hr className='mt-2 mb-2' />

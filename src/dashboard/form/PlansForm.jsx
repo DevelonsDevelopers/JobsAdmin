@@ -15,10 +15,12 @@ const PlansForm = () => {
   }
   console.log(planData)
 
-  const handleSubmit = () => {
-    dispatch(createPlan(planData))
-    console.log(planData)
-    navigate('/plans')
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    if(planData.name && planData.amount && planData.type && planData.accounttype && planData.timeperiod && planData.purpose){
+      dispatch(createPlan(planData))
+      navigate('/plans')
+    }
   }
   return (
     <PortalLayout>
