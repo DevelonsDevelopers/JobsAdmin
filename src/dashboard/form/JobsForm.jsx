@@ -7,6 +7,8 @@ import { AllCountries } from '../../store/actions/countryActions'
 import { AllCities, getCitybyCountry } from '../../store/actions/cityActions'
 import { AllCategories } from '../../store/actions/categoryActions'
 import { AllCompanies } from '../../store/actions/companyActions'
+import Select from 'react-select'
+
 
 const JobsForm = () => {
     const [jobData, setJobData] = useState({ category: '', country: '', city: '', title: '', company: '', designation: '', salary: '', role: '', description: '', link: '', type: '', workdays: '', worktime: '', address: '', experience: '', qualification: '', skills: '', date: '', tags: '' })
@@ -18,6 +20,70 @@ const JobsForm = () => {
 
     const dispatch = useDispatch()
     const navigate = useNavigate()
+
+    const [inputValue, setValue] = useState("")
+    const [selectedValue, setSelectedValue] = useState(null)
+  
+    const [inputCityValue, setCityValue] = useState("")
+    const [selectedCityValue, setSelectedCityValue] = useState(null)
+
+    const [inputCompanyValue, setCompanyValue] = useState("")
+    const [selectedCompanyValue, setSelectedCompanyValue] = useState(null)
+
+    const [inputCategoryValue, setCategoryValue] = useState("")
+    const [selectedCategoryValue, setSelectedCategoryValue] = useState(null)
+
+  useEffect(() => {
+    setJobData({ ...jobData, country: selectedValue?.id})
+  }, [selectedValue])
+
+  useEffect(() => {
+    setJobData({ ...jobData, city: selectedCityValue?.id})
+  }, [selectedCityValue])
+
+  useEffect(() => {
+    setJobData({ ...jobData, company: selectedCompanyValue?.id})
+  }, [selectedCompanyValue])
+
+  useEffect(() => {
+    setJobData({ ...jobData, category: selectedCategoryValue?.id})
+  }, [selectedCategoryValue])
+
+  // console.log(selectedCityValue)
+
+  const handleInputChange = (value) => {
+    setValue(value)
+  }
+
+  const handleChange = (value) => {
+    setSelectedValue(value)
+    // if (e.target.name === 'country') {
+    //   setCountry(e.target.value)
+    // }
+  }
+  const cityInputChange = (value) => {
+    setCityValue(value)
+  }
+
+  const cityChange = (value) => {
+    setSelectedCityValue(value)
+
+  }
+  const companyInputChange = (value) => {
+    setCompanyValue(value)
+  }
+
+  const companyChange = (value) => {
+    setSelectedCompanyValue(value)
+  }
+
+  const categoryInputChange = (value) => {
+    setCategoryValue(value)
+  }
+
+  const categoryChange = (value) => {
+    setSelectedCategoryValue(value)
+  }
 
     const handleSubmit = (e) => {
       e.preventDefault()
@@ -124,11 +190,11 @@ const JobsForm = () => {
     // }, [citybyCountry])
 
     useEffect(() => {
-        // console.log(country)
-        if (country) {
-            dispatch(getCitybyCountry(country))
-        }
-    }, [dispatch, country])
+      // console.log(selectedValue?.id)
+      if (selectedValue?.id) {
+        dispatch(getCitybyCountry(selectedValue?.id))
+      }
+    }, [dispatch , selectedValue?.id])
 
 
 
@@ -149,13 +215,31 @@ const JobsForm = () => {
                 <label className="block text-left tracking-wide text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4" for="grid-first-name">
                   Company
                 </label>
-                <select onChange={ClickInput} name='company' class="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" id="grid-state">
+                <Select
+                  cacheOptions
+                  defaultOptions
+                  options={companies?.map((val) => {
+                    return{
+                      id: val.id,
+                      name: val.name
+                    }
+                  })}
+                  value={selectedCompanyValue}
+                  getOptionLabel={(e) => e.name}
+                  getOptionValue={(e) => e.id}
+                  onInputChange={companyInputChange}
+                  onChange={companyChange}
+                  //  name='country'
+                  class="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" id="grid-state"
+                >
+                </Select>
+                {/* <select onChange={ClickInput} name='company' class="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" id="grid-state">
                   <option>Select Company</option>
                   {companies?.map((value) => {
                     return <option value={value.id}>{value.name}</option>
                   })}
   
-                </select>
+                </select> */}
             </div>
           </div>
   
@@ -199,25 +283,59 @@ const JobsForm = () => {
                 <label className="block text-left tracking-wide text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4" for="grid-first-name">
                   Country
                 </label>
-                <select onChange={ClickInput} name='country' class="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" id="grid-state">
+                <Select
+                  cacheOptions
+                  defaultOptions
+                  options={countries?.map((val) => {
+                    return{
+                      id: val.id,
+                      name: val.name
+                    }
+                  })}
+                  value={selectedValue}
+                  getOptionLabel={(e) => e.name}
+                  getOptionValue={(e) => e.id}
+                  onInputChange={handleInputChange}
+                  onChange={handleChange}
+                  //  name='country'
+                  class="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" id="grid-state"
+                >
+                </Select>
+                {/* <select onChange={ClickInput} name='country' class="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" id="grid-state">
                   <option>Select Country</option>
                   {countries?.map((value) => {
                     return <option value={value.id}>{value.name}</option>
                   })}
-  
-                </select>
+                </select> */}
             </div>
             <div class="md:w-[100%] ">
                 <label className="block text-left tracking-wide text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4" for="grid-first-name">
                   City
                 </label>
-                <select onChange={ClickInput} name='city' class="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" id="grid-state">
+                <Select
+                  cacheOptions
+                  defaultOptions
+                  options={citybyCountry?.map((val) => {
+                    return{
+                      id: val.id,
+                      name: val.name
+                    }
+                  })}
+                  value={selectedCityValue}
+                  getOptionLabel={(e) => e.name}
+                  getOptionValue={(e) => e.id}
+                  onInputChange={cityInputChange}
+                  onChange={cityChange}
+                  //  name='country'
+                  class="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" id="grid-state"
+                >
+                </Select>
+                {/* <select onChange={ClickInput} name='city' class="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" id="grid-state">
                   <option>Select City</option>
                   {citybyCountry?.map((value) => {
                     return <option value={value.id}>{value.name}</option>
                   })}
-  
-                </select>
+                </select> */}
             </div>
           </div>
           <div className='flex-col mt-4'>
@@ -226,13 +344,31 @@ const JobsForm = () => {
                 <label className="block text-left tracking-wide text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4" for="grid-first-name">
                   Category
                 </label>
-                <select onChange={ClickInput} name='category' class="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" id="grid-state">
+                <Select
+                  cacheOptions
+                  defaultOptions
+                  options={categories?.map((val) => {
+                    return{
+                      id: val.id,
+                      name: val.name
+                    }
+                  })}
+                  value={selectedCategoryValue}
+                  getOptionLabel={(e) => e.name}
+                  getOptionValue={(e) => e.id}
+                  onInputChange={categoryInputChange}
+                  onChange={categoryChange}
+                  //  name='country'
+                  class="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" id="grid-state"
+                >
+                </Select>
+                {/* <select onChange={ClickInput} name='category' class="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" id="grid-state">
                   <option>Select Category</option>
                   {categories?.map((value) => {
                     return <option value={value.id}>{value.name}</option>
                   })}
   
-                </select>
+                </select> */}
             </div>
               <div className="-mx-3  mb-6 ">
                 <div className="w-[100%] px-3 mb-6 md:mb-0">

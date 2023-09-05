@@ -4,6 +4,14 @@ import axios from "axios"
 
 const API = axios.create({ baseURL: 'http://192.168.1.25:5001' })
 
+//Dashboard
+export const getDashboard = () => API.get(`/dashboard/dashboard`)
+export const getpiechart = () => API.get(`/dashboard/piechart`)
+
+
+// export const getApplied = () => API.get(`/dashboard/applied`)
+export const getReports = () => API.get(`/dashboard/reports`)
+export const getTransactions = () => API.get(`/dashboard/transactions`)
 
 //Categories
 export const fetchAllCategories = () => API.get(`/categories/all`)
