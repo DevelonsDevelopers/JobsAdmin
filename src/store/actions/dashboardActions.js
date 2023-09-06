@@ -1,4 +1,4 @@
-import { GET_DASHBOARD, GET_PIECHART, GET_REPORTS, GET_TRANSACTIONS, LOADING, SUCCESS } from '../../Utils/Constant'
+import { GET_BARCHART, GET_DASHBOARD, GET_LINECHART, GET_PIECHART, GET_REPORTS, GET_TRANSACTIONS, LOADING, SUCCESS } from '../../Utils/Constant'
 import * as api from '../../store/index'
 
 
@@ -21,6 +21,30 @@ export const getpiechart = () => async(dispatch) => {
         const {data: {data} } = await api.getpiechart()
         // console.log(data)
         dispatch ({ type: GET_PIECHART, payload:  data })
+        dispatch ({ type: SUCCESS })
+    } catch(error) {
+        console.log(error)
+    }
+}
+
+export const getLineChart = () => async(dispatch) => {
+    try{
+        dispatch({ type: LOADING })
+        const {data: {data} } = await api.lineChart()
+        // console.log(data)
+        dispatch ({ type: GET_LINECHART, payload:  data })
+        dispatch ({ type: SUCCESS })
+    } catch(error) {
+        console.log(error)
+    }
+}
+
+export const getBarChart = () => async(dispatch) => {
+    try{
+        dispatch({ type: LOADING })
+        const {data: {data} } = await api.barChart()
+        // console.log(data)
+        dispatch ({ type: GET_BARCHART, payload:  data })
         dispatch ({ type: SUCCESS })
     } catch(error) {
         console.log(error)

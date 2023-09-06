@@ -10,7 +10,8 @@ import { RiAccountPinCircleFill } from "react-icons/ri";
 import { BsSunFill } from "react-icons/bs";
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getDashboard, getReports, getTransaction, getpiechart } from '../store/actions/dashboardActions';
+import { getBarChart, getDashboard, getLineChart, getReports, getTransaction, getpiechart } from '../store/actions/dashboardActions';
+import moment from 'moment/moment';
 
 const card = [
   { name: "Seekers", amount: "500", style: "bg-[#4D38E3] rounded-xl  text-white mt-[-3rem] max-md:mt-0 h-[6.5rem] shadow-xl shadow-gray-300 ", icon: RiUserSearchLine },
@@ -85,7 +86,7 @@ const Dashboard = () => {
   const [loading, setLoading] = useState(false)
 
   const dispatch = useDispatch();
-  const [pieData, setPieData] = useState([ { 'value': 0, 'name': 'Companies', 'color': '#4D38E3' }, { 'value': 0, 'name': 'Jobs', 'color': '#ffffff' }, { 'value': 0, 'name': 'Seekers', 'color': '#4D38E3' } ])
+  const [pieData, setPieData] = useState([{ 'value': 0, 'name': 'Companies', 'color': '#4D38E3' }, { 'value': 0, 'name': 'Jobs', 'color': '#ffffff' }, { 'value': 0, 'name': 'Seekers', 'color': '#4D38E3' }])
 
   const COLORS = ['#0088FE', '#00C49F', '#FFBB28'];
   // const getDashborad = async () => {
@@ -113,8 +114,8 @@ const Dashboard = () => {
   const piechart = useSelector(state => state.dashboard.piechart)
 
   useEffect(() => {
-    console.log(piechart)
-    const array = [ { 'value': piechart.companies, 'name': 'Companies', 'color': '#4D38E3' }, { 'value': piechart.jobs, 'name': 'Jobs', 'color': '#ffffff' }, { 'value': piechart.seekers, 'name': 'Seekers', 'color': '#4D58E3' } ]
+    // console.log(piechart)
+    const array = [{ 'value': piechart?.companies, 'name': 'Companies', 'color': '#4D38E3' }, { 'value': piechart?.jobs, 'name': 'Jobs', 'color': '#ffffff' }, { 'value': piechart?.seekers, 'name': 'Seekers', 'color': '#4D58E3' }]
     setPieData(array)
   }, [piechart])
 
@@ -122,11 +123,31 @@ const Dashboard = () => {
     dispatch(getpiechart())
   }, [dispatch])
 
-  const reports = useSelector(state => state.dashboard.report)
+  const lineChart = useSelector(state => state.dashboard.linechart)
 
   useEffect(() => {
-    console.log(reports)
-  }, [reports])
+    console.log(lineChart);
+  }, [lineChart])
+
+  useEffect(() => {
+    dispatch(getLineChart())
+  }, [dispatch])
+
+  const barChart = useSelector(state => state.dashboard.barchart)
+
+  useEffect(() => {
+    console.log(barChart);
+  }, [barChart])
+
+  useEffect(() => {
+    dispatch(getBarChart())
+  }, [dispatch])
+
+  const reports = useSelector(state => state.dashboard.report)
+
+  // useEffect(() => {
+  //   console.log(reports)
+  // }, [reports])
 
   useEffect(() => {
     dispatch(getReports())
@@ -141,6 +162,13 @@ const Dashboard = () => {
   useEffect(() => {
     dispatch(getTransaction())
   }, [dispatch])
+
+  const dateFormatter = (date) => {
+    // return moment(date).unix();
+    return moment(date).format('MMM Do YY');
+  };
+
+
   return (
     <PortalLayout>
       {loading ? <center> <div class="flex justify-center items-center h-screen">
@@ -184,7 +212,7 @@ const Dashboard = () => {
                   <li><RiAccountPinCircleFill className='w-25 text-[3rem] mb-[-2rem] pr-4 pt-2 ml-auto' /></li>
                 </ul>
                 <h1 className='text-left ml-5 mt-6 text-[1rem] font-[600]'>Companies</h1>
-                <h1 className='text-left ml-5 mt-[-0.5rem] text-[2rem] font-[700] '>{dashboard?.companies}</h1>
+                {/* <h1 className='text-left ml-5 mt-[-0.5rem] text-[2rem] font-[700] '>{dashboard?.companies}</h1> */}
               </div>
               <div className="bg-[#f77f00] rounded-xl  text-white mt-[-3rem] max-md:mt-0 h-[6.5rem] shadow-xl shadow-gray-300 ">
                 <ul className='flex flex-row-reverse  '>
@@ -216,9 +244,9 @@ const Dashboard = () => {
                 <PieChart width={430} height={200} margin={{ top: 40, right: 20, bottom: 0, left: 20 }}>
                   {/* <Pie data={data01} dataKey="value2" nameKey="name" cx="50%" cy="50%" outerRadius={40} fill="#2994FF" /> */}
                   <Pie data={pieData} dataKey="value" nameKey="name" cx="50%" cy="50%" outerRadius={70} fill="#4D38E3" label >
-                  {pieData.map((entry, index) => (
-              <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
-            ))}
+                    {pieData.map((entry, index) => (
+                      <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+                    ))}
                   </Pie>
                   <Tooltip />
 
@@ -228,27 +256,26 @@ const Dashboard = () => {
 
           </div>
 
-
-
-
-
           <div className='flex max-md:flex-col  max-md:grid-cols-1 gap-8 items-center'>
             <div className='mt-10 w-[70%] max-md:w-[100%] py-2 bg-white border-2  rounded-xl shadow-xl shadow-gray-300 '>
               <ResponsiveContainer width="100%" height={350}>
-                <AreaChart data={data03}
+                <AreaChart data={lineChart}
                   margin={{ top: 20, right: 30, left: 0, bottom: 0 }}>
-                  <XAxis dataKey="name" />
+                  <XAxis
+                    dataKey="d"
+                    tickFormatter={dateFormatter}
+                  />
                   <YAxis />
 
                   <Tooltip />
                   <ReferenceLine x="Page C" stroke="green" label="Min PAGE" />
                   {/* <ReferenceLine y={4000} label="Max" stroke="red" strokeDasharray="3 3" /> */}
-                  <Area type="monotone" dataKey="uv" stroke="#2994FF" fill="#2994FF " />
+                  <Area type="monotone" dataKey="interactions" stroke="#2994FF" fill="#2994FF " />
                 </AreaChart>
               </ResponsiveContainer>
             </div>
 
-            <div className=" border-2 shadow-xl  max-md:w-[100%] max-md:mb-[30px] p-5 bg-white rounded-xl shadow-xl shadow-gray-300 mt-10 h-[370px] ">
+            <div className=" border-2 shadow-xl h-full  max-md:w-[100%] max-md:mb-[30px] p-5 bg-white rounded-xl shadow-xl shadow-gray-300 mt-10 h-[370px] ">
               <span className=' ml-[1.6rem]  font-[600] text-[1rem]'>Transactions</span>
 
               <table className="w-[100%] mt-3 text-sm text-left text-gray-500 :text-gray-400">
@@ -272,8 +299,8 @@ const Dashboard = () => {
                       <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap :text-white">
                         {value.id}
                       </th>
-                      <td className="px-6 py-4">
-                        {value.date}
+                      <td className="px-2 mx-4 py-4 text-[0.7rem]">
+                        {moment(value.date).format('MMM Do YY')}
                       </td>
 
                       <td className="px-6 py-4">
@@ -326,13 +353,13 @@ const Dashboard = () => {
               <table className="w-[100%] mt-3 text-sm text-left  text-gray-500 :text-gray-400">
                 <thead className="text-xs text-white uppercase  bg-[#2994FF] :bg-gray-700 :text-gray-400">
                   <tr>
-                    <th scope="col" className="px-6 max-md:px-2 py-3">
+                    <th scope="col" className="text-center max-md:px-2 py-3">
                       Job
                     </th>
-                    <th scope="col" className="px-6 max-md:px-2 py-3">
+                    <th scope="col" className="text-center max-md:px-2 py-3">
                       Date
                     </th>
-                    <th scope="col" className="px-6 max-md:px-2 py-3">
+                    <th scope="col" className="text-center max-md:px-2 py-3">
                       Reports
                     </th>
 
@@ -341,14 +368,14 @@ const Dashboard = () => {
                 <tbody>
                   {reports?.map((value, index) => (
                     <tr className={`bg-white border-b :bg-gray-800 :border-gray-700 ${index % 2 ? 'bg-[#A4D2FF]' : 'bg-[#FFDF9F]'}`}>
-                      <th scope="row" className="px-6 max-md:px-2 py-4 font-medium text-gray-900 whitespace-nowrap :text-white">
+                      <th scope="row" className="text-center px-3 max-md:px-2 py-4 font-medium text-gray-900 whitespace-nowrap :text-white">
                         {value.job}
                       </th>
-                      <td className="px-6 max-md:px-2 py-4">
-                        {value.date}
+                      <td className="max-md:px-2 text-center text-[0.7rem]">
+                        {moment(value.date).format('MMM Do YY')}
                       </td>
 
-                      <td className="px-6  max-md:px-2 py-4">
+                      <td className="max-md:px-2 text-center">
                         {value.feedback}
                       </td>
                     </tr>
@@ -365,11 +392,14 @@ const Dashboard = () => {
             <div className='bg-white border-2 p-2 rounded-xl shadow-xl shadow-gray-300'>
               <span className=' ml-[2rem] font-[600] text-[1rem]'>Memory Status</span>
               <ResponsiveContainer width="100%" height={400}>
-                <BarChart width={430} height={250} data={data} margin={{ top: 40, right: 20, bottom: 0, left: 20 }} >
-                  <XAxis dataKey="day" />
+                <BarChart width={430} height={250} data={barChart} margin={{ top: 40, right: 20, bottom: 0, left: 20 }} >
+                  <XAxis
+                    dataKey='date'
+                    tickFormatter={dateFormatter}
+                  />
                   <YAxis />
                   <Tooltip />
-                  <Bar dataKey="profit" fill="#2994FF" />
+                  <Bar dataKey="applied" fill="#2994FF" />
                   <Legend />
                 </BarChart>
               </ResponsiveContainer>

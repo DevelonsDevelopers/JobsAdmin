@@ -1,4 +1,4 @@
-import { ERROR, GET_DASHBOARD, GET_PIECHART, GET_REPORTS, GET_TRANSACTIONS, LOADING, SUCCESS } from "../../Utils/Constant"
+import { ERROR, GET_BARCHART, GET_DASHBOARD, GET_LINECHART, GET_PIECHART, GET_REPORTS, GET_TRANSACTIONS, LOADING, SUCCESS } from "../../Utils/Constant"
 
 
 const dashboard = (state = {isLoading: true, success: false, error: false, dashboard: []}, action) =>{
@@ -13,6 +13,10 @@ const dashboard = (state = {isLoading: true, success: false, error: false, dashb
             return {...state, dashboard: action.payload.dashboard}
         case GET_PIECHART:
             return {...state, piechart: action.payload}
+        case GET_LINECHART:
+            return {...state, linechart: action.payload}
+        case GET_BARCHART:
+            return {...state, barchart: action.payload}
         case GET_REPORTS:
             return {...state, report: action.payload}
         case GET_TRANSACTIONS:

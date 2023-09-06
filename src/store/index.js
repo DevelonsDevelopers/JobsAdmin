@@ -6,10 +6,9 @@ const API = axios.create({ baseURL: 'http://192.168.1.25:5001' })
 
 //Dashboard
 export const getDashboard = () => API.get(`/dashboard/dashboard`)
-export const getpiechart = () => API.get(`/dashboard/piechart`)
-
-
-// export const getApplied = () => API.get(`/dashboard/applied`)
+export const getpiechart = () => API.get(`/dashboard/pieChart`)
+export const lineChart = () => API.get(`/dashboard/lineChart`)
+export const barChart = () => API.get(`/dashboard/barChart`)
 export const getReports = () => API.get(`/dashboard/reports`)
 export const getTransactions = () => API.get(`/dashboard/transactions`)
 
