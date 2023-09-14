@@ -9,6 +9,14 @@ const Topbar = ({ showNav, setShowNav }) => {
 
   const router = useNavigate();
 
+  const logout = () => {
+    sessionStorage.setItem("LOGIN", "false")
+    sessionStorage.setItem("ID", null)
+    sessionStorage.setItem("TYPE", null)
+    sessionStorage.setItem("USER", null)
+    router('/login')
+  }
+
   
 
   //   const handleSignOut = () => {
@@ -48,7 +56,7 @@ const Topbar = ({ showNav, setShowNav }) => {
                   </div>
               </div>
               <center>
-              <button onClick={() => router('/login')} className='text-center w-[50%] rounded-xl bg-blue-400 text-white font-[700] py-1 mb-5 mt-3 shadow-md text-[1rem]'>Logout</button>
+              <button onClick={() => logout()} className='text-center w-[50%] rounded-xl bg-blue-400 text-white font-[700] py-1 mb-5 mt-3 shadow-md text-[1rem]'>Logout</button>
               </center>
 
             </Popover.Panel>

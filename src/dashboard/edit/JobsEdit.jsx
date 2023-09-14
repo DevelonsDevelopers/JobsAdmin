@@ -7,7 +7,7 @@ import { AllCategories } from '../../store/actions/categoryActions'
 import { AllCompanies } from '../../store/actions/companyActions'
 import { getCitybyCountry } from '../../store/actions/cityActions'
 import { getJob, updateJob } from '../../store/actions/jobActions'
-import { Select } from '@mui/material'
+import moment from 'moment'
 
 const JobsEdit = () => {
     const [jobData, setJobData] = useState({ category: '', country: '', city: '', title: '', company: '', designation: '', salary: '', role: '', description: '', link: '', type: '', workdays: '', worktime: '', address: '', experience: '', qualification: '', skills: '', date: '', tags: '' })
@@ -19,41 +19,6 @@ const JobsEdit = () => {
     const [tags, setTags] = useState([])
     const [skillValue, setSkillValue] = useState("");
     const [skills, setSkills] = useState([])
-
-    const [inputValue, setValue] = useState("")
-    const [selectedValue, setSelectedValue] = useState(null)
-
-    const [inputCityValue, setCityValue] = useState("")
-    const [selectedCityValue, setSelectedCityValue] = useState(null)
-  
-  useEffect(() => {
-    setJobData({ ...jobData, country: selectedValue?.id})
-  }, [selectedValue])
-
-  console.log(selectedValue)
-  
-  useEffect(() => {
-    setJobData({ ...jobData, city: selectedCityValue?.id})
-  }, [selectedCityValue])
-  
-  // console.log(selectedCityValue)
-  
-  const handleInputChange = (value) => {
-    setValue(value)
-  }
-  
-  const handleChange = (value) => {
-    setSelectedValue(value)
-  }
-  const cityInputChange = (value) => {
-    setCityValue(value)
-  }
-  
-  const cityChange = (value) => {
-    setSelectedCityValue(value)
-  
-  }
-  
 
 
     const deleteTag = (val) => {
@@ -109,7 +74,7 @@ const JobsEdit = () => {
             setJobData({ category: job?.category, country: job?.country, city: job?.city, title: job?.title, company: job?.company, designation: job?.designation, salary: job?.salary, role: job?.role ,description: job?.description, link: job?.link, type: job?.type, workdays: job?.workdays, worktime: job?.worktime, address: job?.address, experience: job?.experience, qualification: job?.qualification, skills: job?.skills, date: job?.date, tags: job?.tags})
         }
     }, [job])
-    // console.log(jobData)
+    console.log(jobData)
 
     const ClickInput = (e) => {
       
@@ -136,17 +101,12 @@ const JobsEdit = () => {
     // }
 
     const countries = useSelector(state => state.country.countries)
-    useEffect(() => {
-      console.log(countries)
-    }, [countries])
+
     useEffect(() => {
         dispatch(AllCountries())
     }, [dispatch])
 
     const categories = useSelector(state => state.category.categories)
-    useEffect(() => {
-      console.log(categories)
-    }, [categories])
 
     useEffect(() => {
         dispatch(AllCategories())
@@ -236,93 +196,12 @@ const JobsEdit = () => {
               </select> 
             </div>
           </div>
-
+  
           <div class="grid grid-cols-2 gap-10 mt-[-12px]">
             <div class="md:w-[100%] ">
                 <label className="block text-left tracking-wide text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4" for="grid-first-name">
                   Country
                 </label>
-                <Select
-                  cacheOptions
-                  defaultOptions
-                  options={countries
-                  //   ?.map((val) => {
-                  //   return{
-                  //     id: val.id,
-                  //     name: val.name
-                  //   }
-                  // })
-                }
-                  value={selectedValue}
-                  getOptionLabel={(e) => e.name}
-                  getOptionValue={(e) => e.id}
-                  onInputChange={handleInputChange}
-                  onChange={handleChange}
-                  //  name='country'
-                  class="pl-4 block px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" id="grid-state"
-                >
-                </Select>
-                {/* <select onChange={ClickInput} name='country' class="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" id="grid-state">
-                  <option>Select Country</option>
-                  {countries?.map((value) => {
-                    return <option value={value.id}>{value.name}</option>
-                  })}
-                </select> */}
-            </div>
-            <div class="md:w-[100%] ">
-                <label className="block text-left tracking-wide text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4" for="grid-first-name">
-                  City
-                </label>
-                <Select
-                  cacheOptions
-                  defaultOptions
-                  options={citybyCountry?.map((val) => {
-                    return{
-                      id: val.id,
-                      name: val.name
-                    }
-                  })}
-                  value={selectedCityValue}
-                  getOptionLabel={(e) => e.name}
-                  getOptionValue={(e) => e.id}
-                  onInputChange={cityInputChange}
-                  onChange={cityChange}
-                  //  name='country'
-                  class="pl-4 block px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" id="grid-state"
-                >
-                </Select>
-                {/* <select onChange={ClickInput} name='city' class="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" id="grid-state">
-                  <option>Select City</option>
-                  {citybyCountry?.map((value) => {
-                    return <option value={value.id}>{value.name}</option>
-                  })}
-                </select> */}
-            </div>
-          </div>
-  
-          {/* <div class="grid grid-cols-2 gap-10 mt-[-12px]">
-            <div class="md:w-[100%] ">
-                <label className="block text-left tracking-wide text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4" for="grid-first-name">
-                  Country
-                </label>
-                <Select
-                  cacheOptions
-                  defaultOptions
-                  options={countries?.map((val) => {
-                    return{
-                      id: val.id,
-                      name: val.name
-                    }
-                  })}
-                  value={countries?.filter((val) => val.id === jobData?.country ? { id: val.id, name: val.name } : '')}
-                  getOptionLabel={(e) => e.name}
-                  getOptionValue={(e) => e.id}
-                  onInputChange={handleInputChange}
-                  onChange={handleChange}
-                   name='country'
-                  class="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" id="grid-state"
-                >
-                </Select>
                 <select value={jobData.country} onChange={ClickInput} name='country' class="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" id="grid-state">
                   <option>Select Country</option>
                   {countries?.map((value) => {
@@ -335,24 +214,6 @@ const JobsEdit = () => {
                 <label className="block text-left tracking-wide text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4" for="grid-first-name">
                   City
                 </label>
-                <Select
-                  cacheOptions
-                  defaultOptions
-                  options={citybyCountry?.map((val) => {
-                    return {
-                      id: val.id,
-                      name: val.name
-                    }
-                  })}
-                  value={citybyCountry?.filter((val) => val.id === jobData?.city ? { id: val.id, name: val.name } : '')}
-                  getOptionLabel={(e) => e.name}
-                  getOptionValue={(e) => e.id}
-                  onInputChange={cityInputChange}
-                  onChange={cityChange}
-                   name='country'
-                  class="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" id="grid-state"
-                >
-                </Select>
                 <select value={jobData.city} onChange={ClickInput} name='city' class="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" id="grid-state">
                   <option>Select City</option>
                   {citybyCountry?.map((value) => {
@@ -361,39 +222,20 @@ const JobsEdit = () => {
   
                 </select>
             </div>
-          </div> */}
+          </div>
           <div className='flex-col mt-4'>
             <div className='grid grid-cols-2 gap-10 '>
             <div class="md:w-[100%] ">
                 <label className="block text-left tracking-wide text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4" for="grid-first-name">
                   Category
                 </label>
-
-                <Select
-                  cacheOptions
-                  defaultOptions
-                  options={countries?.map((val) => {
-                    return{
-                      id: val.id,
-                      name: val.name
-                    }
-                  })}
-                  value={selectedValue}
-                  getOptionLabel={(e) => e.name}
-                  getOptionValue={(e) => e.id}
-                  onInputChange={handleInputChange}
-                  onChange={handleChange}
-                  //  name='country'
-                  class="pl-4 block px-0 w-[full] text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" id="grid-state"
-                >
-                </Select>
-                {/* <select value={jobData.category} onChange={ClickInput} name='category' class="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" id="grid-state">
+                <select value={jobData.category} onChange={ClickInput} name='category' class="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" id="grid-state">
                   <option>Select Category</option>
                   {categories?.map((value) => {
                     return <option value={value.id}>{value.name}</option>
                   })}
   
-                </select> */}
+                </select>
             </div>
               <div className="-mx-3  mb-6 ">
                 <div className="w-[100%] px-3 mb-6 md:mb-0">
@@ -463,7 +305,7 @@ const JobsEdit = () => {
                 <label className="block  tracking-wide text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4" for="grid-first-name">
                   Date
                 </label>
-                <input value={jobData.date} type="date" name="date" id="floating_email" onChange={ClickInput} className="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="Enter Contact Number " required />
+                <input value={moment(jobData.date).format('YYYY-MM-DD')} type="date" name="date" id="floating_email" onChange={ClickInput} className="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="Enter Contact Number " required />
               </div>
             </div>
           </div>

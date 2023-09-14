@@ -1,18 +1,44 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
+import { LoginUser } from "../../store"
 
 const Login = () => {
   const [loginData, setLoginData] = useState({email: '', password: ''})
-
+  
   const navigate = useNavigate()
 
   const handleChange = (e) => {
     setLoginData(prev => ({ ...prev, [e.target.name]: e.target.value}))
   }
 
-  const handleSubmit = () => {
-    navigate('/')
+  useEffect(() => {
+		const isLogin = sessionStorage.getItem("LOGIN")
+		if (isLogin === "true"){
+      navigate('/')
+		} else {
+		}
+	}, [])
+
+  const login = () => {
+    LoginUser(loginData.email, loginData.password).then(res => {
+      const { data: { data } } = res
+      const { data: { status } } = res
+      console.log(status)
+      if (status === 'OK'){
+        sessionStorage.setItem("LOGIN", "true")
+        sessionStorage.setItem("ID", data.id)
+        sessionStorage.setItem("TYPE", "USER")
+        sessionStorage.setItem("USER", JSON.stringify(data))
+      navigate('/')
+
+      }
+    })
   }
+
+  const handleSubmit = () => {
+    // navigate('/')
+  }
+
 
   return (
     <>
@@ -29,7 +55,7 @@ const Login = () => {
             <input type="checkbox" name="Stay Logged In" id="" className='mt-[1.6rem]' /><p className='ml-[0.5rem] mt-[1.35rem] text-[15px]'>Stay Logged In</p>
             <a href="#" className='text-[15px] text-blue-500 mt-[1.35rem] ml-[7.5rem]'>Forgot Password?</a>
             </span><br />
-            <button onClick={handleSubmit} className='pl-[140px] pr-[140px] rounded-[30px] text-[30px] bg-blue-600 text-white pt-[6px] pb-[6px]'>
+            <button onClick={() => login()} className='pl-[140px] pr-[140px] rounded-[30px] text-[30px] bg-blue-600 text-white pt-[6px] pb-[6px]'>
               Log In
             </button>
             
