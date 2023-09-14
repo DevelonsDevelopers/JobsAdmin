@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import PortalLayout from '../../portalLayout/PortalLayout'
 import { createCategory, updateCategory } from '../../store/actions/categoryActions'
 import { useDispatch } from 'react-redux'
@@ -6,19 +6,35 @@ import { useNavigate } from 'react-router-dom'
 
 const CategoryForm = () => {
   const [categoryData, setCategoryData] = useState({ name: '', description: '', image: '' })
-  const [image, setImage] = useState('')
+  // const [image, setImage] = useState('')
+  const [ Base64IMG, setBase64IMG] = useState('')
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
+
+
   const inputClick = (e) => {
     setCategoryData(prev => ({ ...prev, [e.target.name]: e.target.value }))
-    if(e.target.name === image){
-      setImage(e.target.files[0])
-    }
+    // if(e.target.name === image){
+    //   setImage(e.target.files[0])
+    // }
   }
-  console.log(image)
+  // console.log(image)
   // console.log(categoryData)
 
+  useEffect(() => {
+    setCategoryData({ ...categoryData, image: Base64IMG})
+  }, [Base64IMG])
+
+  console.log(categoryData)
+
+  // const onChangeImage = (e) => {
+  //   // console.log(e.target.files[0])
+  //   setImage(e.target.files[0])
+  // }
+  // useEffect(() => {
+  //   console.log(image)
+  // }, [image])
 
 
   const handleSubmit = (e) => {
@@ -30,6 +46,20 @@ const CategoryForm = () => {
       alert('plz fill the data')
     }
   }
+
+  const convertToBase64 = (e) => {
+    const reader = new FileReader()
+
+    reader.readAsDataURL(e.target.files[0])
+    reader.onload = () => {
+      console.log('called: ', reader)
+      setBase64IMG(reader.result)
+    }
+    reader.onerror = error => {
+      console.log("Error:", error)
+    }
+  }
+  // console.log(Base64IMG)
 
   // console.log(handleSubmit)
 
@@ -67,7 +97,7 @@ const CategoryForm = () => {
                   <p className="mb-2 text-sm text-gray-500 "><span className="font-semibold">Click to upload</span> or drag and drop</p>
                   <p className="text-xs text-gray-500 ">SVG, PNG, JPG or GIF</p>
                 </div>
-                <input id="dropzone-file" type="file" name='image' className="hidden" onChange={inputClick} />
+                <input id="dropzone-file" type="file" name='image' className="hidden" onChange={convertToBase64} />
               </label>
             </div>
 

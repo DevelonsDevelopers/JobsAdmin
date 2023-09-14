@@ -186,8 +186,9 @@ if (categories?.length === 0) {
                 <td className="py-[2%] w-[10%]   border-r-[1px] border-t-[1px] text-center">
                   <span className=" max-md:text-[.7rem] text-[13px] font-[350]">{value.name}</span>
                 </td>
-                <td className="py-[1%] w-[2%]  max-md:text-[.7rem]  border-r-[1px] border-t-[1px]   text-center">
-                  <span className='font-bold text-[13px] font-[350]'>{value.jobs}</span>
+                <td className="py-[1%] px-[1%] w-[2%]  max-md:text-[.7rem]  border-r-[1px] border-t-[1px]   text-center">
+                  {/* <span className='font-bold text-[13px] font-[350]'>{value.jobs}</span> */}
+                  <img src={value.image} className='h-22 w-22 object-fit' alt="" />
                 </td>
                 {/* <td className="py-[1%] w-[2%]  max-md:text-[.7rem]  border-r-[1px] border-t-[1px]   text-center">
                   <span className='font-bold text-[13px] font-[350]'>{value.image}</span>

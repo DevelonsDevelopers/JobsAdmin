@@ -7,15 +7,27 @@ import { useNavigate } from 'react-router-dom';
 import { Transition } from '@headlessui/react';
 import Topbar from '../dashboard/Portal/Topbar';
 import Sidebar from '../dashboard/Portal/Sidebar';
+import { useEffect } from 'react';
 
 const PortalLayout = ({ children }) => {
 
 	const [showNav, setShowNav] = useState(true);
 	const [isMobile, setIsMobile] = useState(false);
-	const [login, setLogin] = useState(true)
+	const [login, setLogin] = useState(false)
 	const [isLoading, setIsLoading] = useState(true)
-
 	const router = useNavigate()
+	
+
+	useEffect(() => {
+		const isLogin = sessionStorage.getItem("LOGIN")
+		if (isLogin === "true"){
+			setLogin(true)
+		} else {
+			setLogin(false)
+			router('/login')
+		}
+	}, [])
+
 	// const { data: session } = useSession({})
 
 	// useEffect(() => {

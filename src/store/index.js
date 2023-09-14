@@ -4,6 +4,15 @@ import axios from "axios"
 
 const API = axios.create({ baseURL: 'http://192.168.1.25:5001' })
 
+
+//Login
+export const LoginUser = (email, password) => API.post(`/userAuth/login`, 
+{
+    email: email,
+    password: password
+})
+
+
 //Dashboard
 export const getDashboard = () => API.get(`/dashboard/dashboard`)
 export const getpiechart = () => API.get(`/dashboard/pieChart`)

@@ -86,7 +86,7 @@ const Dashboard = () => {
   const [loading, setLoading] = useState(false)
 
   const dispatch = useDispatch();
-  const [pieData, setPieData] = useState([{ 'value': 0, 'name': 'Companies', 'color': '#4D38E3' }, { 'value': 0, 'name': 'Jobs', 'color': '#ffffff' }, { 'value': 0, 'name': 'Seekers', 'color': '#4D38E3' }])
+  const [pieData, setPieData] = useState([{ 'value': 0, 'name': 'Companies' }, { 'value': 0, 'name': 'Jobs', 'color': '#ffffff' }, { 'value': 0, 'name': 'Seekers' }])
 
   const COLORS = ['#0088FE', '#00C49F', '#FFBB28'];
   // const getDashborad = async () => {
@@ -115,19 +115,19 @@ const Dashboard = () => {
 
   useEffect(() => {
     // console.log(piechart)
-    const array = [{ 'value': piechart?.companies, 'name': 'Companies', 'color': '#4D38E3' }, { 'value': piechart?.jobs, 'name': 'Jobs', 'color': '#ffffff' }, { 'value': piechart?.seekers, 'name': 'Seekers', 'color': '#4D58E3' }]
+    const array = [{ 'value': piechart?.companies, 'name': 'Companies' }, { 'value': piechart?.jobs, 'name': 'Jobs', 'color': '#ffffff' }, { 'value': piechart?.seekers, 'name': 'Seekers', 'color': '#4D58E3' }]
     setPieData(array)
   }, [piechart])
-
+    
   useEffect(() => {
     dispatch(getpiechart())
   }, [dispatch])
 
   const lineChart = useSelector(state => state.dashboard.linechart)
 
-  useEffect(() => {
-    console.log(lineChart);
-  }, [lineChart])
+  // useEffect(() => {
+  //   console.log(lineChart);
+  // }, [lineChart])
 
   useEffect(() => {
     dispatch(getLineChart())
@@ -212,7 +212,7 @@ const Dashboard = () => {
                   <li><RiAccountPinCircleFill className='w-25 text-[3rem] mb-[-2rem] pr-4 pt-2 ml-auto' /></li>
                 </ul>
                 <h1 className='text-left ml-5 mt-6 text-[1rem] font-[600]'>Companies</h1>
-                {/* <h1 className='text-left ml-5 mt-[-0.5rem] text-[2rem] font-[700] '>{dashboard?.companies}</h1> */}
+                <h1 className='text-left ml-5 mt-[-0.5rem] text-[2rem] font-[700] '>{dashboard?.companies}</h1>
               </div>
               <div className="bg-[#f77f00] rounded-xl  text-white mt-[-3rem] max-md:mt-0 h-[6.5rem] shadow-xl shadow-gray-300 ">
                 <ul className='flex flex-row-reverse  '>
