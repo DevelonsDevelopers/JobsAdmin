@@ -35,6 +35,7 @@ import PlansEdit from "./dashboard/edit/PlansEdit";
 import UsersEdit from "./dashboard/edit/UsersEdit";
 import Login from "./dashboard/login/Login";
 import Register from "./dashboard/register/Register";
+import Cv from "./components/Cv";
 
 function App() {
   return (
@@ -80,6 +81,7 @@ function App() {
           <Route path="/plans/edit" element={<PlansEdit />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/cv" element={<Cv />} />
         </Routes>
       </BrowserRouter>
   );
