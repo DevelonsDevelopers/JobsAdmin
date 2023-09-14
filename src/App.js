@@ -36,6 +36,7 @@ import UsersEdit from "./dashboard/edit/UsersEdit";
 import Login from "./dashboard/login/Login";
 import Register from "./dashboard/register/Register";
 import Cv from "./components/Cv";
+import Test from "./dashboard/Test";
 
 function App() {
   return (
@@ -82,6 +83,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/cv" element={<Cv />} />
+          <Route path="/test" element={<Test />} />
         </Routes>
       </BrowserRouter>
   );
