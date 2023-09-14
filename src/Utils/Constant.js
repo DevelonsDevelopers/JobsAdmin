@@ -2,6 +2,16 @@ export const LOADING = "LOADING"
 export const SUCCESS = "SUCCESS"
 export const ERROR = "ERROR"
 
+//DASHBOARD:====
+export const GET_DASHBOARD = "GET_DASHBOARD";
+export const GET_PIECHART = "GET_PIECHART";
+export const GET_LINECHART = "GET_LINECHART";
+export const GET_BARCHART = "GET_BARCHART";
+export const GET_APPLIED = "GET_APPLIED";
+export const GET_REPORTS = "GET_REPORTS";
+export const GET_TRANSACTIONS = "GET_TRANSACTIONS";
+
+
 // CATEGORIES:=====
 export const ALL_CATEGORIES = "ALL_CATEGORIES";
 export const GET_CATEGORY = "GET_CATEGORY";

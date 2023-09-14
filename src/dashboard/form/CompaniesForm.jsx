@@ -5,39 +5,72 @@ import { createCompany } from '../../store/actions/companyActions';
 import { useNavigate } from 'react-router-dom';
 import { AllCountries, getCountry } from '../../store/actions/countryActions';
 import { AllCities, getCitybyCountry } from '../../store/actions/cityActions';
+import Select from 'react-select'
 
 
 const options = [
-  {name: 'Swedish', value: 'sv'},
-  {name: 'English', value: 'en'},
-  {
-      type: 'group',
-      name: 'Group name',
-      items: [
-          {name: 'Spanish', value: 'es'},
-      ]
-  },
+  { label: 'Individual' },
+  { label: 'Organization' },
+
 ];
+
+
 const CompaniesForm = () => {
   const [companyData, setCompanyData] = useState({ name: '', size: '', city: '', country: '', phone: '', email: '', password: '', headquater: '', type: '' });
   const [country, setCountry] = useState('')
+  
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  
+    const [inputValue, setValue] = useState("")
+    const [selectedValue, setSelectedValue] = useState(null)
+  
+    const [inputCityValue, setCityValue] = useState("")
+    const [selectedCityValue, setSelectedCityValue] = useState(null)
+
+  useEffect(() => {
+    setCompanyData({ ...companyData, country: selectedValue?.id})
+  }, [selectedValue])
+
+  useEffect(() => {
+    setCompanyData({ ...companyData, city: selectedCityValue?.id})
+  }, [selectedCityValue])
+
+  console.log(selectedCityValue)
+
+  const handleInputChange = (value) => {
+    setValue(value)
+  }
+
+  const handleChange = (value) => {
+    setSelectedValue(value)
+    // if (e.target.name === 'country') {
+    //   setCountry(e.target.value)
+    // }
+  }
+  const cityInputChange = (value) => {
+    setCityValue(value)
+  }
+
+  const cityChange = (value) => {
+    setSelectedCityValue(value)
+
+  }
 
   const ClickInput = (e) => {
-    setCompanyData(prev => ({ ...prev, [e.target.name]: e.target.value }))
-    if (e.target.name === 'country') {
-      setCountry(e.target.value)
-    }
+      setCompanyData(prev => ({ ...prev, [e.target.name]: e.target.value }))
+    // if (e.target.name === 'country') {
+    //   setCountry(e.target.value)
+    // }
   }
   console.log(companyData)
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    if(companyData.name && companyData.size && companyData.city && companyData.country && companyData.phone && companyData.email && companyData.password && companyData.headquater && companyData.type ){
+    if (companyData.name && companyData.size && companyData.city && companyData.country && companyData.phone && companyData.email && companyData.password && companyData.headquater && companyData.type) {
       dispatch(createCompany(companyData))
       navigate('/companies')
-    } else{
+    } else {
       alert('plz fill the data')
     }
   }
@@ -57,20 +90,11 @@ const CompaniesForm = () => {
   //   console.log(cityByCountry);
   // }, [cityByCountry])
   useEffect(() => {
-    // console.log(country)
-    if (country) {
-      dispatch(getCitybyCountry(country))
+    // console.log(selectedValue?.id)
+    if (selectedValue?.id) {
+      dispatch(getCitybyCountry(selectedValue?.id))
     }
-  }, [dispatch, country])
-
-  const cities = useSelector(state => state.city.cities)
-  // useEffect(() => {
-  //   console.log(cities)
-  // }, [cities])
-
-  useEffect(() => {
-    dispatch(AllCities())
-  }, [dispatch])
+  }, [dispatch , selectedValue?.id])
 
 
 
@@ -121,25 +145,61 @@ const CompaniesForm = () => {
             <label className="block text-left tracking-wide text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4" for="grid-first-name">
               Country
             </label>
-            <select onChange={ClickInput} name='country' class="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" id="grid-state">
+            <Select
+                  cacheOptions
+                  defaultOptions
+                  options={countries?.map((val) => {
+                    return{
+                      id: val.id,
+                      name: val.name
+                    }
+                  })}
+                  value={selectedValue}
+                  getOptionLabel={(e) => e.name}
+                  getOptionValue={(e) => e.id}
+                  onInputChange={handleInputChange}
+                  onChange={handleChange}
+                  //  name='country'
+                  class="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" id="grid-state"
+                >
+                </Select>
+            {/* <select onChange={ClickInput} name='country' class="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" id="grid-state">
               <option>Select Country</option>
               {countries?.map((value) => {
                 return <option value={value.id}>{value.name}</option>
-              })}
+              })} */}
 
-            </select>
+            {/* </select> */}
           </div>
           <div class="md:w-[100%] ">
             <label className="block text-left tracking-wide text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4" for="grid-first-name">
               City
             </label>
-            <select onChange={ClickInput} name='city' class="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" id="grid-state">
+            <Select
+                  cacheOptions
+                  defaultOptions
+                  options={cityByCountry?.map((val) => {
+                    return{
+                      id: val.id,
+                      name: val.name
+                    }
+                  })}
+                  value={selectedCityValue}
+                  getOptionLabel={(e) => e.name}
+                  getOptionValue={(e) => e.id}
+                  onInputChange={cityInputChange}
+                  onChange={cityChange}
+                  //  name='country'
+                  class="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" id="grid-state"
+                >
+                </Select>
+            {/* <select onChange={ClickInput} name='city' class="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" id="grid-state">
               <option>Select City</option>
               {cityByCountry?.map((value) => {
                 return <option value={value.id}>{value.name}</option>
               })}
 
-            </select>
+            </select> */}
           </div>
         </div>
         <div className='flex-col mt-4'>
@@ -149,7 +209,8 @@ const CompaniesForm = () => {
                 <label className="block  tracking-wide text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4" for="grid-first-name">
                   Type
                 </label>
-                <select onChange={ClickInput} name='type' class="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" id="grid-state">
+                <select name='type' onClick={ClickInput} class="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" id="grid-state"
+                >
                   <option>Select Type</option>
                   <option>Individual</option>
                   <option>Organization</option>

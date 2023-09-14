@@ -5,6 +5,8 @@ import { getCompany, updateCompany } from '../../store/actions/companyActions';
 import { useDispatch, useSelector } from 'react-redux';
 import { AllCountries } from '../../store/actions/countryActions';
 import { AllCities, getCitybyCountry } from '../../store/actions/cityActions';
+import Select from 'react-select'
+
 
 const CompanyEdit = () => {
 
@@ -13,6 +15,41 @@ const CompanyEdit = () => {
 
   const dispatch = useDispatch()
   const navigate = useNavigate()
+
+  const [inputValue, setValue] = useState("")
+  const [selectedValue, setSelectedValue] = useState(null)
+
+  const [inputCityValue, setCityValue] = useState("")
+  const [selectedCityValue, setSelectedCityValue] = useState(null)
+
+useEffect(() => {
+  setCompanyData({ ...companyData, country: selectedValue?.id})
+}, [selectedValue])
+
+useEffect(() => {
+  setCompanyData({ ...companyData, city: selectedCityValue?.id})
+}, [selectedCityValue])
+
+console.log(selectedCityValue)
+
+const handleInputChange = (value) => {
+  setValue(value)
+}
+
+const handleChange = (value) => {
+  setSelectedValue(value)
+  // if (e.target.name === 'country') {
+  //   setCountry(e.target.value)
+  // }
+}
+const cityInputChange = (value) => {
+  setCityValue(value)
+}
+
+const cityChange = (value) => {
+  setSelectedCityValue(value)
+
+}
 
   const params = useLocation();
   const id = params.state.ID;
@@ -60,15 +97,15 @@ const CompanyEdit = () => {
 
   const cityByCountry = useSelector(state => state.city.citybycountry)
 
+  // useEffect(() => {
+  //   console.log(cityByCountry)
+  // }, [cityByCountry])
   useEffect(() => {
-    console.log(cityByCountry)
-  }, [cityByCountry])
-  useEffect(() => {
-    console.log(country)
-    if(country){
-      dispatch(getCitybyCountry(country))
+    // console.log(selectedValue?.id)
+    if (selectedValue?.id) {
+      dispatch(getCitybyCountry(selectedValue?.id))
     }
-  }, [dispatch, country])
+  }, [dispatch , selectedValue?.id])
 
   // const cities = useSelector(state => state.city.cities)
 
@@ -115,25 +152,57 @@ const CompanyEdit = () => {
               <label className="block text-left tracking-wide text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4" for="grid-first-name">
                 Country
               </label>
-              <select  value={companyData.country} onChange={ClickInput}  name='country' class="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-300 appearance-none     border-gray-600  focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" id="grid-state">
-                {/* <option>Select Country</option> */}
+              <Select
+                  cacheOptions
+                  defaultOptions
+                  options={countries?.map((val) => {
+                    return{
+                      id: val.id,
+                      name: val.name
+                    }
+                  })}
+                  value={countries?.filter((val) => val.id === companyData?.country ? { id: val.id, name: val.name } : '')}
+                  getOptionLabel={(e) => e.name}
+                  getOptionValue={(e) => e.id}
+                  onInputChange={handleInputChange}
+                  onChange={handleChange}
+                  //  name='country'
+                  class="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" id="grid-state"
+                >
+                </Select>
+              {/* <select  value={companyData.country} onChange={ClickInput}  name='country' class="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-300 appearance-none     border-gray-600  focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" id="grid-state">
                 {countries?.map((value) => {
                   return <option value={value.id}>{value.name}</option>
                 })}
-                  {/* <option hidden disabled selected >Enter Your Country</option> */}
-               
-
-              </select>
+              </select> */}
           </div>
           <div class="md:w-[100%] ">
               <label className="block text-left tracking-wide text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4" for="grid-first-name">
                 City
               </label>
-              <select value={companyData.city}  onChange={ClickInput}  name='city' class="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-300 appearance-none     border-gray-600  focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" id="grid-state">
+              <Select
+                  cacheOptions
+                  defaultOptions
+                  options={cityByCountry?.map((val) => {
+                    return {
+                      id: val.id,
+                      name: val.name
+                    }
+                  })}
+                  value={cityByCountry?.filter((val) => val.id === companyData?.city ? { id: val.id, name: val.name } : '')}
+                  getOptionLabel={(e) => e.name}
+                  getOptionValue={(e) => e.id}
+                  onInputChange={cityInputChange}
+                  onChange={cityChange}
+                  //  name='country'
+                  class="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" id="grid-state"
+                >
+                </Select>
+              {/* <select value={companyData.city}  onChange={ClickInput}  name='city' class="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-300 appearance-none     border-gray-600  focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" id="grid-state">
                 {cityByCountry?.map((value) => {
                   return <option value={value.id}>{value.name}</option>
                 })}
-              </select>
+              </select> */}
           </div>
         </div>
         <div className='flex-col mt-4'>

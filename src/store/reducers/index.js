@@ -1,4 +1,5 @@
 import { combineReducers } from "redux";
+import dashboard from "./dashboard";
 import category from "./category";
 import city from "./city";
 import job from "./job"
@@ -13,6 +14,7 @@ import user from "./user";
 import appliedUser from "./appliedUsers";
 
 export default combineReducers({
+     dashboard,
      category,
      city,
      job,
