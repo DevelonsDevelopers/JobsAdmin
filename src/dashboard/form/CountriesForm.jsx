@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import PortalLayout from '../../portalLayout/PortalLayout'
 import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
@@ -6,12 +6,15 @@ import { createCountry } from '../../store/actions/countryActions'
 
 const CountriesForm = () => {
   const [countryData, setCountryData] = useState({ name: '', description: '', flag: '' })
+  const [ Base64IMG, setBase64IMG] = useState()
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const ClickInput = (e) => {
     setCountryData(prev => ({ ...prev, [e.target.name]: e.target.value }))
   }
+  console.log(countryData)
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -20,6 +23,23 @@ const CountriesForm = () => {
       navigate('/countries')
     } else{
       alert('plz fill the data')
+    }
+  }
+
+  useEffect(() => {
+    setCountryData({ ...countryData, flag: Base64IMG})
+  }, [Base64IMG])
+
+  const convertToBase64 = (e) => {
+    const reader = new FileReader()
+
+    reader.readAsDataURL(e.target.files[0])
+    reader.onload = () => {
+      console.log('called: ', reader)
+      setBase64IMG(reader.result)
+    }
+    reader.onerror = error => {
+      console.log("Error:", error)
     }
   }
 
@@ -58,7 +78,7 @@ const CountriesForm = () => {
                   <p className="mb-2 text-sm text-gray-500  text-gray-400"><span className="font-semibold">Click to upload</span> or drag and drop</p>
                   <p className="text-xs text-gray-500  text-gray-400">SVG, PNG, JPG or GIF</p>
                 </div>
-                <input id="dropzone-file" type="file" name='flag' className="hidden" onChange={ClickInput} />
+                <input id="dropzone-file" type="file" name='flag' className="hidden" onChange={convertToBase64} />
               </label>
             </div>
 
