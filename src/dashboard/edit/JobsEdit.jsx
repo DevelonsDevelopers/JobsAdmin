@@ -8,10 +8,16 @@ import { AllCompanies } from '../../store/actions/companyActions'
 import { getCitybyCountry } from '../../store/actions/cityActions'
 import { getJob, updateJob } from '../../store/actions/jobActions'
 import moment from 'moment'
+import JoditEditor from 'jodit-react'
 
 const JobsEdit = () => {
-    const [jobData, setJobData] = useState({ category: '', country: '', city: '', title: '', company: '', designation: '', salary: '', role: '', description: '', link: '', type: '', workdays: '', worktime: '', address: '', experience: '', qualification: '', skills: '', date: '', tags: '' })
+    const [jobData, setJobData] = useState({ category: '', country: '', city: '', title: '', company: '', designation: '', salary: '', role: '', description: '', link: '', type: '', workdays: '', worktime: '', address: '', experience: '', qualification: '', skills: '',  date: '', tags: '' })
     const [country, setCountry] = useState()
+
+    const [startTime, setStartTime] = useState()
+    const [endTime, setEndTime] = useState()
+    const [date , setDate] = useState()
+
     const dispatch = useDispatch()
     const navigate = useNavigate()
 
@@ -20,6 +26,9 @@ const JobsEdit = () => {
     const [skillValue, setSkillValue] = useState("");
     const [skills, setSkills] = useState([])
 
+    const [content, setContent] = useState('');
+
+    
 
     const deleteTag = (val) => {
       let remainTags = tags.filter((t) => t !== val)
@@ -55,6 +64,19 @@ const JobsEdit = () => {
       setJobData({...jobData, skills: skills.toString()})
     }, [skills])
 
+    useEffect(() => {
+      setJobData({...jobData, worktime: startTime + " - " + endTime})
+    }, [startTime, endTime])
+
+    useEffect(() => {
+      setJobData({...jobData, date: moment(date).format('YYYY-MM-DD')})
+    }, [date])
+
+    useEffect(() => {
+      setJobData({ ...jobData, description: content })
+    }, [content])
+  
+
     const params = useLocation();
     const id = params.state.ID;
     // console.log(id)
@@ -71,10 +93,12 @@ const JobsEdit = () => {
         if(job){
           setTags((job?.tags).split(','))
           setSkills((job?.skills).split(','))
-            setJobData({ category: job?.category, country: job?.country, city: job?.city, title: job?.title, company: job?.company, designation: job?.designation, salary: job?.salary, role: job?.role ,description: job?.description, link: job?.link, type: job?.type, workdays: job?.workdays, worktime: job?.worktime, address: job?.address, experience: job?.experience, qualification: job?.qualification, skills: job?.skills, date: job?.date, tags: job?.tags})
+            setJobData({ category: job?.category, country: job?.country, city: job?.city, title: job?.title, company: job?.company, designation: job?.designation, salary: job?.salary, role: job?.role ,description: job?.description, link: job?.link, type: job?.type, workdays: job?.workdays, worktime: job?.worktime, address: job?.address, experience: job?.experience, qualification: job?.qualification, skills: job?.skills, date: moment(job?.date).format('YYYY-MM-DD'), tags: job?.tags})
         }
     }, [job])
-    console.log(jobData)
+    useEffect(() => {
+      console.log(jobData)
+    }, [jobData])
 
     const ClickInput = (e) => {
       
@@ -291,13 +315,21 @@ const JobsEdit = () => {
               </div>
             </div>
           </div>
-          <div className='grid grid-cols-2 gap-10 mt-2'>
+          <div className='grid grid-cols-3 gap-10 mt-2'>
+          <div className="-mx-3 mt-[-1.2rem] mb-6">
+              <div className="w-[100%] px-3 mb-6 md:mb-0">
+                <label className="block  tracking-wide text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4" for="grid-first-name">
+                  Start Time
+                </label>
+                <input value={jobData?.worktime.slice(0, 5)} type="time" name="worktime" id="floating_email" onChange={(e) => setStartTime(e.target.value)} className="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="Enter Start Time" required />
+              </div>
+            </div>
             <div className="-mx-3 mt-[-1.2rem] mb-6">
               <div className="w-[100%] px-3 mb-6 md:mb-0">
                 <label className="block  tracking-wide text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4" for="grid-first-name">
-                  Work Time
+                  End Time
                 </label>
-                <input value={jobData.worktime} type="time" name="worktime" id="floating_email" onChange={ClickInput} className="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="Enter Email" required />
+                <input value={jobData.worktime.slice(8,13)} type="time" name="worktime" id="floating_email" onChange={(e) => setEndTime(e.target.value)} className="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="Enter End Time" required />
               </div>
             </div>
             <div className="-mx-3 mt-[-1.2rem] mb-6">
@@ -305,7 +337,7 @@ const JobsEdit = () => {
                 <label className="block  tracking-wide text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4" for="grid-first-name">
                   Date
                 </label>
-                <input value={moment(jobData.date).format('YYYY-MM-DD')} type="date" name="date" id="floating_email" onChange={ClickInput} className="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="Enter Contact Number " required />
+                <input value={moment(jobData.date).format('YYYY-MM-DD')} type="date" name="date" id="floating_email" onChange={(e) => setDate(e.target.value)} className="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="Enter Contact Number " required />
               </div>
             </div>
           </div>
@@ -353,7 +385,15 @@ const JobsEdit = () => {
                 <label className="block uppercase tracking-wide text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4" for="grid-Name">
                   Description
                 </label>
-                <textarea value={jobData.description} name='description' rows='4' onChange={ClickInput} className="appearance-none block w-full bg-gray-50  border-gray-lighter rounded py-3 px-4 rounded-[9px] mb-3 border-[0.7px] border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer text-[14px]" id="grid-Name" type="text" placeholder="Enter HeadQuarter Addres" />
+                {/* <textarea value={jobData.description} name='description' rows='4' onChange={ClickInput} className="appearance-none block w-full bg-gray-50  border-gray-lighter rounded py-3 px-4 rounded-[9px] mb-3 border-[0.7px] border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer text-[14px]" id="grid-Name" type="text" placeholder="Enter HeadQuarter Addres" /> */}
+                <JoditEditor
+                // ref={editor}
+                name='description'
+                tabIndex={1} // tabIndex of textarea
+                value={jobData?.description}
+                // onChange={newContent => setContent(newContent)}
+                onBlur={newContent => setContent(newContent)} // preferred to use only this option to update the content for performance reasons
+              />
               </div>
             </div>
           </div>

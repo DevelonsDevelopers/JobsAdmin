@@ -9,16 +9,39 @@ import { AllCategories } from '../../store/actions/categoryActions'
 import { AllCompanies } from '../../store/actions/companyActions'
 import Select from 'react-select'
 import JoditEditor from 'jodit-react'
+import moment from 'moment'
 
 
-const JobsForm = ({placeholder }) => {
+const JobsForm = ({  }) => {
   const [jobData, setJobData] = useState({ category: '', country: '', city: '', title: '', company: '', designation: '', salary: '', role: '', description: '', link: '', type: '', workdays: '', worktime: '', address: '', experience: '', qualification: '', skills: '', date: '', tags: '' })
   const [country, setCountry] = useState()
   const [tagValue, setTagValue] = useState("");
 
+  const [startTime, setStartTime] = useState()
+  const [endTime, setEndTime] = useState()
+  const [date , setDate] = useState()
+  const [totalDuration, setTotalDuration] = useState()
+
+  useEffect(() => {
+    setJobData({...jobData, date: moment(date).format('YYYY-MM-DD')})
+  }, [date])
+
+  useEffect(() => {
+    setJobData({...jobData, worktime: startTime + " - " + endTime})
+  }, [startTime, endTime])
+  
+  // useEffect(() => {
+  //   console.log(startTime)
+  //   // setTotalDuration(startTime + '-' + endTime)
+  //   // console.log('good', totalDuration)
+  // }, [])
+
+  // useEffect(() => {
+  // }, [totalDuration])
+
   const editor = useRef(null);
-	const [content, setContent] = useState('');
-  console.log(content)
+  const [content, setContent] = useState('');
+  // console.log(content)
 
   const [tags, setTags] = useState([])
   const [skillValue, setSkillValue] = useState("");
@@ -40,7 +63,7 @@ const JobsForm = ({placeholder }) => {
   const [selectedCategoryValue, setSelectedCategoryValue] = useState(null)
 
   useEffect(() => {
-    setJobData({ ...jobData, description: content})
+    setJobData({ ...jobData, description: content })
   }, [content])
 
   useEffect(() => {
@@ -120,12 +143,12 @@ const JobsForm = ({placeholder }) => {
     }
   }
   useEffect(() => {
-    console.log(tags)
+    // console.log(tags)
     setJobData({ ...jobData, tags: tags.toString() })
   }, [tags])
 
   useEffect(() => {
-    console.log(skills)
+    // console.log(skills)
     setJobData({ ...jobData, skills: skills.toString() })
   }, [skills])
 
@@ -145,7 +168,7 @@ const JobsForm = ({placeholder }) => {
       setTagValue(e.target.value)
     }
   }
-  console.log(jobData)
+  // console.log(jobData)
 
   const deleteTag = (val) => {
     let remainTags = tags.filter((t) => t !== val)
@@ -441,17 +464,25 @@ const JobsForm = ({placeholder }) => {
                 <label className="block  tracking-wide text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4" for="grid-first-name">
                   Work Day
                 </label>
-                <input type="text" name="workdays" id="floating_email" onChange={ClickInput} className="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="Enter Work Days(eg. mon-friday) " required />
+                <input type="text" name="workdays" id="floating_email" onChange={ClickInput} className="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="Work Days(eg. mon-friday, mon,tue,wed,etc) " required />
               </div>
             </div>
           </div>
-          <div className='grid grid-cols-2 gap-10 mt-2'>
+          <div className='grid grid-cols-3 gap-10 mt-2'>
             <div className="-mx-3 mt-[-1.2rem] mb-6">
               <div className="w-[100%] px-3 mb-6 md:mb-0">
                 <label className="block  tracking-wide text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4" for="grid-first-name">
-                  Work Time
+                  Start Time
                 </label>
-                <input type="time" name="worktime" id="floating_email" onChange={ClickInput} className="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="Enter Salary" required />
+                <input type="time" name="worktime" id="floating_email" onChange={(e) => setStartTime(e.target.value)} className="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="Enter Start Time" required />
+              </div>
+            </div>
+            <div className="-mx-3 mt-[-1.2rem] mb-6">
+              <div className="w-[100%] px-3 mb-6 md:mb-0">
+                <label className="block  tracking-wide text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4" for="grid-first-name">
+                  End Time
+                </label>
+                <input type="time" name="worktime" id="floating_email" onChange={(e) => setEndTime(e.target.value)} className="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="Enter End Time" required />
               </div>
             </div>
             <div className="-mx-3 mt-[-1.2rem] mb-6">
@@ -459,7 +490,7 @@ const JobsForm = ({placeholder }) => {
                 <label className="block  tracking-wide text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4" for="grid-first-name">
                   Date
                 </label>
-                <input type="date" name="date" id="floating_email" onChange={ClickInput} className="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="Enter Company Role " required />
+                <input type="date"  id="floating_email" onChange={(e) => setDate(e.target.value)} className="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="Enter Company Role " required />
               </div>
             </div>
           </div>
@@ -470,7 +501,7 @@ const JobsForm = ({placeholder }) => {
                 <label className="block  tracking-wide text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4" for="grid-first-name">
                   Salary
                 </label>
-                <input type="text " name="salary" id="floating_email" onChange={ClickInput} className="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="Enter Salary (eg. 1000-5000$, 1k-5kPKR etc)" required />
+                <input type="text " name="salary" id="floating_email" onChange={ClickInput} className="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="Enter Salary (eg. 1000-5000$, etc)" required />
               </div>
             </div>
             <div className="-mx-3 mt-[-1.2rem] mb-6">
