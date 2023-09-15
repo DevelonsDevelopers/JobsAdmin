@@ -181,8 +181,10 @@ useEffect(() => {
                 <td className="py-[2%] w-[10%]   border-r-[1px] border-t-[1px]   text-center">
                   <span className=" max-md:text-[.7rem] text-[13px] font-[350]">{value.name}</span>
                 </td>
-                <td className="py-[1%] px-[1%] w-[2%]  max-md:text-[.7rem]  border-r-[1px] border-t-[1px]   text-center">
-                  <img src={value.flag} className='h-22 w-22 object-fit rounded-[50%]' alt="" />
+                <td className="py-[1%] px-[1%]  w-[2%]  max-md:text-[.7rem]  border-r-[1px] border-t-[1px]   text-center">
+                  <center>
+                  <img src={value.flag} className='h-[60px] w-[60px] object-fit rounded-[50%]' alt="" />
+                  </center>
                 </td>
                 <td className="py-[1%] w-[2%]  max-md:text-[.7rem]  border-r-[1px] border-t-[1px]   text-center">
                   <span className=' text-[13px] font-[350]'>{value.jobs}</span>
