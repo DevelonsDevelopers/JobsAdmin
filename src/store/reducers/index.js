@@ -12,6 +12,7 @@ import tag from "./tag";
 import transaction from "./transaction";
 import user from "./user";
 import appliedUser from "./appliedUsers";
+import payment from "./payment";
 
 export default combineReducers({
      dashboard,
@@ -26,5 +27,6 @@ export default combineReducers({
      tag,
      transaction,
      user,
-     appliedUser
+     appliedUser,
+     payment
      })
