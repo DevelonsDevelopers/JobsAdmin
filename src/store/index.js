@@ -410,7 +410,7 @@ export const deleteAppliedUser = (id) => API.delete(`/applied/delete`, {
 export const fetchPayment = () => API.get(`/payment/get`)
 export const fetchStripe = () => API.get(`/payment/getStripe`)
 export const fetchPaypal = () => API.get(`/payment/getPaypal`)
-export const update = (paypal_client_id,paypal_secret_id,paypal_sandbox_url,paypal_return_url, paypal_cancel_url,stripe_publisher_key,stripe_secret_key,stripe_api_version) => API.put(`/payment/update`, {
+export const update = ( paypal_client_id,paypal_secret_id,paypal_sandbox_url,paypal_return_url, paypal_cancel_url,stripe_publisher_key,stripe_secret_key,stripe_api_version) => API.put(`/payment/update`, {
     data: {
         paypal_client_id: paypal_client_id,
         paypal_secret_id: paypal_secret_id,

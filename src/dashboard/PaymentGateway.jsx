@@ -9,8 +9,8 @@ const PaymentGateway = () => {
   const [open, setOpen] = useState(false);
   const [openStripe, setOpenStripe] = useState(false)
 
-  const [paypalData, setPaypalData] = useState({ paypal_client_id: '', paypal_secret_id: '', paypal_sandbox_url: '', paypal_return_url: '', paypal_cancel_url: ''})
-  const [stripeData, setStripeData] = useState({ stripe_publisher_key: '', stripe_secret_key: '', stripe_api_version: ''})
+  const [paypalData, setPaypalData] = useState({paypal_client_id: '', paypal_secret_id: '', paypal_sandbox_url: '', paypal_return_url: '', paypal_cancel_url: ''})
+  const [stripeData, setStripeData] = useState({stripe_publisher_key: '', stripe_secret_key: '', stripe_api_version: ''})
 
   const dispatch = useDispatch();
 
@@ -58,12 +58,12 @@ const PaymentGateway = () => {
     // setStripeData(prev => ({...prev, [e.target.name]: e.target.value}))
   }
 
-  console.log(stripeData)
+  // console.log(stripeData)
 
   const SubmitPaypal = () => {
-    console.log('good')
     if(paypalData.paypal_client_id && paypalData.paypal_secret_id && paypalData.paypal_sandbox_url && paypalData.paypal_return_url && paypalData.paypal_cancel_url){
       dispatch(UpdatePaypal(paypalData))
+      setOpen(!open)
     }
     else{
       alert('plz fill the data')
@@ -73,6 +73,7 @@ const PaymentGateway = () => {
   const SubmitStripe = () => {
     if(stripeData.stripe_publisher_key && stripeData.stripe_secret_key && stripeData.stripe_api_version){
       dispatch(UpdateStripe(stripeData))
+      setOpenStripe(!openStripe)
     }else{
       alert('plz fill the data')
     }
@@ -135,7 +136,7 @@ const PaymentGateway = () => {
         </DialogContent>
         <DialogActions style={{ marginRight: 20 }} >
           <button onClick={handleClose} className=' mt-5 py-2 px-7 bg-red-600 text-white rounded-md font-[600] ' >Cancel</button>
-          <button onClick={() => SubmitPaypal()} className=' mt-5 py-2 px-7 bg-blue-600 text-white rounded-md font-[600] ' >Submit</button>
+          <button onClick={() => SubmitPaypal()} className=' mt-5 py-2 px-7 bg-blue-600 text-white rounded-md font-[600] ' >Update</button>
         </DialogActions>
       </Dialog>
       <Dialog open={openStripe} onClose={handleStripeClose} style={{ maxWidth: '100%' }}>
@@ -170,7 +171,7 @@ const PaymentGateway = () => {
         </DialogContent>
         <DialogActions style={{ marginRight: 20 }} >
           <button onClick={handleStripeClose} className=' mt-5 py-2 px-7 bg-red-600 text-white rounded-md font-[600] ' >Cancel</button>
-          <button onClick={() => SubmitStripe()} className=' mt-5 py-2 px-7 bg-blue-600 text-white rounded-md font-[600] ' >Submit</button>
+          <button onClick={() => SubmitStripe()} className=' mt-5 py-2 px-7 bg-blue-600 text-white rounded-md font-[600] ' >Update</button>
         </DialogActions>
       </Dialog>
     </PortalLayout>

@@ -21,11 +21,11 @@ export const UpdatePayment = (payment) => async (dispatch) => {
 }
 
 export const UpdatePaypal = (paypal) => async (dispatch) => {
-    console.log('good')
     try {
-        const { data } = await api.updatePaypal(paypal.paypal_client_id, paypal.paypal_secret_id, paypal.paypal_sandbox_url, paypal.paypal_return_url,  paypal.paypal_cancel_url);
-        console.log('good',data)
+        const { data: {data} } = await api.updatePaypal(paypal.paypal_client_id, paypal.paypal_secret_id, paypal.paypal_sandbox_url, paypal.paypal_return_url,  paypal.paypal_cancel_url);
+        console.log('paypal',paypal)
         dispatch ({ type: UPDATE_PAYPAL, payload: data})
+        console.log('data', data)
     } catch (error) {
         console.log(error)
     }

@@ -11,7 +11,6 @@ import Tags from "./dashboard/Tags";
 import Transactions from "./dashboard/Transactions";
 import Users from "./dashboard/Users";
 import PaymentGateway from "./dashboard/PaymentGateway";
-import Notifications from "./dashboard/Notifications";
 import Countries from "./dashboard/Countries";
 import AppliedUsers from "./dashboard/AppliedUsers";
 import UserForm from "./dashboard/form/UserForm";
@@ -37,6 +36,7 @@ import Login from "./dashboard/login/Login";
 import Register from "./dashboard/register/Register";
 import Cv from "./components/Cv";
 import Test from "./dashboard/Test";
+import Ads from "./dashboard/Ads";
 
 function App() {
   return (
@@ -56,7 +56,7 @@ function App() {
           <Route path="/transactions" element={<Transactions/>} />
           <Route path="/users" element={<Users/>} />
           <Route path="/payment" element={<PaymentGateway/>} />
-          <Route path="/notifications" element={<Notifications/>} />
+          <Route path="/ads" element={<Ads/>} />
 
 
 
