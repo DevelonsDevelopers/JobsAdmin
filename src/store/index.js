@@ -423,20 +423,18 @@ export const update = ( paypal_client_id,paypal_secret_id,paypal_sandbox_url,pay
     }
 })
 export const updatePaypal = (paypal_client_id,paypal_secret_id,paypal_sandbox_url,paypal_return_url, paypal_cancel_url) => API.put(`/payment/paypal`, {
-    data: {
         paypal_client_id: paypal_client_id,
         paypal_secret_id: paypal_secret_id,
         paypal_sandbox_url: paypal_sandbox_url,
         paypal_return_url: paypal_return_url,
         paypal_cancel_url: paypal_cancel_url
-    }
+    
 })
 export const updateStripe = (stripe_publisher_key,stripe_secret_key,stripe_api_version) => API.put(`/payment/stripe`, {
-    data: {
         stripe_publisher_key: stripe_publisher_key,
         stripe_secret_key: stripe_secret_key,
         stripe_api_version: stripe_api_version
-    }
+    
 })
 
 
