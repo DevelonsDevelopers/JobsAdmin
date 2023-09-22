@@ -2,6 +2,7 @@ import { Button, Dialog, DialogActions, DialogContent, DialogContentText, Dialog
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { getJob } from '../../store/actions/jobActions'
+import moment from 'moment'
 
 const JobsView = ({ open, setOpen, title, data, ID }) => {
 
@@ -104,7 +105,12 @@ const JobsView = ({ open, setOpen, title, data, ID }) => {
         <hr className='mt-2 mb-2' />
         <div className='flex justify-between '>
         <span className='!font-[800] text-[15px]'> Date:  </span>
-        <span className='font-[600] ml-auto text-gray-600 text-[13px] ' >{job?.date}</span>
+        <span className='font-[600] ml-auto text-gray-600 text-[13px] ' >{moment(job?.date).format('YYYY-MM-DD')}</span>
+        </div>
+        <hr className='mt-2 mb-2' />
+        <div className='flex justify-between '>
+        <span className='!font-[800] text-[15px]'> Description:  </span>
+        <span className='font-[600] ml-auto text-gray-600 text-[13px] ' >{job?.description}</span>
         </div>
         <hr className='mt-2 mb-2' />
       </DialogContent>

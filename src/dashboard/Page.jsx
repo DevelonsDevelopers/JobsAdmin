@@ -89,17 +89,6 @@ const Dashboard = () => {
   const [pieData, setPieData] = useState([{ 'value': 0, 'name': 'Companies' }, { 'value': 0, 'name': 'Jobs', 'color': '#ffffff' }, { 'value': 0, 'name': 'Seekers' }])
 
   const COLORS = ['#0088FE', '#00C49F', '#FFBB28'];
-  // const getDashborad = async () => {
-  //   try {
-  //     setLoading(true)
-  //     const res = await axios.get("http://34.143.145.139:5001/")
-  //     console.log(res.data)
-  //   }
-  //   catch (err) {
-  //     setLoading(false)
-  //     console.log(err.message)
-  //   }
-  // }
 
   const dashboard = useSelector(state => state.dashboard.dashboard)
 
@@ -238,7 +227,7 @@ const Dashboard = () => {
               })} */}
 
             </div>
-            <div className='bg-white border-2 p-3 md:w-[30%] h-[19rem] rounded-xl shadow-xl shadow-gray-300  max-md:mr-0'>
+            <div className='white border-2 p-3 md:w-[30%] h-[19rem] rounded-xl shadow-xl shadow-gray-300  max-md:mr-0'>
               <span className=' ml-[2rem] font-[600] text-[1rem]'>Memory Status</span>
               <ResponsiveContainer width="100%" height={240}>
                 <PieChart width={430} height={200} margin={{ top: 40, right: 20, bottom: 0, left: 20 }}>
@@ -280,7 +269,7 @@ const Dashboard = () => {
 
               <table className="w-[100%] mt-3 text-sm text-left text-gray-500 :text-gray-400">
                 <thead className="text-xs text-white uppercase bg-[#2994FF] :bg-gray-700 :text-white">
-                  <tr>
+                  <tr >
                     <th scope="col" className="px-6 py-3">
                       Id
                     </th>

@@ -125,5 +125,15 @@ export const DELETE_APPLIEDUSER = "DELETE_APPLIEDUSER";
 export const CREATE_APPLIEDUSER = "CREATE_APPLIEDUSER";
 export const APPLIEDUSER_STATUS = "CITY_STATUS";
 
+//Payment
+export const ALL_PAYMENT = "ALL_PAYMENT";
+export const GET_STRIPE = "GET_STRIPE";
+export const GET_PAYPAL = "GET_PAYPAL";
+export const UPDATE_PAYMENT = "UPDATE_PAYMENT";
+export const UPDATE_PAYPAL = "UPDATE_PAYPAL";
+export const UPDATE_STRIPE = "UPDATE_STRIPE";
+
+
+
 
 

@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useSelector } from 'react-redux'
 import PortalLayout from '../portalLayout/PortalLayout'
+import { Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, IconButton, Modal, TextField, Typography } from '@mui/material'
 
 const data = [
   { skill: 'React', job: 'developer', timeperiod: '2002-2023', company: 'dev', address: 'lahore', qualification: 'Matric', institute: 'Lahore,College', course: 'React' },
@@ -16,7 +17,14 @@ const data2 = [
 
 const Cv = () => {
 
+  const [open, setOpen] = useState(false);
 
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+  const handleClose = () => {
+    setOpen(false);
+  };
 
 
   return (
@@ -60,7 +68,7 @@ const Cv = () => {
 
           {data.map((item) => (
             <div>
-              <div style={{ display: 'flex', gap: 4,marginTop:6 }}>
+              <div style={{ display: 'flex', gap: 4, marginTop: 6 }}>
                 <h1 className='font-[600]'>
                   {item.job}
                 </h1>
@@ -70,11 +78,11 @@ const Cv = () => {
                 </h1>
               </div>
               <h1 className='my-[2px]'>
-               <span className='font-[600]'> Company </span> : {item.company}
+                <span className='font-[600]'> Company </span> : {item.company}
               </h1>
               <div style={{ flexDirection: 'row', display: 'flex' }} >
                 <h1>
-                <span className='font-[600]'> Address  </span> : {item.address}
+                  <span className='font-[600]'> Address  </span> : {item.address}
                 </h1>
               </div>
               <h1 style={{ marginTop: 6, marginBottom: 6 }} className='text-right mr-10'>
@@ -130,6 +138,46 @@ const Cv = () => {
 
             </div>
           ))}
+          <center>
+            <button onClick={handleClickOpen} className=' mt-5 py-2 px-7 bg-blue-600 text-white rounded-md font-[600] ' >Job Hire Proposal</button>
+          </center>
+
+          <Dialog open={open} onClose={handleClose} style={{ maxWidth: '100%'  }}>
+            <center>
+            <h1 className='font-[700] mt-5 text-[2rem] px-[5rem]'>Job Hire Proposal</h1>
+            </center>
+            <DialogContent>
+              <div className="-mx-3  mt-5 mb-6">
+                <div className="w-[100%] px-3 mb-6 md:mb-0 mt-0">
+                  <label className="block  tracking-wide text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4" for="grid-first-name">
+                    Proposal offer
+                  </label>
+                  {/* <input type="text" name="type" id="floating_email" onChange={ClickInput} className="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="Enter Type" required /> */}
+                  <select name='type' class="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" id="grid-state">
+                    <option>Select Options</option>
+                    <option>Invitation for Interview</option>
+                    <option>Request for inquiry</option>
+                    <option>Hiring offer</option>
+                  </select>
+                </div>
+              </div>
+
+              <div className="-mx-3 mt-5 ">
+                  <div className="w-[100%]  px-3">
+                    <label className="block text-left uppercase tracking-wide text-[0.7rem] font-[600] mb-[3px] ml-4" for="grid-Name">
+                      Proposal
+                    </label>
+                    <textarea name='proposal' rows='7'  minLength='30' maxLength='500'  className="appearance-none block w-full bg-gray-50  border-gray-lighter rounded py-3 px-4 rounded-[9px] mb-3 border-[0.7px] border-gray-300 appearance-none   border-gray-600  focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer text-[14px]" id="grid-Name" type="text" placeholder="Enter Description" />
+                  </div>
+                </div>
+            </DialogContent>
+            <DialogActions style={{marginRight: 20}} >
+              <button  onClick={handleClose} className=' mt-5 py-2 px-7 bg-red-600 text-white rounded-md font-[600] ' >Cancel</button>
+              <button  onClick={handleClose} className=' mt-5 py-2 px-7 bg-blue-600 text-white rounded-md font-[600] ' >Submit</button>
+            </DialogActions>
+          </Dialog>
+
+
 
 
         </div>

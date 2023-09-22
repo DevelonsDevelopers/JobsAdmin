@@ -168,6 +168,7 @@ if (categories?.length === 0) {
             <tr className=" uppercase  text-sm leading-normal w-[100%]">
               <th className="py-[2%] border-r-[1px] border-b-[2px] border-b-black  w-[3%] max-md:text-[.6rem] max-md:font-[400] text-center max-md:w-[2%]  text-[13px]">ID </th>
               <th className="py-[2%] border-r-[1px] border-b-[2px] border-b-black  w-[10%] max-md:text-[.6rem] max-md:font-[400] text-center max-md:w-[2%] text-[13px]">Name</th>
+              <th className="py-[2%] border-r-[1px] border-b-[2px] border-b-black w-[1%] max-md:text-[.6rem] max-md:font-[400] text-center max-md:w-[3%] text-[13px]">Images</th>
               <th className="py-[2%] border-r-[1px] border-b-[2px] border-b-black w-[1%] max-md:text-[.6rem] max-md:font-[400] text-center max-md:w-[3%] text-[13px]">Jobs</th>
               <th className="py-[2%] border-r-[1px] border-b-[2px] border-b-black w-[2%] max-md:text-[.6rem] max-md:font-[400] text-center text-[13px]">Status</th>
               <th className="py-[2%] border-r-[1px] border-b-[2px] border-b-black  w-[2%] max-md:text-[.6rem] max-md:font-[400] text-center text-[13px]">Actions</th>
@@ -187,8 +188,12 @@ if (categories?.length === 0) {
                   <span className=" max-md:text-[.7rem] text-[13px] font-[350]">{value.name}</span>
                 </td>
                 <td className="py-[1%] px-[1%] w-[2%]  max-md:text-[.7rem]  border-r-[1px] border-t-[1px]   text-center">
-                  {/* <span className='font-bold text-[13px] font-[350]'>{value.jobs}</span> */}
-                  <img src={value.image} className='h-22 w-22 object-fit' alt="" />
+                <center>
+                  <img src={value.image} className='h-[60px] w-[60px] object-fit rounded-[50%]' alt="" />
+                  </center>
+                </td>
+                <td className="py-[1%] w-[2%]  max-md:text-[.7rem]  border-r-[1px] border-t-[1px]   text-center">
+                  <span className=' text-[13px] font-[350]'>{value.jobs}</span>
                 </td>
                 {/* <td className="py-[1%] w-[2%]  max-md:text-[.7rem]  border-r-[1px] border-t-[1px]   text-center">
                   <span className='font-bold text-[13px] font-[350]'>{value.image}</span>

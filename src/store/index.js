@@ -406,6 +406,37 @@ export const deleteAppliedUser = (id) => API.delete(`/applied/delete`, {
     }
 })
 
+// PaymentGateway
+export const fetchPayment = () => API.get(`/payment/get`)
+export const fetchStripe = () => API.get(`/payment/getStripe`)
+export const fetchPaypal = () => API.get(`/payment/getPaypal`)
+export const update = ( paypal_client_id,paypal_secret_id,paypal_sandbox_url,paypal_return_url, paypal_cancel_url,stripe_publisher_key,stripe_secret_key,stripe_api_version) => API.put(`/payment/update`, {
+    data: {
+        paypal_client_id: paypal_client_id,
+        paypal_secret_id: paypal_secret_id,
+        paypal_sandbox_url: paypal_sandbox_url,
+        paypal_return_url: paypal_return_url,
+        paypal_cancel_url: paypal_cancel_url,
+        stripe_publisher_key: stripe_publisher_key,
+        stripe_secret_key: stripe_secret_key,
+        stripe_api_version: stripe_api_version
+    }
+})
+export const updatePaypal = (paypal_client_id,paypal_secret_id,paypal_sandbox_url,paypal_return_url, paypal_cancel_url) => API.put(`/payment/paypal`, {
+        paypal_client_id: paypal_client_id,
+        paypal_secret_id: paypal_secret_id,
+        paypal_sandbox_url: paypal_sandbox_url,
+        paypal_return_url: paypal_return_url,
+        paypal_cancel_url: paypal_cancel_url
+    
+})
+export const updateStripe = (stripe_publisher_key,stripe_secret_key,stripe_api_version) => API.put(`/payment/stripe`, {
+        stripe_publisher_key: stripe_publisher_key,
+        stripe_secret_key: stripe_secret_key,
+        stripe_api_version: stripe_api_version
+    
+})
+
 
 
 
