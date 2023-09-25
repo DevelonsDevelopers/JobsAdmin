@@ -8,6 +8,7 @@ const CategoryForm = () => {
   const [categoryData, setCategoryData] = useState({ name: '', description: '', image: '' })
   // const [image, setImage] = useState('')
   const [ Base64IMG, setBase64IMG] = useState('')
+  const [canvas, setCanvas] = useState()
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
@@ -52,12 +53,27 @@ const CategoryForm = () => {
 
     reader.readAsDataURL(e.target.files[0])
     reader.onload = () => {
-      console.log('called: ', reader)
+      // console.log('called: ', reader)
       setBase64IMG(reader.result)
     }
-    reader.onerror = error => {
-      console.log("Error:", error)
-    }
+
+
+    // Base64IMG.onload =(e) =>{
+
+    //   const MAX_WIDTH = 400
+    //   const scaleSize = MAX_WIDTH / e.target.width;
+    //   setCanvas.width = MAX_WIDTH
+    //   setCanvas.height = e.target.height * scaleSize;
+
+    //   const ctx = canvas.getContext("2d")
+
+    //   ctx.drawImage(e.target, 0, 0, canvas.width, canvas.height);
+    //   console.log(e.target)
+    //   const srcEncoded = ctx.canvas.toDataURL(e.target, "image/jpeg")
+    // }
+    // reader.onerror = error => {
+    //   console.log("Error:", error)
+    // }
   }
   // console.log(Base64IMG)
 

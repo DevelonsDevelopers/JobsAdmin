@@ -303,6 +303,16 @@ export const fetchSeeker = (id) => API.post(`/seekers/get`,
         id: id,
         status: status
     })
+
+//coverLetter
+export const fetchCoverByUser = (user, job) => API.post('cover/user', {
+    user: user,
+    job: job
+})
+
+//Cv
+export const fetchCvByUser = (user) => API.post(`/cv/user`, { user: user})
+
 //Tags
 export const fetchAllTags = () => API.get(`/tags/all`)
 export const fetchTag = (id) => API.post(`/tags/get`, {

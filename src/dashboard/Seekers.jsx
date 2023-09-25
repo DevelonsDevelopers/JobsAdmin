@@ -4,7 +4,7 @@ import { BarChart, Bar, Tooltip, XAxis, YAxis, PieChart, Pie, LineChart, Cartesi
 import SeekersView from './view/SeekersView';
 import { useDispatch, useSelector } from 'react-redux';
 import { AllSeekers, seekerStatus } from '../store/actions/seekerActions';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 
 
@@ -35,6 +35,8 @@ const Seekers = () => {
   const [openView, setOpenView] = useState(false);
   const [viewId, setViewId] = useState(false);
   const [data, setData] = useState()
+
+  const navigate = useNavigate();
 
   const dispatch = useDispatch()
 
@@ -100,6 +102,9 @@ console.log(seekers)
     dispatch(seekerStatus(id, st))
   }
 
+  const handleViewCv = (id) => {
+    navigate('/cv', {state: {Id: id}})
+  }
 
   return (
     <PortalLayout>
@@ -162,8 +167,8 @@ console.log(seekers)
                             <span onClick={() => UpdateStatus(value.id, value.status)} className={`bg-green-600 text-white font-[500] py-[3px] px-[10px] max-md:w-[8%] rounded-xl text-[0.6rem] max-md:py-1 max-md:px-2 max-md:text-[0.6rem] cursor-pointer ${value.status === 1 ? 'bg-green-500' : 'bg-red-500'} `}>{value.status === 1 ? 'Enable' : 'Disable'}</span>
                           </td>
                           <td className="py-[2%] max-md:text-[.7rem] w-[2%] border-r-[1px] border-t-[1px]   text-center">
-                            <Link to='/cv' className='bg-green-600 text-white font-[500] py-[3px] px-[10px] max-md:w-[8%] rounded-xl text-[0.6rem] max-md:py-1 max-md:px-2 max-md:text-[0.6rem] cursor-pointer  '>View CV </Link>
-                          </td>
+                            <button onClick={() => handleViewCv(value.id)} className='bg-green-600 text-white font-[500] py-[3px] px-[10px] max-md:w-[8%] rounded-xl text-[0.6rem] max-md:py-1 max-md:px-2 max-md:text-[0.6rem] cursor-pointer'>View CV </button>
+                          </td> 
 
 
                           <td className="py-[2%] w-[1%] max-md:text-[.7rem]  border-t-[1px]">

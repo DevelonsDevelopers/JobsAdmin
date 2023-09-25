@@ -13,6 +13,8 @@ import transaction from "./transaction";
 import user from "./user";
 import appliedUser from "./appliedUsers";
 import payment from "./payment";
+import cv from "./cv";
+import coverLetter from "./coverLetter";
 
 export default combineReducers({
      dashboard,
@@ -28,5 +30,7 @@ export default combineReducers({
      transaction,
      user,
      appliedUser,
-     payment
+     payment,
+     cv,
+     coverLetter
      })

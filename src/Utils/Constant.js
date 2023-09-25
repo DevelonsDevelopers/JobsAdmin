@@ -87,6 +87,11 @@ export const DELETE_SEEKER = "DELETE_SEEKER";
 export const CREATE_SEEKER = "CREATE_SEEKER";
 export const SEEKER_STATUS = "CITY_STATUS";
 
+//coverLetter
+export const GET_COVER_BY_USER = "GET_COVER_BY_USER";
+
+//CV : ====
+export const CVBY_USER = "CVBY_USER"
 
 // TAGS:=====
 export const ALL_TAGS = "ALL_TAGS";

@@ -37,6 +37,7 @@ import Register from "./dashboard/register/Register";
 import Cv from "./components/Cv";
 import Test from "./dashboard/Test";
 import Ads from "./dashboard/Ads";
+import CoverLetter from "./components/CoverLetter";
 
 function App() {
   return (
@@ -83,6 +84,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/cv" element={<Cv />} />
+          <Route path="/coverLetter" element={<CoverLetter />}/>
           <Route path="/test" element={<Test />} />
         </Routes>
       </BrowserRouter>

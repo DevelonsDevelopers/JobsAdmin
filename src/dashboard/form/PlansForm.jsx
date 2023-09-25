@@ -49,7 +49,15 @@ const PlansForm = () => {
                 <label className="block  tracking-wide text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4" for="grid-first-name">
                   Account Type
                 </label>
-                <input type="text" name="accounttype" id="floating_email" onChange={ClickInput} className="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-300 appearance-none    border-gray-600  focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="Enter  Account Type " required />
+                <select onChange={ClickInput} name='accounttype' class="pl-4 block py-[9px] px-0 w-full text-sm text-gray-500 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-300 appearance-none    border-gray-600  focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" id="grid-state">
+                         <option>Select Country</option>
+                      {/* {countries?.map((value) => {
+                        return  */}
+                        <option>Provider</option>
+                        <option>Seeker</option>
+                      {/* })} */}
+                    </select>
+                {/* <input type="text" name="accounttype" id="floating_email" onChange={ClickInput} className="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-300 appearance-none    border-gray-600  focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="Enter  Account Type " required /> */}
               </div>
             </div>
           </div>
