@@ -154,13 +154,13 @@ const Categories = () => {
                   </thead>
 
 
-                  <tbody className="text-[#000000] text-sm font-light w-[100%] bg-white" >
-                    {records?.filter((value) => {
+                    {records?.filter((value, ) => {
                       return search.toLowerCase() === ''
                         ? value : value.name.toLowerCase().includes(search);
-                    }).map((value) => (
-                      <tr className='' key={value?.id}>
-                        <td className="py-[2%] w-[3%]   border-r-[1px] border-t-[1px]   text-center">
+                    }).map((value,index) => (
+                      <tbody className="text-[#000000] text-sm font-light w-[100%] bg-white"  key={index}>
+                      <tr className='' >
+                        <td className="py-[2%] w-[3%]   border-r-[1px] border-t-[1px] text-center">
                           <span className="font-bold max-md:text-[.7rem] text-[13px] text-blue-500">{value.id}</span>
                         </td>
                         <td className="py-[2%] w-[10%]   border-r-[1px] border-t-[1px] text-center">
@@ -202,9 +202,8 @@ const Categories = () => {
                           </div>
                         </td>
                       </tr>
-
-                    ))}
                   </tbody>
+                    ))}
                 </table>
 
                 <nav className='m-auto mt-5' >
