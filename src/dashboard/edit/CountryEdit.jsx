@@ -35,7 +35,7 @@ const CountryEdit = () => {
     e.preventDefault()
     if (countryData.name && countryData.description && countryData.flag) {
       dispatch(updateCountry(id, countryData))
-      navigate('/admin/countries')
+      navigate('/countries')
     } else {
       alert('plz fill the data')
     }
@@ -46,9 +46,6 @@ const CountryEdit = () => {
     setCountryData(prev => ({ ...prev, [e.target.name]: e.target.value }))
   }
   // console.log(countryData)
-
-
-
 
   return (
     <PortalLayout>

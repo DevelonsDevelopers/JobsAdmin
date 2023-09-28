@@ -42,7 +42,7 @@ const CategoryForm = () => {
     e.preventDefault()
     if(categoryData.name && categoryData.description && categoryData.image){
       dispatch(createCategory(categoryData))
-      navigate('/admin/categories')
+      navigate('/categories')
     } else{
       alert('plz fill the data')
     }

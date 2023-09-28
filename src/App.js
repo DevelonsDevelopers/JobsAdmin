@@ -43,50 +43,50 @@ function App() {
   return (
       <BrowserRouter>
         <Routes>
-          <Route path="/admin" element={<Dashboard/>} />
-          <Route path="/admin/cities" element={<Cities/>} />
-          <Route path="/admin/categories" element={<Categories />} />
-          <Route path="/admin/companies" element={<Companies/>} />
-          <Route path="/admin/countries" element={<Countries/>} />
-          <Route path="/admin/jobs" element={<Jobs/>} />
-          <Route path="/admin/plans" element={<Plans/>} />
-          <Route path="/admin/reports" element={<Reports/>} />
-          <Route path="/admin/seekers" element={<Seekers/>} />
-          <Route path="/admin/tags" element={<Tags/>} />
-          <Route path="/admin/appliedusers" element={<AppliedUsers/>} />
-          <Route path="/admin/transactions" element={<Transactions/>} />
-          <Route path="/admin/users" element={<Users/>} />
-          <Route path="/admin/payment" element={<PaymentGateway/>} />
-          <Route path="/admin/ads" element={<Ads/>} />
+          <Route path="/" element={<Dashboard/>} />
+          <Route path="/cities" element={<Cities/>} />
+          <Route path="/categories" element={<Categories />} />
+          <Route path="/companies" element={<Companies/>} />
+          <Route path="/countries" element={<Countries/>} />
+          <Route path="/jobs" element={<Jobs/>} />
+          <Route path="/plans" element={<Plans/>} />
+          <Route path="/reports" element={<Reports/>} />
+          <Route path="/seekers" element={<Seekers/>} />
+          <Route path="/tags" element={<Tags/>} />
+          <Route path="/appliedusers" element={<AppliedUsers/>} />
+          <Route path="/transactions" element={<Transactions/>} />
+          <Route path="/users" element={<Users/>} />
+          <Route path="/payment" element={<PaymentGateway/>} />
+          <Route path="/ads" element={<Ads/>} />
 
 
 
-          <Route path="/admin/users/add" element={<UserForm/>} />
-          <Route path="/admin/categories/add" element={<CategoryForm/>} />
-          <Route path="/admin/cities/add" element={<CitiesForm/>} />
-          <Route path="/admin/companies/add" element={<CompaniesForm/>} />
-          <Route path="/admin/jobs/add" element={<JobsForm/>} />
-          <Route path="/admin/appliedusers/add" element={<AppliedUsersFrom/>} />
-          <Route path="/admin/countries/add" element={<CountriesForm/>} />
-          <Route path="/admin/plans/add" element={<PlansForm/>} />
-          <Route path="/admin/reports/add" element={<ReportsForm/>} />
-          <Route path="/admin/tags/add" element={<TagsForm/>} />
-          <Route path="/admin/transactions/add" element={<TransactionsForm/>} />
+          <Route path="/users/add" element={<UserForm/>} />
+          <Route path="/categories/add" element={<CategoryForm/>} />
+          <Route path="/cities/add" element={<CitiesForm/>} />
+          <Route path="/companies/add" element={<CompaniesForm/>} />
+          <Route path="/jobs/add" element={<JobsForm/>} />
+          <Route path="/appliedusers/add" element={<AppliedUsersFrom/>} />
+          <Route path="/countries/add" element={<CountriesForm/>} />
+          <Route path="/plans/add" element={<PlansForm/>} />
+          <Route path="/reports/add" element={<ReportsForm/>} />
+          <Route path="/tags/add" element={<TagsForm/>} />
+          <Route path="/transactions/add" element={<TransactionsForm/>} />
           
-          <Route path="/admin/users/edit" element={<UsersEdit />} />
-          <Route path="/admin/categories/edit" element={<CategoryEdit />} />
-          <Route path="/admin/countries/edit" element={<CountryEdit />} />
-          <Route path="/admin/cities/edit" element={<CitiesEdit />} />
-          <Route path="/admin/companies/edit" element={<CompanyEdit />} />
-          <Route path="/admin/tags/edit" element={<TagsEdit />} />
-          <Route path="/admin/jobs/edit" element={<JobsEdit />} />
-          <Route path="/admin/plans/edit" element={<PlansEdit />} />
+          <Route path="/users/edit" element={<UsersEdit />} />
+          <Route path="/categories/edit" element={<CategoryEdit />} />
+          <Route path="/countries/edit" element={<CountryEdit />} />
+          <Route path="/cities/edit" element={<CitiesEdit />} />
+          <Route path="/companies/edit" element={<CompanyEdit />} />
+          <Route path="/tags/edit" element={<TagsEdit />} />
+          <Route path="/jobs/edit" element={<JobsEdit />} />
+          <Route path="/plans/edit" element={<PlansEdit />} />
 
-          <Route path="/admin/login" element={<Login />} />
-          <Route path="/admin/register" element={<Register />} />
-          <Route path="/admin/cv" element={<Cv />} />
-          <Route path="/admin/coverLetter" element={<CoverLetter />}/>
-          <Route path="/admin/test" element={<Test />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/cv" element={<Cv />} />
+          <Route path="/coverLetter" element={<CoverLetter />}/>
+          <Route path="/test" element={<Test />} />
         </Routes>
       </BrowserRouter>
   );

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import PortalLayout from '../../portalLayout/PortalLayout'
 import { useDispatch, useSelector } from 'react-redux'
-import { createCity, getCountrybyCity } from '../../store/actions/cityActions'
+import { createCity } from '../../store/actions/cityActions'
 import { useNavigate } from 'react-router-dom'
 import { AllCountries } from '../../store/actions/countryActions'
 

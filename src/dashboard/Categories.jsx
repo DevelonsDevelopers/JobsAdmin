@@ -60,7 +60,7 @@ const Categories = () => {
   }
 
   const handleEdit = (id) => {
-  router("/admin/categories/edit",{ state: {ID: id}})
+  router("/categories/edit",{ state: {ID: id}})
   // 
   }
 
@@ -128,7 +128,7 @@ if (categories?.length === 0) {
         <div className='flex justify-center mt-[3rem] w-[90%] m-auto'>
 
           <input  onChange={(e) => setSearch(e.target.value)}type="search" name="" id="" placeholder='Search...' className='border-2 border-gray-600 pl-[4rem] rounded-[1.0625rem] py-2  w-[27.8125rem] mr-auto max-md:py-[1px] max-md:w-[15rem] max-md:text-[0.7rem] focus:outline-none focus:ring-0 focus:border-gray-900 peer' />
-          <Link to="/admin/categories/add"> <button className="bg-[#0047FF] cursor-pointer  max-md:text-[.6rem] py-2 px-[1rem] max-md:px-[1rem] max-md:py-[5px] text-white font-[600] max-md:font-[400] rounded-[1.375rem] ml-auto "  >
+          <Link to="/categories/add"> <button className="bg-[#0047FF] cursor-pointer  max-md:text-[.6rem] py-2 px-[1rem] max-md:px-[1rem] max-md:py-[5px] text-white font-[600] max-md:font-[400] rounded-[1.375rem] ml-auto "  >
             Add New
           </button>
           </Link>
@@ -157,7 +157,7 @@ if (categories?.length === 0) {
             ? value : value.name.toLowerCase().includes(search);
           }).map((value) => (
 
-            <tbody className="text-[#000000] text-sm font-light w-[100%] bg-white ">
+            <tbody className="text-[#000000] text-sm font-light w-[100%] bg-white" key={value.id}>
               <tr className='' >
                 <td className="py-[2%] w-[3%]   border-r-[1px] border-t-[1px]   text-center">
                   <span className="font-bold max-md:text-[.7rem] text-[13px] text-blue-500">{value.id}</span>

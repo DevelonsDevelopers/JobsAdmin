@@ -7,39 +7,40 @@ import { AllCountries } from '../../store/actions/countryActions'
 
 const CitiesEdit = () => {
 
+  const params = useLocation()
+  const id = params.state.ID
+
   const [cityData, setCityData] = useState({name: '', country: '', description: ''})
 
   const dispatch = useDispatch()
   const navigate = useNavigate();
 
-  const params = useLocation()
-  const id = params.state.ID
-  // console.log(id)
-
+  //fetching city by id
   const city = useSelector(state => state.city.city)
-
-  useEffect(() => {
-    // console.log(city)
-    if(city){
-      setCityData({ name: city?.name, country: city?.country, description: city?.description})
-      // console.log(cityData)
-    }
-}, [city])
-
   useEffect(() => {
     dispatch(getCity(id))
   }, [dispatch])
 
+  //showing data
+  useEffect(() => {
+    if(city){
+      setCityData({ name: city?.name, country: city?.country, description: city?.description})
+    }
+  }, [city])
+
+  //fetching countries
   const countries = useSelector(state => state.country.countries)
 
   useEffect(() => {
     dispatch(AllCountries())
   }, [dispatch])
 
+  //onChange
   const ClickInput =(e) => {
     setCityData(prev => ({...prev,[e.target.name]: e.target.value}))
   }
 
+  //Update Function
   const handleSubmit = (e) => {
     e.preventDefault()
     if(cityData.name && cityData.description && cityData.country){
@@ -50,6 +51,7 @@ const CitiesEdit = () => {
     }
   }
 
+  //================================
 
   return (
    <PortalLayout>

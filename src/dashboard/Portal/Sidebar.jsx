@@ -20,10 +20,10 @@ const Sidebar = forwardRef(({ }, ref) => {
 
 
       <div className="flex flex-col mt-[2rem] ">
-        <div onClick={() => router('/admin')}>
+        <div onClick={() => router('/')}>
           <div
             className={`pl-7 py-3 mx-5 rounded text-center cursor-pointer mb-1 flex items-center transition-colors 
-            ${location.pathname === "/admin"
+            ${location.pathname === "/"
                 ? "bg-gradient-to-r from-sky-600 to-cyan-400 text-white"
                 : "text-black font-[600]  hover:text-white  hover:bg-gradient-to-r from-sky-600 to-cyan-400"
               }
@@ -39,10 +39,10 @@ const Sidebar = forwardRef(({ }, ref) => {
         </div>
       </div>
       <div className="flex flex-col ">
-        <div onClick={() => router('/admin/categories')}>
+        <div onClick={() => router('/categories')}>
           <div
             className={`pl-7 py-3 mx-5 rounded text-center cursor-pointer mb-1 flex items-center transition-colors 
-          ${location.pathname === "/admin/categories"
+          ${location.pathname === "/categories"
                 ? "bg-gradient-to-r from-sky-600 to-cyan-400 text-white"
                 : "text-black font-[600]  hover:text-white  hover:bg-gradient-to-r from-sky-600 to-cyan-400"
               }
@@ -58,10 +58,10 @@ const Sidebar = forwardRef(({ }, ref) => {
         </div>
       </div>
       <div className="flex flex-col ">
-        <div onClick={() => router('/admin/countries')}>
+        <div onClick={() => router('/countries')}>
           <div
             className={`pl-7 py-3 mx-5 rounded text-center cursor-pointer mb-1 flex items-center transition-colors 
-            ${location.pathname === "/admin/countries"
+            ${location.pathname === "/countries"
                 ? "bg-gradient-to-r from-sky-600 to-cyan-400 text-white"
                 : "text-black font-[600] hover:text-white  hover:bg-gradient-to-r from-sky-600 to-cyan-400 hover:bg-blue-100 hover:text-blue-500"
               }
@@ -77,10 +77,10 @@ const Sidebar = forwardRef(({ }, ref) => {
         </div>
       </div>
       <div className="flex flex-col ">
-        <div onClick={() => router('/admin/cities')}>
+        <div onClick={() => router('/cities')}>
           <div
             className={`pl-7 py-3 mx-5 rounded text-center cursor-pointer mb-1 flex items-center transition-colors 
-            ${location.pathname === "/admin/cities"
+            ${location.pathname === "/cities"
                 ? "bg-gradient-to-r from-sky-600 to-cyan-400 text-white"
                 : "text-black font-[600] hover:text-white  hover:bg-gradient-to-r from-sky-600 to-cyan-400 hover:bg-blue-100 hover:text-blue-500"
               }
@@ -96,10 +96,10 @@ const Sidebar = forwardRef(({ }, ref) => {
         </div>
       </div>
       <div className="flex flex-col ">
-        <div onClick={() => router('/admin/jobs')}>
+        <div onClick={() => router('/jobs')}>
           <div
             className={`pl-7 py-3 mx-5 rounded text-center cursor-pointer mb-1 flex items-center transition-colors 
-            ${location.pathname === "/admin/jobs"
+            ${location.pathname === "/jobs"
                 ? "bg-gradient-to-r from-sky-600 to-cyan-400 text-white"
                 : "text-black font-[600] hover:text-white  hover:bg-gradient-to-r from-sky-600 to-cyan-400 hover:bg-blue-100 hover:text-blue-500"
               }
@@ -115,10 +115,10 @@ const Sidebar = forwardRef(({ }, ref) => {
         </div>
       </div>
       <div className="flex flex-col ">
-        <div onClick={() => router('/admin/companies')}>
+        <div onClick={() => router('/companies')}>
           <div
             className={`pl-7 py-3 mx-5 rounded text-center cursor-pointer mb-1 flex items-center transition-colors 
-            ${location.pathname === "/admin/companies"
+            ${location.pathname === "/companies"
                 ? "bg-gradient-to-r from-sky-600 to-cyan-400 text-white"
                 : "text-black font-[600] hover:text-white  hover:bg-gradient-to-r from-sky-600 to-cyan-400 hover:bg-blue-100 hover:text-blue-500"
               }
@@ -134,10 +134,10 @@ const Sidebar = forwardRef(({ }, ref) => {
         </div>
       </div>
       <div className="flex flex-col ">
-        <div onClick={() => router('/admin/tags')}>
+        <div onClick={() => router('/tags')}>
           <div
             className={`pl-7 py-3 mx-5 rounded text-center cursor-pointer mb-1 flex items-center transition-colors 
-            ${location.pathname === "/admin/tags"
+            ${location.pathname === "/tags"
                 ? "bg-gradient-to-r from-sky-600 to-cyan-400 text-white"
                 : "text-black font-[600] hover:text-white  hover:bg-gradient-to-r from-sky-600 to-cyan-400 hover:bg-blue-100 hover:text-blue-500"
               }
@@ -153,10 +153,10 @@ const Sidebar = forwardRef(({ }, ref) => {
         </div>
       </div>
       <div className="flex flex-col ">
-        <div onClick={() => router('/admin/appliedusers')}>
+        <div onClick={() => router('/appliedusers')}>
           <div
             className={`pl-7 py-3 mx-5 rounded text-center cursor-pointer mb-1 flex items-center transition-colors 
-            ${location.pathname === "/admin/appliedusers"
+            ${location.pathname === "/appliedusers"
                 ? "bg-gradient-to-r from-sky-600 to-cyan-400 text-white"
                 : "text-black font-[600] hover:text-white  hover:bg-gradient-to-r from-sky-600 to-cyan-400 hover:bg-blue-100 hover:text-blue-500"
               }
@@ -172,10 +172,10 @@ const Sidebar = forwardRef(({ }, ref) => {
         </div>
       </div>
       <div className="flex flex-col ">
-        <div onClick={() => router('/admin/seekers')}>
+        <div onClick={() => router('/seekers')}>
           <div
             className={`pl-7 py-3 mx-5 rounded text-center cursor-pointer mb-1 flex items-center transition-colors 
-            ${location.pathname === "/admin/seekers"
+            ${location.pathname === "/seekers"
                 ? "bg-gradient-to-r from-sky-600 to-cyan-400 text-white"
                 : "text-black font-[600] hover:text-white  hover:bg-gradient-to-r from-sky-600 to-cyan-400 hover:bg-blue-100 hover:text-blue-500"
               }
@@ -191,10 +191,10 @@ const Sidebar = forwardRef(({ }, ref) => {
         </div>
       </div>
       <div className="flex flex-col ">
-        <div onClick={() => router('/admin/transactions')}>
+        <div onClick={() => router('/transactions')}>
           <div
             className={`pl-7 py-3 mx-5 rounded text-center cursor-pointer mb-1 flex items-center transition-colors 
-            ${location.pathname === "/admin/transactions"
+            ${location.pathname === "/transactions"
                 ? "bg-gradient-to-r from-sky-600 to-cyan-400 text-white"
                 : "text-black font-[600] hover:text-white  hover:bg-gradient-to-r from-sky-600 to-cyan-400 hover:bg-blue-100 hover:text-blue-500"
               }
@@ -210,10 +210,10 @@ const Sidebar = forwardRef(({ }, ref) => {
         </div>
       </div>
       <div className="flex flex-col ">
-        <div onClick={() => router('/admin/reports')}>
+        <div onClick={() => router('/reports')}>
           <div
             className={`pl-7 py-3 mx-5 rounded text-center cursor-pointer mb-1 flex items-center transition-colors 
-            ${location.pathname === "/admin/reports"
+            ${location.pathname === "/reports"
                 ? "bg-gradient-to-r from-sky-600 to-cyan-400 text-white"
                 : "text-black font-[600] hover:text-white  hover:bg-gradient-to-r from-sky-600 to-cyan-400 hover:bg-blue-100 hover:text-blue-500"
               }
@@ -229,10 +229,10 @@ const Sidebar = forwardRef(({ }, ref) => {
         </div>
       </div>
       <div className="flex flex-col ">
-        <div onClick={() => router('/admin/users')}>
+        <div onClick={() => router('/users')}>
           <div
             className={`pl-7 py-3 mx-5 rounded text-center cursor-pointer mb-1 flex items-center transition-colors 
-            ${location.pathname === "/admin/users"
+            ${location.pathname === "/users"
                 ? "bg-gradient-to-r from-sky-600 to-cyan-400 text-white"
                 : "text-black font-[600] hover:text-white  hover:bg-gradient-to-r from-sky-600 to-cyan-400 hover:bg-blue-100 hover:text-blue-500"
               }
@@ -248,10 +248,10 @@ const Sidebar = forwardRef(({ }, ref) => {
         </div>
       </div>
       <div className="flex flex-col ">
-        <div onClick={() => router('/admin/plans')}>
+        <div onClick={() => router('/plans')}>
           <div
             className={`pl-7 py-3 mx-5 rounded text-center cursor-pointer mb-1 flex items-center transition-colors 
-            ${location.pathname === "/admin/plans"
+            ${location.pathname === "/plans"
                 ? "bg-gradient-to-r from-sky-600 to-cyan-400 text-white"
                 : "text-black font-[600] hover:text-white  hover:bg-gradient-to-r from-sky-600 to-cyan-400 hover:bg-blue-100 hover:text-blue-500"
               }
@@ -267,10 +267,10 @@ const Sidebar = forwardRef(({ }, ref) => {
         </div>
       </div>
       <div className="flex flex-col ">
-        <div onClick={() => router('/admin/payment')}>
+        <div onClick={() => router('/payment')}>
           <div
             className={`pl-3 py-3 mx-5 rounded text-center cursor-pointer mb-1 flex items-center justify-center transition-colors 
-            ${location.pathname === "/admin/payment"
+            ${location.pathname === "/payment"
                 ? "bg-gradient-to-r from-sky-600 to-cyan-400 text-white"
                 : "text-black font-[600] hover:text-white  hover:bg-gradient-to-r from-sky-600 to-cyan-400 hover:bg-blue-100 hover:text-blue-500"
               }
@@ -286,10 +286,10 @@ const Sidebar = forwardRef(({ }, ref) => {
         </div>
       </div>
       <div className="flex flex-col ">
-        <div onClick={() => router('/admin/ads')}>
+        <div onClick={() => router('/ads')}>
           <div
             className={`pl-7 py-3 mx-5 rounded text-center cursor-pointer mb-1 flex items-center transition-colors 
-            ${location.pathname === "/admin/ads"
+            ${location.pathname === "/ads"
                 ? "bg-gradient-to-r from-sky-600 to-cyan-400 text-white"
                 : "text-black font-[600] hover:text-white  hover:bg-gradient-to-r from-sky-600 to-cyan-400 hover:bg-blue-100 hover:text-blue-500"
               }

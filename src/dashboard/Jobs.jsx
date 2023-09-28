@@ -19,27 +19,27 @@ const jobs = [
 
 const Jobs = () => {
 
-  const [search, setSearch] = useState('')
-
-
   const [open, setOpen] = useState(false);
   const [openView, setOpenView] = useState(false);
   const [viewId, setViewId] = useState(false);
-  const router = useNavigate();
   const [data, setData] = useState();
   const [deleteId, setDeleteId] = useState();
-
+  const [search, setSearch] = useState('')
+  
   const dispatch = useDispatch()
+  const router = useNavigate();
 
+  //onChange
   const handleClick = (id) => {
     setOpenView(!open)
     setViewId(id)
   }
 
-  const jobs = useSelector(state => state.job.jobs)
   const loading = useSelector(state => state.job.isLoading)
   const [nodata, setNodata] = useState(false)
-
+  
+  //fetching jobs
+  const jobs = useSelector(state => state.job.jobs)
   // useEffect(() => {
   //   console.log(jobs)
   // }, [jobs])
@@ -49,17 +49,15 @@ const Jobs = () => {
       dispatch(AllJobs())
     }
   }, [dispatch])
-  useEffect(() => {
-    console.log(jobs)
-  }, [jobs])
 
+  //nodata
   useEffect(() => {
     if (jobs?.length === 0) {
       setNodata(true)
     }
     else { setData(false) }
   }, [jobs])
-
+  //delete
   const handleDelete = (id) => {
     setDeleteId(id)
     setOpen(!open)
@@ -69,6 +67,21 @@ const Jobs = () => {
     dispatch(DeleteJob(id))
     setOpen(!open)
   }
+
+  //Edit
+  const handleEdit = (id) => {
+    router("/jobs/edit", { state: { ID: id } })
+  }
+  //status update
+  const UpdateStatus = (id, status) => {
+    let st = 0;
+    if (status === 1) {
+      st = 0;
+    } else {
+      st = 1;
+    }
+    dispatch(jobStatus(id, st))
+  }
   //pagination=============================
   const [currentPage, setCurrentPage] = useState(1)
   const numbersPerPage = 10;
@@ -77,7 +90,6 @@ const Jobs = () => {
   const [Numbers, setNumbers] = useState()
   const [lastIndex, setLastIndex] = useState()
   const [firstIndex, setFirstIndex] = useState()
-
 
   useEffect(() => {
     setLastIndex(currentPage * numbersPerPage);
@@ -100,21 +112,7 @@ const Jobs = () => {
     }
   }, [nPage])
 
-  const handleEdit = (id) => {
-    router("/jobs/edit", { state: { ID: id } })
-  }
-
-  const UpdateStatus = (id, status) => {
-    let st = 0;
-    if (status === 1) {
-      st = 0;
-    } else {
-      st = 1;
-    }
-    console.log('click')
-    dispatch(jobStatus(id, st))
-  }
-
+  //====================================
 
   return (
     <PortalLayout >
@@ -159,16 +157,14 @@ const Jobs = () => {
                     <th className="py-[2%] border-r-[1px] border-b-[2px] border-b-black w-[2%] max-md:text-[.6rem] max-md:font-[400] text-center text-[13px]">Status</th>
                     <th className="py-[2%] border-r-[1px] border-b-[2px] border-b-black  w-[2%] max-md:text-[.6rem] max-md:font-[400] text-center text-[13px]">Actions</th>
                     <th className="py-[2%]   border-b-[2px] border-b-black  w-[1%] max-md:text-[.6rem] max-md:font-[400] text-center"></th>
-
                   </tr>
-
                 </thead>
 
                 {records?.filter((value) => {
                   return search.toLowerCase() === ''
                     ? value : value.title.toLowerCase().includes(search);
                 }).map((value, index) => (
-                  <tbody className="text-[#000000] text-sm font-light w-[100%] bg-white ">
+                  <tbody className="text-[#000000] text-sm font-light w-[100%] bg-white " key={value.id} >
                     <tr className='' >
                       <td className="py-[2%] w-[1%]   border-r-[1px] border-t-[1px]   text-center">
                         <span className="font-bold max-md:text-[.7rem] text-[13px] text-blue-500">{value.id}</span>
@@ -217,7 +213,6 @@ const Jobs = () => {
                         </div>
                       </td>
                     </tr>
-
                   </tbody>
                 ))}
               </div>
@@ -232,13 +227,11 @@ const Jobs = () => {
                     </a>
                   </li>
                   {Numbers?.map((n, i) => (<li> <a href="#" onClick={() => changeCurrentPage(n)} className="flex items-center justify-center px-4 h-10 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700  ">{n}</a> </li>))}
-
                   <li>
                     <Link to="#" onClick={nextPage} className="flex items-center justify-center px-4 h-10 leading-tight text-gray-500 bg-white border border-gray-300 rounded-r-lg hover:bg-gray-100 hover:text-gray-700  "> <span className="sr-only">Next</span><svg className="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10"> <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4" /> </svg></Link>
                   </li>
                 </ul>
               </nav>
-
               <center>
               </center>
             </div>

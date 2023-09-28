@@ -20,16 +20,8 @@ const JobsForm = ({  }) => {
   const [startTime, setStartTime] = useState()
   const [endTime, setEndTime] = useState()
   const [date , setDate] = useState()
-  const [totalDuration, setTotalDuration] = useState()
 
-  useEffect(() => {
-    setJobData({...jobData, date: moment(date).format('YYYY-MM-DD')})
-  }, [date])
-
-  useEffect(() => {
-    setJobData({...jobData, worktime: startTime + " - " + endTime})
-  }, [startTime, endTime])
-  
+ 
   // useEffect(() => {
   //   console.log(startTime)
   //   // setTotalDuration(startTime + '-' + endTime)
@@ -48,7 +40,7 @@ const JobsForm = ({  }) => {
   const [skills, setSkills] = useState([])
 
   const dispatch = useDispatch()
-  const navigate = useNavigate()
+  const navigate = useNavigate( )
 
   const [inputValue, setValue] = useState("")
   const [selectedValue, setSelectedValue] = useState(null)
@@ -62,98 +54,8 @@ const JobsForm = ({  }) => {
   const [inputCategoryValue, setCategoryValue] = useState("")
   const [selectedCategoryValue, setSelectedCategoryValue] = useState(null)
 
-  useEffect(() => {
-    setJobData({ ...jobData, description: content })
-  }, [content])
-
-  useEffect(() => {
-    setJobData({ ...jobData, country: selectedValue?.id })
-  }, [selectedValue])
-
-  useEffect(() => {
-    setJobData({ ...jobData, city: selectedCityValue?.id })
-  }, [selectedCityValue])
-
-  useEffect(() => {
-    setJobData({ ...jobData, company: selectedCompanyValue?.id })
-  }, [selectedCompanyValue])
-
-  useEffect(() => {
-    setJobData({ ...jobData, category: selectedCategoryValue?.id })
-  }, [selectedCategoryValue])
-
-  // console.log(selectedCityValue)
-
-  const handleInputChange = (value) => {
-    setValue(value)
-  }
-
-  const handleChange = (value) => {
-    setSelectedValue(value)
-    // if (e.target.name === 'country') {
-    //   setCountry(e.target.value)
-    // }
-  }
-  const cityInputChange = (value) => {
-    setCityValue(value)
-  }
-
-  const cityChange = (value) => {
-    setSelectedCityValue(value)
-
-  }
-  const companyInputChange = (value) => {
-    setCompanyValue(value)
-  }
-
-  const companyChange = (value) => {
-    setSelectedCompanyValue(value)
-  }
-
-  const categoryInputChange = (value) => {
-    setCategoryValue(value)
-  }
-
-  const categoryChange = (value) => {
-    setSelectedCategoryValue(value)
-  }
-
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    if (jobData.category && jobData.country && jobData.city && jobData.title && jobData.company && jobData.designation && jobData.salary && jobData.role && jobData.description && jobData.link && jobData.type && jobData.workdays && jobData.worktime && jobData.address && jobData.experience && jobData.qualification && jobData.skills && jobData.date && jobData.tags) {
-      dispatch(createJob(jobData))
-      navigate('/jobs')
-    } else {
-      alert('plz fill the data')
-    }
-  }
-
-
-  const addTags = (e) => {
-    if (e.keyCode === 13 || e.keyCode === 32 && tagValue) {
-      setTags([...tags, tagValue])
-      setTagValue("")
-    }
-  }
-
-  const addSkills = (e) => {
-    if (e.keyCode === 13 || e.keyCode === 32 && skillValue) {
-      setSkills([...skills, skillValue])
-      setSkillValue("")
-    }
-  }
-  useEffect(() => {
-    // console.log(tags)
-    setJobData({ ...jobData, tags: tags.toString() })
-  }, [tags])
-
-  useEffect(() => {
-    // console.log(skills)
-    setJobData({ ...jobData, skills: skills.toString() })
-  }, [skills])
-
+  //onChange function
   const ClickInput = (e) => {
-
     if (e.target.name !== 'skills' || e.target.name !== 'tags') {
       setJobData(prev => ({ ...prev, [e.target.name]: e.target.value }))
     }
@@ -168,18 +70,133 @@ const JobsForm = ({  }) => {
       setTagValue(e.target.value)
     }
   }
-  // console.log(jobData)
+  const handleInputChange = (value) => {
+    setValue(value)
+  }
+  
+  const handleChange = (value) => {
+    setSelectedValue(value)
+  }
+  const cityInputChange = (value) => {
+    setCityValue(value)
+  }
+  
+  const cityChange = (value) => {
+    setSelectedCityValue(value)
+  
+  }
+  const companyInputChange = (value) => {
+    setCompanyValue(value)
+  }
+  
+  const companyChange = (value) => {
+    setSelectedCompanyValue(value)
+  }
+  
+  const categoryInputChange = (value) => {
+    setCategoryValue(value)
+  }
+  
+  const categoryChange = (value) => {
+    setSelectedCategoryValue(value)
+  }
+
+
+  //Fetching Data=================================================
+  const categories = useSelector(state => state.category.categories)
+  // useEffect(() => {
+  //     console.log(categories)
+  // }, [categories])
+
+  useEffect(() => {
+    dispatch(AllCategories())
+  }, [dispatch])
+
+  const citybyCountry = useSelector(state => state.city.citybycountry)
+  // useEffect(() => {
+  //     console.log(citybyCountry)
+  // }, [citybyCountry])
+
+  useEffect(() => {
+    if (selectedValue?.id) {
+      dispatch(getCitybyCountry(selectedValue?.id))
+    }
+  }, [dispatch, selectedValue?.id])
+
+  const companies = useSelector(state => state.company.companies)
+  // useEffect(() => {
+  //     console.log(categories)
+  // }, [categories])
+
+  useEffect(() => {
+    dispatch(AllCompanies())
+  }, [dispatch])
+ //==================================================
+
+ // Adding data to jobData
+ useEffect(() => {
+  setJobData({...jobData, date: moment(date).format('YYYY-MM-DD')})
+}, [date])
+
+useEffect(() => {
+  setJobData({...jobData, worktime: startTime + " - " + endTime})
+}, [startTime, endTime])
+
+useEffect(() => {
+  setJobData({ ...jobData, description: content })
+}, [content])
+
+useEffect(() => {
+  setJobData({ ...jobData, country: selectedValue?.id })
+}, [selectedValue])
+
+useEffect(() => {
+  setJobData({ ...jobData, city: selectedCityValue?.id })
+}, [selectedCityValue])
+
+useEffect(() => {
+  setJobData({ ...jobData, company: selectedCompanyValue?.id })
+}, [selectedCompanyValue])
+
+useEffect(() => {
+  setJobData({ ...jobData, category: selectedCategoryValue?.id })
+}, [selectedCategoryValue])
+
+useEffect(() => {
+  setJobData({ ...jobData, tags: tags.toString() })
+}, [tags])
+
+useEffect(() => {
+  setJobData({ ...jobData, skills: skills.toString() })
+}, [skills])
+
+//=======================================================
+
+  //Tags Add
+  const addTags = (e) => {
+    if (e.keyCode === 13 || e.keyCode === 32 && tagValue) {
+      setTags([...tags, tagValue])
+      setTagValue("")
+    }
+  }
 
   const deleteTag = (val) => {
     let remainTags = tags.filter((t) => t !== val)
     setTags(remainTags)
   }
+
+  //Skills Add
+  const addSkills = (e) => {
+    if (e.keyCode === 13 || e.keyCode === 32 && skillValue) {
+      setSkills([...skills, skillValue])
+      setSkillValue("")
+    }
+  }
+
   const deleteSkill = (val) => {
     let remainskills = skills.filter((t) => t !== val)
     setSkills(remainskills)
   }
-  // console.log(jobData)
-
 
   const countries = useSelector(state => state.country.countries)
   // useEffect(() => {
@@ -190,47 +207,16 @@ const JobsForm = ({  }) => {
     dispatch(AllCountries())
   }, [dispatch])
 
-  // const cities = useSelector(state => state.city.cities)
-  // // useEffect(() => {
-  // //     console.log(cities)
-  // // }, [cities])
-
-  // useEffect(() => {
-  //     dispatch(AllCities())
-  // }, [dispatch])
-
-  const categories = useSelector(state => state.category.categories)
-  // useEffect(() => {
-  //     console.log(categories)
-  // }, [categories])
-
-  useEffect(() => {
-    dispatch(AllCategories())
-  }, [dispatch])
-
-  const companies = useSelector(state => state.company.companies)
-  // useEffect(() => {
-  //     console.log(categories)
-  // }, [categories])
-
-  useEffect(() => {
-    dispatch(AllCompanies())
-  }, [dispatch])
-
-  const citybyCountry = useSelector(state => state.city.citybycountry)
-  // useEffect(() => {
-  //     console.log(citybyCountry)
-  // }, [citybyCountry])
-
-  useEffect(() => {
-    // console.log(selectedValue?.id)
-    if (selectedValue?.id) {
-      dispatch(getCitybyCountry(selectedValue?.id))
+  // Update Function
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    if (jobData.category && jobData.country && jobData.city && jobData.title && jobData.company && jobData.designation && jobData.salary && jobData.role && jobData.description && jobData.link && jobData.type && jobData.workdays && jobData.worktime && jobData.address && jobData.experience && jobData.qualification && jobData.skills && jobData.date && jobData.tags) {
+      dispatch(createJob(jobData))
+      navigate('/jobs')
+    } else {
+      alert('plz fill the data')
     }
-  }, [dispatch, selectedValue?.id])
-
-
-
+  }
 
   return (
     <PortalLayout>
@@ -263,17 +249,9 @@ const JobsForm = ({  }) => {
               getOptionValue={(e) => e.id}
               onInputChange={companyInputChange}
               onChange={companyChange}
-              //  name='country'
               className="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" id="grid-state"
             >
             </Select>
-            {/* <select onChange={ClickInput} name='company' className="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" id="grid-state">
-                  <option>Select Company</option>
-                  {companies?.map((value) => {
-                    return <option value={value.id}>{value.name}</option>
-                  })}
-  
-                </select> */}
           </div>
         </div>
 
@@ -302,7 +280,6 @@ const JobsForm = ({  }) => {
             <label className="block  tracking-wide text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4" for="grid-first-name">
               Type
             </label>
-            {/* <input type="text" name="type" id="floating_email" onChange={ClickInput} className="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="Enter Type" required /> */}
             <select onChange={ClickInput} name='type' className="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" id="grid-state">
               <option>Select Type</option>
               <option>Full-Time</option>
@@ -331,16 +308,9 @@ const JobsForm = ({  }) => {
               getOptionValue={(e) => e.id}
               onInputChange={handleInputChange}
               onChange={handleChange}
-              //  name='country'
               className="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" id="grid-state"
             >
             </Select>
-            {/* <select onChange={ClickInput} name='country' className="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" id="grid-state">
-                  <option>Select Country</option>
-                  {countries?.map((value) => {
-                    return <option value={value.id}>{value.name}</option>
-                  })}
-                </select> */}
           </div>
           <div className="md:w-[100%] ">
             <label className="block text-left tracking-wide text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4" for="grid-first-name">
@@ -360,16 +330,9 @@ const JobsForm = ({  }) => {
               getOptionValue={(e) => e.id}
               onInputChange={cityInputChange}
               onChange={cityChange}
-              //  name='country'
               className="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" id="grid-state"
             >
             </Select>
-            {/* <select onChange={ClickInput} name='city' className="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" id="grid-state">
-                  <option>Select City</option>
-                  {citybyCountry?.map((value) => {
-                    return <option value={value.id}>{value.name}</option>
-                  })}
-                </select> */}
           </div>
         </div>
         <div className='flex-col mt-4'>
@@ -392,24 +355,15 @@ const JobsForm = ({  }) => {
                 getOptionValue={(e) => e.id}
                 onInputChange={categoryInputChange}
                 onChange={categoryChange}
-                //  name='country'
                 className="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" id="grid-state"
               >
               </Select>
-              {/* <select onChange={ClickInput} name='category' className="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" id="grid-state">
-                  <option>Select Category</option>
-                  {categories?.map((value) => {
-                    return <option value={value.id}>{value.name}</option>
-                  })}
-  
-                </select> */}
             </div>
             <div className="-mx-3  mb-6 ">
               <div className="w-[100%] px-3 mb-6 md:mb-0">
                 <label className="block  tracking-wide text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4" for="grid-first-name">
                   Tags
                 </label>
-                {/* <input type="text" name="tags" id="floating_email" onChange={ClickInput} className="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="Enter Tags" required /> */}
                 <div name="tags" className='  w-full flex text-sm text-gray-900 bg-gray-50 rounded-[9px] flex-wrap appearance-none  border-2 border-black border-[0.7px] border-gray-300 focus:outline-none focus:ring-0 focus:border-blue-600 peer'>
                   {tags.map((item, index) => (
                     <button onClick={() => deleteTag(item)} className=' m-2 text-white bg-black outline-none border-none px-4 py-1 rounded-lg' key={index}>
@@ -448,17 +402,6 @@ const JobsForm = ({  }) => {
                 </div>
               </div>
             </div>
-            {/* <div className="-mx-3 mt-[-1.2rem] mb-6">
-              <div className="w-[100%] px-3 mb-6 md:mb-0">
-                <label className="block  tracking-wide text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4" for="grid-first-name">
-                  Skills
-                </label>
-                <div className=' w-full text-sm text-gray-900 bg-gray-50 rounded-[9px]  appearance-none  border-2 border-black border-[0.7px] border-gray-300 focus:outline-none focus:ring-0 focus:border-blue-600 peer'>
-                <input type="text" name="skills" id="floating_email" onChange={ClickInput} className= "pl-4 py-[9px] px-0 bg-gray-50 border-none focus:outline-none w-full " placeholder="Enter Email" required />
-                </div>
-              </div>
-            </div> */}
-
             <div className="-mx-3 mt-[-1.2rem] mb-6">
               <div className="w-[100%] px-3 mb-6 md:mb-0">
                 <label className="block  tracking-wide text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4" for="grid-first-name">
@@ -494,7 +437,6 @@ const JobsForm = ({  }) => {
               </div>
             </div>
           </div>
-
           <div className='grid grid-cols-2 gap-10 mt-2'>
             <div className="-mx-3 mt-[-1.2rem] mb-6">
               <div className="w-[100%] px-3 mb-6 md:mb-0">
@@ -513,7 +455,6 @@ const JobsForm = ({  }) => {
               </div>
             </div>
           </div>
-
           <div className='grid grid-cols-2 gap-10 mt-2'>
             <div className="-mx-3 mt-[-1.2rem] mb-6">
               <div className="w-[100%] px-3 mb-6 md:mb-0">
@@ -532,26 +473,21 @@ const JobsForm = ({  }) => {
               </div>
             </div>
           </div>
-
           <div className="-mx-3 ">
             <div className="w-[100%]  px-3">
               <label className="block uppercase tracking-wide text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4" for="grid-Name">
                 Description
               </label>
-              {/* <textarea name='description' rows='4' maxLength='5000' onChange={ClickInput} className="appearance-none block w-full bg-gray-50  border-gray-lighter rounded py-3 px-4 rounded-[9px] mb-3 border-[0.7px] border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer text-[14px]" id="grid-Name" type="text" placeholder="Enter Description" /> */}
               <JoditEditor
                 // ref={editor}
                 name='description'
                 tabIndex={1} // tabIndex of textarea
                 value={content}
-                // onChange={newContent => setContent(newContent)}
                 onBlur={newContent => setContent(newContent)} // preferred to use only this option to update the content for performance reasons
               />
             </div>
           </div>
         </div>
-
-
 
         <div className='flex justify-center'>
           <button onClick={handleSubmit} className='bg-gradient-to-r from-sky-600 to-cyan-400 text-white font-[600] py-2 px-[3rem] mt-4 rounded-lg'>Submit</button>

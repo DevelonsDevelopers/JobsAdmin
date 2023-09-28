@@ -107,15 +107,15 @@ const Dashboard = () => {
     setPieData(array)
   }, [piechart])
     
-  // useEffect(() => {
-  //   dispatch(getpiechart())
-  // }, [dispatch])
+  useEffect(() => {
+    dispatch(getpiechart())
+  }, [dispatch])
 
   const lineChart = useSelector(state => state.dashboard.linechart)
 
-  // useEffect(() => {
-  //   dispatch(getLineChart())
-  // }, [dispatch])
+  useEffect(() => {
+    dispatch(getLineChart())
+  }, [dispatch])
 
   const barChart = useSelector(state => state.dashboard.barchart)
 
