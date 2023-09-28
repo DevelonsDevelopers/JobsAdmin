@@ -2,10 +2,8 @@ import React, { useEffect, useState } from 'react'
 import PortalLayout from '../portalLayout/PortalLayout'
 import DeleteModal from '../components/DeleteModal'
 import { Link, useNavigate } from 'react-router-dom'
-import ViewModal from '../components/ViewModal'
 import { useDispatch, useSelector } from 'react-redux'
 import { AllCities, DeleteCity, cityStatus } from '../store/actions/cityActions'
-import { AllCountries } from '../store/actions/countryActions'
 import CityModal from './view/CitiyView'
 
 
@@ -27,12 +25,11 @@ const Cities = () => {
     setOpenView(!open)
     setViewId(id)
   }
-  console.log(viewId)
+  // console.log(viewId)
 
+  //fetching cities
   const cities = useSelector(state => state.city.cities)
   const loading = useSelector(state => state.city.isLoading)
-
-
 
   useEffect(() => {
     console.log(cities)
@@ -44,6 +41,7 @@ const Cities = () => {
     }
   }, [dispatch])
 
+  //delete
   const handleDelete = (id) => {
     setOpen(!open)
     setDeleteId(id)
@@ -53,11 +51,13 @@ const Cities = () => {
     setOpen(!open)
     dispatch(DeleteCity(id))
   }
+
+  //edit
   const handleEdit = (id) => {
-    router("/cities/edit", { state: { ID: id } })
-    // 
+    router("/admin/cities/edit", { state: { ID: id } })
   }
 
+  //state update
   const UpdateStatus = (id, status) => {
     let st = 0;
     if (status === 1) {
@@ -65,9 +65,20 @@ const Cities = () => {
     } else {
       st = 1;
     }
-    console.log('click')
+    // console.log('click')
     dispatch(cityStatus(id, st))
   }
+
+  // nodata===============
+  const [nodata, setNodata] = useState(false)
+  useEffect(() => {
+    if (cities?.length === 0) {
+      setNodata(true)
+    } else {
+      setNodata(false)
+
+    }
+  }, [])
 
   //pagination=============================
   const [currentPage, setCurrentPage] = useState(1)
@@ -98,20 +109,10 @@ const Cities = () => {
       setNumbers([...Array(nPage + 1).keys()].slice(1))
     }
   }, [nPage])
+  //================================
 
-  // nodata===============
-  const [nodata, setNodata] = useState(false)
-  useEffect(() => {
-    if (cities?.length === 0) {
-      setNodata(true)
-    } else {
-      setNodata(false)
-
-    }
-  }, [])
   return (
     <PortalLayout>
-
       {loading ?
         <center> <div className="flex justify-center items-center h-screen">
           <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-blue-500"></div>
@@ -133,7 +134,7 @@ const Cities = () => {
                 <div className='flex justify-center mt-[3rem] w-[90%] m-auto'>
 
                   <input type="search" name="" id="" placeholder='Search...' onChange={(e) => setSearch(e.target.value)} className='border-2 border-gray-600 pl-[4rem] rounded-[1.0625rem] py-2  w-[27.8125rem] mr-auto max-md:py-[1px] max-md:w-[15rem] max-md:text-[0.7rem]' />
-                  <Link to="/cities/add"> <button className="bg-[#0047FF] cursor-pointer  max-md:text-[.6rem] py-2 px-[1rem] max-md:px-[1rem] max-md:py-[5px] text-white font-[600] max-md:font-[400] rounded-[1.375rem] ml-auto "  >
+                  <Link to="/admin/cities/add"> <button className="bg-[#0047FF] cursor-pointer  max-md:text-[.6rem] py-2 px-[1rem] max-md:px-[1rem] max-md:py-[5px] text-white font-[600] max-md:font-[400] rounded-[1.375rem] ml-auto "  >
                     Add New
                   </button>
                   </Link>

@@ -13,10 +13,8 @@ const Categories = () => {
 
   const [open, setOpen] = useState(false);
   const [openView, setOpenView] = useState(false);
-  const [view, setView] = useState(false);
   const router = useNavigate();
   const [data, setData] = useState()
-  const [getCategory, setGetCategories] = useState()
   const [deleteID, setDeleteID] = useState();
   const [viewId, setViewId] = useState();
 
@@ -62,7 +60,7 @@ const Categories = () => {
   }
 
   const handleEdit = (id) => {
-  router("/categories/edit",{ state: {ID: id}})
+  router("/admin/categories/edit",{ state: {ID: id}})
   // 
   }
 
@@ -130,7 +128,7 @@ if (categories?.length === 0) {
         <div className='flex justify-center mt-[3rem] w-[90%] m-auto'>
 
           <input  onChange={(e) => setSearch(e.target.value)}type="search" name="" id="" placeholder='Search...' className='border-2 border-gray-600 pl-[4rem] rounded-[1.0625rem] py-2  w-[27.8125rem] mr-auto max-md:py-[1px] max-md:w-[15rem] max-md:text-[0.7rem] focus:outline-none focus:ring-0 focus:border-gray-900 peer' />
-          <Link to="/categories/add"> <button className="bg-[#0047FF] cursor-pointer  max-md:text-[.6rem] py-2 px-[1rem] max-md:px-[1rem] max-md:py-[5px] text-white font-[600] max-md:font-[400] rounded-[1.375rem] ml-auto "  >
+          <Link to="/admin/categories/add"> <button className="bg-[#0047FF] cursor-pointer  max-md:text-[.6rem] py-2 px-[1rem] max-md:px-[1rem] max-md:py-[5px] text-white font-[600] max-md:font-[400] rounded-[1.375rem] ml-auto "  >
             Add New
           </button>
           </Link>

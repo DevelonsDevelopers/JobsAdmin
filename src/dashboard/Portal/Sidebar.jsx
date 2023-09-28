@@ -1,22 +1,19 @@
 import { forwardRef, useState } from "react";
-import { HiOutlineHome, HiOutlineUser, HiOutlineCblueitCard, HiOutlineUsers } from "react-icons/hi";
+import { HiOutlineHome,  HiOutlineUsers } from "react-icons/hi";
 
-import { RiEarthFill, RiEarthLine, RiHomeOfficeLine, RiPagesLine, RiUserSearchLine } from 'react-icons/ri'
-import { FaBoxes, FaPager, FaRegListAlt, FaTable, FaUser, FaUserCheck, FaUserClock } from 'react-icons/fa'
+import {  RiEarthLine, RiHomeOfficeLine,  RiUserSearchLine } from 'react-icons/ri'
+import {  FaRegListAlt,  } from 'react-icons/fa'
 import { BiCategoryAlt, BiUserCheck } from 'react-icons/bi'
-// import {FiUserCheck} from 'react-icons/fi'
 
-import { AiOutlineUserSwitch, AiOutlineCloseCircle, AiOutlineTag, AiOutlineTransaction, AiOutlineOrderedList, AiOutlineNotification } from 'react-icons/ai'
-import { PiBriefcaseLight, PiBuildingsLight, PiUsersThreeBold } from 'react-icons/pi'
-import { Button } from "@mui/material";
+import { AiOutlineTag, AiOutlineTransaction, AiOutlineOrderedList, AiOutlineNotification } from 'react-icons/ai'
+import { PiBriefcaseLight, PiBuildingsLight} from 'react-icons/pi'
 import { useLocation, useNavigate } from "react-router-dom";
 
 
 
-const Sidebar = forwardRef(({ showNav }, ref) => {
+const Sidebar = forwardRef(({ }, ref) => {
   const router = useNavigate();
   const location = useLocation();
-  const [active, isActive] = useState("false")
 
   return (
     <div ref={ref} className="mt-[-4rem] fixed w-56 h-full bg-white shadow-sm max-md:w-[35%] overflow-auto no-scrollbar">

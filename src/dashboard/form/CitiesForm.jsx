@@ -12,11 +12,12 @@ const CitiesForm = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  // onChange Function
   const ClickInput = (e) => [
     setCityData(prev => ({ ...prev, [e.target.name]: e.target.value }))
   ]
-  // console.log(cityData)
 
+  //Update Function
   const handleSubmit = (e) => {
     e.preventDefault()
     if(cityData.name && cityData.description && cityData.country){
@@ -27,6 +28,7 @@ const CitiesForm = () => {
     }
   }
 
+  //fetching countries
   const countries = useSelector(state => state.country.countries)
 
   // useEffect(() => {
@@ -39,14 +41,7 @@ const CitiesForm = () => {
     }
   }, [dispatch])
 
-  // const countriesbycity = useSelector(state => state.city.cities)
-  // useEffect(() => {
-  //   console.log(countriesbycity)
-  // }, [countriesbycity])
-
-  // useEffect(() => {
-  //   dispatch(getCountrybyCity())
-  // }, [dispatch])
+  //======================
 
   return (
     <PortalLayout>

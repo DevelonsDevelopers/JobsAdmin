@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import PortalLayout from '../../portalLayout/PortalLayout'
-import { createCategory, updateCategory } from '../../store/actions/categoryActions'
+import { createCategory } from '../../store/actions/categoryActions'
 import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 
@@ -8,7 +8,7 @@ const CategoryForm = () => {
   const [categoryData, setCategoryData] = useState({ name: '', description: '', image: '' })
   // const [image, setImage] = useState('')
   const [ Base64IMG, setBase64IMG] = useState('')
-  const [canvas, setCanvas] = useState()
+  // const [canvas, setCanvas] = useState()
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
@@ -42,7 +42,7 @@ const CategoryForm = () => {
     e.preventDefault()
     if(categoryData.name && categoryData.description && categoryData.image){
       dispatch(createCategory(categoryData))
-      navigate('/categories')
+      navigate('/admin/categories')
     } else{
       alert('plz fill the data')
     }

@@ -11,11 +11,13 @@ const CountriesForm = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+//onChange Fuction
   const ClickInput = (e) => {
     setCountryData(prev => ({ ...prev, [e.target.name]: e.target.value }))
   }
-  console.log(countryData)
+  // console.log(countryData)
 
+  //Update Button
   const handleSubmit = (e) => {
     e.preventDefault()
     if(countryData.name && countryData.description && countryData.flag){
@@ -26,10 +28,12 @@ const CountriesForm = () => {
     }
   }
 
+  //flag baseurl add in countryData
   useEffect(() => {
     setCountryData({ ...countryData, flag: Base64IMG})
   }, [Base64IMG])
 
+  //function of converting image to base64
   const convertToBase64 = (e) => {
     const reader = new FileReader()
 
