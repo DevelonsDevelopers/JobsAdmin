@@ -40,9 +40,9 @@ const Jobs = () => {
   
   //fetching jobs
   const jobs = useSelector(state => state.job.jobs)
-  // useEffect(() => {
-  //   console.log(jobs)
-  // }, [jobs])
+  useEffect(() => {
+    console.log(jobs)
+  }, [jobs])
 
   useEffect(() => {
     if (jobs !== null || jobs !== undefined || jobs.length !== 0) {
@@ -173,13 +173,13 @@ const Jobs = () => {
                         <span className="font-bold max-md:text-[.7rem] text-[13px] font-[300] ">{value.title}</span>
                       </td>
                       <td className="py-[2%] w-[3%]   border-r-[1px] border-t-[1px]   text-center">
-                        <span className="font-bold max-md:text-[.7rem] text-[13px] font-[300] ">{value.category}</span>
+                        <span className="font-bold max-md:text-[.7rem] text-[13px] font-[300] ">{value.category_name}</span>
                       </td>
                       <td className="py-[2%] w-[3%]   border-r-[1px] border-t-[1px]   text-center">
-                        <span className="font-bold max-md:text-[.7rem] text-[13px] font-[300] ">{value.city}</span>
+                        <span className="font-bold max-md:text-[.7rem] text-[13px] font-[300] ">{value.city_name}</span>
                       </td>
                       <td className="py-[2%] w-[3%]   border-r-[1px] border-t-[1px]   text-center">
-                        <span className="font-bold max-md:text-[.7rem] text-[13px] font-[300] ">{value.company}</span>
+                        <span className="font-bold max-md:text-[.7rem] text-[13px] font-[300] ">{value.company_name}</span>
                       </td>
 
                       <td className="py-[1%] w-[2%]  max-md:text-[.7rem]  border-r-[1px] border-t-[1px]   text-center">
