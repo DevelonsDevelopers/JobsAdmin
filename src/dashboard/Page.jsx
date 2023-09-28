@@ -88,7 +88,7 @@ const Dashboard = () => {
   const dispatch = useDispatch();
   const [pieData, setPieData] = useState([{ 'value': 0, 'name': 'Companies' }, { 'value': 0, 'name': 'Jobs', 'color': '#ffffff' }, { 'value': 0, 'name': 'Seekers' }])
 
-  const COLORS = ['#0088FE', '#00C49F', '#FFBB28'];
+  const COLORS = ['#fcbf49', '#4D38E3', '#8AC942'];
 
   const dashboard = useSelector(state => state.dashboard.dashboard)
 

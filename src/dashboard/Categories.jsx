@@ -177,7 +177,12 @@ if (categories?.length === 0) {
             </tr>
 
           </thead>
-          {records?.map((value) => (
+          {records?.filter((value) => {
+            return search !== ''
+            ?  value?.name?.toLowerCase().includes(search) : value ;
+            // return search.toLowerCase() === ''
+            // ? value : value.name.toLowerCase().includes(search);
+          }).map((value) => (
 
             <tbody className="text-[#000000] text-sm font-light w-[100%] bg-white ">
               <tr className='' >

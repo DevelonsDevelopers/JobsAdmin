@@ -19,7 +19,7 @@ const company = [
 const Companies = () => {
 
 
-
+  const [search, setSearch] = useState('')
 
   const [open, setOpen] = useState(false);
   const [openView, setOpenView] = useState(false);
@@ -42,9 +42,9 @@ const Companies = () => {
   const loading = useSelector(state => state.company.isLoading)
 
   const [nodata, setNodata] = useState(false)
-  // useEffect(() => {
-  //   console.log(companies)
-  // }, [companies])
+  useEffect(() => {
+    console.log(companies)
+  }, [companies])
 
   useEffect(() => {
     dispatch(AllCompanies())
@@ -135,7 +135,7 @@ if (nPage) {
 
               <div className='flex justify-center mt-[3rem] w-[90%] m-auto'>
 
-                <input type="search" name="" id="" placeholder='Search...' className='border-2 border-gray-600 pl-[4rem] rounded-[1.0625rem] py-2  w-[27.8125rem] mr-auto max-md:py-[1px] max-md:w-[15rem] max-md:text-[0.7rem]' />
+                <input type="search" name="name" id="" placeholder='Search...' onChange={(e) => setSearch(e.target.value)} className='border-2 border-gray-600 pl-[4rem] rounded-[1.0625rem] py-2  w-[27.8125rem] mr-auto max-md:py-[1px] max-md:w-[15rem] max-md:text-[0.7rem]' />
                 <Link to="/companies/add"> <button className="bg-[#0047FF] cursor-pointer  max-md:text-[.6rem] py-2 px-[1rem] max-md:px-[1rem] max-md:py-[5px] text-white font-[600] max-md:font-[400] rounded-[1.375rem] ml-auto "  >
                   Add New
                 </button>
@@ -159,7 +159,10 @@ if (nPage) {
 
                 </thead>
 
-                {records?.map((value, index) => (
+                {records?.filter((value) => {
+                  return search.toLowerCase() === ''
+                    ? value : value?.name?.toLowerCase().includes(search);
+                })?.map((value, index) => (
                   <tbody className="text-[#000000] text-sm font-light w-[100%] bg-white ">
                     <tr className='' >
                       <td className="py-[2%] w-[3%]   border-r-[1px] border-t-[1px]   text-center">

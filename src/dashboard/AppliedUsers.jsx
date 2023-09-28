@@ -4,6 +4,7 @@ import AppliedViews from './view/AppliedViews';
 import { useDispatch, useSelector } from 'react-redux';
 import { AllAppliedUsers } from '../store/actions/appliedUserActions';
 import { Link, useNavigate } from 'react-router-dom';
+import moment from 'moment';
 
 
 
@@ -152,10 +153,10 @@ const AppliedUsers = () => {
                             <span className=' text-[13px] font-[350]'>{value.job}</span>
                           </td>
                           <td className="py-[1%] w-[2%]  max-md:text-[.7rem]  border-r-[1px] border-t-[1px]   text-center">
-                            <span className=' text-[13px] font-[350]'>{value.date}</span>
+                            <span className=' text-[13px] font-[350]'>{moment(value.date).format('YYYY-MM-DD')}</span>
                           </td>
                           <td className="py-[2%] max-md:text-[.7rem] w-[2%] border-r-[1px] border-t-[1px]   text-center">
-                            <button onClick={() => handleViewCoverLetter(value.user, value.job)}   className='bg-green-600 text-white font-[500] py-[3px] px-[10px] max-md:w-[8%] rounded-xl text-[0.6rem] max-md:py-1 max-md:px-2 max-md:text-[0.6rem] cursor-pointer  '>View CV </button>
+                            <button onClick={() => handleViewCoverLetter(value.user, value.job)}   className='bg-green-600 text-white font-[500] py-[3px] px-[10px] max-md:w-[8%] rounded-xl text-[0.6rem] max-md:py-1 max-md:px-2 max-md:text-[0.6rem] cursor-pointer  '>Cover Letter</button>
                           </td>
 
 
