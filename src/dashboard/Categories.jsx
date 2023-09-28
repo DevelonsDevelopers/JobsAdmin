@@ -157,7 +157,7 @@ if (categories?.length === 0) {
             ? value : value.name.toLowerCase().includes(search);
           }).map((value) => (
 
-            <tbody className="text-[#000000] text-sm font-light w-[100%] bg-white" key={value.id}>
+            <tbody className="text-[#000000] text-sm font-light w-[100%] bg-white" key={value?.id}>
               <tr className='' >
                 <td className="py-[2%] w-[3%]   border-r-[1px] border-t-[1px]   text-center">
                   <span className="font-bold max-md:text-[.7rem] text-[13px] text-blue-500">{value.id}</span>

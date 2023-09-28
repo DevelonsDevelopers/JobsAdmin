@@ -6,46 +6,32 @@ import TagsView from './view/TagsView';
 import { useDispatch, useSelector } from 'react-redux';
 import { AllTags, deleteTag, tagStatus } from '../store/actions/tagActions';
 
-
-const tags = [
-  { id: '01', name: "london", count: '20', status: "Active", },
-  { id: '01', name: "london", count: '20', status: "Active", },
-  { id: '01', name: "london", count: '20', status: "Active", },
-  { id: '01', name: "london", count: '20', status: "Active", },
-  { id: '01', name: "london", count: '20', status: "Active", },
-  { id: '01', name: "london", count: '20', status: "Active", },
-
-  
-]
 const Tags = () => {
- // search===============
-const [search ,setSearch  ] = useState('')
-console.log(search)
-
-
-
-
-
   const [open, setOpen] = useState(false);
   const [openView, setOpenView] = useState(false);
   const [viewId, setViewId] = useState(false);
   const [deleteId , setDeleteId] = useState();
-  const router  = useNavigate();
   const [data, setData] = useState()
-
+  
   const dispatch = useDispatch()
+  const router  = useNavigate();
 
+   // search===============
+const [search ,setSearch  ] = useState('')
+
+  //onChange
   const handleClick = (id) => {
     setOpenView(!open)
     setViewId(id)
   }
 
+  //fetching tags 
   const tags = useSelector(state => state.tag.tags)
   const loading = useSelector(state => state.tag.isLoading)
 
-  useEffect(() => {
-    console.log(tags)
-  }, [tags])
+  // useEffect(() => {
+  //   console.log(tags)
+  // }, [tags])
 
   useEffect(() => {
     if(tags !== null || tags !== undefined || tags.length !== 0){
@@ -61,6 +47,20 @@ console.log(search)
     setOpen(!open)
     setDeleteId(id)
   }
+//Edit
+  const handleEdit=(id)=> {
+    router("/tags/edit", { state: {ID : id}})
+  }
+//Status Update
+const UpdateStatus = (id, status) => {
+  let st = 0;
+  if(status === 1) {
+    st = 0;
+  } else{
+    st = 1;
+  }
+  dispatch(tagStatus(id, st))
+} 
 // pagination===============
 const [currentPage, setCurrentPage] = useState(1)
 const numbersPerPage = 10;
@@ -102,19 +102,6 @@ if (tags?.length===null) {
 }
 },[tags])
 
-  const handleEdit=(id)=> {
-    router("/tags/edit", { state: {ID : id}})
-  }
-
-const UpdateStatus = (id, status) => {
-  let st = 0;
-  if(status === 1) {
-    st = 0;
-  } else{
-    st = 1;
-  }
-  dispatch(tagStatus(id, st))
-} 
 return (
     <PortalLayout>
       {loading?
@@ -167,7 +154,7 @@ return (
             ? value :value.name.toLowerCase().includes(search);
           })
           .map((value, index) => (
-            <tbody className="text-[#000000] text-sm font-light w-[100%] bg-white ">
+            <tbody className="text-[#000000] text-sm font-light w-[100%] bg-white " key={value.id}>
               <tr className='' >
                 <td className="py-[2%] w-[3%]   border-r-[1px] border-t-[1px]   text-center">
                   <span className="font-bold max-md:text-[.7rem] text-[13px] text-blue-500">{value.id}</span>

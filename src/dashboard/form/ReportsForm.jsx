@@ -8,7 +8,7 @@ const ReportsForm = () => {
 
 <div className="-mx-3 md:flex mb-6 justify-center">
   <div className="md:w-full px-3">
-    <label className="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2" for="grid-Name">
+    <label className="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2" htmlFor="grid-Name">
       Name
     </label>
     <input type="text" name="floating_email" id="floating_email" className="pl-4 block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent rounded-xl p-2 border-2 border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="Enter Company Name" required />
@@ -17,13 +17,13 @@ const ReportsForm = () => {
 </div>
 <div className="-mx-3 md:flex mb-6 justify-center">
   <div className="md:w-[60%] px-3">
-    <label className="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2" for="grid-Name">
+    <label className="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2" htmlFor="grid-Name">
       Email
     </label>
     <input type="email" name="floating_email" id="floating_email" className="pl-4 block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent rounded-xl p-2 border-2 border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="Enter Email " required />
   </div>
     <div className="md:w-[60%] px-3">
-    <label className="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2" for="grid-Name">
+    <label className="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2" htmlFor="grid-Name">
       Password
     </label>
     <input type="text" name="floating_email" id="floating_email" className="pl-4 block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent rounded-xl p-2 border-2 border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="Enter Password " required />
@@ -32,7 +32,7 @@ const ReportsForm = () => {
 
 <div className="-mx-3 md:flex mb-6 justify-center">
   <div className="md:w-[60%] px-3">
-    <label className="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2" for="grid-Name">
+    <label className="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2" htmlFor="grid-Name">
       City
     </label>
     <select className="pl-4 block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent rounded-xl p-2 border-2 border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" id="grid-state">
@@ -42,7 +42,7 @@ const ReportsForm = () => {
                           </select>
         </div>
     <div className="md:w-[60%] px-3">
-    <label className="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2" for="grid-Name">
+    <label className="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2" htmlFor="grid-Name">
     Country
     </label>
     <select className="pl-4 block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent rounded-xl p-2 border-2 border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" id="grid-state">
@@ -53,13 +53,13 @@ const ReportsForm = () => {
 </div>
 <div className="-mx-3 md:flex mb-6 justify-center">
   <div className="md:w-[60%] px-3">
-    <label className="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2" for="grid-Name">
+    <label className="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2" htmlFor="grid-Name">
       Type
     </label>
     <input type="email" name="floating_email" id="floating_email" className="pl-4 block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent rounded-xl p-2 border-2 border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="Enter Your Type" required />
   </div>
     <div className="md:w-[60%] px-3">
-    <label className="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2" for="grid-Name">
+    <label className="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2" htmlFor="grid-Name">
     Size
     </label>
     <input type="password" name="floating_email" id="floating_email" className="pl-4 block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent rounded-xl p-2 border-2 border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="Enter Employe " required />
@@ -67,7 +67,7 @@ const ReportsForm = () => {
 </div>
 <div className="-mx-3 md:flex mb-6 justify-center">
   <div className="md:w-full px-3">
-    <label className="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2" for="grid-Name">
+    <label className="block uppercase tracking-wide text-grey-darker text-xs font-bold mb-2" htmlFor="grid-Name">
       HeadQuater
     </label>
     <input type="text" name="floating_email" id="floating_email" className="pl-4 block py-2.5 px-0 w-full text-md text-gray-900 bg-transparent rounded-xl p-2 border-2 border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="Enter Headquater Address" required />

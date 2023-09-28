@@ -224,7 +224,7 @@ useEffect(() => {
       <div className="bg-white shadow-md rounded-xl px-[10rem] pt-6 pb-8 mb-4 flex flex-col  my-2">
         <div className="-mx-3 mt-[-1.2rem] mb-6">
           <div className="w-[100%] px-3 mb-6 md:mb-0 mt-5">
-            <label className="block  tracking-wide text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4" for="grid-first-name">
+            <label className="block  tracking-wide text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4" htmlFor="grid-first-name">
               Title
             </label>
             <input type="text" name="title" id="floating_email" onChange={ClickInput} className="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="Enter Title" required />
@@ -232,7 +232,7 @@ useEffect(() => {
         </div>
         <div className="mt-[-1.2rem] mb-6">
           <div className="md:w-[100%] ">
-            <label className="block text-left tracking-wide text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4" for="grid-first-name">
+            <label className="block text-left tracking-wide text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4" htmlFor="grid-first-name">
               Company
             </label>
             <Select
@@ -258,7 +258,7 @@ useEffect(() => {
         <div className='grid grid-cols-2 gap-10 mt-2'>
           <div className="-mx-3 mt-[-1.2rem] mb-6">
             <div className="w-[100%] px-3 mb-6 md:mb-0">
-              <label className="block  tracking-wide text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4" for="grid-first-name">
+              <label className="block  tracking-wide text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4" htmlFor="grid-first-name">
                 Experience
               </label>
               <input type="text" name="experience" id="floating_email" onChange={ClickInput} className="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="Enter Experience" required />
@@ -266,7 +266,7 @@ useEffect(() => {
           </div>
           <div className="-mx-3 mt-[-1.2rem] mb-6">
             <div className="w-[100%] px-3 mb-6 md:mb-0">
-              <label className="block  tracking-wide text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4" for="grid-first-name">
+              <label className="block  tracking-wide text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4" htmlFor="grid-first-name">
                 Qualification
               </label>
               <input type="text" name="qualification" id="floating_email" onChange={ClickInput} className="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="Enter Qualification " required />
@@ -277,7 +277,7 @@ useEffect(() => {
 
         <div className="-mx-3 mt-[-1.2rem] mb-6">
           <div className="w-[100%] px-3 mb-6 md:mb-0 mt-0">
-            <label className="block  tracking-wide text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4" for="grid-first-name">
+            <label className="block  tracking-wide text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4" htmlFor="grid-first-name">
               Type
             </label>
             <select onChange={ClickInput} name='type' className="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" id="grid-state">
@@ -291,7 +291,7 @@ useEffect(() => {
 
         <div className="grid grid-cols-2 gap-10 mt-[-12px]">
           <div className="md:w-[100%] ">
-            <label className="block text-left tracking-wide text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4" for="grid-first-name">
+            <label className="block text-left tracking-wide text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4" htmlFor="grid-first-name">
               Country
             </label>
             <Select
@@ -313,7 +313,7 @@ useEffect(() => {
             </Select>
           </div>
           <div className="md:w-[100%] ">
-            <label className="block text-left tracking-wide text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4" for="grid-first-name">
+            <label className="block text-left tracking-wide text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4" htmlFor="grid-first-name">
               City
             </label>
             <Select
@@ -338,7 +338,7 @@ useEffect(() => {
         <div className='flex-col mt-4'>
           <div className='grid grid-cols-2 gap-10 '>
             <div className="md:w-[100%] ">
-              <label className="block text-left tracking-wide text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4" for="grid-first-name">
+              <label className="block text-left tracking-wide text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4" htmlFor="grid-first-name">
                 Category
               </label>
               <Select
@@ -361,7 +361,7 @@ useEffect(() => {
             </div>
             <div className="-mx-3  mb-6 ">
               <div className="w-[100%] px-3 mb-6 md:mb-0">
-                <label className="block  tracking-wide text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4" for="grid-first-name">
+                <label className="block  tracking-wide text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4" htmlFor="grid-first-name">
                   Tags
                 </label>
                 <div name="tags" className='  w-full flex text-sm text-gray-900 bg-gray-50 rounded-[9px] flex-wrap appearance-none  border-2 border-black border-[0.7px] border-gray-300 focus:outline-none focus:ring-0 focus:border-blue-600 peer'>
@@ -379,7 +379,7 @@ useEffect(() => {
           </div>
           <div className="-mx-3 mt-[-.6rem] mb-7">
             <div className="w-[100%] px-3 mb-6 md:mb-0 mt-0">
-              <label className="block  tracking-wide text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4" for="grid-first-name">
+              <label className="block  tracking-wide text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4" htmlFor="grid-first-name">
                 Address
               </label>
               <input type="text" name="address" id="floating_email" onChange={ClickInput} className="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="Enter Address(eg. Lahore, Pakistan)" required />
@@ -388,7 +388,7 @@ useEffect(() => {
           <div className='grid grid-cols-2 gap-10 mt-2'>
             <div className="-mx-3 mt-[-1.2rem] mb-6">
               <div className="w-[100%] px-3 mb-6 md:mb-0">
-                <label className="block  tracking-wide text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4" for="grid-first-name">
+                <label className="block  tracking-wide text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4" htmlFor="grid-first-name">
                   Skills
                 </label>
                 <div name="skills" className='  w-full flex text-sm text-gray-900 bg-gray-50 rounded-[9px] flex-wrap appearance-none  border-2 border-black border-[0.7px] border-gray-300 focus:outline-none focus:ring-0 focus:border-blue-600 peer'>
@@ -404,7 +404,7 @@ useEffect(() => {
             </div>
             <div className="-mx-3 mt-[-1.2rem] mb-6">
               <div className="w-[100%] px-3 mb-6 md:mb-0">
-                <label className="block  tracking-wide text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4" for="grid-first-name">
+                <label className="block  tracking-wide text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4" htmlFor="grid-first-name">
                   Work Day
                 </label>
                 <input type="text" name="workdays" id="floating_email" onChange={ClickInput} className="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="Work Days(eg. mon-friday, mon,tue,wed,etc) " required />
@@ -414,7 +414,7 @@ useEffect(() => {
           <div className='grid grid-cols-3 gap-10 mt-2'>
             <div className="-mx-3 mt-[-1.2rem] mb-6">
               <div className="w-[100%] px-3 mb-6 md:mb-0">
-                <label className="block  tracking-wide text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4" for="grid-first-name">
+                <label className="block  tracking-wide text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4" htmlFor="grid-first-name">
                   Start Time
                 </label>
                 <input type="time" name="worktime" id="floating_email" onChange={(e) => setStartTime(e.target.value)} className="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="Enter Start Time" required />
@@ -422,7 +422,7 @@ useEffect(() => {
             </div>
             <div className="-mx-3 mt-[-1.2rem] mb-6">
               <div className="w-[100%] px-3 mb-6 md:mb-0">
-                <label className="block  tracking-wide text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4" for="grid-first-name">
+                <label className="block  tracking-wide text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4" htmlFor="grid-first-name">
                   End Time
                 </label>
                 <input type="time" name="worktime" id="floating_email" onChange={(e) => setEndTime(e.target.value)} className="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="Enter End Time" required />
@@ -430,7 +430,7 @@ useEffect(() => {
             </div>
             <div className="-mx-3 mt-[-1.2rem] mb-6">
               <div className="w-[100%] px-3 mb-6 md:mb-0">
-                <label className="block  tracking-wide text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4" for="grid-first-name">
+                <label className="block  tracking-wide text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4" htmlFor="grid-first-name">
                   Date
                 </label>
                 <input type="date"  id="floating_email" onChange={(e) => setDate(e.target.value)} className="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="Enter Company Role " required />
@@ -440,7 +440,7 @@ useEffect(() => {
           <div className='grid grid-cols-2 gap-10 mt-2'>
             <div className="-mx-3 mt-[-1.2rem] mb-6">
               <div className="w-[100%] px-3 mb-6 md:mb-0">
-                <label className="block  tracking-wide text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4" for="grid-first-name">
+                <label className="block  tracking-wide text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4" htmlFor="grid-first-name">
                   Salary
                 </label>
                 <input type="text " name="salary" id="floating_email" onChange={ClickInput} className="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="Enter Salary (eg. 1000-5000$, etc)" required />
@@ -448,7 +448,7 @@ useEffect(() => {
             </div>
             <div className="-mx-3 mt-[-1.2rem] mb-6">
               <div className="w-[100%] px-3 mb-6 md:mb-0">
-                <label className="block  tracking-wide text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4" for="grid-first-name">
+                <label className="block  tracking-wide text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4" htmlFor="grid-first-name">
                   Role
                 </label>
                 <input type="text" name="role" id="floating_email" onChange={ClickInput} className="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="Enter Role(eg. Designer)" required />
@@ -458,7 +458,7 @@ useEffect(() => {
           <div className='grid grid-cols-2 gap-10 mt-2'>
             <div className="-mx-3 mt-[-1.2rem] mb-6">
               <div className="w-[100%] px-3 mb-6 md:mb-0">
-                <label className="block  tracking-wide text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4" for="grid-first-name">
+                <label className="block  tracking-wide text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4" htmlFor="grid-first-name">
                   Link
                 </label>
                 <input type="text" name="link" id="floating_email" onChange={ClickInput} className="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="Enter Link(eg. www.link.com)" required />
@@ -466,7 +466,7 @@ useEffect(() => {
             </div>
             <div className="-mx-3 mt-[-1.2rem] mb-6">
               <div className="w-[100%] px-3 mb-6 md:mb-0">
-                <label className="block  tracking-wide text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4" for="grid-first-name">
+                <label className="block  tracking-wide text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4" htmlFor="grid-first-name">
                   Designation
                 </label>
                 <input type="text" name="designation" id="floating_email" onChange={ClickInput} className="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="Enter Designation " required />
@@ -475,7 +475,7 @@ useEffect(() => {
           </div>
           <div className="-mx-3 ">
             <div className="w-[100%]  px-3">
-              <label className="block uppercase tracking-wide text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4" for="grid-Name">
+              <label className="block uppercase tracking-wide text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4" htmlFor="grid-Name">
                 Description
               </label>
               <JoditEditor

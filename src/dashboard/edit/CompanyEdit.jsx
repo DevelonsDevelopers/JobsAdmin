@@ -120,7 +120,7 @@ const cityChange = (value) => {
        <form className="bg-white shadow-md rounded-xl px-[10rem] pt-6 pb-8 mb-4 flex flex-col  my-2">
         <div className="-mx-3 mt-[-1.2rem] mb-6">
           <div className="w-[100%] px-3 mb-6 md:mb-0 mt-5">
-            <label className="block  tracking-wide text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4" for="grid-first-name">
+            <label className="block  tracking-wide text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4" htmlFor="grid-first-name">
               Name
             </label>
             <input value={companyData.name} onChange={ClickInput} type="text" name="name" id="floating_email"  className="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-300 appearance-none     border-gray-600  focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="Enter Company Name" required />
@@ -130,7 +130,7 @@ const cityChange = (value) => {
         <div className='grid grid-cols-2 gap-10 mt-2'>
           <div className="-mx-3 mt-[-1.2rem]">
             <div className="w-[100%] px-3 mb-6 md:mb-0">
-              <label className="block  tracking-wide text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4" for="grid-first-name">
+              <label className="block  tracking-wide text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4" htmlFor="grid-first-name">
                 Email
               </label>
               <input value={companyData.email} onChange={ClickInput} type="email" name="email" id="floating_email"  className="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-300 appearance-none     border-gray-600  focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="Enter Email" required />
@@ -138,7 +138,7 @@ const cityChange = (value) => {
           </div>
           <div className="-mx-3 mt-[-1.2rem] mb-6">
             <div className="w-[100%] px-3 mb-6 md:mb-0">
-              <label className="block  tracking-wide text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4" for="grid-first-name">
+              <label className="block  tracking-wide text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4" htmlFor="grid-first-name">
                 Phone
               </label>
               <input value={companyData.phone} onChange={ClickInput} type="number" name="phone" id="floating_email"  className="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-300 appearance-none     border-gray-600  focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="Enter Contact Number " required />
@@ -149,7 +149,7 @@ const cityChange = (value) => {
 
         <div className="grid grid-cols-2 gap-10 mt-[-12px]">
           <div className="md:w-[100%] ">
-              <label className="block text-left tracking-wide text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4" for="grid-first-name">
+              <label className="block text-left tracking-wide text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4" htmlFor="grid-first-name">
                 Country
               </label>
               <Select
@@ -177,7 +177,7 @@ const cityChange = (value) => {
               </select> */}
           </div>
           <div className="md:w-[100%] ">
-              <label className="block text-left tracking-wide text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4" for="grid-first-name">
+              <label className="block text-left tracking-wide text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4" htmlFor="grid-first-name">
                 City
               </label>
               <Select
@@ -209,7 +209,7 @@ const cityChange = (value) => {
           <div className='grid grid-cols-2 gap-10 mt-4'>
             <div className="-mx-3 mt-[-1.2rem] mb-6">
               <div className="w-[100%] px-3 mb-6 md:mb-0">
-                <label className="block  tracking-wide text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4" for="grid-first-name">
+                <label className="block  tracking-wide text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4" htmlFor="grid-first-name">
                   Type
                 </label>
                 {/* <input type="text" name="type" id="floating_email"  className="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-300 appearance-none     border-gray-600  focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="Enter Company Type" required /> */}
@@ -222,7 +222,7 @@ const cityChange = (value) => {
             </div>
             <div className="-mx-3 mt-[-1.2rem] mb-6">
               <div className="w-[100%] px-3 mb-6 md:mb-0">
-                <label className="block  tracking-wide text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4" for="grid-first-name">
+                <label className="block  tracking-wide text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4" htmlFor="grid-first-name">
                   Size
                 </label>
                 <input value={companyData.size} onChange={ClickInput} type="text" name="size" id="floating_email"  className="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-300 appearance-none     border-gray-600  focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="Enter Company Size" required />
@@ -232,7 +232,7 @@ const cityChange = (value) => {
           </div>
           <div className="-mx-3 ">
             <div className="w-[100%]  px-3">
-              <label className="block uppercase tracking-wide text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4" for="grid-Name">
+              <label className="block uppercase tracking-wide text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4" htmlFor="grid-Name">
                 HeadQuarter
               </label>
               <input value={companyData.headquater} onChange={ClickInput} type="text" name="headquater" id="floating_email"  className="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-300 appearance-none     border-gray-600  focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="Enter Company Name" required />

@@ -151,7 +151,7 @@ console.log(seekers)
                         ? value : value.name.toLowerCase().includes(search);
                     })
                     .map((value, index) => (
-                      <tbody className="text-[#000000] text-sm font-light w-[100%] bg-white ">
+                      <tbody className="text-[#000000] text-sm font-light w-[100%] bg-white " key={value?.id}>
                         <tr className='' >
                           <td className="py-[2%] w-[3%]   border-r-[1px] border-t-[1px]   text-center">
                             <span className="font-bold max-md:text-[.7rem] text-[13px] text-blue-500">{value.id}</span>

@@ -14,6 +14,7 @@ const TagsEdit = () => {
   const id = params.state.ID
   // console.log(id)
 
+  //fetching tags
   const tag = useSelector(state => state.tag.tag)
 
   useEffect(() => {
@@ -32,10 +33,12 @@ const TagsEdit = () => {
     console.log(tagData)
   }, [tag])
 
+  //onChange 
   const ClickInput = (e) => {
     setTagData(prev => ({ ...prev, [e.target.name]: e.target.value }))
   }
 
+  //Update function
   const handleSubmit = (e) => {
     e.preventDefault()
     if(tagData.name){
@@ -55,7 +58,7 @@ const TagsEdit = () => {
         <form action="">
           <div className="-mx-3 mt-[-1.2rem]  px-[20rem]">
             <div className="w-[100%] px-3 mb-6 md:mb-0 mt-5">
-              <label className="block  tracking-wide text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4" for="grid-first-name">
+              <label className="block  tracking-wide text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4" htmlFor="grid-first-name">
                 Tag
               </label>
               <input value={tagData.name} onChange={ClickInput} type="text" name="name" id="floating_email" className="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-300 appearance-none  border-gray-600  focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="Enter Tag " required />
