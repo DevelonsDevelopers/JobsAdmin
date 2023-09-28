@@ -28,11 +28,59 @@ const JobsEdit = () => {
 
     const [content, setContent] = useState('');
 
+    
+
+    const deleteTag = (val) => {
+      let remainTags = tags.filter((t) => t !== val)
+      setTags(remainTags)
+    }
+
+    const deleteSkill = (val) => {
+      let remainSkills = skills.filter((t) => t !== val)
+      setSkills(remainSkills)
+    }
+
+    const addTags = (e) => {
+      if(e.keyCode === 13 || e.keyCode === 32  && tagValue) {
+        setTags([...tags, tagValue])
+        setTagValue("")
+      }
+    }
+
+    const addSkills = (e) => {
+      if(e.keyCode === 13 || e.keyCode === 32 && skillValue) {
+        setSkills([...skills, skillValue])
+        setSkillValue("") 
+      }
+    }
+
+    useEffect(() => {
+      console.log(tags)
+      setJobData({...jobData, tags: tags.toString()})
+    }, [tags])
+
+    useEffect(() => {
+      console.log(skills)
+      setJobData({...jobData, skills: skills.toString()})
+    }, [skills])
+
+    useEffect(() => {
+      setJobData({...jobData, worktime: startTime + " - " + endTime})
+    }, [startTime, endTime])
+
+    useEffect(() => {
+      setJobData({...jobData, date: moment(date).format('YYYY-MM-DD')})
+    }, [date])
+
+    useEffect(() => {
+      setJobData({ ...jobData, description: content })
+    }, [content])
+  
+
     const params = useLocation();
     const id = params.state.ID;
     // console.log(id)
 
-    //fetching job id
     const job = useSelector(state => state.job.job)
     // useEffect(() => {
     //     console.log(job)
@@ -45,12 +93,12 @@ const JobsEdit = () => {
         if(job){
           setTags((job?.tags).split(','))
           setSkills((job?.skills).split(','))
-            setJobData({ category: job?.category, country: job?.country, city: job?.city, title: job?.title, company: job?.company, designation: job?.designation, salary: job?.salary, role: job?.role ,description: job?.description, link: job?.link, type: job?.type, workdays: job?.workdays, worktime: job?.worktime, address: job?.address, experience: job?.experience, qualification: job?.qualification, skills: job?.skills, date: moment(job?.date).htmlFormat('YYYY-MM-DD'), tags: job?.tags})
+            setJobData({ category: job?.category, country: job?.country, city: job?.city, title: job?.title, company: job?.company, designation: job?.designation, salary: job?.salary, role: job?.role ,description: job?.description, link: job?.link, type: job?.type, workdays: job?.workdays, worktime: job?.worktime, address: job?.address, experience: job?.experience, qualification: job?.qualification, skills: job?.skills, date: moment(job?.date).format('YYYY-MM-DD'), tags: job?.tags})
         }
     }, [job])
-    // useEffect(() => {
-    //   console.log(jobData)
-    // }, [jobData])
+    useEffect(() => {
+      console.log(jobData)
+    }, [jobData])
 
     const ClickInput = (e) => {
       
@@ -68,8 +116,14 @@ const JobsEdit = () => {
           setTagValue(e.target.value)
         }
     }
+    // console.log(jobData)
 
-    //Fetching Data===============================================
+    // const handleSubmit = (e) => {
+    //     e.preventDefault()
+    //     dispatch(createJob(jobData))
+    //     navigate('/jobs')
+    // }
+
     const countries = useSelector(state => state.country.countries)
 
     useEffect(() => {
@@ -94,59 +148,7 @@ const JobsEdit = () => {
             dispatch(getCitybyCountry(country))
         }
     }, [dispatch, country])
-    //=================================================================== 
 
-    //Adding data to JobData
-    useEffect(() => {
-      console.log(tags)
-      setJobData({...jobData, tags: tags.toString()})
-    }, [tags])
-
-    useEffect(() => {
-      console.log(skills)
-      setJobData({...jobData, skills: skills.toString()})
-    }, [skills])
-
-    useEffect(() => {
-      setJobData({...jobData, worktime: startTime + " - " + endTime})
-    }, [startTime, endTime])
-
-    useEffect(() => {
-      setJobData({...jobData, date: moment(date).format('YYYY-MM-DD')})
-    }, [date])
-
-    useEffect(() => {
-      setJobData({ ...jobData, description: content })
-    }, [content])
-  
-    //Tags add
-    const addTags = (e) => {
-      if(e.keyCode === 13 || e.keyCode === 32  && tagValue) {
-        setTags([...tags, tagValue])
-        setTagValue("")
-      }
-    }
-
-    const deleteTag = (val) => {
-      let remainTags = tags.filter((t) => t !== val)
-      setTags(remainTags)
-    }
-
-    //skills add
-
-    const addSkills = (e) => {
-      if(e.keyCode === 13 || e.keyCode === 32 && skillValue) {
-        setSkills([...skills, skillValue])
-        setSkillValue("") 
-      }
-    }
-
-    const deleteSkill = (val) => {
-      let remainSkills = skills.filter((t) => t !== val)
-      setSkills(remainSkills)
-    }
-
-    //Update Function
     const handleSubmit =(e) => {
       e.preventDefault()
       if(jobData.category && jobData.country && jobData.city && jobData.title && jobData.company && jobData.designation && jobData.salary && jobData.role && jobData.description && jobData.link && jobData.type && jobData.workdays && jobData.worktime && jobData.address && jobData.experience && jobData.qualification && jobData.skills && jobData.date && jobData.tags){
@@ -163,7 +165,7 @@ const JobsEdit = () => {
         <form className="bg-white shadow-md rounded-xl px-[10rem] pt-6 pb-8 mb-4 flex flex-col  my-2">
           <div className="-mx-3 mt-[-1.2rem] mb-6">
             <div className="w-[100%] px-3 mb-6 md:mb-0 mt-5">
-              <label className="block  tracking-wide text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4" htmlFor="grid-first-name">
+              <label className="block  tracking-wide text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4" for="grid-first-name">
                 Title
               </label>
               <input value={jobData.title} type="text" name="title" id="floating_email" onChange={ClickInput} className="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="Enter Company Name" required />
@@ -171,7 +173,7 @@ const JobsEdit = () => {
           </div>
           <div className=" mt-[-1.2rem] mb-6">
           <div className="md:w-[100%] ">
-                <label className="block text-left tracking-wide text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4" htmlFor="grid-first-name">
+                <label className="block text-left tracking-wide text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4" for="grid-first-name">
                   Company
                 </label>
                 <select value={jobData.company} onChange={ClickInput} name='company' className="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" id="grid-state">
@@ -187,7 +189,7 @@ const JobsEdit = () => {
           <div className='grid grid-cols-2 gap-10 mt-2'>
             <div className="-mx-3 mt-[-1.2rem] mb-6">
               <div className="w-[100%] px-3 mb-6 md:mb-0">
-                <label className="block  tracking-wide text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4" htmlFor="grid-first-name">
+                <label className="block  tracking-wide text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4" for="grid-first-name">
                   Experience
                 </label>
                 <input value={jobData.experience} type="text" name="experience" id="floating_email" onChange={ClickInput} className="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="Enter Email" required />
@@ -195,7 +197,7 @@ const JobsEdit = () => {
             </div>
             <div className="-mx-3 mt-[-1.2rem] mb-6">
               <div className="w-[100%] px-3 mb-6 md:mb-0">
-                <label className="block  tracking-wide text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4" htmlFor="grid-first-name">
+                <label className="block  tracking-wide text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4" for="grid-first-name">
                   Qualification
                 </label>
                 <input value={jobData.qualification} type="text" name="qualification" id="floating_email" onChange={ClickInput} className="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="Enter Contact Number " required />
@@ -206,9 +208,10 @@ const JobsEdit = () => {
   
           <div className="-mx-3 mt-[-1.2rem] mb-6">
             <div className="w-[100%] px-3 mb-6 md:mb-0 mt-0">
-              <label className="block  tracking-wide text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4" htmlFor="grid-first-name">
+              <label className="block  tracking-wide text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4" for="grid-first-name">
                 Type
               </label>
+              {/* <input value={jobData.type} type="text" name="type" id="floating_email" onChange={ClickInput} className="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="Enter Company Name" required /> */}
               <select value={jobData.type} onChange={ClickInput} name='type' className="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" id="grid-state">
                 <option>Select Type</option>
                    <option>Full-Time</option>
@@ -220,7 +223,7 @@ const JobsEdit = () => {
   
           <div className="grid grid-cols-2 gap-10 mt-[-12px]">
             <div className="md:w-[100%] ">
-                <label className="block text-left tracking-wide text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4" htmlFor="grid-first-name">
+                <label className="block text-left tracking-wide text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4" for="grid-first-name">
                   Country
                 </label>
                 <select value={jobData.country} onChange={ClickInput} name='country' className="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" id="grid-state">
@@ -232,7 +235,7 @@ const JobsEdit = () => {
                 </select>
             </div>
             <div className="md:w-[100%] ">
-                <label className="block text-left tracking-wide text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4" htmlFor="grid-first-name">
+                <label className="block text-left tracking-wide text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4" for="grid-first-name">
                   City
                 </label>
                 <select value={jobData.city} onChange={ClickInput} name='city' className="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" id="grid-state">
@@ -247,7 +250,7 @@ const JobsEdit = () => {
           <div className='flex-col mt-4'>
             <div className='grid grid-cols-2 gap-10 '>
             <div className="md:w-[100%] ">
-                <label className="block text-left tracking-wide text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4" htmlFor="grid-first-name">
+                <label className="block text-left tracking-wide text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4" for="grid-first-name">
                   Category
                 </label>
                 <select value={jobData.category} onChange={ClickInput} name='category' className="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" id="grid-state">
@@ -260,9 +263,10 @@ const JobsEdit = () => {
             </div>
               <div className="-mx-3  mb-6 ">
                 <div className="w-[100%] px-3 mb-6 md:mb-0">
-                  <label className="block  tracking-wide text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4" htmlFor="grid-first-name">
+                  <label className="block  tracking-wide text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4" for="grid-first-name">
                     Tags
                   </label>
+                  {/* <input value={jobData.tags} type="text" name="tags" id="floating_email" onChange={ClickInput} className="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="Enter Company Size" required /> */}
                   <div name="tags" className='  w-full flex text-sm text-gray-900 bg-gray-50 rounded-[9px] flex-wrap appearance-none  border-2 border-black border-[0.7px] border-gray-300 focus:outline-none focus:ring-0 focus:border-blue-600 peer'>
                     {tags.map((item, index) => (
                       <button onClick={() => deleteTag(item)} className=' m-2 text-white bg-black outline-none border-none px-4 py-1 rounded-lg' key={index}>
@@ -278,7 +282,7 @@ const JobsEdit = () => {
             </div>          
           <div className="-mx-3 mt-[-.6rem] mb-7">
             <div className="w-[100%] px-3 mb-6 md:mb-0 mt-0">
-              <label className="block  tracking-wide text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4" htmlFor="grid-first-name">
+              <label className="block  tracking-wide text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4" for="grid-first-name">
                 Address
               </label>
               <input value={jobData.address} type="text" name="address" id="floating_email" onChange={ClickInput} className="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="Enter Company Name" required />
@@ -287,9 +291,10 @@ const JobsEdit = () => {
           <div className='grid grid-cols-2 gap-10 mt-2'>
             <div className="-mx-3 mt-[-1.2rem] mb-6">
               <div className="w-[100%] px-3 mb-6 md:mb-0">
-                <label className="block  tracking-wide text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4" htmlFor="grid-first-name">
+                <label className="block  tracking-wide text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4" for="grid-first-name">
                   Skills
                 </label>
+                {/* <input value={jobData.skills} type="text" name="skills" id="floating_email" onChange={ClickInput} className="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="Enter Email" required /> */}
                 <div name="skills" className='  w-full flex text-sm text-gray-900 bg-gray-50 rounded-[9px] flex-wrap appearance-none  border-2 border-black border-[0.7px] border-gray-300 focus:outline-none focus:ring-0 focus:border-blue-600 peer'>
                     {skills.map((item, index) => (
                       <button onClick={() => deleteSkill(item)} className=' m-2 text-white bg-black outline-none border-none px-4 py-1 rounded-lg' key={index}>
@@ -303,7 +308,7 @@ const JobsEdit = () => {
             </div>
             <div className="-mx-3 mt-[-1.2rem] mb-6">
               <div className="w-[100%] px-3 mb-6  :mb-0">
-                <label className="block  tracking-wide text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4" htmlFor="grid-first-name">
+                <label className="block  tracking-wide text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4" for="grid-first-name">
                   Work Day
                 </label>
                 <input value={jobData.workdays} type="number" name="workdays" id="floating_email" onChange={ClickInput} className="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="Enter Contact Number " required />
@@ -313,7 +318,7 @@ const JobsEdit = () => {
           <div className='grid grid-cols-3 gap-10 mt-2'>
           <div className="-mx-3 mt-[-1.2rem] mb-6">
               <div className="w-[100%] px-3 mb-6 md:mb-0">
-                <label className="block  tracking-wide text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4" htmlFor="grid-first-name">
+                <label className="block  tracking-wide text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4" for="grid-first-name">
                   Start Time
                 </label>
                 <input value={jobData?.worktime.slice(0, 5)} type="time" name="worktime" id="floating_email" onChange={(e) => setStartTime(e.target.value)} className="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="Enter Start Time" required />
@@ -321,7 +326,7 @@ const JobsEdit = () => {
             </div>
             <div className="-mx-3 mt-[-1.2rem] mb-6">
               <div className="w-[100%] px-3 mb-6 md:mb-0">
-                <label className="block  tracking-wide text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4" htmlFor="grid-first-name">
+                <label className="block  tracking-wide text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4" for="grid-first-name">
                   End Time
                 </label>
                 <input value={jobData.worktime.slice(8,13)} type="time" name="worktime" id="floating_email" onChange={(e) => setEndTime(e.target.value)} className="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="Enter End Time" required />
@@ -329,7 +334,7 @@ const JobsEdit = () => {
             </div>
             <div className="-mx-3 mt-[-1.2rem] mb-6">
               <div className="w-[100%] px-3 mb-6 md:mb-0">
-                <label className="block  tracking-wide text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4" htmlFor="grid-first-name">
+                <label className="block  tracking-wide text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4" for="grid-first-name">
                   Date
                 </label>
                 <input value={moment(jobData.date).format('YYYY-MM-DD')} type="date" name="date" id="floating_email" onChange={(e) => setDate(e.target.value)} className="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="Enter Contact Number " required />
@@ -340,7 +345,7 @@ const JobsEdit = () => {
           <div className='grid grid-cols-2 gap-10 mt-2'>
             <div className="-mx-3 mt-[-1.2rem] mb-6">
               <div className="w-[100%] px-3 mb-6 md:mb-0">
-                <label className="block  tracking-wide text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4" htmlFor="grid-first-name">
+                <label className="block  tracking-wide text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4" for="grid-first-name">
                   Salary
                 </label>
                 <input value={jobData.salary} type="text" name="salary" id="floating_email" onChange={ClickInput} className="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="Enter Email" required />
@@ -348,7 +353,7 @@ const JobsEdit = () => {
             </div>
             <div className="-mx-3 mt-[-1.2rem] mb-6">
               <div className="w-[100%] px-3 mb-6 md:mb-0">
-                <label className="block  tracking-wide text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4" htmlFor="grid-first-name">
+                <label className="block  tracking-wide text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4" for="grid-first-name">
                  Company Role
                 </label>
                 <input value={jobData.role} type="text" name="role" id="floating_email" onChange={ClickInput} className="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="Enter Contact Number " required />
@@ -359,7 +364,7 @@ const JobsEdit = () => {
           <div className='grid grid-cols-2 gap-10 mt-2'>
             <div className="-mx-3 mt-[-1.2rem] mb-6">
               <div className="w-[100%] px-3 mb-6 md:mb-0">
-                <label className="block  tracking-wide text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4" htmlFor="grid-first-name">
+                <label className="block  tracking-wide text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4" for="grid-first-name">
                   Link
                 </label>
                 <input value={jobData.link} type="text" name="link" id="floating_email" onChange={ClickInput} className="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="Enter Email" required />
@@ -367,7 +372,7 @@ const JobsEdit = () => {
             </div>
             <div className="-mx-3 mt-[-1.2rem] mb-6">
               <div className="w-[100%] px-3 mb-6 md:mb-0">
-                <label className="block  tracking-wide text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4" htmlFor="grid-first-name">
+                <label className="block  tracking-wide text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4" for="grid-first-name">
                 Designation
                 </label>
                 <input value={jobData.designation} type="text" name="designation" id="floating_email" onChange={ClickInput} className="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="Enter Contact Number " required />
@@ -377,15 +382,17 @@ const JobsEdit = () => {
 
             <div className="-mx-3 ">
               <div className="w-[100%]  px-3">
-                <label className="block uppercase tracking-wide text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4" htmlFor="grid-Name">
+                <label className="block uppercase tracking-wide text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4" for="grid-Name">
                   Description
                 </label>
+                {/* <textarea value={jobData.description} name='description' rows='4' onChange={ClickInput} className="appearance-none block w-full bg-gray-50  border-gray-lighter rounded py-3 px-4 rounded-[9px] mb-3 border-[0.7px] border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer text-[14px]" id="grid-Name" type="text" placeholder="Enter HeadQuarter Addres" /> */}
                 <JoditEditor
                 // ref={editor}
                 name='description'
                 tabIndex={1} // tabIndex of textarea
                 value={jobData?.description}
-                onBlur={newContent => setContent(newContent)} // preferred to use only this option to update the content htmlFor perhtmlFormance reasons
+                // onChange={newContent => setContent(newContent)}
+                onBlur={newContent => setContent(newContent)} // preferred to use only this option to update the content for performance reasons
               />
               </div>
             </div>
