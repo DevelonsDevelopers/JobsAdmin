@@ -60,12 +60,12 @@ const Login = () => {
             </button>
             
             
-            <div class="flex items-center py-4 w-[70%]">
-        <div class="flex-grow h-px bg-gray-400"></div> 
+            <div className="flex items-center py-4 w-[70%]">
+        <div className="flex-grow h-px bg-gray-400"></div> 
 
-        <span class="flex-shrink text-2xl px-4">OR</span>
+        <span className="flex-shrink text-2xl px-4">OR</span>
 
-        <div class="flex-grow h-px bg-gray-400"></div>
+        <div className="flex-grow h-px bg-gray-400"></div>
     </div>
     <button className='flex pl-[15px] pr-[95px] rounded-[30px] text-[16px] bg-white text-black pt-[12px] pb-[8px] border-[1px] border-black shadow-lg text-center'>
               <img src="../assets/googlelogo.png" alt="" className='mr-[3.8rem]' />

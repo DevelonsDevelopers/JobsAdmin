@@ -103,30 +103,25 @@ const Dashboard = () => {
   const piechart = useSelector(state => state.dashboard.piechart)
 
   useEffect(() => {
-    // console.log(piechart)
     const array = [{ 'value': piechart?.companies, 'name': 'Companies' }, { 'value': piechart?.jobs, 'name': 'Jobs', 'color': '#ffffff' }, { 'value': piechart?.seekers, 'name': 'Seekers', 'color': '#4D58E3' }]
     setPieData(array)
   }, [piechart])
     
-  useEffect(() => {
-    dispatch(getpiechart())
-  }, [dispatch])
+  // useEffect(() => {
+  //   dispatch(getpiechart())
+  // }, [dispatch])
 
   const lineChart = useSelector(state => state.dashboard.linechart)
 
   // useEffect(() => {
-  //   console.log(lineChart);
-  // }, [lineChart])
-
-  useEffect(() => {
-    dispatch(getLineChart())
-  }, [dispatch])
+  //   dispatch(getLineChart())
+  // }, [dispatch])
 
   const barChart = useSelector(state => state.dashboard.barchart)
 
-  useEffect(() => {
-    console.log(barChart);
-  }, [barChart])
+  // useEffect(() => {
+  //   console.log(barChart);
+  // }, [barChart])
 
   useEffect(() => {
     dispatch(getBarChart())
@@ -144,24 +139,19 @@ const Dashboard = () => {
 
   const transactions = useSelector(state => state.dashboard.transaction)
 
-  // useEffect(() => {
-  //   console.log(transactions)
-  // }, [transactions])
-
   useEffect(() => {
     dispatch(getTransaction())
   }, [dispatch])
 
   const dateFormatter = (date) => {
-    // return moment(date).unix();
     return moment(date).format('MMM Do YY');
   };
 
 
   return (
     <PortalLayout>
-      {loading ? <center> <div class="flex justify-center items-center h-screen">
-        <div class="animate-spin rounded-full h-16 w-16 border-t-4 border-blue-500"></div>
+      {loading ? <center> <div className="flex justify-center items-center h-screen">
+        <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-blue-500"></div>
       </div>
       </center> : <>
         <div className='p-10 border-2  rounded-xl  bg-white'>
@@ -210,21 +200,6 @@ const Dashboard = () => {
                 <h1 className='text-left ml-5 mt-6 text-[1rem] font-[600]'>Interactions</h1>
                 <h1 className='text-left ml-5 mt-[-0.5rem] text-[2rem] font-[700] '>{dashboard?.interactions}</h1>
               </div>
-              {/* {card.map((value) => {
-                return (
-                  <div className={value.style}>
-                    <ul className='flex flex-row-reverse  '>
-                      <li><value.icon className='w-25 text-[3rem] mb-[-2rem] pr-4 pt-2 ml-auto' /></li>
-                    </ul>
-                    <h1 className='text-left ml-5 mt-6 text-[1rem] font-[600]'>{value.name}</h1> 
-                    <h1 className='text-left ml-5 mt-[-0.5rem] text-[2rem] font-[700] '>{dashboard.category}</h1>
-                    {dashboard.map((value) => {
-                      return(
-                      )
-                    })}
-                  </div>
-                )
-              })} */}
 
             </div>
             <div className='white border-2 p-3 md:w-[30%] h-[19rem] rounded-xl shadow-xl shadow-gray-300  max-md:mr-0'>

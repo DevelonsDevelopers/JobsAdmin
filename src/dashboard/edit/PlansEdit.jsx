@@ -44,7 +44,7 @@ const PlansEdit = () => {
   return (
     <PortalLayout>
       <h1 className='text-center bg-gradient-to-r from-sky-600 to-cyan-400 font-[600] mb-5 py-4 rounded-xl shadow-md shadow-blue-300 text-[1.5rem]'>EDIT PLAN</h1>
-      <div class="bg-white shadow-md rounded px-[10rem] max-md:px-4 pt-6 pb-8 mb-4 flex flex-col my-2">
+      <div className="bg-white shadow-md rounded px-[10rem] max-md:px-4 pt-6 pb-8 mb-4 flex flex-col my-2">
         <form action="">
           <div className="-mx-3 mt-[-1.2rem] mb-6">
             <div className="w-[100%] px-3 mb-6 md:mb-0 mt-5">
@@ -90,8 +90,8 @@ const PlansEdit = () => {
               </div>
             </div>
           </div>
-          <div class="-mx-3 md:flex mb-6">
-            <div class="md:w-full px-3">
+          <div className="-mx-3 md:flex mb-6">
+            <div className="md:w-full px-3">
               <label className="block  tracking-wide text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4" for="grid-first-name">
                 Timeperiod
               </label>

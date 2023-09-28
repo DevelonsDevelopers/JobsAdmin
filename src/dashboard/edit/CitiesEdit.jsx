@@ -71,7 +71,7 @@ const CitiesEdit = () => {
                     <label className="block  text-left tracking-wide text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4" for="grid-first-name">
                       Country
                     </label>
-                    <select value={cityData.country} onChange={ClickInput} name='country' class="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" id="grid-state">
+                    <select value={cityData.country} onChange={ClickInput} name='country' className="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" id="grid-state">
                          {/* <option disabled hidden selected>Select Country</option> */}
                          {countries.map((value) => (
                            <option value={value.id}>{value.name}</option>

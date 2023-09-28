@@ -51,7 +51,7 @@ const TagsEdit = () => {
   return (
     <PortalLayout>
       <h1 className='text-center bg-gradient-to-r from-sky-600 to-cyan-400  text-white font-[600] mb-5 py-4 rounded-xl shadow-md shadow-blue-300 text-[1.5rem]'>EDIT TAG</h1>
-      <div class="bg-white shadow-md rounded-xl px-8 pt-6 pb-8 mb-4 flex flex-col  my-2">
+      <div className="bg-white shadow-md rounded-xl px-8 pt-6 pb-8 mb-4 flex flex-col  my-2">
         <form action="">
           <div className="-mx-3 mt-[-1.2rem]  px-[20rem]">
             <div className="w-[100%] px-3 mb-6 md:mb-0 mt-5">

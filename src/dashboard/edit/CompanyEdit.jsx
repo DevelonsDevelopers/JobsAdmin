@@ -117,7 +117,7 @@ const cityChange = (value) => {
   return (
   <PortalLayout>
        <h1 className='text-center bg-gradient-to-r from-sky-600 to-cyan-400    font-[600] mb-5 py-4 text-white rounded-xl shadow-md shadow-blue-300 text-[1.5rem]'>EDIT COMPANY</h1>
-       <form class="bg-white shadow-md rounded-xl px-[10rem] pt-6 pb-8 mb-4 flex flex-col  my-2">
+       <form className="bg-white shadow-md rounded-xl px-[10rem] pt-6 pb-8 mb-4 flex flex-col  my-2">
         <div className="-mx-3 mt-[-1.2rem] mb-6">
           <div className="w-[100%] px-3 mb-6 md:mb-0 mt-5">
             <label className="block  tracking-wide text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4" for="grid-first-name">
@@ -147,8 +147,8 @@ const cityChange = (value) => {
 
         </div>
 
-        <div class="grid grid-cols-2 gap-10 mt-[-12px]">
-          <div class="md:w-[100%] ">
+        <div className="grid grid-cols-2 gap-10 mt-[-12px]">
+          <div className="md:w-[100%] ">
               <label className="block text-left tracking-wide text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4" for="grid-first-name">
                 Country
               </label>
@@ -167,16 +167,16 @@ const cityChange = (value) => {
                   onInputChange={handleInputChange}
                   onChange={handleChange}
                   //  name='country'
-                  class="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" id="grid-state"
+                  className="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" id="grid-state"
                 >
                 </Select>
-              {/* <select  value={companyData.country} onChange={ClickInput}  name='country' class="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-300 appearance-none     border-gray-600  focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" id="grid-state">
+              {/* <select  value={companyData.country} onChange={ClickInput}  name='country' className="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-300 appearance-none     border-gray-600  focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" id="grid-state">
                 {countries?.map((value) => {
                   return <option value={value.id}>{value.name}</option>
                 })}
               </select> */}
           </div>
-          <div class="md:w-[100%] ">
+          <div className="md:w-[100%] ">
               <label className="block text-left tracking-wide text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4" for="grid-first-name">
                 City
               </label>
@@ -195,10 +195,10 @@ const cityChange = (value) => {
                   onInputChange={cityInputChange}
                   onChange={cityChange}
                   //  name='country'
-                  class="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" id="grid-state"
+                  className="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" id="grid-state"
                 >
                 </Select>
-              {/* <select value={companyData.city}  onChange={ClickInput}  name='city' class="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-300 appearance-none     border-gray-600  focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" id="grid-state">
+              {/* <select value={companyData.city}  onChange={ClickInput}  name='city' className="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-300 appearance-none     border-gray-600  focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" id="grid-state">
                 {cityByCountry?.map((value) => {
                   return <option value={value.id}>{value.name}</option>
                 })}
@@ -213,7 +213,7 @@ const cityChange = (value) => {
                   Type
                 </label>
                 {/* <input type="text" name="type" id="floating_email"  className="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-300 appearance-none     border-gray-600  focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="Enter Company Type" required /> */}
-                <select value={companyData.type} onChange={ClickInput} name='type' class="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" id="grid-state">
+                <select value={companyData.type} onChange={ClickInput} name='type' className="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" id="grid-state">
                 <option>Select Type</option>
                    <option>Individual</option>
                    <option>Organization</option>
