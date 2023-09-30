@@ -4,12 +4,13 @@ import { useDispatch, useSelector } from 'react-redux'
 import { getCategory, updateCategory } from '../../store/actions/categoryActions';
 import { useLocation, useNavigate } from 'react-router-dom';
 
-const CategoryEdit = () => { 
+const CategoryEdit = () => {
 
   const params = useLocation();
   const id = params.state.ID;
 
   const [categoryData, setCategoryData] = useState({ name: '', image: '', description: '' })
+  const [ Base64IMG, setBase64IMG] = useState('')
   const category = useSelector(state => state.category.category);
 
   const dispatch = useDispatch();
@@ -44,6 +45,22 @@ const CategoryEdit = () => {
   }
   // console.log(categoryData)
 
+  useEffect(() => {
+    setCategoryData({ ...categoryData, image: Base64IMG})
+  }, [Base64IMG])
+
+
+  //base64 Function
+  const convertToBase64 = (e) => {
+    const reader = new FileReader()
+
+    reader.readAsDataURL(e.target.files[0])
+    reader.onload = () => {
+      // console.log('called: ', reader)
+      setBase64IMG(reader.result)
+    }
+  }
+
 
   return (
     <PortalLayout>
@@ -72,14 +89,22 @@ const CategoryEdit = () => {
 
             <div className=" w-full max-md:mt-[-25px]">
               <label htmlFor="dropzone-file" className="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 ">
-                <div className="flex flex-col items-center justify-center pt-5 pb-6">
-                  <svg className="w-8 h-8 mb-4 text-gray-500 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
-                    <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2" />
-                  </svg>
-                  <p className="mb-2 text-sm text-gray-500 "><span className="font-semibold">Click to upload</span> or drag and drop</p>
-                  <p className="text-xs text-gray-500 ">SVG, PNG, JPG or GIF</p>
-                </div>
-                <input id="dropzone-file" type="file" className="hidden" onChange={ClickInput} />
+                {categoryData?.image.length === 0 ?
+                  <>
+                    <div className="flex flex-col items-center justify-center pt-5 pb-6">
+                      <svg className="w-8 h-8 mb-4 text-gray-500 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
+                        <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2" />
+                      </svg>
+                      <p className="mb-2 text-sm text-gray-500 "><span className="font-semibold">Click to upload</span> or drag and drop</p>
+                      <p className="text-xs text-gray-500 ">SVG, PNG, JPG or GIF</p>
+                    </div>
+                  </>
+                  :
+                  <>
+                    <img src={categoryData.image} alt="" className='h-full w-full object-cover rounded-md' />
+                    <input id="dropzone-file" type="file" className="hidden" onChange={convertToBase64} />
+                  </>
+                }
               </label>
             </div>
 
