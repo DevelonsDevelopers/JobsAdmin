@@ -1,18 +1,17 @@
+import { useState, useRef } from "react"
 
-import JoditEditor from 'jodit-react';
-import React, { useState, useRef } from 'react';
 
 const Test = () => {
-    const editor = useRef(null);
-	const [content, setContent] = useState('');
+  const inputRef = useRef(null)
+  const handleClick = () => {
+    inputRef.current.click();
+  }
   return (
     <div>
-      <h1>hi</h1>
-      <JoditEditor 
-      ref={editor}
-      value={content}
-      onChange={newContent => setContent(newContent)}
-      />
+      <div onClick={handleClick}>
+      <img src="./assets/google.png" alt="" />
+      <input type="file" ref={inputRef} />
+      </div>
     </div>
   )
 }

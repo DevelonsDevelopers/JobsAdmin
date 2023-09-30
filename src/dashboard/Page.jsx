@@ -221,7 +221,7 @@ const Dashboard = () => {
           </div>
 
           <div className='flex max-md:flex-col  max-md:grid-cols-1 gap-8 items-center'>
-            <div className='mt-10 w-[70%] max-md:w-[100%] py-2 bg-white border-2  rounded-xl shadow-xl shadow-gray-300 '>
+            <div className='mt-10 w-[70%] max-md:w-[100%] py-2 bg-white border-2 p-8 rounded-xl shadow-xl shadow-gray-300 '>
               <ResponsiveContainer width="100%" height={350}>
                 <AreaChart data={lineChart}
                   margin={{ top: 20, right: 30, left: 0, bottom: 0 }}>
@@ -239,7 +239,7 @@ const Dashboard = () => {
               </ResponsiveContainer>
             </div>
 
-            <div className=" border-2 shadow-xl h-full  max-md:w-[100%] max-md:mb-[30px] p-5 bg-white rounded-xl shadow-xl shadow-gray-300 mt-10 h-[370px] ">
+            <div className=" border-2 shadow-xl h-full  max-md:w-[100%] max-md:mb-[30px] p-5 bg-white rounded-xl shadow-xl shadow-gray-300 mt-10 h-[374px] ">
               <span className=' ml-[1.6rem]  font-[600] text-[1rem]'>Transactions</span>
 
               <table className="w-[100%] mt-3 text-sm text-left text-gray-500 :text-gray-400">
