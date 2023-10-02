@@ -167,7 +167,7 @@ const cityChange = (value) => {
                   onInputChange={handleInputChange}
                   onChange={handleChange}
                   //  name='country'
-                  className="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" id="grid-state"
+                  id="grid-state"
                 >
                 </Select>
               {/* <select  value={companyData.country} onChange={ClickInput}  name='country' className="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-300 appearance-none     border-gray-600  focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" id="grid-state">
@@ -195,7 +195,7 @@ const cityChange = (value) => {
                   onInputChange={cityInputChange}
                   onChange={cityChange}
                   //  name='country'
-                  className="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" id="grid-state"
+                   id="grid-state"
                 >
                 </Select>
               {/* <select value={companyData.city}  onChange={ClickInput}  name='city' className="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-300 appearance-none     border-gray-600  focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" id="grid-state">

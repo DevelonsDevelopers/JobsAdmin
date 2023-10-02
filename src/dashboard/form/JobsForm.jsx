@@ -12,16 +12,16 @@ import JoditEditor from 'jodit-react'
 import moment from 'moment'
 
 
-const JobsForm = ({  }) => {
+const JobsForm = ({ }) => {
   const [jobData, setJobData] = useState({ category: '', country: '', city: '', title: '', company: '', designation: '', salary: '', role: '', description: '', link: '', type: '', workdays: '', worktime: '', address: '', experience: '', qualification: '', skills: '', date: '', tags: '' })
   const [country, setCountry] = useState()
   const [tagValue, setTagValue] = useState("");
 
   const [startTime, setStartTime] = useState()
   const [endTime, setEndTime] = useState()
-  const [date , setDate] = useState()
+  const [date, setDate] = useState()
 
- 
+
   // useEffect(() => {
   //   console.log(startTime)
   //   // setTotalDuration(startTime + '-' + endTime)
@@ -40,7 +40,7 @@ const JobsForm = ({  }) => {
   const [skills, setSkills] = useState([])
 
   const dispatch = useDispatch()
-  const navigate = useNavigate( )
+  const navigate = useNavigate()
 
   const [inputValue, setValue] = useState("")
   const [selectedValue, setSelectedValue] = useState(null)
@@ -73,30 +73,30 @@ const JobsForm = ({  }) => {
   const handleInputChange = (value) => {
     setValue(value)
   }
-  
+
   const handleChange = (value) => {
     setSelectedValue(value)
   }
   const cityInputChange = (value) => {
     setCityValue(value)
   }
-  
+
   const cityChange = (value) => {
     setSelectedCityValue(value)
-  
+
   }
   const companyInputChange = (value) => {
     setCompanyValue(value)
   }
-  
+
   const companyChange = (value) => {
     setSelectedCompanyValue(value)
   }
-  
+
   const categoryInputChange = (value) => {
     setCategoryValue(value)
   }
-  
+
   const categoryChange = (value) => {
     setSelectedCategoryValue(value)
   }
@@ -131,46 +131,46 @@ const JobsForm = ({  }) => {
   useEffect(() => {
     dispatch(AllCompanies())
   }, [dispatch])
- //==================================================
+  //==================================================
 
- // Adding data to jobData
- useEffect(() => {
-  setJobData({...jobData, date: moment(date).format('YYYY-MM-DD')})
-}, [date])
+  // Adding data to jobData
+  useEffect(() => {
+    setJobData({ ...jobData, date: moment(date).format('YYYY-MM-DD') })
+  }, [date])
 
-useEffect(() => {
-  setJobData({...jobData, worktime: startTime + " - " + endTime})
-}, [startTime, endTime])
+  useEffect(() => {
+    setJobData({ ...jobData, worktime: startTime + " - " + endTime })
+  }, [startTime, endTime])
 
-useEffect(() => {
-  setJobData({ ...jobData, description: content })
-}, [content])
+  useEffect(() => {
+    setJobData({ ...jobData, description: content })
+  }, [content])
 
-useEffect(() => {
-  setJobData({ ...jobData, country: selectedValue?.id })
-}, [selectedValue])
+  useEffect(() => {
+    setJobData({ ...jobData, country: selectedValue?.id })
+  }, [selectedValue])
 
-useEffect(() => {
-  setJobData({ ...jobData, city: selectedCityValue?.id })
-}, [selectedCityValue])
+  useEffect(() => {
+    setJobData({ ...jobData, city: selectedCityValue?.id })
+  }, [selectedCityValue])
 
-useEffect(() => {
-  setJobData({ ...jobData, company: selectedCompanyValue?.id })
-}, [selectedCompanyValue])
+  useEffect(() => {
+    setJobData({ ...jobData, company: selectedCompanyValue?.id })
+  }, [selectedCompanyValue])
 
-useEffect(() => {
-  setJobData({ ...jobData, category: selectedCategoryValue?.id })
-}, [selectedCategoryValue])
+  useEffect(() => {
+    setJobData({ ...jobData, category: selectedCategoryValue?.id })
+  }, [selectedCategoryValue])
 
-useEffect(() => {
-  setJobData({ ...jobData, tags: tags.toString() })
-}, [tags])
+  useEffect(() => {
+    setJobData({ ...jobData, tags: tags.toString() })
+  }, [tags])
 
-useEffect(() => {
-  setJobData({ ...jobData, skills: skills.toString() })
-}, [skills])
+  useEffect(() => {
+    setJobData({ ...jobData, skills: skills.toString() })
+  }, [skills])
 
-//=======================================================
+  //=======================================================
 
   //Tags Add
   const addTags = (e) => {
@@ -249,7 +249,7 @@ useEffect(() => {
               getOptionValue={(e) => e.id}
               onInputChange={companyInputChange}
               onChange={companyChange}
-              className="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" id="grid-state"
+              id="grid-state"
             >
             </Select>
           </div>
@@ -308,7 +308,7 @@ useEffect(() => {
               getOptionValue={(e) => e.id}
               onInputChange={handleInputChange}
               onChange={handleChange}
-              className="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" id="grid-state"
+              id="grid-state"
             >
             </Select>
           </div>
@@ -330,7 +330,7 @@ useEffect(() => {
               getOptionValue={(e) => e.id}
               onInputChange={cityInputChange}
               onChange={cityChange}
-              className="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" id="grid-state"
+              id="grid-state"
             >
             </Select>
           </div>
@@ -355,7 +355,7 @@ useEffect(() => {
                 getOptionValue={(e) => e.id}
                 onInputChange={categoryInputChange}
                 onChange={categoryChange}
-                className="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" id="grid-state"
+                id="grid-state"
               >
               </Select>
             </div>
@@ -433,7 +433,7 @@ useEffect(() => {
                 <label className="block  tracking-wide text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4" htmlFor="grid-first-name">
                   Date
                 </label>
-                <input type="date"  id="floating_email" onChange={(e) => setDate(e.target.value)} className="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="Enter Company Role " required />
+                <input type="date" id="floating_email" onChange={(e) => setDate(e.target.value)} className="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="Enter Company Role " required />
               </div>
             </div>
           </div>
