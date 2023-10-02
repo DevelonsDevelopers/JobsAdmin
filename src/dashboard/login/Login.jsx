@@ -63,15 +63,15 @@ const Login = () => {
                 <div className="flex">
                   <div className="flex gap-2">
                     <input type="checkbox" name="" id="" />
-                    <p className="text-[.9rem] mt-[3px]">Remember me</p>
+                    <p className="text-[.9rem] mt-[3px] font-[500]">Remember me</p>
                   </div>
                   <Link className="ml-auto text-[.9rem] hover:underline text-blue-600"> Forgot Password </Link>
                 </div>
                 <input type='submit' value='Log In' onClick={() => login()} className='bg-blue-600 text-white cursor-pointer font-[600] px-10 py-[5px] w-[100%] rounded-full mt-6' />
                 <h1 className="text-[.9rem] text-gray-700 font-[600] text-left mt-4">You can also join with</h1>
                 <div className="flex gap-2 mt-4">
-                  <img src='./assets/google.png' alt="" className="w-14 h-14 cursor-pointer rounded-full border-2 border-gray-100" />
-                  <img src='./assets/facebook.png' alt="" className="w-14 h-14 cursor-pointer rounded-full border-2 border-gray-100" />
+                  <img src='./assets/google.png' alt="" className="w-10 h-10 cursor-pointer rounded-full border-2 border-gray-100" />
+                  <img src='./assets/facebook.png' alt="" className="w-10 h-10 cursor-pointer rounded-full border-2 border-gray-100" />
                 </div>
 
               </div>

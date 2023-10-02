@@ -1,11 +1,8 @@
 import React, { useEffect } from 'react'
 import PortalLayout from '../portalLayout/PortalLayout'
-import { BarChart, Bar, Tooltip, XAxis, YAxis, PieChart, Pie, Cell, LineChart, CartesianGrid, Legend, Line, ResponsiveContainer, AreaChart, ReferenceLine, Area } from 'recharts';
-import { RiEarthFill, RiEarthLine, RiHomeOfficeLine, RiPagesLine, RiUserSearchLine } from 'react-icons/ri'
-import { BiCategoryAlt, BiUserCheck } from 'react-icons/bi'
-
-import axios from 'axios';
-import { MdSettings } from "react-icons/md";
+import { BarChart, Bar, Tooltip, XAxis, YAxis, PieChart, Pie, Cell,Legend,ResponsiveContainer, AreaChart, ReferenceLine, Area } from 'recharts';
+import { RiUserSearchLine } from 'react-icons/ri'
+import { BiUserCheck } from 'react-icons/bi'
 import { RiAccountPinCircleFill } from "react-icons/ri";
 import { BsSunFill } from "react-icons/bs";
 import { useState } from 'react';
@@ -13,73 +10,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getBarChart, getDashboard, getLineChart, getReports, getTransaction, getpiechart } from '../store/actions/dashboardActions';
 import moment from 'moment/moment';
 
-const card = [
-  { name: "Seekers", amount: "500", style: "bg-[#4D38E3] rounded-xl  text-white mt-[-3rem] max-md:mt-0 h-[6.5rem] shadow-xl shadow-gray-300 ", icon: RiUserSearchLine },
-  { name: "Providers", amount: "700", style: "bg-[#47A9FA] rounded-xl  text-white mt-[-3rem] max-md:mt-0 h-[6.5rem] shadow-xl shadow-gray-300 ", icon: RiAccountPinCircleFill },
-  { name: "Applied", amount: "900", style: "bg-[#8AC942] rounded-xl  text-white mt-[-3rem] max-md:mt-0 h-[6.5rem] shadow-xl shadow-gray-300 ", icon: BiUserCheck },
-  { name: "Users paid", amount: "150", style: "bg-[#1AD185] rounded-xl  text-white mt-[-3rem] max-md:mt-0 h-[6.5rem] shadow-xl shadow-gray-300 ", icon: BsSunFill },
-  { name: "Offers accepted", amount: "500", style: "bg-[#fcbf49] rounded-xl  text-white mt-[-3rem] max-md:mt-0 h-[6.5rem] shadow-xl shadow-gray-300 ", icon: BsSunFill },
-  { name: "Offers rejected", amount: "20", style: "bg-[#f77f00] rounded-xl  text-white mt-[-3rem] max-md:mt-0 h-[6.5rem] shadow-xl shadow-gray-300 ", icon: BsSunFill },
-]
 
-
-const data = [
-  { "day2": "profit-01", "profit": [1, 0] },
-  { "day2": "profit-01", "profit": [1, 10] },
-  { "day2": "profit-01", "profit": [1, 40] },
-  { "day2": "profit-01", "profit": [1, 70] },
-  { "day2": "profit-01", "profit": [1, 20] },
-  { "day2": "profit-01", "profit": [1, 10] },
-  { "day2": "profit-01", "profit": [1, 50] },
-  { "day2": "profit-01", "profit": [1, 50] },
-  { "day2": "profit-01", "profit": [1, 50] },
-  { "day2": "profit-01", "profit": [1, 100] },
-  { "day2": "profit-01", "profit": [1, 10] },
-  { "day2": "profit-01", "profit": [1, 40] },
-  { "day2": "profit-01", "profit": [1, 70] },
-  { "day2": "profit-01", "profit": [1, 20] },
-  { "day2": "profit-01", "profit": [1, 10] },
-  { "day2": "profit-01", "profit": [1, 50] },
-  { "day2": "profit-01", "profit": [1, 50] },
-  { "day2": "profit-01", "profit": [1, 50] },
-
-]
-const data01 = [
-  { "value": 400, 'value2': 200 },
-  { "value": 200, 'value2': 300 },
-  { "value": 600, 'value2': 400 },
-
-
-
-]
-
-const data03 = [
-  { "name": "Mon ", "uv": 1000, "pv": 2400, "amt": 2400 },
-  { "name": " Tue", "uv": 2000, "pv": 2400, "amt": 2400 },
-  { "name": " Wed", "uv": 1000, "pv": 3400, "amt": 2400 },
-  { "name": "Thur", "uv": 2000, "pv": 4400, "amt": 2400 },
-  { "name": " Fri", "uv": 3000, "pv": 6400, "amt": 2400 },
-  { "name": "Sat ", "uv": 4000, "pv": 8400, "amt": 2400 },
-]
-const form01 = [
-  { id: '01', date: '11.02.23', amount: '200' },
-  { id: '01', date: '11.02.23', amount: '200' },
-  { id: '01', date: '11.02.23', amount: '200' },
-  { id: '01', date: '11.02.23', amount: '200' },
-  { id: '01', date: '11.02.23', amount: '200' },
-
-]
-const form02 = [
-  { job: 'ui designer', date: '11.02.23', report: '200' },
-  { job: 'ui designer', date: '11.02.23', report: '200' },
-  { job: 'ui designer', date: '11.02.23', report: '200' },
-
-]
 const form03 = [
   { job: 'ui designer', date: '11.02.23', report: '200' },
   { job: 'ui designer', date: '11.02.23', report: '200' },
   { job: 'ui designer', date: '11.02.23', report: '200' },
-
 ]
 
 const Dashboard = () => {
@@ -230,7 +165,6 @@ const Dashboard = () => {
                     tickFormatter={dateFormatter}
                   />
                   <YAxis />
-
                   <Tooltip />
                   <ReferenceLine x="Page C" stroke="green" label="Min PAGE" />
                   {/* <ReferenceLine y={4000} label="Max" stroke="red" strokeDasharray="3 3" /> */}
