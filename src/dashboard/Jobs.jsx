@@ -7,15 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { AllJobs, DeleteJob, jobStatus } from '../store/actions/jobActions';
 
 
-const jobs = [
-  { id: '01', title: "UI", cat: "Design", city: "Lahore", company: 'Devsinc', role: 'Manager', status: "Active", },
-  { id: '01', title: "UI", cat: "Design", city: "Lahore", company: 'Devsinc', role: 'Manager', status: "Active", },
-  { id: '01', title: "UI", cat: "Design", city: "Lahore", company: 'Devsinc', role: 'Manager', status: "Active", },
-  { id: '01', title: "UI", cat: "Design", city: "Lahore", company: 'Devsinc', role: 'Manager', status: "Active", },
-  { id: '01', title: "UI", cat: "Design", city: "Lahore", company: 'Devsinc', role: 'Manager', status: "Active", },
-  { id: '01', title: "UI", cat: "Design", city: "Lahore", company: 'Devsinc', role: 'Manager', status: "Active", },
 
-]
 
 const Jobs = () => {
 

@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import PortalLayout from '../portalLayout/PortalLayout'
-import { BarChart, Bar, Tooltip, XAxis, YAxis, PieChart, Pie, Cell,Legend,ResponsiveContainer, AreaChart, ReferenceLine, Area } from 'recharts';
+import { BarChart, Bar, Tooltip, XAxis, YAxis, PieChart, Pie, Cell, Legend, ResponsiveContainer, AreaChart, ReferenceLine, Area } from 'recharts';
 import { RiUserSearchLine } from 'react-icons/ri'
 import { BiUserCheck } from 'react-icons/bi'
 import { RiAccountPinCircleFill } from "react-icons/ri";
@@ -41,7 +41,7 @@ const Dashboard = () => {
     const array = [{ 'value': piechart?.companies, 'name': 'Companies' }, { 'value': piechart?.jobs, 'name': 'Jobs', 'color': '#ffffff' }, { 'value': piechart?.seekers, 'name': 'Seekers', 'color': '#4D58E3' }]
     setPieData(array)
   }, [piechart])
-    
+
   useEffect(() => {
     dispatch(getpiechart())
   }, [dispatch])
@@ -177,7 +177,7 @@ const Dashboard = () => {
               <span className=' ml-[1.6rem]  font-[600] text-[1rem]'>Transactions</span>
 
               <table className="w-[100%] mt-3 text-sm text-left text-gray-500 :text-gray-400">
-                <thead className="text-xs text-white uppercase bg-[#2994FF] :bg-gray-700 :text-white">
+                <thead className="text-xs text-white uppercase bg-[#2994FF] ">
                   <tr >
                     <th scope="col" className="px-6 py-3">
                       Id
@@ -216,13 +216,13 @@ const Dashboard = () => {
               <table className="w-[100%] mt-3 text-sm text-left text-gray-500 :text-gray-400">
                 <thead className="text-xs text-white uppercase bg-[#2994FF] :bg-gray-700 :text-gray-400">
                   <tr>
-                    <th scope="col" className="px-6 max-md:px-2 py-3">
+                    <th scope="col" className="w-[30%] text-center  py-3">
                       Job
                     </th>
-                    <th scope="col" className="px-6 max-md:px-2 py-3">
+                    <th scope="col" className="w-[30%] text-center  py-3">
                       Date
                     </th>
-                    <th scope="col" className="px-6 max-md:px-2 py-3">
+                    <th scope="col" className="w-[30%] text-center  py-3">
                       Applieds
                     </th>
 
@@ -231,14 +231,14 @@ const Dashboard = () => {
                 <tbody>
                   {form03.map((value, index) => (
                     <tr className={`bg-white border-b :bg-gray-800 :border-gray-700 ${index % 2 ? 'bg-[#A4D2FF]' : 'bg-[#FFDF9F]'}`}>
-                      <th scope="row" className="px-6 max-md:px-2 py-4 font-medium text-gray-900 whitespace-nowrap :text-white">
+                      <th scope="row" className="w-[30%] text-center  py-4 font-medium text-gray-900 whitespace-nowrap :text-white">
                         {value.job}
                       </th>
-                      <td className="px-6 max-md:px-2 py-4">
+                      <td className="w-[30%] text-center  py-4">
                         {value.date}
                       </td>
 
-                      <td className="px-6  max-md:px-2 py-4">
+                      <td className="w-[30%] text-center py-4">
                         {value.report}
                       </td>
                     </tr>
@@ -248,16 +248,16 @@ const Dashboard = () => {
             </div>
             <div className=" border-2 shadow-xl bg-white p-5 rounded-xl shadow-gray-300 mt-5 max-md:mt-[-17px] ">
               <span className=' ml-[1.6rem]  font-[600] text-[1rem]'>Reports</span>
-              <table className="w-[100%] mt-3 text-sm text-left  text-gray-500 :text-gray-400">
-                <thead className="text-xs text-white uppercase  bg-[#2994FF] :bg-gray-700 :text-gray-400">
+              <table className="w-[100%] mt-3 text-sm text-left text-gray-500 :text-gray-400">
+                <thead className="text-xs text-white uppercase bg-[#2994FF] :bg-gray-700 :text-gray-400">
                   <tr>
-                    <th scope="col" className="text-center max-md:px-2 py-3">
+                    <th scope="col" className="text-center py-3">
                       Job
                     </th>
-                    <th scope="col" className="text-center max-md:px-2 py-3">
+                    <th scope="col" className="text-center py-3">
                       Date
                     </th>
-                    <th scope="col" className="text-center max-md:px-2 py-3">
+                    <th scope="col" className="text-center py-3">
                       Reports
                     </th>
 
@@ -266,14 +266,14 @@ const Dashboard = () => {
                 <tbody>
                   {reports?.map((value, index) => (
                     <tr className={`bg-white border-b :bg-gray-800 :border-gray-700 ${index % 2 ? 'bg-[#A4D2FF]' : 'bg-[#FFDF9F]'}`}>
-                      <th scope="row" className="text-center px-3 max-md:px-2 py-4 font-medium text-gray-900 whitespace-nowrap :text-white">
+                      <th scope="row" className="text-center px-3  py-4 font-medium text-gray-900 whitespace-nowrap :text-white">
                         {value.job}
                       </th>
-                      <td className="max-md:px-2 text-center text-[0.7rem]">
+                      <td className=" text-center text-[0.7rem]">
                         {moment(value.date).format('MMM Do YY')}
                       </td>
 
-                      <td className="max-md:px-2 text-center">
+                      <td className=" text-center">
                         {value.feedback}
                       </td>
                     </tr>
@@ -286,7 +286,7 @@ const Dashboard = () => {
 
           </div>
 
-          <div className=' grid grid-cols-1 max-md:grid-cols-1 justify-center gap-6 mt-5'>
+          <div className='grid grid-cols-1 max-md:grid-cols-1 justify-center gap-6 mt-5'>
             <div className='bg-white border-2 p-2 rounded-xl shadow-xl shadow-gray-300'>
               <span className=' ml-[2rem] font-[600] text-[1rem]'>Memory Status</span>
               <ResponsiveContainer width="100%" height={400}>
