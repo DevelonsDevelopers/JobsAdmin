@@ -23,9 +23,9 @@ const Categories = () => {
   const categories = useSelector(state => state.category.categories)
   const loading = useSelector(state => state.category.isLoading)
 
-  useEffect(() => {
-    console.log(categories)
-  }, [categories])
+  // useEffect(() => {
+  //   console.log(categories)
+  // }, [categories])
 
   useEffect(() => {
     if (categories !== null || categories !== undefined || categories.length !== 0) {

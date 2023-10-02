@@ -1,8 +1,11 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import PortalLayout from '../portalLayout/PortalLayout'
-import { Area, AreaChart, Cell, Pie, PieChart, ReferenceLine, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts'
+import { Area, AreaChart, Bar, BarChart, Cell, Legend, Pie, PieChart, ReferenceLine, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts'
 import { RiUserSearchLine } from 'react-icons/ri'
 import { BsSunFill } from 'react-icons/bs'
+import { getBarChart, getDashboard, getLineChart } from '../store/actions/dashboardActions'
+import { useDispatch, useSelector } from 'react-redux'
+import moment from 'moment'
 
 const ProviderPanel = () => {
     const form03 = [
@@ -23,8 +26,35 @@ const ProviderPanel = () => {
         },
     ]
 
+    const dispatch = useDispatch();
+
     const COLORS = ['#fcbf49', '#4D38E3', '#8AC942'];
 
+    const dashboard = useSelector(state => state.dashboard.dashboard)
+
+    // useEffect(() => {
+    //   console.log(dashboard)
+    // }, [dashboard])
+
+    useEffect(() => {
+        dispatch(getDashboard())
+    }, [dispatch])
+
+    const barChart = useSelector(state => state.dashboard.barchart)
+
+    // useEffect(() => {
+    //   console.log(barChart);
+    // }, [barChart])
+
+    useEffect(() => {
+        dispatch(getBarChart())
+    }, [dispatch])
+
+
+
+    const dateFormatter = (date) => {
+        return moment(date).format('MMM Do YY');
+    };
     return (
         <PortalLayout>
 
@@ -36,14 +66,14 @@ const ProviderPanel = () => {
                                 <li><RiUserSearchLine className='w-25 text-[3rem] mb-[-2rem] pr-4 pt-2 ml-auto' /></li>
                             </ul>
                             <h1 className='text-left ml-5 mt-10 text-[1rem] font-[600]'>Jobs</h1>
-                            <h1 className='text-left ml-5  text-[2rem] font-[700] '>25</h1>
+                            <h1 className='text-left ml-5  text-[2rem] font-[700] '>{dashboard?.jobs}</h1>
                         </div>
                         <div className="bg-[#47A9FA] rounded-xl mt-6 text-white max-md:mt-0 h-[7.9rem] shadow-xl shadow-gray-300 ">
                             <ul className='flex flex-row-reverse  '>
                                 <li><BsSunFill className='w-25 text-[3rem] mb-[-2rem] pr-4 pt-2 ml-auto' /></li>
                             </ul>
                             <h1 className='text-left ml-5 mt-10 text-[1rem] font-[600]'>Applied</h1>
-                            <h1 className='text-left ml-5  text-[2rem] font-[700]'>55</h1>
+                            <h1 className='text-left ml-5  text-[2rem] font-[700]'>{dashboard?.applied}</h1>
                         </div>
                     </div>
                     <div className='border-2 p-3 h-[19rem] rounded-xl shadow-xl shadow-gray-300  max-md:mr-0'>
@@ -63,59 +93,24 @@ const ProviderPanel = () => {
 
                 </div>
 
-                <div className='flex max-md:flex-col max-md:grid-cols-1 gap-8 items-center'>
-                    <div className='mt-10 w-[100%] max-md:w-[100%] py-2 bg-white border-2 p-8 rounded-xl shadow-xl shadow-gray-300 '>
-                        <ResponsiveContainer width="100%" height={350}>
-                            <AreaChart data={data}
-                                margin={{ top: 20, right: 30, left: 0, bottom: 0 }}>
+                <div className=' grid grid-cols-1 max-md:grid-cols-1 justify-center gap-6 mt-5'>
+                    <div className='bg-white border-2 p-2 rounded-xl shadow-xl shadow-gray-300'>
+                        <span className=' ml-[2rem] font-[600] text-[1rem]'>Applied Users</span>
+                        <ResponsiveContainer width="100%" height={400}>
+                            <BarChart width={430} height={250} data={barChart} margin={{ top: 40, right: 20, bottom: 0, left: 20 }} >
                                 <XAxis
-                                    dataKey="d"
-                                // tickFormatter={dateFormatter}
+                                    dataKey='date'
+                                    tickFormatter={dateFormatter}
                                 />
                                 <YAxis />
                                 <Tooltip />
-                                <ReferenceLine x="Page C" stroke="green" label="Min PAGE" />
-                                {/* <ReferenceLine y={4000} label="Max" stroke="red" strokeDasharray="3 3" /> */}
-                                <Area type="monotone" dataKey="uv" stroke="#2994FF" fill="#2994FF " />
-                            </AreaChart>
+                                <Bar dataKey="applied" fill="#2994FF" />
+                                <Legend />
+                            </BarChart>
                         </ResponsiveContainer>
+                        <span className=' ml-[1rem] !mt-[-10rem] font-[600] text-[1rem]'>Months</span>
+
                     </div>
-
-                    {/* <div className=" border-2 shadow-xl h-full  max-md:w-[100%] max-md:mb-[30px] p-5 bg-white rounded-xl shadow-xl shadow-gray-300 mt-10 h-[374px] ">
-              <span className=' ml-[1.6rem]  font-[600] text-[1rem]'>Transactions</span>
-
-              <table className="w-[100%] mt-3 text-sm text-left text-gray-500 :text-gray-400">
-                <thead className="text-xs text-white uppercase bg-[#2994FF] :bg-gray-700 :text-white">
-                  <tr >
-                    <th scope="col" className="px-6 py-3">
-                      Id
-                    </th>
-                    <th scope="col" className="px-6 py-3">
-                      Date
-                    </th>
-                    <th scope="col" className="px-6 py-3">
-                      Amount
-                    </th>
-
-                  </tr>
-                </thead>
-                <tbody>
-                  {form03?.map((value) => (
-                    <tr className={`bg-white border-b :bg-gray-800 :border-gray-700  ${index % 2 ? 'bg-[#A4D2FF]' : 'bg-[#FFDF9F]'}`}>
-                      <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap :text-white">
-                        {value.job}
-                      </th>
-                      <td className="px-2 mx-4 py-4 text-[0.7rem]">
-                        {value.detail}
-                      </td>
-                      <td className="px-6 py-4">
-                        {value.report}
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div> */}
 
                 </div>
                 <div className='grid grid-cols-2 max-md:grid-cols-1 gap-10'>

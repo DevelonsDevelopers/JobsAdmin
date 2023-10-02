@@ -10,7 +10,7 @@ const CategoryEdit = () => {
   const id = params.state.ID;
 
   const [categoryData, setCategoryData] = useState({ name: '', image: '', description: '' })
-  const [ Base64IMG, setBase64IMG] = useState('')
+  const [Base64IMG, setBase64IMG] = useState('')
   const category = useSelector(state => state.category.category);
 
   const dispatch = useDispatch();
@@ -46,7 +46,7 @@ const CategoryEdit = () => {
   // console.log(categoryData)
 
   useEffect(() => {
-    setCategoryData({ ...categoryData, image: Base64IMG})
+    setCategoryData({ ...categoryData, image: Base64IMG })
   }, [Base64IMG])
 
 
@@ -89,7 +89,13 @@ const CategoryEdit = () => {
 
             <div className=" w-full max-md:mt-[-25px]">
               <label htmlFor="dropzone-file" className="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 ">
-                {categoryData?.image.length === 0 ?
+                {categoryData?.image.length !== 0 ?
+                  <>
+                    <img src={categoryData.image} alt="" className='h-full w-full object-cover rounded-md' />
+                    <input id="dropzone-file" type="file" className="hidden" onChange={convertToBase64} />
+                  </>
+                  :
+
                   <>
                     <div className="flex flex-col items-center justify-center pt-5 pb-6">
                       <svg className="w-8 h-8 mb-4 text-gray-500 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
@@ -98,10 +104,6 @@ const CategoryEdit = () => {
                       <p className="mb-2 text-sm text-gray-500 "><span className="font-semibold">Click to upload</span> or drag and drop</p>
                       <p className="text-xs text-gray-500 ">SVG, PNG, JPG or GIF</p>
                     </div>
-                  </>
-                  :
-                  <>
-                    <img src={categoryData.image} alt="" className='h-full w-full object-cover rounded-md' />
                     <input id="dropzone-file" type="file" className="hidden" onChange={convertToBase64} />
                   </>
                 }
