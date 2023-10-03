@@ -15,6 +15,14 @@ export const LoginUser = (email, password) => API.post(`/userAuth/login`,
 
 //Dashboard
 export const getDashboard = () => API.get(`/dashboard/dashboard`)
+export const fetchCompanyDashboard = (company) => API.post(`/dashboard/companyDashboard`, 
+{
+    company: company,
+})
+export const fetchCompanyLineChart = (company) => API.post(`/dashboard/companyLineChart`, 
+{
+    company: company,
+})
 export const getpiechart = () => API.get(`/dashboard/pieChart`)
 export const lineChart = () => API.get(`/dashboard/lineChart`)
 export const barChart = () => API.get(`/dashboard/barChart`)
@@ -116,6 +124,7 @@ export const deleteCity = (id) => API.delete(`/cities/delete`, {
 })
 //Jobs
 export const fetchAllJobs = () => API.post(`/jobs/all`)
+export const fetchRecentJobs = () => API.get(`/jobs/recent`)
 export const fetchJob = (id) => API.post(`/jobs/get`,
     {
         id: id,
@@ -135,9 +144,9 @@ export const fetchCitybyJob = (id) => API.get(`/jobs/city`, {
         id: id,
     }
 })
-export const fetchCompanybyJob = (id) => API.get(`/jobs/company`, {
+export const fetchCompanybyJob = (company) => API.get(`/jobs/company`, {
     data: {
-        id: id,
+        company: company,
     }
 })
 export const createJob = (job) => API.post(`/jobs/create`,
@@ -393,6 +402,9 @@ export const fetchJobbyAppliedUser = (job) => API.get(`/applied/job`, {
         job: job,
     }
 })
+export const fetchCompanybyAppliedUser = (company) => API.post(`/applied/company`, {
+        company: company,
+})
 export const createAppliedUser = (appliedUser) => API.post(`/applied/create`, {
     user: appliedUser.user,
     date: appliedUser.date,
@@ -448,6 +460,25 @@ export const updateStripe = (stripe_publisher_key,stripe_secret_key,stripe_api_v
 })
 
 
+//Offers
+export const fetchAllOffers = () => API.get(`/offers/all`)
+export const fetchOffersById = (id) => API.post(`/offers/id`,
+{
+        id: id,
+})
+export const fetchOfferByCompany = (company) => API.post('/offers/company', {
+    company: company
+})
+
+//Interactions
+export const fetchAllInteraction = () => API.get(`/interactions/all`)
+export const fetchInteractionById = (id) => API.post(`/interactions/id`,
+{
+        id: id,
+})
+export const fetchInteractionByCompany = (company) => API.post('/interactions/company', {
+    company: company
+})
 
 
 // export const fetchAllSeekers = () => API.get(`/seekers/all`)

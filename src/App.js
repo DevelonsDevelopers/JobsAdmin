@@ -38,7 +38,12 @@ import Cv from "./components/Cv";
 import Test from "./dashboard/Test";
 import Ads from "./dashboard/Ads";
 import CoverLetter from "./components/CoverLetter";
-import ProviderPanel from "./dashboard/ProviderPanel";
+import ProviderPanel from "./ProviderDashboard/ProviderPanel";
+import Offers from "./ProviderDashboard/Offers";
+import Recommended from "./ProviderDashboard/Recommended";
+import Interactions from "./ProviderDashboard/Interactions";
+import AppliedUserProvider from "./ProviderDashboard/AppliedUser";
+import ProviderInteraction from "./ProviderDashboard/Interactions";
 
 function App() {
   return (
@@ -88,7 +93,15 @@ function App() {
           <Route path="/cv" element={<Cv />} />
           <Route path="/coverLetter" element={<CoverLetter />}/>
           <Route path="/test" element={<Test />} />
+
+
           <Route path="/providerPanel" element={<ProviderPanel />} />
+          <Route path="/appliedProvider" element={<AppliedUserProvider />} />
+          <Route path="/offers" element={<Offers />} />
+          <Route path="/recommended" element={<Recommended />} />
+          <Route path="/interaction" element={<ProviderInteraction />} />
+          
+
         </Routes>
       </BrowserRouter>
   );

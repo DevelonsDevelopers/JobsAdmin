@@ -10,6 +10,7 @@ import { AllCompanies } from '../../store/actions/companyActions'
 import Select from 'react-select'
 import JoditEditor from 'jodit-react'
 import moment from 'moment'
+import { AllTags } from '../../store/actions/tagActions'
 
 
 const JobsForm = ({ }) => {
@@ -38,6 +39,8 @@ const JobsForm = ({ }) => {
   const [tags, setTags] = useState([])
   const [skillValue, setSkillValue] = useState("");
   const [skills, setSkills] = useState([])
+  console.log('skills', skills)
+
 
   const dispatch = useDispatch()
   const navigate = useNavigate()
@@ -53,6 +56,12 @@ const JobsForm = ({ }) => {
 
   const [inputCategoryValue, setCategoryValue] = useState("")
   const [selectedCategoryValue, setSelectedCategoryValue] = useState(null)
+
+  const [inputTagValue, setInputTagValue] = useState("")
+  const [selectedTagValue, setSelectedTagValue] = useState([])
+  console.log('tags', selectedTagValue)
+  console.log('name', selectedTagValue?.name)
+
 
   //onChange function
   const ClickInput = (e) => {
@@ -101,6 +110,14 @@ const JobsForm = ({ }) => {
     setSelectedCategoryValue(value)
   }
 
+  const tagInputChange = (value) => {
+    setInputTagValue(value)
+  }
+
+  const tagChange = (value) => {
+    setSelectedTagValue(value)
+  }
+
 
   //Fetching Data=================================================
   const categories = useSelector(state => state.category.categories)
@@ -108,9 +125,9 @@ const JobsForm = ({ }) => {
   //     console.log(categories)
   // }, [categories])
 
-  useEffect(() => {
-    dispatch(AllCategories())
-  }, [dispatch])
+  // useEffect(() => {
+  //   dispatch(AllCategories())
+  // }, [dispatch])
 
   const citybyCountry = useSelector(state => state.city.citybycountry)
   // useEffect(() => {
@@ -128,9 +145,9 @@ const JobsForm = ({ }) => {
   //     console.log(categories)
   // }, [categories])
 
-  useEffect(() => {
-    dispatch(AllCompanies())
-  }, [dispatch])
+  // useEffect(() => {
+  //   dispatch(AllCompanies())
+  // }, [dispatch])
   //==================================================
 
   // Adding data to jobData
@@ -163,12 +180,21 @@ const JobsForm = ({ }) => {
   }, [selectedCategoryValue])
 
   useEffect(() => {
-    setJobData({ ...jobData, tags: tags.toString() })
-  }, [tags])
+    setJobData({ ...jobData, tags: selectedTagValue })
+  }, [selectedTagValue])
+
+  // useEffect(() => {
+  //   setJobData({ ...jobData, tags: tags.toString() })
+  // }, [tags])
 
   useEffect(() => {
     setJobData({ ...jobData, skills: skills.toString() })
   }, [skills])
+
+  useEffect(() => {
+    console.log(jobData);
+  }, [jobData])
+
 
   //=======================================================
 
@@ -205,6 +231,16 @@ const JobsForm = ({ }) => {
 
   useEffect(() => {
     dispatch(AllCountries())
+  }, [dispatch])
+
+  const allTags = useSelector(state => state.tag.tags)
+
+  // useEffect(() => {
+  //   console.log(allTags);
+  // }, [allTags])
+
+  useEffect(() => {
+    dispatch(AllTags())
   }, [dispatch])
 
   // Update Function
@@ -364,7 +400,26 @@ const JobsForm = ({ }) => {
                 <label className="block  tracking-wide text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4" htmlFor="grid-first-name">
                   Tags
                 </label>
-                <div name="tags" className='  w-full flex text-sm text-gray-900 bg-gray-50 rounded-[9px] flex-wrap appearance-none  border-2 border-black border-[0.7px] border-gray-300 focus:outline-none focus:ring-0 focus:border-blue-600 peer'>
+
+                <Select
+                cacheOptions
+                defaultOptions
+                options={allTags?.map((val) => {
+                  return {
+                    id: val.id,
+                    name: val.name
+                  }
+                })}
+                value={selectedTagValue}
+                getOptionLabel={(e) => e.name}
+                getOptionValue={(e) => e.id}
+                onInputChange={tagInputChange}
+                onChange={tagChange}
+                isMulti={true}
+                id="grid-state"
+              >
+              </Select>
+                {/* <div name="tags" className='  w-full flex text-sm text-gray-900 bg-gray-50 rounded-[9px] flex-wrap appearance-none  border-2 border-black border-[0.7px] border-gray-300 focus:outline-none focus:ring-0 focus:border-blue-600 peer'>
                   {tags.map((item, index) => (
                     <button onClick={() => deleteTag(item)} className=' m-2 text-white bg-black outline-none border-none px-4 py-1 rounded-lg' key={index}>
                       {item}
@@ -372,7 +427,7 @@ const JobsForm = ({ }) => {
                     </button>
                   ))}
                   <input type="text" name="tags" value={tagValue} onChange={ClickInput} id="floating_email" onKeyDown={addTags} className="pl-4 py-[9px] px-0 bg-gray-50 border-none  focus:outline-none w-full " placeholder="Enter Skills(eg.English,Urdu etc)" required />
-                </div>
+                </div> */}
               </div>
             </div>
 
