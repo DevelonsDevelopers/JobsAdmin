@@ -66,6 +66,8 @@ const Jobs = () => {
   }
   //status update
   const UpdateStatus = (id, status) => {
+    console.log(id, status)
+
     let st = 0;
     if (status === 1) {
       st = 0;

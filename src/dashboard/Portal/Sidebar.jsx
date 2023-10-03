@@ -40,10 +40,10 @@ const Sidebar = forwardRef(({ }, ref) => {
             </div>
           </div>
           <div className="flex flex-col ">
-            <div onClick={() => router('/jobs')}>
+            <div onClick={() => router('/jobProvider')}>
               <div
                 className={`pl-7 py-3 mx-5 rounded text-center cursor-pointer mb-1 flex items-center transition-colors 
-                  ${location.pathname === "/jobs"
+                  ${location.pathname === "/jobProvider"
                     ? "bg-gradient-to-r from-sky-600 to-cyan-400 text-white"
                     : "text-black font-[600] hover:text-white  hover:bg-gradient-to-r from-sky-600 to-cyan-400 hover:bg-blue-100 hover:text-blue-500"
                   }

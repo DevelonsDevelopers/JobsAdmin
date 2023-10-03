@@ -44,6 +44,7 @@ import Recommended from "./ProviderDashboard/Recommended";
 import Interactions from "./ProviderDashboard/Interactions";
 import AppliedUserProvider from "./ProviderDashboard/AppliedUser";
 import ProviderInteraction from "./ProviderDashboard/Interactions";
+import JobsProvider from "./ProviderDashboard/JobsProvider";
 
 function App() {
   return (
@@ -97,6 +98,7 @@ function App() {
 
           <Route path="/providerPanel" element={<ProviderPanel />} />
           <Route path="/appliedProvider" element={<AppliedUserProvider />} />
+          <Route path="/jobProvider" element={<JobsProvider />} />
           <Route path="/offers" element={<Offers />} />
           <Route path="/recommended" element={<Recommended />} />
           <Route path="/interaction" element={<ProviderInteraction />} />

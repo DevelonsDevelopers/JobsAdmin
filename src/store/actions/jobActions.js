@@ -61,7 +61,7 @@ export const getCitybyJob = (city) => async (dispatch) => {
 
 export const getCompanybyJob = (company) => async (dispatch) => {
     try{
-        const { data } = await api.fetchCompanybyJob(company)
+        const { data: {data} } = await api.fetchCompanybyJob(company)
         dispatch({ type: GETCOMPANY_JOB, payload: data})
     } catch(error){
         console.log(error)

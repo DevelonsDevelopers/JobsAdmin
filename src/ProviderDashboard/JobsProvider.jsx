@@ -2,14 +2,14 @@ import React, { useEffect, useState } from 'react'
 import PortalLayout from '../portalLayout/PortalLayout'
 import DeleteModal from '../components/DeleteModal';
 import { Link, useNavigate } from 'react-router-dom';
-import JobsView from './view/JobsView';
 import { useDispatch, useSelector } from 'react-redux';
-import { AllJobs, DeleteJob, getCompanybyJob, jobStatus } from '../store/actions/jobActions';
+import { DeleteJob, getCompanybyJob, jobStatus } from '../store/actions/jobActions';
+import JobsView from '../dashboard/view/JobsView';
 
 
 
 
-const JobProvider = () => {
+const JobsProvider = () => {
 
   const [open, setOpen] = useState(false);
   const [openView, setOpenView] = useState(false);
@@ -29,23 +29,11 @@ const JobProvider = () => {
 
   const loading = useSelector(state => state.job.isLoading)
   const [nodata, setNodata] = useState(false)
-  
-  //fetching jobs
-  const jobs = useSelector(state => state.job.jobs)
-  useEffect(() => {
-    console.log(jobs)
-  }, [jobs])
-
-  useEffect(() => {
-    if (jobs !== null || jobs !== undefined || jobs.length !== 0) {
-      dispatch(AllJobs())
-    }
-  }, [dispatch])
 
   //fetching jobs
   const companybyjob = useSelector(state => state.job.jobs)
   useEffect(() => {
-    console.log(companybyjob)
+    console.log('jobByComp', companybyjob)
   }, [companybyjob])
 
   useEffect(() => {
@@ -56,11 +44,11 @@ const JobProvider = () => {
 
   //nodata
   useEffect(() => {
-    if (jobs?.length === 0) {
+    if (companybyjob?.length === 0) {
       setNodata(true)
     }
     else { setData(false) }
-  }, [jobs])
+  }, [companybyjob])
   //delete
   const handleDelete = (id) => {
     setDeleteId(id)
@@ -78,6 +66,7 @@ const JobProvider = () => {
   }
   //status update
   const UpdateStatus = (id, status) => {
+    console.log(id, status)
     let st = 0;
     if (status === 1) {
       st = 0;
@@ -104,11 +93,11 @@ const JobProvider = () => {
   }, [lastIndex])
 
   useEffect(() => {
-    if (jobs) {
-      setRecords(jobs.slice(firstIndex, lastIndex));
-      setPage(Math.ceil(jobs.length / numbersPerPage));
+    if (companybyjob) {
+      setRecords(companybyjob?.slice(firstIndex, lastIndex));
+      setPage(Math.ceil(companybyjob.length / numbersPerPage));
     }
-  }, [jobs, firstIndex])
+  }, [companybyjob, firstIndex])
 
   useEffect(() => {
     if (nPage) {
@@ -258,4 +247,4 @@ const JobProvider = () => {
   }
 }
 
-export default JobProvider
+export default JobsProvider

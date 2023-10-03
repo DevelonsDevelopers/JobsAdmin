@@ -144,10 +144,8 @@ export const fetchCitybyJob = (id) => API.get(`/jobs/city`, {
         id: id,
     }
 })
-export const fetchCompanybyJob = (company) => API.get(`/jobs/company`, {
-    data: {
+export const fetchCompanybyJob = (company) => API.post(`/jobs/company`, {
         company: company,
-    }
 })
 export const createJob = (job) => API.post(`/jobs/create`,
     {
