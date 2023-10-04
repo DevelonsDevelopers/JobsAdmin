@@ -13,9 +13,9 @@ export const AllInteraction = () => async(dispatch) => {
         console.log(error)
     }
 }
-export const getInteractionById = () => async(dispatch) => {
+export const getInteractionById = (id) => async(dispatch) => {
     try{
-        const { data } = await api.fetchInteractionById()
+        const { data: {data} } = await api.fetchInteractionById(id)
         dispatch ({ type: GET_INTERACTIONS, payload:  data })
     } catch(error) {
         console.log(error)

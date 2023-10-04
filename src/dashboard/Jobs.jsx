@@ -47,7 +47,7 @@ const Jobs = () => {
     if (jobs?.length === 0) {
       setNodata(true)
     }
-    else { setData(false) }
+    else { setNodata(false) }
   }, [jobs])
   //delete
   const handleDelete = (id) => {

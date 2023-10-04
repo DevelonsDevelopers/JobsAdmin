@@ -5,6 +5,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import moment from 'moment';
 import AppliedViews from '../dashboard/view/AppliedViews';
 import { getInteractionByCompany } from '../store/actions/interactionActions';
+import InteractionView from './view/InteractionView';
 
 
 
@@ -35,9 +36,9 @@ const ProviderInteraction = () => {
   const loading = useSelector(state => state.appliedUser.isLoading)
 
 
-  useEffect(() => {
-    console.log('interaction',interactionByCompany)
-  }, [interactionByCompany])
+  // useEffect(() => {
+  //   console.log('interaction',interactionByCompany)
+  // }, [interactionByCompany])
 
   useEffect(() => {
     if (interactionByCompany !== null || interactionByCompany !== undefined || interactionByCompany.length !== 0) {
@@ -87,11 +88,6 @@ const ProviderInteraction = () => {
     }
   }, [interactionByCompany])
 
-  //viewCoverletter
-
-  const handleViewCoverLetter = (user, job) => {
-    navigate('/coverLetter', {state: {User: user, Job: job}})
-  }
   return (
     <PortalLayout>
       {loading ? <center> <div className="flex justify-center items-center h-screen">
@@ -118,7 +114,7 @@ const ProviderInteraction = () => {
 
 
                 </div>
-                <AppliedViews open={openView} setOpen={setOpenView} title={" VIEW"} data={data} ID={viewId} />
+                <InteractionView open={openView} setOpen={setOpenView} title={" VIEW"} data={data} ID={viewId} />
                 <table className="rounded-xl p-5 bg-white w-[90%] m-auto max-md:w-[100%]  mt-6 ">
                   <thead className='mt-10'>
                     <tr className=" uppercase  text-sm leading-normal w-[100%]">

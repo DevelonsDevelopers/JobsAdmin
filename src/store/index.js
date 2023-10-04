@@ -12,6 +12,12 @@ export const LoginUser = (email, password) => API.post(`/userAuth/login`,
     password: password
 })
 
+//Login Company
+export const CompanyLogin = (email, password) => API.post(`/providerAuth/login`, 
+{
+    email: email,
+    password: password
+})
 
 //Dashboard
 export const getDashboard = () => API.get(`/dashboard/dashboard`)
@@ -300,6 +306,9 @@ export const fetchReport = (id) => API.post(`/reports/get`,
     })
 // Seekers
 export const fetchAllSeekers = () => API.get(`/seekers/all`)
+export const fetchSeekerRecommended = (job) => API.post(`/seekers/recommended`, {
+    job: job,
+})
 export const fetchSeeker = (id) => API.post(`/seekers/get`,
     {
         id: id,
@@ -470,7 +479,7 @@ export const fetchOfferByCompany = (company) => API.post('/offers/company', {
 
 //Interactions
 export const fetchAllInteraction = () => API.get(`/interactions/all`)
-export const fetchInteractionById = (id) => API.post(`/interactions/id`,
+export const fetchInteractionById = (id) => API.post(`/interactions/get`,
 {
         id: id,
 })

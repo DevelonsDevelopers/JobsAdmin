@@ -17,7 +17,7 @@ const JobsProvider = () => {
   const [data, setData] = useState();
   const [deleteId, setDeleteId] = useState();
   const [search, setSearch] = useState('')
-  
+
   const dispatch = useDispatch()
   const router = useNavigate();
 
@@ -63,6 +63,11 @@ const JobsProvider = () => {
   //Edit
   const handleEdit = (id) => {
     router("/jobs/edit", { state: { ID: id } })
+  }
+
+  const handleRecommendedUsers = (id) => {
+    console.log(id)
+    router("/jobProvider/recommended", { state: { ID: id } })
   }
   //status update
   const UpdateStatus = (id, status) => {
@@ -177,6 +182,10 @@ const JobsProvider = () => {
 
                       <td className="py-[1%] w-[2%]  max-md:text-[.7rem]  border-r-[1px] border-t-[1px]   text-center">
                         <span className='text-[13px] font-[350]'>{value.role}</span>
+                      </td>
+
+                      <td className="py-[2%] max-md:text-[.7rem] w-[2%] border-r-[1px] border-t-[1px]   text-center">
+                        <button onClick={() => handleRecommendedUsers(value.id)} className='bg-green-600 text-white font-[500] py-[3px] px-[10px] max-md:w-[8%] rounded-xl text-[0.6rem] max-md:py-1 max-md:px-2 max-md:text-[0.6rem] cursor-pointer'>Recommended</button>
                       </td>
 
                       <td className="py-[2%] max-md:text-[.7rem] w-[2%] border-r-[1px] border-t-[1px]   text-center">

@@ -84,6 +84,7 @@ export const REPORT_STATUS = "CITY_STATUS";
 
 // SEEKERS:=====
 export const ALL_SEEKERS = "ALL_SEEKERS";
+export const RECOMMENDED_SEEKER = "RECOMMENDED_SEEKER";
 export const GET_SEEKER = "GET_SEEKER";
 export const UPDATE_SEEKER = "UPDATE_SEEKER";
 export const DELETE_SEEKER = "DELETE_SEEKER";

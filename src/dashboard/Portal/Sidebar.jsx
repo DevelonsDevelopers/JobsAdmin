@@ -97,25 +97,6 @@ const Sidebar = forwardRef(({ }, ref) => {
             </div>
           </div>
           <div className="flex flex-col ">
-            <div onClick={() => router('/recommended')}>
-              <div
-                className={`pl-7 py-3 mx-5 rounded text-center cursor-pointer mb-1 flex items-center transition-colors 
-                  ${location.pathname === "/recommended"
-                    ? "bg-gradient-to-r from-sky-600 to-cyan-400 text-white"
-                    : "text-black font-[600] hover:text-white  hover:bg-gradient-to-r from-sky-600 to-cyan-400 hover:bg-blue-100 hover:text-blue-500"
-                  }
-                  `}
-              >
-                <div className="mr-2">
-                  <BiUserCheck className="h-5 w-5" />
-                </div>
-                <div>
-                  <p>Recommended</p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="flex flex-col ">
             <div onClick={() => router('/interaction')}>
               <div
                 className={`pl-7 py-3 mx-5 rounded text-center cursor-pointer mb-1 flex items-center transition-colors 

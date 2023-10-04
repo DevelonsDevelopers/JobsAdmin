@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import moment from 'moment'
 import { GetOffersByCompany } from '../store/actions/offersActions'
 import { getRecentJob } from '../store/actions/jobActions'
+import { useNavigate } from 'react-router-dom'
 
 const ProviderPanel = () => {
     const form03 = [
@@ -29,6 +30,7 @@ const ProviderPanel = () => {
     ]
 
     const dispatch = useDispatch();
+    const router = useNavigate()
 
     const COLORS = ['#fcbf49', '#4D38E3', '#8AC942'];
 
@@ -87,9 +89,19 @@ const ProviderPanel = () => {
     const dateFormatter = (date) => {
         return moment(date).format('MMM Do YY');
     };
+
+    
+    const logout = () => {
+        sessionStorage.setItem("LOGIN", "false")
+        sessionStorage.setItem("ID", null)
+        sessionStorage.setItem("TYPE", null)
+        sessionStorage.setItem("USER", null)
+        router('/providerLogin')
+      }
+    
     return (
         <PortalLayout>
-
+            <button onClick={()=> logout()} className='bg-blue-600 text-white cursor-pointer font-[600] px-10 py-[5px] w-[100%] rounded-full mt-6'>logout</button>
             <div className='px-20 py-10 border-2 rounded-xl bg-white'>
                 <div className='grid grid-cols-2 max-md:grid-cols-1 md:w-[100%] '>
                     <div className='w-[90%] mt-4'>
