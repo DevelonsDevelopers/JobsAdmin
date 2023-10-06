@@ -6,7 +6,7 @@ const API = axios.create({ baseURL: 'http://develons.biz/api' })
 
 
 //Login
-export const LoginUser = (email, password) => API.post(`/userAuth/login`, 
+export const LoginUser = (email, password) => API.post(`/userAuth/login`,
 {
     email: email,
     password: password
@@ -438,16 +438,50 @@ export const updatePaypal = (paypal_client_id,paypal_secret_id,paypal_sandbox_ur
         paypal_sandbox_url: paypal_sandbox_url,
         paypal_return_url: paypal_return_url,
         paypal_cancel_url: paypal_cancel_url
-    
+
 })
 export const updateStripe = (stripe_publisher_key,stripe_secret_key,stripe_api_version) => API.put(`/payment/stripe`, {
         stripe_publisher_key: stripe_publisher_key,
         stripe_secret_key: stripe_secret_key,
         stripe_api_version: stripe_api_version
-    
+
 })
 
+export const fetchAustraliaJobs = () => {
+    let config = {
+        method: 'get',
+        maxBodyLength: Infinity,
+        url: 'http://public.api.careerjet.net/search?keywords&location=australia&user_ip=11.22.33.44&user_agent=Mozilla/5.0 (Windows NT 6.3; WOW64; rv:37.0) Gecko/20100101 Firefox/37.0',
+        headers: { }
+    };
 
+    axios.request(config)
+        .then((response) => {
+            console.log(JSON.stringify(response.data));
+            const array = response.data.jobs
+            for (let i = 0; i < array.length; i++) {
+                const title = array[i].title;
+                const description = array[i].description;
+                const locations = array[i].locations;
+                const site = array[i].site;
+                const date = array[i].date;
+                const company = array[i].company;
+                const salary = array[i].salary;
+                API.post(`/apiJobs/post`, {
+                    title: title,
+                    description: description,
+                    locations: locations,
+                    site: site,
+                    date: date,
+                    company: company,
+                    salary: salary
+                }).then(res => console.log(res))
+            }
+        })
+        .catch((error) => {
+            console.log(error);
+        });
+}
 
 
 // export const fetchAllSeekers = () => API.get(`/seekers/all`)
