@@ -14,7 +14,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 const Sidebar = forwardRef(({ }, ref) => {
   const router = useNavigate();
   const location = useLocation();
-  const [provider, setProvider] = useState(true)
+  const [provider, setProvider] = useState(false)
 
   return (
     <div ref={ref} className="mt-[-4rem] fixed w-56 h-full bg-white shadow-sm max-md:w-[35%] overflow-auto no-scrollbar">
@@ -217,6 +217,44 @@ const Sidebar = forwardRef(({ }, ref) => {
               </div>
             </div>
           </div>
+          <div className="flex flex-col ">
+        <div onClick={() => router('/apiJobs')}>
+          <div
+            className={`pl-7 py-3 mx-5 rounded text-center cursor-pointer mb-1 flex items-center transition-colors 
+            ${location.pathname === "/apiJobs"
+                ? "bg-gradient-to-r from-sky-600 to-cyan-400 text-white"
+                : "text-black font-[600] hover:text-white  hover:bg-gradient-to-r from-sky-600 to-cyan-400 hover:bg-blue-100 hover:text-blue-500"
+              }
+            `}
+          >
+            <div className="mr-2">
+              <PiBriefcaseLight className="h-5 w-5" />
+            </div>
+            <div>
+              <p>ApiJobs</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="flex flex-col ">
+        <div onClick={() => router('/careerJetApi')}>
+          <div
+            className={`pl-7 py-3 mx-5 rounded text-center cursor-pointer mb-1 flex items-center transition-colors 
+            ${location.pathname === "/careerJetApi"
+                ? "bg-gradient-to-r from-sky-600 to-cyan-400 text-white"
+                : "text-black font-[600] hover:text-white  hover:bg-gradient-to-r from-sky-600 to-cyan-400 hover:bg-blue-100 hover:text-blue-500"
+              }
+            `}
+          >
+            <div className="mr-2">
+              <PiBriefcaseLight className="h-5 w-5" />
+            </div>
+            <div>
+              <p>CareerJetApi</p>
+            </div>
+          </div>
+        </div>
+      </div>
           <div className="flex flex-col ">
             <div onClick={() => router('/companies')}>
               <div

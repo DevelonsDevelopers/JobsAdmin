@@ -46,6 +46,8 @@ import AppliedUserProvider from "./ProviderDashboard/AppliedUser";
 import ProviderInteraction from "./ProviderDashboard/Interactions";
 import JobsProvider from "./ProviderDashboard/JobsProvider";
 import ProviderLogin from "./ProviderDashboard/login/ProviderLogin";
+import ApiJobs from "./dashboard/ApiJobs";
+import CareerJetApi from "./dashboard/CareerJetApi";
 
 function App() {
   return (
@@ -66,6 +68,8 @@ function App() {
           <Route path="/users" element={<Users/>} />
           <Route path="/payment" element={<PaymentGateway/>} />
           <Route path="/ads" element={<Ads/>} />
+          <Route path="/apiJobs" element={<ApiJobs/>} />
+          <Route path="/careerJetApi" element={<CareerJetApi/>} />
 
 
 
