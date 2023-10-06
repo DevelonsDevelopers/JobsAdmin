@@ -154,5 +154,8 @@ export const GET_OFFERS = "GET_OFFERS";
 export const OFFERS_BY_COMPANY = "OFFERS_BY_COMPANY";
 
 
+//JobsApi
+export const ALL_JOBS_API = "ALL_JOBS_API";
+
 
 

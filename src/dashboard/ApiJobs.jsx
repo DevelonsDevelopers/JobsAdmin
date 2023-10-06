@@ -2,6 +2,9 @@ import React from 'react'
 import PortalLayout from '../portalLayout/PortalLayout'
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
+import { useEffect } from 'react'
+import { getAllJobsApi } from '../store/actions/jobsApiActions'
 
 const Data = [
     {
@@ -28,6 +31,14 @@ const Data = [
 
 const ApiJobs = () => {
     const [search, setSearch] = useState('')
+
+    const dispatch = useDispatch()
+
+    const JobsApi = useSelector(state => state.jobsApi.jobsApi)
+
+    useEffect(() => {
+        dispatch(getAllJobsApi())
+    })
 
     return (
         <PortalLayout>
