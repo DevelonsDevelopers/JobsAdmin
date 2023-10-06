@@ -470,7 +470,7 @@ export const fetchAustraliaJobs = () => {
     let config = {
         method: 'get',
         maxBodyLength: Infinity,
-        url: 'http://public.api.careerjet.net/search?keywords&location=australia&user_ip=11.22.33.44&user_agent=Mozilla/5.0 (Windows NT 6.3; WOW64; rv:37.0) Gecko/20100101 Firefox/37.0',
+        url: 'http://public.api.careerjet.net/search?keywords&location=australia&user_ip=11.22.33.44&user_agent=Mozilla/5.0 (Windows NT 6.3; WOW64; rv:37.0) Gecko/20100101 Firefox/37.0&affid=213e213hd12344552',
         headers: { }
     };
 
@@ -483,6 +483,7 @@ export const fetchAustraliaJobs = () => {
                 const description = array[i].description;
                 const locations = array[i].locations;
                 const site = array[i].site;
+                const url = array[i].url;
                 const date = array[i].date;
                 const company = array[i].company;
                 const salary = array[i].salary;
@@ -491,6 +492,7 @@ export const fetchAustraliaJobs = () => {
                     description: description,
                     locations: locations,
                     site: site,
+                    url: url,
                     date: date,
                     company: company,
                     salary: salary
