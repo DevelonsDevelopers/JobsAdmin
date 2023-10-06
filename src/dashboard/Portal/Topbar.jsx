@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React, { Fragment, useEffect, useState } from 'react'
 import { HiMenuAlt2, HiBell, HiOutlineUserCircle, HiLocationMarker } from 'react-icons/hi'
 import { BsFillTelephoneFill, BsTelephone } from 'react-icons/bs'
 import { useNavigate } from 'react-router-dom'
@@ -10,6 +10,8 @@ const Topbar = ({ showNav, setShowNav }) => {
 
   const router = useNavigate();
 
+  const [data, setData] = useState();
+
   const logout = () => {
     sessionStorage.setItem("LOGIN", "false")
     sessionStorage.setItem("ID", null)
@@ -17,6 +19,11 @@ const Topbar = ({ showNav, setShowNav }) => {
     sessionStorage.setItem("USER", null)
     router('/login')
   }
+
+  useEffect(() => {
+		const user = sessionStorage.getItem("USER")
+    setData(JSON.parse(user))
+	}, [])
 
   
 
@@ -46,12 +53,12 @@ const Topbar = ({ showNav, setShowNav }) => {
                   <img src="/assets/profile_thumb.png" alt="" className='w-20 max-sm:w-15 rounded-full h-auto m-auto' />
                   <span className='ml-[1rem] absolute right-[30%] top-[32%] bg-white cursor-pointer rounded-full p-1'><BiSolidEditAlt className='text-[1.5rem] z-[999]' /></span>
                 </div>
-                <h1 className='font-[600] text-[1.5rem] text-center'>Chada doe</h1>
+                <h1 className='font-[600] text-[1.5rem] text-center'>{data?.name}</h1>
 
                 <div className='pl-[2rem] py-2 ml-2  rounded-xl'>
-                    <i className='items-center flex'><AiOutlineMail/><span className='font-[500] text-[1rem] text-gray-600 ml-[1rem]'>jane@gmail.com</span></i>
-                    <i className='items-center flex'><BsTelephone/><span className='font-[500] text-[1rem] text-gray-600 ml-[1rem] mt-2'>0323*********</span></i>
-                    <i className='items-center flex'><SlLocationPin/><span className='font-[500] text-[1rem] text-gray-600 ml-[1rem] mt-2'>Lahore</span></i>
+                    <i className='items-center flex'><AiOutlineMail/><span className='font-[500] text-[1rem] text-gray-600 ml-[1rem]'>{data?.email}</span></i>
+                    <i className='items-center flex'><BsTelephone/><span className='font-[500] text-[1rem] text-gray-600 ml-[1rem] mt-2'>{data?.phone}</span></i>
+                    <i className='items-center flex'><SlLocationPin/><span className='font-[500] text-[1rem] text-gray-600 ml-[1rem] mt-2'>{data?.address}</span></i>
 
                   </div>
               </div>

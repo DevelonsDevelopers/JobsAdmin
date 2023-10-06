@@ -24,7 +24,6 @@ export const getCategory = (id) => async (dispatch) => {
 export const createCategory = (category) => async (disptach) =>{
     try{
         const {data: {data}} = await api.createCategory(category)
-        console.log(data)
         disptach({ type: CREATE_CATEGORY, payload: data})
     }catch(error){
         console.log(error)

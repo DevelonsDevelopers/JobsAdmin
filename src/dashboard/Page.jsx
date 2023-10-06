@@ -1,11 +1,8 @@
 import React, { useEffect } from 'react'
 import PortalLayout from '../portalLayout/PortalLayout'
-import { BarChart, Bar, Tooltip, XAxis, YAxis, PieChart, Pie, Cell, LineChart, CartesianGrid, Legend, Line, ResponsiveContainer, AreaChart, ReferenceLine, Area } from 'recharts';
-import { RiEarthFill, RiEarthLine, RiHomeOfficeLine, RiPagesLine, RiUserSearchLine } from 'react-icons/ri'
-import { BiCategoryAlt, BiUserCheck } from 'react-icons/bi'
-
-import axios from 'axios';
-import { MdSettings } from "react-icons/md";
+import { BarChart, Bar, Tooltip, XAxis, YAxis, PieChart, Pie, Cell, Legend, ResponsiveContainer, AreaChart, ReferenceLine, Area } from 'recharts';
+import { RiUserSearchLine } from 'react-icons/ri'
+import { BiUserCheck } from 'react-icons/bi'
 import { RiAccountPinCircleFill } from "react-icons/ri";
 import { BsSunFill } from "react-icons/bs";
 import { useState } from 'react';
@@ -13,73 +10,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getBarChart, getDashboard, getLineChart, getReports, getTransaction, getpiechart } from '../store/actions/dashboardActions';
 import moment from 'moment/moment';
 
-const card = [
-  { name: "Seekers", amount: "500", style: "bg-[#4D38E3] rounded-xl  text-white mt-[-3rem] max-md:mt-0 h-[6.5rem] shadow-xl shadow-gray-300 ", icon: RiUserSearchLine },
-  { name: "Providers", amount: "700", style: "bg-[#47A9FA] rounded-xl  text-white mt-[-3rem] max-md:mt-0 h-[6.5rem] shadow-xl shadow-gray-300 ", icon: RiAccountPinCircleFill },
-  { name: "Applied", amount: "900", style: "bg-[#8AC942] rounded-xl  text-white mt-[-3rem] max-md:mt-0 h-[6.5rem] shadow-xl shadow-gray-300 ", icon: BiUserCheck },
-  { name: "Users paid", amount: "150", style: "bg-[#1AD185] rounded-xl  text-white mt-[-3rem] max-md:mt-0 h-[6.5rem] shadow-xl shadow-gray-300 ", icon: BsSunFill },
-  { name: "Offers accepted", amount: "500", style: "bg-[#fcbf49] rounded-xl  text-white mt-[-3rem] max-md:mt-0 h-[6.5rem] shadow-xl shadow-gray-300 ", icon: BsSunFill },
-  { name: "Offers rejected", amount: "20", style: "bg-[#f77f00] rounded-xl  text-white mt-[-3rem] max-md:mt-0 h-[6.5rem] shadow-xl shadow-gray-300 ", icon: BsSunFill },
-]
 
-
-const data = [
-  { "day2": "profit-01", "profit": [1, 0] },
-  { "day2": "profit-01", "profit": [1, 10] },
-  { "day2": "profit-01", "profit": [1, 40] },
-  { "day2": "profit-01", "profit": [1, 70] },
-  { "day2": "profit-01", "profit": [1, 20] },
-  { "day2": "profit-01", "profit": [1, 10] },
-  { "day2": "profit-01", "profit": [1, 50] },
-  { "day2": "profit-01", "profit": [1, 50] },
-  { "day2": "profit-01", "profit": [1, 50] },
-  { "day2": "profit-01", "profit": [1, 100] },
-  { "day2": "profit-01", "profit": [1, 10] },
-  { "day2": "profit-01", "profit": [1, 40] },
-  { "day2": "profit-01", "profit": [1, 70] },
-  { "day2": "profit-01", "profit": [1, 20] },
-  { "day2": "profit-01", "profit": [1, 10] },
-  { "day2": "profit-01", "profit": [1, 50] },
-  { "day2": "profit-01", "profit": [1, 50] },
-  { "day2": "profit-01", "profit": [1, 50] },
-
-]
-const data01 = [
-  { "value": 400, 'value2': 200 },
-  { "value": 200, 'value2': 300 },
-  { "value": 600, 'value2': 400 },
-
-
-
-]
-
-const data03 = [
-  { "name": "Mon ", "uv": 1000, "pv": 2400, "amt": 2400 },
-  { "name": " Tue", "uv": 2000, "pv": 2400, "amt": 2400 },
-  { "name": " Wed", "uv": 1000, "pv": 3400, "amt": 2400 },
-  { "name": "Thur", "uv": 2000, "pv": 4400, "amt": 2400 },
-  { "name": " Fri", "uv": 3000, "pv": 6400, "amt": 2400 },
-  { "name": "Sat ", "uv": 4000, "pv": 8400, "amt": 2400 },
-]
-const form01 = [
-  { id: '01', date: '11.02.23', amount: '200' },
-  { id: '01', date: '11.02.23', amount: '200' },
-  { id: '01', date: '11.02.23', amount: '200' },
-  { id: '01', date: '11.02.23', amount: '200' },
-  { id: '01', date: '11.02.23', amount: '200' },
-
-]
-const form02 = [
-  { job: 'ui designer', date: '11.02.23', report: '200' },
-  { job: 'ui designer', date: '11.02.23', report: '200' },
-  { job: 'ui designer', date: '11.02.23', report: '200' },
-
-]
 const form03 = [
   { job: 'ui designer', date: '11.02.23', report: '200' },
   { job: 'ui designer', date: '11.02.23', report: '200' },
   { job: 'ui designer', date: '11.02.23', report: '200' },
-
 ]
 
 const Dashboard = () => {
@@ -103,20 +38,15 @@ const Dashboard = () => {
   const piechart = useSelector(state => state.dashboard.piechart)
 
   useEffect(() => {
-    // console.log(piechart)
     const array = [{ 'value': piechart?.companies, 'name': 'Companies' }, { 'value': piechart?.jobs, 'name': 'Jobs', 'color': '#ffffff' }, { 'value': piechart?.seekers, 'name': 'Seekers', 'color': '#4D58E3' }]
     setPieData(array)
   }, [piechart])
-    
+
   useEffect(() => {
     dispatch(getpiechart())
   }, [dispatch])
 
   const lineChart = useSelector(state => state.dashboard.linechart)
-
-  // useEffect(() => {
-  //   console.log(lineChart);
-  // }, [lineChart])
 
   useEffect(() => {
     dispatch(getLineChart())
@@ -124,9 +54,9 @@ const Dashboard = () => {
 
   const barChart = useSelector(state => state.dashboard.barchart)
 
-  useEffect(() => {
-    console.log(barChart);
-  }, [barChart])
+  // useEffect(() => {
+  //   console.log(barChart);
+  // }, [barChart])
 
   useEffect(() => {
     dispatch(getBarChart())
@@ -144,24 +74,19 @@ const Dashboard = () => {
 
   const transactions = useSelector(state => state.dashboard.transaction)
 
-  // useEffect(() => {
-  //   console.log(transactions)
-  // }, [transactions])
-
   useEffect(() => {
     dispatch(getTransaction())
   }, [dispatch])
 
   const dateFormatter = (date) => {
-    // return moment(date).unix();
     return moment(date).format('MMM Do YY');
   };
 
 
   return (
     <PortalLayout>
-      {loading ? <center> <div class="flex justify-center items-center h-screen">
-        <div class="animate-spin rounded-full h-16 w-16 border-t-4 border-blue-500"></div>
+      {loading ? <center> <div className="flex justify-center items-center h-screen">
+        <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-blue-500"></div>
       </div>
       </center> : <>
         <div className='p-10 border-2  rounded-xl  bg-white'>
@@ -210,21 +135,6 @@ const Dashboard = () => {
                 <h1 className='text-left ml-5 mt-6 text-[1rem] font-[600]'>Interactions</h1>
                 <h1 className='text-left ml-5 mt-[-0.5rem] text-[2rem] font-[700] '>{dashboard?.interactions}</h1>
               </div>
-              {/* {card.map((value) => {
-                return (
-                  <div className={value.style}>
-                    <ul className='flex flex-row-reverse  '>
-                      <li><value.icon className='w-25 text-[3rem] mb-[-2rem] pr-4 pt-2 ml-auto' /></li>
-                    </ul>
-                    <h1 className='text-left ml-5 mt-6 text-[1rem] font-[600]'>{value.name}</h1> 
-                    <h1 className='text-left ml-5 mt-[-0.5rem] text-[2rem] font-[700] '>{dashboard.category}</h1>
-                    {dashboard.map((value) => {
-                      return(
-                      )
-                    })}
-                  </div>
-                )
-              })} */}
 
             </div>
             <div className='white border-2 p-3 md:w-[30%] h-[19rem] rounded-xl shadow-xl shadow-gray-300  max-md:mr-0'>
@@ -246,7 +156,7 @@ const Dashboard = () => {
           </div>
 
           <div className='flex max-md:flex-col  max-md:grid-cols-1 gap-8 items-center'>
-            <div className='mt-10 w-[70%] max-md:w-[100%] py-2 bg-white border-2  rounded-xl shadow-xl shadow-gray-300 '>
+            <div className='mt-10 w-[70%] max-md:w-[100%] py-2 bg-white border-2 p-8 rounded-xl shadow-xl shadow-gray-300 '>
               <ResponsiveContainer width="100%" height={350}>
                 <AreaChart data={lineChart}
                   margin={{ top: 20, right: 30, left: 0, bottom: 0 }}>
@@ -255,7 +165,6 @@ const Dashboard = () => {
                     tickFormatter={dateFormatter}
                   />
                   <YAxis />
-
                   <Tooltip />
                   <ReferenceLine x="Page C" stroke="green" label="Min PAGE" />
                   {/* <ReferenceLine y={4000} label="Max" stroke="red" strokeDasharray="3 3" /> */}
@@ -264,11 +173,11 @@ const Dashboard = () => {
               </ResponsiveContainer>
             </div>
 
-            <div className=" border-2 shadow-xl h-full  max-md:w-[100%] max-md:mb-[30px] p-5 bg-white rounded-xl shadow-xl shadow-gray-300 mt-10 h-[370px] ">
+            <div className=" border-2 shadow-xl h-full  max-md:w-[100%] max-md:mb-[30px] p-5 bg-white rounded-xl shadow-xl shadow-gray-300 mt-10 h-[374px] ">
               <span className=' ml-[1.6rem]  font-[600] text-[1rem]'>Transactions</span>
 
               <table className="w-[100%] mt-3 text-sm text-left text-gray-500 :text-gray-400">
-                <thead className="text-xs text-white uppercase bg-[#2994FF] :bg-gray-700 :text-white">
+                <thead className="text-xs text-white uppercase bg-[#2994FF] ">
                   <tr >
                     <th scope="col" className="px-6 py-3">
                       Id
@@ -307,13 +216,13 @@ const Dashboard = () => {
               <table className="w-[100%] mt-3 text-sm text-left text-gray-500 :text-gray-400">
                 <thead className="text-xs text-white uppercase bg-[#2994FF] :bg-gray-700 :text-gray-400">
                   <tr>
-                    <th scope="col" className="px-6 max-md:px-2 py-3">
+                    <th scope="col" className="w-[30%] text-center  py-3">
                       Job
                     </th>
-                    <th scope="col" className="px-6 max-md:px-2 py-3">
+                    <th scope="col" className="w-[30%] text-center  py-3">
                       Date
                     </th>
-                    <th scope="col" className="px-6 max-md:px-2 py-3">
+                    <th scope="col" className="w-[30%] text-center  py-3">
                       Applieds
                     </th>
 
@@ -322,14 +231,14 @@ const Dashboard = () => {
                 <tbody>
                   {form03.map((value, index) => (
                     <tr className={`bg-white border-b :bg-gray-800 :border-gray-700 ${index % 2 ? 'bg-[#A4D2FF]' : 'bg-[#FFDF9F]'}`}>
-                      <th scope="row" className="px-6 max-md:px-2 py-4 font-medium text-gray-900 whitespace-nowrap :text-white">
+                      <th scope="row" className="w-[30%] text-center  py-4 font-medium text-gray-900 whitespace-nowrap :text-white">
                         {value.job}
                       </th>
-                      <td className="px-6 max-md:px-2 py-4">
+                      <td className="w-[30%] text-center  py-4">
                         {value.date}
                       </td>
 
-                      <td className="px-6  max-md:px-2 py-4">
+                      <td className="w-[30%] text-center py-4">
                         {value.report}
                       </td>
                     </tr>
@@ -339,16 +248,16 @@ const Dashboard = () => {
             </div>
             <div className=" border-2 shadow-xl bg-white p-5 rounded-xl shadow-gray-300 mt-5 max-md:mt-[-17px] ">
               <span className=' ml-[1.6rem]  font-[600] text-[1rem]'>Reports</span>
-              <table className="w-[100%] mt-3 text-sm text-left  text-gray-500 :text-gray-400">
-                <thead className="text-xs text-white uppercase  bg-[#2994FF] :bg-gray-700 :text-gray-400">
+              <table className="w-[100%] mt-3 text-sm text-left text-gray-500 :text-gray-400">
+                <thead className="text-xs text-white uppercase bg-[#2994FF] :bg-gray-700 :text-gray-400">
                   <tr>
-                    <th scope="col" className="text-center max-md:px-2 py-3">
+                    <th scope="col" className="text-center py-3">
                       Job
                     </th>
-                    <th scope="col" className="text-center max-md:px-2 py-3">
+                    <th scope="col" className="text-center py-3">
                       Date
                     </th>
-                    <th scope="col" className="text-center max-md:px-2 py-3">
+                    <th scope="col" className="text-center py-3">
                       Reports
                     </th>
 
@@ -357,14 +266,14 @@ const Dashboard = () => {
                 <tbody>
                   {reports?.map((value, index) => (
                     <tr className={`bg-white border-b :bg-gray-800 :border-gray-700 ${index % 2 ? 'bg-[#A4D2FF]' : 'bg-[#FFDF9F]'}`}>
-                      <th scope="row" className="text-center px-3 max-md:px-2 py-4 font-medium text-gray-900 whitespace-nowrap :text-white">
+                      <th scope="row" className="text-center px-3  py-4 font-medium text-gray-900 whitespace-nowrap :text-white">
                         {value.job}
                       </th>
-                      <td className="max-md:px-2 text-center text-[0.7rem]">
+                      <td className=" text-center text-[0.7rem]">
                         {moment(value.date).format('MMM Do YY')}
                       </td>
 
-                      <td className="max-md:px-2 text-center">
+                      <td className=" text-center">
                         {value.feedback}
                       </td>
                     </tr>
@@ -377,7 +286,7 @@ const Dashboard = () => {
 
           </div>
 
-          <div className=' grid grid-cols-1 max-md:grid-cols-1 justify-center gap-6 mt-5'>
+          <div className='grid grid-cols-1 max-md:grid-cols-1 justify-center gap-6 mt-5'>
             <div className='bg-white border-2 p-2 rounded-xl shadow-xl shadow-gray-300'>
               <span className=' ml-[2rem] font-[600] text-[1rem]'>Memory Status</span>
               <ResponsiveContainer width="100%" height={400}>

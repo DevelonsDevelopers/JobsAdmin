@@ -38,6 +38,16 @@ import Cv from "./components/Cv";
 import Test from "./dashboard/Test";
 import Ads from "./dashboard/Ads";
 import CoverLetter from "./components/CoverLetter";
+import ProviderPanel from "./ProviderDashboard/ProviderPanel";
+import Offers from "./ProviderDashboard/Offers";
+import Recommended from "./ProviderDashboard/Recommended";
+import Interactions from "./ProviderDashboard/Interactions";
+import AppliedUserProvider from "./ProviderDashboard/AppliedUser";
+import ProviderInteraction from "./ProviderDashboard/Interactions";
+import JobsProvider from "./ProviderDashboard/JobsProvider";
+import ProviderLogin from "./ProviderDashboard/login/ProviderLogin";
+import ApiJobs from "./dashboard/ApiJobs";
+import CareerJetApi from "./dashboard/CareerJetApi";
 
 function App() {
   return (
@@ -58,6 +68,8 @@ function App() {
           <Route path="/users" element={<Users/>} />
           <Route path="/payment" element={<PaymentGateway/>} />
           <Route path="/ads" element={<Ads/>} />
+          <Route path="/apiJobs" element={<ApiJobs/>} />
+          <Route path="/careerJetApi" element={<CareerJetApi/>} />
 
 
 
@@ -81,11 +93,23 @@ function App() {
           <Route path="/tags/edit" element={<TagsEdit />} />
           <Route path="/jobs/edit" element={<JobsEdit />} />
           <Route path="/plans/edit" element={<PlansEdit />} />
+
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/cv" element={<Cv />} />
           <Route path="/coverLetter" element={<CoverLetter />}/>
           <Route path="/test" element={<Test />} />
+
+
+          <Route path="/providerLogin" element={<ProviderLogin />} />
+          <Route path="/providerPanel" element={<ProviderPanel />} />
+          <Route path="/appliedProvider" element={<AppliedUserProvider />} />
+          <Route path="/jobProvider" element={<JobsProvider />} />
+          <Route path="/offers" element={<Offers />} />
+          <Route path="/jobProvider/recommended" element={<Recommended />} />
+          <Route path="/interaction" element={<ProviderInteraction />} />
+          
+
         </Routes>
       </BrowserRouter>
   );

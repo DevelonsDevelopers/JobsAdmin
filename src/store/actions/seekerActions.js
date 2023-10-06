@@ -1,4 +1,4 @@
-import { ALL_REPORTS, ALL_SEEKERS, GET_SEEKER, LOADING, SEEKER_STATUS, SUCCESS } from "../../Utils/Constant";
+import { ALL_REPORTS, ALL_SEEKERS, GET_SEEKER, LOADING, RECOMMENDED_SEEKER, SEEKER_STATUS, SUCCESS } from "../../Utils/Constant";
 import * as api from '../../store/index'
 
 
@@ -9,6 +9,15 @@ export const AllSeekers = () => async (dispatch) => {
         const { data: { data }} = await api.fetchAllSeekers();
         dispatch({ type: ALL_SEEKERS, payload: { seekers: data }})
         dispatch({ type: SUCCESS })
+    } catch(error) {
+        console.log(error)
+    }
+}
+
+export const GetRecommendedSeeker = (job) => async (dispatch) => {
+    try{
+        const { data: { data }} = await api.fetchSeekerRecommended(job);
+        dispatch({ type: RECOMMENDED_SEEKER, payload: data })
     } catch(error) {
         console.log(error)
     }
