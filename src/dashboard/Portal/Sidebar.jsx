@@ -231,7 +231,7 @@ const Sidebar = forwardRef(({ }, ref) => {
               <PiBriefcaseLight className="h-5 w-5" />
             </div>
             <div>
-              <p>ApiJobs</p>
+              <p>JobsApi</p>
             </div>
           </div>
         </div>
