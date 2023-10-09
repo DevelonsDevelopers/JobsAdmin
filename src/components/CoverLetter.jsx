@@ -43,7 +43,7 @@ const CoverLetter = () => {
 
     return (
         <PortalLayout>
-            <h1 className='text-[3.125rem] font-[800] text-[#000] text-center max-md:text-[2rem] uppercase'>Cover Letter</h1>
+            <h1 className='text-[3.125rem] font-[800] text-[#000] text-center max-md:text-[2rem] uppercase'>Resume</h1>
             <div style={{ backgroundColor: 'white', }} className='border-4 w-[80%] m-auto p-4 mt-5'>
 
                 <div className='w-[70%] mt-10  m-auto'>

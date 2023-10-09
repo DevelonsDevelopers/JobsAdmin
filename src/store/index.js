@@ -526,4 +526,22 @@ export const fetchInteractionByCompany = (company) => API.post('/interactions/co
 export const fetchAllJobsApi = () => API.get(`/apiJobs/all`)
 
 
+//jobBank
+export const fetchAllJobBanks = () => API.get(`/jobBanks/all`)
+export const createJobBank = (email) => API.post(`/jobBanks/create`,
+    {
+        email: email,
+    }
+)
+export const updateJobBank = (id,email) => API.put(`/jobBanks/:update`,
+    {
+        id: id,
+        email: email
+    })
+
+export const deleteJobBank = (id) => API.delete(`/jobBanks/:delete`, {
+    data: {
+        id: id
+    }
+})
 // export const fetchAllSeekers = () => API.get(`/seekers/all`)

@@ -17,7 +17,7 @@ const Sidebar = forwardRef(({ }, ref) => {
   const [provider, setProvider] = useState(false)
 
   return (
-    <div ref={ref} className="mt-[-4rem] fixed w-56 h-full bg-white shadow-sm max-md:w-[35%] overflow-auto no-scrollbar">
+    <div ref={ref} className="mt-[-4rem] fixed w-56 h-full bg-white shadow-sm max-md:w-[40%] overflow-auto no-scrollbar">
       {provider ?
         <>
           <div className="flex flex-col mt-[2rem] ">
@@ -30,6 +30,10 @@ const Sidebar = forwardRef(({ }, ref) => {
                   }
   `}
               >
+{/* ---------------------------------------------------------Dashboard------------------------------------------------------------------------------------------------------------ */}
+{/* ---------------------------------------------------------Dashboard------------------------------------------------------------------------------------------------------------ */}
+{/* ---------------------------------------------------------Dashboard------------------------------------------------------------------------------------------------------------ */}
+{/* ---------------------------------------------------------Dashboard------------------------------------------------------------------------------------------------------------ */}
                 <div className="mr-2">
                   <HiOutlineHome className="h-5 w-5" />
                 </div>
@@ -49,6 +53,11 @@ const Sidebar = forwardRef(({ }, ref) => {
                   }
   `}
               >
+{/* ------------------------------------------------------------------Jobs------------------------------------------------------------------------------------------------------------ */}
+{/* ------------------------------------------------------------------Jobs------------------------------------------------------------------------------------------------------------ */}
+{/* ------------------------------------------------------------------Jobs------------------------------------------------------------------------------------------------------------ */}
+{/* ------------------------------------------------------------------Jobs------------------------------------------------------------------------------------------------------------ */}
+{/* ------------------------------------------------------------------Jobs------------------------------------------------------------------------------------------------------------ */}
                 <div className="mr-2">
                   <PiBriefcaseLight className="h-5 w-5" />
                 </div>
@@ -68,6 +77,8 @@ const Sidebar = forwardRef(({ }, ref) => {
                   }
                   `}
               >
+{/* ------------------------------------------------------------------Applied Users------------------------------------------------------------------------------------------------------------ */}
+
                 <div className="mr-2">
                   <BiUserCheck className="h-5 w-5" />
                 </div>
@@ -121,6 +132,11 @@ const Sidebar = forwardRef(({ }, ref) => {
 
 
         <>
+{/* ______________________________________________________________________________________________________________________________________________________________________________________________ */}
+{/* ------------------------------------------------------------------Dashboard------------------------------------------------------------------------------------------------------------ */}
+{/* ------------------------------------------------------------------Dashboard------------------------------------------------------------------------------------------------------------ */}
+{/* ------------------------------------------------------------------Dashboard------------------------------------------------------------------------------------------------------------ */}
+{/* ______________________________________________________________________________________________________________________________________________________________________________________________ */}
 
           <div className="flex flex-col mt-[2rem] ">
             <div onClick={() => router('/')}>
@@ -132,6 +148,7 @@ const Sidebar = forwardRef(({ }, ref) => {
                   }
   `}
               >
+
                 <div className="mr-2">
                   <HiOutlineHome className="h-5 w-5" />
                 </div>
@@ -156,6 +173,25 @@ const Sidebar = forwardRef(({ }, ref) => {
                 </div>
                 <div>
                   <p>Categories</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="flex flex-col ">
+            <div onClick={() => router('/jobbank')}>
+              <div
+                className={`pl-7 py-3 mx-5 rounded text-center cursor-pointer mb-1 flex items-center transition-colors 
+      ${location.pathname === "/jobbank"
+                    ? "bg-gradient-to-r from-sky-600 to-cyan-400 text-white"
+                    : "text-black font-[600]  hover:text-white  hover:bg-gradient-to-r from-sky-600 to-cyan-400"
+                  }
+`}
+              >
+                <div className="mr-2">
+                  <BiCategoryAlt className="h-5 w-5" />
+                </div>
+                <div>
+                  <p>Job Banks</p>
                 </div>
               </div>
             </div>
@@ -218,10 +254,10 @@ const Sidebar = forwardRef(({ }, ref) => {
             </div>
           </div>
           <div className="flex flex-col ">
-        <div onClick={() => router('/apiJobs')}>
+        <div onClick={() => router('/jobsAPI')}>
           <div
             className={`pl-7 py-3 mx-5 rounded text-center cursor-pointer mb-1 flex items-center transition-colors 
-            ${location.pathname === "/apiJobs"
+            ${location.pathname === "/jobsAPI"
                 ? "bg-gradient-to-r from-sky-600 to-cyan-400 text-white"
                 : "text-black font-[600] hover:text-white  hover:bg-gradient-to-r from-sky-600 to-cyan-400 hover:bg-blue-100 hover:text-blue-500"
               }
@@ -231,7 +267,7 @@ const Sidebar = forwardRef(({ }, ref) => {
               <PiBriefcaseLight className="h-5 w-5" />
             </div>
             <div>
-              <p>JobsApi</p>
+              <p>Jobs API</p>
             </div>
           </div>
         </div>
@@ -250,7 +286,7 @@ const Sidebar = forwardRef(({ }, ref) => {
               <PiBriefcaseLight className="h-5 w-5" />
             </div>
             <div>
-              <p>CareerJetApi</p>
+              <p>Career JetAPI</p>
             </div>
           </div>
         </div>
@@ -307,7 +343,7 @@ const Sidebar = forwardRef(({ }, ref) => {
                   <BiUserCheck className="h-5 w-5" />
                 </div>
                 <div>
-                  <p>AppliedUsers</p>
+                  <p>Applied Users</p>
                 </div>
               </div>
             </div>
@@ -345,7 +381,7 @@ const Sidebar = forwardRef(({ }, ref) => {
                   <AiOutlineTransaction className="h-5 w-5" />
                 </div>
                 <div>
-                  <p>transactions</p>
+                  <p>Transactions</p>
                 </div>
               </div>
             </div>
@@ -421,7 +457,7 @@ const Sidebar = forwardRef(({ }, ref) => {
                   <HiOutlineHome className="h-5 w-5" />
                 </div>
                 <div>
-                  <p className="text-[0.9rem]">PaymentGateway</p>
+                  <p className="text-[0.9rem]">Payment Gateway</p>
                 </div>
               </div>
             </div>

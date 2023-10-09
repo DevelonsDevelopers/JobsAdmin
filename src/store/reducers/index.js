@@ -18,6 +18,7 @@ import coverLetter from "./coverLetter";
 import offer from "./offer";
 import interaction from "./interaction";
 import jobsApi from "./jobsApi";
+import jobBank from "./jobBank";
 
 export default combineReducers({
      dashboard,
@@ -38,5 +39,6 @@ export default combineReducers({
      coverLetter,
      offer,
      interaction,
-     jobsApi
+     jobsApi,
+     jobBank
      })

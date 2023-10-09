@@ -46,8 +46,11 @@ import AppliedUserProvider from "./ProviderDashboard/AppliedUser";
 import ProviderInteraction from "./ProviderDashboard/Interactions";
 import JobsProvider from "./ProviderDashboard/JobsProvider";
 import ProviderLogin from "./ProviderDashboard/login/ProviderLogin";
-import ApiJobs from "./dashboard/ApiJobs";
 import CareerJetApi from "./dashboard/CareerJetApi";
+import ApiJobs from "./dashboard/ApiJobs";
+import Email from "./dashboard/Email";
+import EmailForm from "./dashboard/form/EmailForm";
+import JobBankEdit from "./dashboard/edit/JobBankEdit";
 
 function App() {
   return (
@@ -56,6 +59,7 @@ function App() {
           <Route path="/" element={<Dashboard/>} />
           <Route path="/cities" element={<Cities/>} />
           <Route path="/categories" element={<Categories />} />
+          <Route path="/jobbank" element={<Email />} />
           <Route path="/companies" element={<Companies/>} />
           <Route path="/countries" element={<Countries/>} />
           <Route path="/jobs" element={<Jobs/>} />
@@ -68,13 +72,15 @@ function App() {
           <Route path="/users" element={<Users/>} />
           <Route path="/payment" element={<PaymentGateway/>} />
           <Route path="/ads" element={<Ads/>} />
-          <Route path="/apiJobs" element={<ApiJobs/>} />
+          {/* <Route path="/jobsAPI" element={<JobsAPI/>} /> */}
+          <Route path="/jobsAPI" element={<ApiJobs/>} />
           <Route path="/careerJetApi" element={<CareerJetApi/>} />
 
 
 
           <Route path="/users/add" element={<UserForm/>} />
           <Route path="/categories/add" element={<CategoryForm/>} />
+          <Route path="/jobBanks/add" element={<EmailForm/>} />
           <Route path="/cities/add" element={<CitiesForm/>} />
           <Route path="/companies/add" element={<CompaniesForm/>} />
           <Route path="/jobs/add" element={<JobsForm/>} />
@@ -87,6 +93,7 @@ function App() {
 
           <Route path="/users/edit" element={<UsersEdit />} />
           <Route path="/categories/edit" element={<CategoryEdit />} />
+          <Route path="/jobBanks/edit" element={<JobBankEdit />} />
           <Route path="/countries/edit" element={<CountryEdit />} />
           <Route path="/cities/edit" element={<CitiesEdit />} />
           <Route path="/companies/edit" element={<CompanyEdit />} />

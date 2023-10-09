@@ -157,5 +157,11 @@ export const OFFERS_BY_COMPANY = "OFFERS_BY_COMPANY";
 //JobsApi
 export const ALL_JOBS_API = "ALL_JOBS_API";
 
+//JobsBank
+export const ALL_JOBBANKS = "ALL_JOBBANKS";
+export const CREATE_JOBBANK = "CREATE_JOBBANK";
+export const UPDATE_JOBBANK = "UPDATE_JOBBANK";
+export const DELETE_JOBBANK = "DELETE_JOBBANK";
+
 
 
