@@ -48,6 +48,8 @@ import JobsProvider from "./ProviderDashboard/JobsProvider";
 import ProviderLogin from "./ProviderDashboard/login/ProviderLogin";
 import CareerJetApi from "./dashboard/CareerJetApi";
 import ApiJobs from "./dashboard/ApiJobs";
+import Email from "./dashboard/Email";
+import EmailForm from "./dashboard/form/EmailForm";
 
 function App() {
   return (
@@ -56,6 +58,7 @@ function App() {
           <Route path="/" element={<Dashboard/>} />
           <Route path="/cities" element={<Cities/>} />
           <Route path="/categories" element={<Categories />} />
+          <Route path="/email" element={<Email />} />
           <Route path="/companies" element={<Companies/>} />
           <Route path="/countries" element={<Countries/>} />
           <Route path="/jobs" element={<Jobs/>} />
@@ -76,6 +79,7 @@ function App() {
 
           <Route path="/users/add" element={<UserForm/>} />
           <Route path="/categories/add" element={<CategoryForm/>} />
+          <Route path="/email/add" element={<EmailForm/>} />
           <Route path="/cities/add" element={<CitiesForm/>} />
           <Route path="/companies/add" element={<CompaniesForm/>} />
           <Route path="/jobs/add" element={<JobsForm/>} />
