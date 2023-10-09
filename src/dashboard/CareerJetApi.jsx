@@ -1,7 +1,7 @@
 import React from 'react'
 import PortalLayout from '../portalLayout/PortalLayout'
 import { PiBriefcaseLight } from 'react-icons/pi'
-import {fetchAustraliaJobs} from "../store";
+import {fetchAustraliaJobs, fetchNewZealandJobs} from "../store";
 
 const CareerJetApi = () => {
     return (
@@ -16,7 +16,7 @@ const CareerJetApi = () => {
                         </div>
                         Fetch Australia Jobs
                     </button>
-                    <button className='w-[30%] h-[8rem] bg-yellow-500 flex flex-col items-center gap-5 cursor-pointer  max-md:text-[.6rem] py-2 px-[1rem] max-md:px-[1rem] max-md:py-[5px] text-white font-[700] max-md:font-[500] rounded-[1rem]'>
+                    <button onClick={() => fetchNewZealandJobs()} className='w-[30%] h-[8rem] bg-yellow-500 flex flex-col items-center gap-5 cursor-pointer  max-md:text-[.6rem] py-2 px-[1rem] max-md:px-[1rem] max-md:py-[5px] text-white font-[700] max-md:font-[500] rounded-[1rem]'>
                     <div className="mr-2 mt-4">
                             <PiBriefcaseLight className="w-[2rem] h-[2rem] " />
                         </div>
