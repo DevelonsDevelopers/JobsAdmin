@@ -6,7 +6,7 @@ export const getAllJobsApi = () => async(dispatch) => {
     try{
         dispatch({ type: LOADING })
         const {data: {data} } = await api.fetchAllJobsApi()
-        dispatch ({ type: ALL_JOBS_API, payload: { jobsApi: data }})
+        dispatch ({ type: ALL_JOBS_API, payload: { apiJobs: data }})
         dispatch ({ type: SUCCESS })
     } catch(error) {
         console.log(error)

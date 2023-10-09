@@ -17,7 +17,7 @@ import cv from "./cv";
 import coverLetter from "./coverLetter";
 import offer from "./offer";
 import interaction from "./interaction";
-import jobsApi from "./jobsApi";
+import apiJob from "./apiJob";
 import jobBank from "./jobBank";
 
 export default combineReducers({
@@ -39,6 +39,6 @@ export default combineReducers({
      coverLetter,
      offer,
      interaction,
-     jobsApi,
+     apiJob,
      jobBank
      })
