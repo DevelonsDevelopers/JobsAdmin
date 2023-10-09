@@ -51,7 +51,7 @@ import CareerJetApi from "./dashboard/CareerJetApi";
 
 function App() {
   return (
-      <BrowserRouter>
+      <BrowserRouter basename={'/admin'}>
         <Routes>
           <Route path="/" element={<Dashboard/>} />
           <Route path="/cities" element={<Cities/>} />
@@ -84,7 +84,7 @@ function App() {
           <Route path="/reports/add" element={<ReportsForm/>} />
           <Route path="/tags/add" element={<TagsForm/>} />
           <Route path="/transactions/add" element={<TransactionsForm/>} />
-          
+
           <Route path="/users/edit" element={<UsersEdit />} />
           <Route path="/categories/edit" element={<CategoryEdit />} />
           <Route path="/countries/edit" element={<CountryEdit />} />
@@ -108,7 +108,7 @@ function App() {
           <Route path="/offers" element={<Offers />} />
           <Route path="/jobProvider/recommended" element={<Recommended />} />
           <Route path="/interaction" element={<ProviderInteraction />} />
-          
+
 
         </Routes>
       </BrowserRouter>
