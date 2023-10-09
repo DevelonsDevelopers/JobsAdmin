@@ -503,6 +503,44 @@ export const fetchAustraliaJobs = () => {
             console.log(error);
         });
 }
+
+export const fetchNewZealandJobs = () => {
+    let config = {
+        method: 'get',
+        maxBodyLength: Infinity,
+        url: 'http://public.api.careerjet.net/search?keywords&location=new zealand&user_ip=11.22.33.44&user_agent=Mozilla/5.0 (Windows NT 6.3; WOW64; rv:37.0) Gecko/20100101 Firefox/37.0&affid=213e213hd12344552',
+        headers: { }
+    };
+
+    axios.request(config)
+        .then((response) => {
+            console.log(JSON.stringify(response.data));
+            const array = response.data.jobs
+            for (let i = 0; i < array.length; i++) {
+                const title = array[i].title;
+                const description = array[i].description;
+                const locations = array[i].locations;
+                const site = array[i].site;
+                const url = array[i].url;
+                const date = array[i].date;
+                const company = array[i].company;
+                const salary = array[i].salary;
+                API.post(`/apiJobs/post`, {
+                    title: title,
+                    description: description,
+                    locations: locations,
+                    site: site,
+                    url: url,
+                    date: date,
+                    company: company,
+                    salary: salary
+                }).then(res => console.log(res))
+            }
+        })
+        .catch((error) => {
+            console.log(error);
+        });
+}
 //Offers
 export const fetchAllOffers = () => API.get(`/offers/all`)
 export const fetchOffersById = (id) => API.post(`/offers/id`,
