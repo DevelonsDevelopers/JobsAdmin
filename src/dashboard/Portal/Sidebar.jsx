@@ -15,16 +15,14 @@ const Sidebar = forwardRef(({ }, ref) => {
   const router = useNavigate();
   const location = useLocation();
   const [provider, setProvider] = useState(false)
-  const [providerData, setProviderData] = useState()
 
   useEffect(() => {
     const isProviderLogin = sessionStorage.getItem("PROVIDER")
     
-    if(isProviderLogin === null){
-      setProvider(false)
-      
-    } else{
+    if(isProviderLogin){
       setProvider(true)
+    } else{
+      setProvider(false)
     }
     // setProvider(isProviderLogin);
   }, [])
@@ -152,10 +150,10 @@ const Sidebar = forwardRef(({ }, ref) => {
 {/* ______________________________________________________________________________________________________________________________________________________________________________________________ */}
 
           <div className="flex flex-col mt-[2rem] ">
-            <div onClick={() => router('/')}>
+            <div onClick={() => router('/userPanel')}>
               <div
                 className={`pl-7 py-3 mx-5 rounded text-center cursor-pointer mb-1 flex items-center transition-colors 
-        ${location.pathname === "/"
+        ${location.pathname === "/userPanel"
                     ? "bg-gradient-to-r from-sky-600 to-cyan-400 text-white"
                     : "text-black font-[600]  hover:text-white  hover:bg-gradient-to-r from-sky-600 to-cyan-400"
                   }
