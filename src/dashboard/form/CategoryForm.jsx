@@ -50,11 +50,30 @@ const CategoryForm = () => {
 
   const convertToBase64 = (e) => {
     const reader = new FileReader()
-
     reader.readAsDataURL(e.target.files[0])
     reader.onload = () => {
-      // console.log('called: ', reader)
-      setBase64IMG(reader.result)
+      var img = new Image()
+      img.src = reader.result
+      img.onload = () => {
+        let scale = 1
+        if (img.width > 1200){
+          scale = 0.1
+        } else if (img.width > 1000){
+          scale = 0.15
+        } else if (img.width > 800) {
+          scale = 0.17
+        } else if (img.width > 600) {
+          scale = 0.2
+        } else if (img.width > 400) {
+          scale = 0.3
+        } else if (img.width > 200) {
+          scale = 5
+        }
+        base64Resize(reader.result, scale, function (image) {
+          console.log(image)
+          setBase64IMG(image)
+        })
+      }
     }
 
 
@@ -75,6 +94,39 @@ const CategoryForm = () => {
     //   console.log("Error:", error)
     // }
   }
+
+  function base64Resize(sourceBase64, scale , callBack) {
+
+    const _scale = scale;
+    var img = document.createElement('img');
+    img.setAttribute("src", sourceBase64);
+
+    img.onload = () => {
+      var canvas = document.createElement('canvas');
+      canvas.width = img.width * _scale;
+      canvas.height = img.height * _scale;
+
+      var ctx = canvas.getContext("2d");
+      var cw = canvas.width;
+      var ch = canvas.height;
+      var maxW = img.width * _scale;
+      var maxH = img.height * _scale;
+
+      var iw = img.width;
+      var ih = img.height;
+      var scl = Math.min((maxW / iw), (maxH / ih));
+      var iwScaled = iw * scl;
+      var ihScaled = ih * scl;
+      canvas.width = iwScaled;
+      canvas.height = ihScaled;
+      ctx.drawImage(img, 0, 0, iwScaled, ihScaled);
+      const newBase64 = canvas.toDataURL("image/png", scl);
+      console.log(newBase64)
+
+      callBack(newBase64);
+    }
+  }
+
   // console.log(Base64IMG)
 
   // console.log(handleSubmit)
