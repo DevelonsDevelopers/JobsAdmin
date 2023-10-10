@@ -1,4 +1,4 @@
-import { forwardRef, useState } from "react";
+import { forwardRef, useEffect, useState } from "react";
 import { HiOutlineHome, HiOutlineUsers } from "react-icons/hi";
 
 import { RiEarthLine, RiHomeOfficeLine, RiUserSearchLine } from 'react-icons/ri'
@@ -15,6 +15,19 @@ const Sidebar = forwardRef(({ }, ref) => {
   const router = useNavigate();
   const location = useLocation();
   const [provider, setProvider] = useState(false)
+  const [providerData, setProviderData] = useState()
+
+  useEffect(() => {
+    const isProviderLogin = sessionStorage.getItem("PROVIDER")
+    
+    if(isProviderLogin === null){
+      setProvider(false)
+      
+    } else{
+      setProvider(true)
+    }
+    // setProvider(isProviderLogin);
+  }, [])
 
   return (
     <div ref={ref} className="mt-[-4rem] fixed w-56 h-full bg-white shadow-sm max-md:w-[40%] overflow-auto no-scrollbar">

@@ -28,8 +28,8 @@ const ProviderLogin = () => {
         if(status === 'OK'){
             sessionStorage.setItem("LOGIN", "true")
             sessionStorage.setItem("ID", data.id)
-            sessionStorage.setItem("TYPE", "USER")
-            sessionStorage.setItem("USER", JSON.stringify(data))
+            sessionStorage.setItem("TYPE", "PROVIDER")
+            sessionStorage.setItem("PROVIDER", JSON.stringify(data))
             navigate('/providerPanel')
         }
     })

@@ -14,7 +14,7 @@ const Login = () => {
   useEffect(() => {
     const isLogin = sessionStorage.getItem("LOGIN")
     if (isLogin === "true") {
-      navigate('/')
+      navigate('/userPanel')
     } else {
     }
   }, [])
@@ -29,7 +29,7 @@ const Login = () => {
         sessionStorage.setItem("ID", data.id)
         sessionStorage.setItem("TYPE", "USER")
         sessionStorage.setItem("USER", JSON.stringify(data))
-        navigate('/')
+        navigate('/userPanel')
 
       }
     })

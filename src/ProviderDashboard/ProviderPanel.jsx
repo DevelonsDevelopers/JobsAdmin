@@ -95,7 +95,7 @@ const ProviderPanel = () => {
         sessionStorage.setItem("LOGIN", "false")
         sessionStorage.setItem("ID", null)
         sessionStorage.setItem("TYPE", null)
-        sessionStorage.setItem("USER", null)
+        sessionStorage.setItem("PROVIDER", null)
         router('/providerLogin')
       }
     
