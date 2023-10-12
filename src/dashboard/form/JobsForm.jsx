@@ -14,7 +14,7 @@ import { AllTags } from '../../store/actions/tagActions'
 
 
 const JobsForm = ({ }) => {
-  const [jobData, setJobData] = useState({ category: '', country: '', city: '', title: '', company: '', designation: '', salary: '', role: '', description: '', link: null, type: '', workdays: '', worktime: '', address: '', experience: '', qualification: '', skills: '', date: '', tags: '' })
+  const [jobData, setJobData] = useState({ category: '', country: '', city: '', title: '', company: '', designation: '', salary: '', role: '', description: '', link: '', type: '', workdays: '', worktime: '', address: '', experience: '', qualification: '', skills: '', date: '', tags: '' })
   const [country, setCountry] = useState()
   const [tagValue, setTagValue] = useState("");
 
@@ -39,7 +39,6 @@ const JobsForm = ({ }) => {
   const [tags, setTags] = useState([])
   const [skillValue, setSkillValue] = useState("");
   const [skills, setSkills] = useState([])
-  console.log('skills', skills)
 
 
   const dispatch = useDispatch()
@@ -59,7 +58,11 @@ const JobsForm = ({ }) => {
 
   const [inputTagValue, setInputTagValue] = useState("")
   const [selectedTagValue, setSelectedTagValue] = useState([])
-  console.log('name', selectedTagValue?.map((value) => (value.name)))
+  // console.log('name', selectedTagValue?.map((value) => (value.name)))
+
+  useEffect(() => {
+    console.log(jobData);
+  }, [jobData])
 
 
 //onChange function
@@ -270,7 +273,7 @@ return (
           <label className="block text-left tracking-wide text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4" htmlFor="grid-first-name">
             Company
           </label>
-          <Select
+          {/* <Select
             cacheOptions
             defaultOptions
             options={companies?.map((val) => {
@@ -286,7 +289,8 @@ return (
             onChange={companyChange}
             id="grid-state"
           >
-          </Select>
+          </Select> */}
+          <input type="text" name="company" id="floating_email" onChange={ClickInput} className="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="Enter Title" required />
         </div>
       </div>
 
@@ -516,6 +520,14 @@ return (
                 Designation
               </label>
               <input type="text" name="designation" id="floating_email" onChange={ClickInput} className="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="Enter Designation " required />
+            </div>
+          </div>
+          <div className="-mx-3 mt-[-1.2rem] mb-6">
+            <div className="w-[100%] px-3 mb-6 md:mb-0">
+              <label className="block tracking-wide text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4" htmlFor="grid-first-name">
+                Link
+              </label>
+              <input type="text" name="link" id="floating_email" onChange={ClickInput} className="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="Enter Designation " required />
             </div>
           </div>
         </div>
