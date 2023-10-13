@@ -2,7 +2,7 @@ import axios from "axios"
 
 
 
-const API = axios.create({ baseURL: 'http://develons.biz/api' })
+const API = axios.create({ baseURL: 'http://jobss.com.au/api' })
 
 
 //Login
