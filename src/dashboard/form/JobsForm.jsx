@@ -14,7 +14,7 @@ import { AllTags } from '../../store/actions/tagActions'
 
 
 const JobsForm = ({ }) => {
-  const [jobData, setJobData] = useState({ category: '', country: '', city: '', title: '', company: '', designation: '', salary: '', role: '', description: '', link: '', type: '', workdays: '', worktime: '', address: '', experience: '', qualification: '', skills: '', date: '', tags: '' })
+  const [jobData, setJobData] = useState({ category: '', country: '', city: '', title: '', company: 0, company_name: '', designation: '', salary: '', role: '', description: '', link: '', type: '', workdays: '', worktime: '', address: '', experience: '', qualification: '', skills: '', date: '', tags: '' })
   const [country, setCountry] = useState()
   const [tagValue, setTagValue] = useState("");
 
@@ -248,7 +248,7 @@ useEffect(() => {
 // Update Function
 const handleSubmit = (e) => {
   e.preventDefault()
-  if (jobData.category && jobData.country && jobData.city && jobData.title && jobData.company && jobData.designation && jobData.salary && jobData.role && jobData.description && jobData.type && jobData.workdays && jobData.worktime && jobData.address && jobData.experience && jobData.qualification && jobData.skills && jobData.date && jobData.tags) {
+  if (jobData.category && jobData.country && jobData.city && jobData.title && jobData.company_name && jobData.designation && jobData.salary && jobData.role && jobData.description && jobData.type && jobData.workdays && jobData.worktime && jobData.address && jobData.experience && jobData.qualification && jobData.skills && jobData.date && jobData.tags) {
     dispatch(createJob(jobData))
     navigate('/jobs')
   } else {
@@ -290,7 +290,7 @@ return (
             id="grid-state"
           >
           </Select> */}
-          <input type="text" name="company" id="floating_email" onChange={ClickInput} className="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="Enter Title" required />
+          <input type="text" name="company_name" id="floating_email" onChange={ClickInput} className="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="Enter Company" required />
         </div>
       </div>
 

@@ -2,7 +2,7 @@ import axios from "axios"
 
 
 
-const API = axios.create({ baseURL: 'http://develons.biz/api' })
+const API = axios.create({ baseURL: 'http://jobss.com.au/api' })
 
 
 //Login
@@ -161,6 +161,7 @@ export const createJob = (job) => API.post(`/jobs/create`,
         city: job.city,
         title: job.title,
         company: job.company,
+        company_name: job.company_name,
         designation: job.designation,
         salary: job.salary,
         role: job.role,

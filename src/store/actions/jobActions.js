@@ -78,8 +78,9 @@ export const getCompanybyJob = (company) => async (dispatch) => {
 
 export const createJob = (job) => async (disptach) =>{
     try{
-        const { data: { data } } = await api.createJob(job)
-        disptach({ type: CREATE_JOB, payload: data})
+        const res = await api.createJob(job)
+        console.log(res)
+        disptach({ type: CREATE_JOB, payload: res})
     }catch(error){
         console.log(error)
     }
