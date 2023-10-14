@@ -103,6 +103,26 @@ const ApiJobs = () => {
     }
   }, [nPage])
 
+
+  let pagination = [], i = 1;
+
+  while (i <= nPage) {
+
+    if (i <= 1 ||
+      i >= nPage - 2 ||
+      i >= currentPage - 1 && i <= currentPage + 1) {
+      pagination.push(i);
+      i++;
+    } else {
+      pagination.push('...');
+
+      //jump to the next page to be linked in the navigation
+      i = i < currentPage ? currentPage - 1 : nPage - 2;
+    }
+  }
+  const [select, setSelect] = useState()
+
+
   return (
     <PortalLayout>
       {loading ?
@@ -160,7 +180,7 @@ const ApiJobs = () => {
                         <td className="py-[1%] w-[2%]  max-md:text-[.7rem]  border-r-[1px] border-t-[1px]   text-center">
                           <span className=' text-[13px] font-[350]'>{value.locations}</span>
                         </td>
-                        <div className="w-4 mr-2 transform hover:text-blue-500  hover:scale-110" onClick={() => handleDelete(value.id)}>
+                        <div className="w-4 mr-2 transform hover:text-blue-500  hover:scale-110 ml-auto mr-auto mt-6 " onClick={() => handleDelete(value.id)}>
                           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="red">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
                           </svg>
@@ -195,18 +215,19 @@ const ApiJobs = () => {
                 </table>
                 <nav className='m-auto mt-5' >
                   <ul className="flex items-center -space-x-px h-10 text-base">
-                    <li>
-                      <Link to="#" onClick={prevPage} className="flex items-center justify-center px-4 h-10 ml-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-l-lg hover:bg-gray-100 hover:text-gray-700  border-gray-700 text-gray-400  hover:text-black" >
+                  <li>
+                      <Link to="#" onClick={prevPage} className="flex items-center justify-center px-4 h-10 ml-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-l-lg hover:bg-gray-100 hover:text-gray-700  " >
                         <span className="sr-only">Previous</span>
                         <svg className="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
                           <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 1 1 5l4 4" />
                         </svg>
                       </Link>
                     </li>
-                    {Numbers?.map((n, i) => (<li> <Link href="#" onClick={() => changeCurrentPage(n)} className="flex items-center justify-center px-4 h-10 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700  border-gray-700 text-gray-400  hover:text-black">{n}</Link> </li>))}
-
+                    {pagination?.map((n, index) => (<li><Link to="#" onClick={() => { setSelect(index); changeCurrentPage(n) }}
+                      className={` ${select === index ? 'bg-cyan-400 text-white hover:text-white' : 'bg-gray-100'} flex items-center justify-center px-4 h-10 leading-tight text-gray-500 border border-gray-300  hover:text-gray-700 `} >{n}</Link>
+                    </li>))}
                     <li>
-                      <Link to="#" onClick={nextPage} className="flex items-center justify-center px-4 h-10 leading-tight text-gray-500 bg-white border border-gray-300 rounded-r-lg hover:bg-gray-100 hover:text-gray-700  border-gray-700 text-gray-400  hover:text-black"> <span className="sr-only">Next</span><svg className="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10"> <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m1 9 4-4-4-4" /> </svg></Link>
+                      <Link to="#" onClick={nextPage} className="flex items-center justify-center px-4 h-10 leading-tight text-gray-500 bg-white border border-gray-300 rounded-r-lg hover:bg-gray-100 hover:text-gray-700  "> <span className="sr-only">Next</span><svg className="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10"> <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m1 9 4-4-4-4" /> </svg></Link>
                     </li>
                   </ul>
                 </nav>
