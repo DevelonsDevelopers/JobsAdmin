@@ -563,6 +563,8 @@ export const fetchInteractionByCompany = (company) => API.post('/interactions/co
     company: company
 })
 
+
+//ApiJobs
 export const fetchAllJobsApi = () => API.get(`/apiJobs/all`)
 
 
