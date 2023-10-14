@@ -3,9 +3,12 @@ import PortalLayout from '../portalLayout/PortalLayout'
 import { Area, AreaChart, Bar, BarChart, Cell, Legend, Pie, PieChart, ReferenceLine, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts'
 import { RiUserSearchLine } from 'react-icons/ri'
 import { BsSunFill } from 'react-icons/bs'
-import { getBarChart, getDashboard, getLineChart } from '../store/actions/dashboardActions'
+import { getBarChart, getCompanyDashboard, getCompanyLineChart } from '../store/actions/dashboardActions'
 import { useDispatch, useSelector } from 'react-redux'
 import moment from 'moment'
+import { GetOffersByCompany } from '../store/actions/offersActions'
+import { getRecentJob } from '../store/actions/jobActions'
+import { useNavigate } from 'react-router-dom'
 
 const ProviderPanel = () => {
     const form03 = [
@@ -27,17 +30,18 @@ const ProviderPanel = () => {
     ]
 
     const dispatch = useDispatch();
+    const router = useNavigate()
 
     const COLORS = ['#fcbf49', '#4D38E3', '#8AC942'];
 
-    const dashboard = useSelector(state => state.dashboard.dashboard)
-
-    // useEffect(() => {
-    //   console.log(dashboard)
-    // }, [dashboard])
+    const dashboard = useSelector(state => state.dashboard.companyDashboard)
 
     useEffect(() => {
-        dispatch(getDashboard())
+        console.log(dashboard)
+    }, [dashboard])
+
+    useEffect(() => {
+        dispatch(getCompanyDashboard('70'))
     }, [dispatch])
 
     const barChart = useSelector(state => state.dashboard.barchart)
@@ -50,14 +54,54 @@ const ProviderPanel = () => {
         dispatch(getBarChart())
     }, [dispatch])
 
+    const lineChart = useSelector(state => state.dashboard.companylinechart)
+
+    useEffect(() => {
+        console.log(lineChart);
+    }, [lineChart])
+
+    useEffect(() => {
+        dispatch(getCompanyLineChart('70'))
+    }, [dispatch])
+
+    const offerByCompany = useSelector(state => state.offer.offers)
+
+    useEffect(() => {
+      console.log('offerbyCompany', offerByCompany)
+    }, [offerByCompany])
+  
+    useEffect(() => {
+      dispatch(GetOffersByCompany('70'))
+    }, [dispatch])
+
+    const recentJobs = useSelector(state => state.job.jobs)
+
+    useEffect(() => {
+      console.log('recentJobs', recentJobs)
+    }, [recentJobs])
+  
+    useEffect(() => {
+      dispatch(getRecentJob())
+    }, [dispatch])
+
 
 
     const dateFormatter = (date) => {
         return moment(date).format('MMM Do YY');
     };
+
+    
+    const logout = () => {
+        sessionStorage.setItem("LOGIN", "false")
+        sessionStorage.setItem("ID", null)
+        sessionStorage.setItem("TYPE", null)
+        sessionStorage.setItem("PROVIDER", null)
+        router('/providerLogin')
+      }
+    
     return (
         <PortalLayout>
-
+            <button onClick={()=> logout()} className='bg-blue-600 text-white cursor-pointer font-[600] px-10 py-[5px] w-[100%] rounded-full mt-6'>logout</button>
             <div className='px-20 py-10 border-2 rounded-xl bg-white'>
                 <div className='grid grid-cols-2 max-md:grid-cols-1 md:w-[100%] '>
                     <div className='w-[90%] mt-4'>
@@ -68,7 +112,7 @@ const ProviderPanel = () => {
                             <h1 className='text-left ml-5 mt-10 text-[1rem] font-[600]'>Jobs</h1>
                             <h1 className='text-left ml-5  text-[2rem] font-[700] '>{dashboard?.jobs}</h1>
                         </div>
-                        <div className="bg-[#47A9FA] rounded-xl mt-6 text-white max-md:mt-0 h-[7.9rem] shadow-xl shadow-gray-300 ">
+                        <div className="bg-[#8AC942] rounded-xl mt-6 text-white max-md:mt-0 h-[7.9rem] shadow-xl shadow-gray-300 ">
                             <ul className='flex flex-row-reverse  '>
                                 <li><BsSunFill className='w-25 text-[3rem] mb-[-2rem] pr-4 pt-2 ml-auto' /></li>
                             </ul>
@@ -76,42 +120,48 @@ const ProviderPanel = () => {
                             <h1 className='text-left ml-5  text-[2rem] font-[700]'>{dashboard?.applied}</h1>
                         </div>
                     </div>
-                    <div className='border-2 p-3 h-[19rem] rounded-xl shadow-xl shadow-gray-300  max-md:mr-0'>
-                        <span className=' ml-[2rem] font-[600] text-[1rem]'>Memory Status</span>
-                        <ResponsiveContainer width="100%" height={240}>
-                            <PieChart width={430} height={200} margin={{ top: 40, right: 20, bottom: 0, left: 20 }}>
-                                {/* <Pie data={data01} dataKey="value2" nameKey="name" cx="50%" cy="50%" outerRadius={40} fill="#2994FF" /> */}
-                                <Pie data={data01} dataKey="value" nameKey="name" cx="50%" cy="50%" outerRadius={70} fill="#4D38E3" label >
-                                </Pie>
-                                <Tooltip />
+                    <div className='w-[90%] mt-4'>
+                        <div className="bg-[#4D03A3] rounded-xl text-white max-md:mt-0 h-[7.9rem] shadow-xl shadow-gray-300 ">
+                            <ul className='flex flex-row-reverse'>
+                                <li><RiUserSearchLine className='w-25 text-[3rem] mb-[-2rem] pr-4 pt-2 ml-auto' /></li>
+                            </ul>
+                            <h1 className='text-left ml-5 mt-10 text-[1rem] font-[600]'>Offers</h1>
+                            <h1 className='text-left ml-5  text-[2rem] font-[700] '>{dashboard?.offers}</h1>
+                        </div>
+                        <div className="bg-[#EEB167] rounded-xl text-white  px-2 py-4 mt-6  max-md:mt-0 h-[7.9rem] shadow-xl shadow-gray-300 ">
+                            <h1 className='text-left ml-5 text-[1.2rem] font-[700]'>Current Subscribed Plan</h1>
+                            <div className='flex justify-between mt-3' >
+                                <h1 className='text-left ml-5 text-[1rem] font-[600]'>Advance</h1>
+                                <h1 className='mr-5 text-[1rem]  font-[600]'>$ 7.60</h1>
+                            </div>
+                            <h1 className='text-right mr-5  mt-2 text-[0.9rem] font-[500]'>Paid This Month</h1>
 
-                            </PieChart>
-                        </ResponsiveContainer>
+
+                        </div>
                     </div>
+                    {/* <div className='border-2 p-3 h-[19rem] rounded-xl shadow-xl shadow-gray-300  max-md:mr-0'>
+                        <span className=' ml-[2rem] font-[600] text-[1rem]'>Memory Status</span>
+                    </div> */}
 
 
 
                 </div>
 
-                <div className=' grid grid-cols-1 max-md:grid-cols-1 justify-center gap-6 mt-5'>
-                    <div className='bg-white border-2 p-2 rounded-xl shadow-xl shadow-gray-300'>
-                        <span className=' ml-[2rem] font-[600] text-[1rem]'>Applied Users</span>
-                        <ResponsiveContainer width="100%" height={400}>
-                            <BarChart width={430} height={250} data={barChart} margin={{ top: 40, right: 20, bottom: 0, left: 20 }} >
-                                <XAxis
-                                    dataKey='date'
-                                    tickFormatter={dateFormatter}
-                                />
-                                <YAxis />
-                                <Tooltip />
-                                <Bar dataKey="applied" fill="#2994FF" />
-                                <Legend />
-                            </BarChart>
-                        </ResponsiveContainer>
-                        <span className=' ml-[1rem] !mt-[-10rem] font-[600] text-[1rem]'>Months</span>
-
-                    </div>
-
+                <div className='mt-10 w-[100%] py-2 bg-white border-2 p-8 rounded-xl shadow-xl shadow-gray-300 '>
+                    <ResponsiveContainer width="100%" height={350}>
+                        <AreaChart data={lineChart}
+                            margin={{ top: 20, right: 30, left: 0, bottom: 0 }}>
+                            <XAxis
+                                dataKey="d"
+                                tickFormatter={dateFormatter}
+                            />
+                            <YAxis />
+                            <Tooltip />
+                            <ReferenceLine x="Page C" stroke="green" label="Min PAGE" />
+                            {/* <ReferenceLine y={4000} label="Max" stroke="red" strokeDasharray="3 3" /> */}
+                            <Area type="monotone" dataKey="interactions" stroke="#2994FF" fill="#2994FF " />
+                        </AreaChart>
+                    </ResponsiveContainer>
                 </div>
                 <div className='grid grid-cols-2 max-md:grid-cols-1 gap-10'>
                     <div className=" border-2 shadow-xl bg-white p-5 rounded-xl shadow-gray-300 mt-5 max-md:mt-[-17px] ">
@@ -123,26 +173,26 @@ const ProviderPanel = () => {
                                         Job
                                     </th>
                                     <th scope="col" className="w-[30%] text-center py-3">
-                                        Type
+                                        OfferType
                                     </th>
                                     <th scope="col" className="w-[30%] text-center py-3">
-                                        Type
+                                        Date
                                     </th>
 
                                 </tr>
                             </thead>
                             <tbody>
-                                {form03.map((value, index) => (
+                                {offerByCompany?.map((value, index) => (
                                     <tr className={`bg-white border-b :bg-gray-800 :border-gray-700 ${index % 2 ? 'bg-[#A4D2FF]' : 'bg-[#FFDF9F]'}`}>
                                         <th scope="row" className="w-[30%] text-center max-md:px-2 py-4 font-medium text-gray-900 whitespace-nowrap :text-white">
                                             {value.job}
                                         </th>
                                         <td className="w-[30%] text-center py-4">
-                                            {value.report}
+                                            {value.offerType}
                                         </td>
 
                                         <td className="w-[30%] text-center py-4">
-                                            {value.date}
+                                        {moment(value.date).format('MMM Do YY')}
                                         </td>
                                     </tr>
                                 ))}
@@ -155,29 +205,29 @@ const ProviderPanel = () => {
                             <thead className="text-xs text-white uppercase bg-[#2994FF]  text-gray-400">
                                 <tr>
                                     <th scope="col" className="w-[30%] text-center py-3">
-                                        Job
+                                        Role
                                     </th>
                                     <th scope="col" className="w-[30%] text-center py-3">
-                                        Type
+                                        Qualifications
                                     </th>
                                     <th scope="col" className="w-[30%] text-center py-3">
-                                        Type
+                                        Date
                                     </th>
 
                                 </tr>
                             </thead>
                             <tbody>
-                                {form03.map((value, index) => (
+                                {recentJobs.slice(0, 3).map((value, index) => (
                                     <tr className={`bg-white border-b :bg-gray-800 :border-gray-700 ${index % 2 ? 'bg-[#A4D2FF]' : 'bg-[#FFDF9F]'}`}>
                                         <th scope="row" className="w-[30%] text-center max-md:px-2 py-4 font-medium text-gray-900 whitespace-nowrap :text-white">
-                                            {value.job}
+                                            {value.role}
                                         </th>
                                         <td className="w-[30%] text-center py-4">
-                                            {value.report}
+                                            {value.qualification}
                                         </td>
 
                                         <td className="w-[30%] text-center py-4">
-                                            {value.date}
+                                        {moment(value.date).format('MMM Do YY')}
                                         </td>
                                     </tr>
                                 ))}

@@ -1,4 +1,4 @@
-import { ALL_APPLIEDUSERS, CREATE_APPLIEDUSER, DELETE_APPLIEDUSER, GETJOB_APPLIEDUSER, GET_APPLIEDUSER, LOADING, SUCCESS, UPDATE_APPLIEDUSER } from "../../Utils/Constant"
+import { ALL_APPLIEDUSERS, CREATE_APPLIEDUSER, DELETE_APPLIEDUSER, GETCOMPANY_APPLIEDUSER, GETJOB_APPLIEDUSER, GET_APPLIEDUSER, LOADING, SUCCESS, UPDATE_APPLIEDUSER } from "../../Utils/Constant"
 import * as api from '../../store/index'
 
 
@@ -25,6 +25,14 @@ export const getJobbyAppliedUser = (job) => async (dispatch) => {
     try{
         const { data } = await api.fetchJobbyAppliedUser(job)
         dispatch({ type: GETJOB_APPLIEDUSER, payload: data})
+    } catch(error){
+        console.log(error)
+    }
+}
+export const getCompanybyAppliedUser = (company) => async (dispatch) => {
+    try{
+        const { data: {data} } = await api.fetchCompanybyAppliedUser(company)
+        dispatch({ type: GETCOMPANY_APPLIEDUSER, payload: data})
     } catch(error){
         console.log(error)
     }

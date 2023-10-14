@@ -15,6 +15,10 @@ import appliedUser from "./appliedUsers";
 import payment from "./payment";
 import cv from "./cv";
 import coverLetter from "./coverLetter";
+import offer from "./offer";
+import interaction from "./interaction";
+import apiJob from "./apiJob";
+import jobBank from "./jobBank";
 
 export default combineReducers({
      dashboard,
@@ -32,5 +36,9 @@ export default combineReducers({
      appliedUser,
      payment,
      cv,
-     coverLetter
+     coverLetter,
+     offer,
+     interaction,
+     apiJob,
+     jobBank
      })

@@ -2,19 +2,33 @@ import axios from "axios"
 
 
 
-const API = axios.create({ baseURL: 'http://develons.biz/api' })
+const API = axios.create({ baseURL: 'http://jobss.com.au/api' })
 
 
 //Login
-export const LoginUser = (email, password) => API.post(`/userAuth/login`, 
+export const LoginUser = (email, password) => API.post(`/userAuth/login`,
 {
     email: email,
     password: password
 })
 
+//Login Company
+export const CompanyLogin = (email, password) => API.post(`/providerAuth/login`,
+{
+    email: email,
+    password: password
+})
 
 //Dashboard
 export const getDashboard = () => API.get(`/dashboard/dashboard`)
+export const fetchCompanyDashboard = (company) => API.post(`/dashboard/companyDashboard`,
+{
+    company: company,
+})
+export const fetchCompanyLineChart = (company) => API.post(`/dashboard/companyLineChart`,
+{
+    company: company,
+})
 export const getpiechart = () => API.get(`/dashboard/pieChart`)
 export const lineChart = () => API.get(`/dashboard/lineChart`)
 export const barChart = () => API.get(`/dashboard/barChart`)
@@ -116,6 +130,8 @@ export const deleteCity = (id) => API.delete(`/cities/delete`, {
 })
 //Jobs
 export const fetchAllJobs = () => API.post(`/jobs/all`)
+export const fetchJobs = () => API.post(`/jobs/jobs`)
+export const fetchRecentJobs = () => API.get(`/jobs/recent`)
 export const fetchJob = (id) => API.post(`/jobs/get`,
     {
         id: id,
@@ -135,10 +151,8 @@ export const fetchCitybyJob = (id) => API.get(`/jobs/city`, {
         id: id,
     }
 })
-export const fetchCompanybyJob = (id) => API.get(`/jobs/company`, {
-    data: {
-        id: id,
-    }
+export const fetchCompanybyJob = (company) => API.post(`/jobs/company`, {
+        company: company,
 })
 export const createJob = (job) => API.post(`/jobs/create`,
     {
@@ -147,6 +161,7 @@ export const createJob = (job) => API.post(`/jobs/create`,
         city: job.city,
         title: job.title,
         company: job.company,
+        company_name: job.company_name,
         designation: job.designation,
         salary: job.salary,
         role: job.role,
@@ -293,6 +308,9 @@ export const fetchReport = (id) => API.post(`/reports/get`,
     })
 // Seekers
 export const fetchAllSeekers = () => API.get(`/seekers/all`)
+export const fetchSeekerRecommended = (job) => API.post(`/seekers/recommended`, {
+    job: job,
+})
 export const fetchSeeker = (id) => API.post(`/seekers/get`,
     {
         id: id,
@@ -393,6 +411,9 @@ export const fetchJobbyAppliedUser = (job) => API.get(`/applied/job`, {
         job: job,
     }
 })
+export const fetchCompanybyAppliedUser = (company) => API.post(`/applied/company`, {
+        company: company,
+})
 export const createAppliedUser = (appliedUser) => API.post(`/applied/create`, {
     user: appliedUser.user,
     date: appliedUser.date,
@@ -438,16 +459,131 @@ export const updatePaypal = (paypal_client_id,paypal_secret_id,paypal_sandbox_ur
         paypal_sandbox_url: paypal_sandbox_url,
         paypal_return_url: paypal_return_url,
         paypal_cancel_url: paypal_cancel_url
-    
+
 })
 export const updateStripe = (stripe_publisher_key,stripe_secret_key,stripe_api_version) => API.put(`/payment/stripe`, {
         stripe_publisher_key: stripe_publisher_key,
         stripe_secret_key: stripe_secret_key,
         stripe_api_version: stripe_api_version
-    
+
+})
+
+export const fetchAustraliaJobs = () => {
+    let config = {
+        method: 'get',
+        maxBodyLength: Infinity,
+        url: 'http://public.api.careerjet.net/search?keywords&location=australia&user_ip=11.22.33.44&user_agent=Mozilla/5.0 (Windows NT 6.3; WOW64; rv:37.0) Gecko/20100101 Firefox/37.0&affid=213e213hd12344552',
+        headers: { }
+    };
+
+    axios.request(config)
+        .then((response) => {
+            console.log(JSON.stringify(response.data));
+            const array = response.data.jobs
+            for (let i = 0; i < array.length; i++) {
+                const title = array[i].title;
+                const description = array[i].description;
+                const locations = array[i].locations;
+                const site = array[i].site;
+                const url = array[i].url;
+                const date = array[i].date;
+                const company = array[i].company;
+                const salary = array[i].salary;
+                API.post(`/apiJobs/post`, {
+                    title: title,
+                    description: description,
+                    locations: locations,
+                    site: site,
+                    url: url,
+                    date: date,
+                    company: company,
+                    salary: salary
+                }).then(res => console.log(res))
+            }
+        })
+        .catch((error) => {
+            console.log(error);
+        });
+}
+
+export const fetchNewZealandJobs = () => {
+    let config = {
+        method: 'get',
+        maxBodyLength: Infinity,
+        url: 'http://public.api.careerjet.net/search?keywords&location=new zealand&user_ip=11.22.33.44&user_agent=Mozilla/5.0 (Windows NT 6.3; WOW64; rv:37.0) Gecko/20100101 Firefox/37.0&affid=213e213hd12344552',
+        headers: { }
+    };
+
+    axios.request(config)
+        .then((response) => {
+            console.log(JSON.stringify(response.data));
+            const array = response.data.jobs
+            for (let i = 0; i < array.length; i++) {
+                const title = array[i].title;
+                const description = array[i].description;
+                const locations = array[i].locations;
+                const site = array[i].site;
+                const url = array[i].url;
+                const date = array[i].date;
+                const company = array[i].company;
+                const salary = array[i].salary;
+                API.post(`/apiJobs/post`, {
+                    title: title,
+                    description: description,
+                    locations: locations,
+                    site: site,
+                    url: url,
+                    date: date,
+                    company: company,
+                    salary: salary
+                }).then(res => console.log(res))
+            }
+        })
+        .catch((error) => {
+            console.log(error);
+        });
+}
+//Offers
+export const fetchAllOffers = () => API.get(`/offers/all`)
+export const fetchOffersById = (id) => API.post(`/offers/id`,
+{
+        id: id,
+})
+export const fetchOfferByCompany = (company) => API.post('/offers/company', {
+    company: company
+})
+
+//Interactions
+export const fetchAllInteraction = () => API.get(`/interactions/all`)
+export const fetchInteractionById = (id) => API.post(`/interactions/get`,
+{
+        id: id,
+})
+export const fetchInteractionByCompany = (company) => API.post('/interactions/company', {
+    company: company
 })
 
 
+//ApiJobs
+export const fetchAllJobsApi = () => API.get(`/apiJobs/all`)
 
 
+//jobBank
+export const fetchAllJobBanks = () => API.get(`/jobBanks/all`)
+export const createJobBank = (email) => API.post(`/jobBanks/create`,
+    {
+        email: email,
+    }
+)
+export const updateJobBank = (id,email) => API.put(`/jobBanks/:update`,
+    {
+        id: id,
+        email: email
+    })
+
+export const deleteJobBank = (id) => API.delete(`/jobBanks/:delete`, {
+    data: {
+        id: id
+    }
+})
 // export const fetchAllSeekers = () => API.get(`/seekers/all`)

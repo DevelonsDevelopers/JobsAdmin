@@ -50,11 +50,30 @@ const CategoryForm = () => {
 
   const convertToBase64 = (e) => {
     const reader = new FileReader()
-
     reader.readAsDataURL(e.target.files[0])
     reader.onload = () => {
-      // console.log('called: ', reader)
-      setBase64IMG(reader.result)
+      var img = new Image()
+      img.src = reader.result
+      img.onload = () => {
+        let scale = 1
+        if (img.width > 1200){
+          scale = 0.1
+        } else if (img.width > 1000){
+          scale = 0.15
+        } else if (img.width > 800) {
+          scale = 0.17
+        } else if (img.width > 600) {
+          scale = 0.2
+        } else if (img.width > 400) {
+          scale = 0.3
+        } else if (img.width > 200) {
+          scale = 5
+        }
+        base64Resize(reader.result, scale, function (image) {
+          console.log(image)
+          setBase64IMG(image)
+        })
+      }
     }
 
 
@@ -75,6 +94,39 @@ const CategoryForm = () => {
     //   console.log("Error:", error)
     // }
   }
+
+  function base64Resize(sourceBase64, scale , callBack) {
+
+    const _scale = scale;
+    var img = document.createElement('img');
+    img.setAttribute("src", sourceBase64);
+
+    img.onload = () => {
+      var canvas = document.createElement('canvas');
+      canvas.width = img.width * _scale;
+      canvas.height = img.height * _scale;
+
+      var ctx = canvas.getContext("2d");
+      var cw = canvas.width;
+      var ch = canvas.height;
+      var maxW = img.width * _scale;
+      var maxH = img.height * _scale;
+
+      var iw = img.width;
+      var ih = img.height;
+      var scl = Math.min((maxW / iw), (maxH / ih));
+      var iwScaled = iw * scl;
+      var ihScaled = ih * scl;
+      canvas.width = iwScaled;
+      canvas.height = ihScaled;
+      ctx.drawImage(img, 0, 0, iwScaled, ihScaled);
+      const newBase64 = canvas.toDataURL("image/png", scl);
+      console.log(newBase64)
+
+      callBack(newBase64);
+    }
+  }
+
   // console.log(Base64IMG)
 
   // console.log(handleSubmit)
@@ -106,14 +158,22 @@ const CategoryForm = () => {
 
             <div className=" w-full max-md:mt-[-25px]">
               <label htmlFor="dropzone-file" className="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 ">
+                {Base64IMG ?
+                  <>
+                  <img src={Base64IMG.toString()} alt="" className='h-full w-full object-cover rounded-md' />
+                  <input  id="dropzone-file" type="file" name='image' className="hidden" onChange={convertToBase64} />
+                  </> : 
+                  <>
                 <div className="flex flex-col items-center justify-center pt-5 pb-6">
                   <svg className="w-8 h-8 mb-4 text-gray-500 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
                     <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2" />
                   </svg>
                   <p className="mb-2 text-sm text-gray-500 "><span className="font-semibold">Click to upload</span> or drag and drop</p>
                   <p className="text-xs text-gray-500 ">SVG, PNG, JPG or GIF</p>
+                  <input  id="dropzone-file" type="file" name='image' className="hidden" onChange={convertToBase64} />
                 </div>
-                <input id="dropzone-file" type="file" name='image' className="hidden" onChange={convertToBase64} />
+                  </>
+                  }
               </label>
             </div>
 

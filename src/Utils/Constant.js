@@ -4,6 +4,8 @@ export const ERROR = "ERROR"
 
 //DASHBOARD:====
 export const GET_DASHBOARD = "GET_DASHBOARD";
+export const GETCOMPANY_DASHBOARD = "GETCOMPANY_DASHBOARD";
+export const GETCOMPANY_LINECHART = "GETCOMPANY_LINECHART";
 export const GET_PIECHART = "GET_PIECHART";
 export const GET_LINECHART = "GET_LINECHART";
 export const GET_BARCHART = "GET_BARCHART";
@@ -32,7 +34,9 @@ export const CREATE_CITY = "CREATE_CITY";
 
 // JOBS:=====
 export const ALL_JOBS = "ALL_JOBS";
+export const GET_JOBS = "GET_JOBS";
 export const GET_JOB = "GET_JOB";
+export const RECENT_JOB = "RECENT_JOB";
 export const GETCATEGORY_JOB = "GETCATEGORY_JOB";
 export const GETCOUNTRY_JOB = "GETCOUNTRY_JOB";
 export const GETCITY_JOB = "GETCITY_JOB";
@@ -81,6 +85,7 @@ export const REPORT_STATUS = "CITY_STATUS";
 
 // SEEKERS:=====
 export const ALL_SEEKERS = "ALL_SEEKERS";
+export const RECOMMENDED_SEEKER = "RECOMMENDED_SEEKER";
 export const GET_SEEKER = "GET_SEEKER";
 export const UPDATE_SEEKER = "UPDATE_SEEKER";
 export const DELETE_SEEKER = "DELETE_SEEKER";
@@ -125,10 +130,16 @@ export const USER_STATUS = "CITY_STATUS";
 export const ALL_APPLIEDUSERS = "ALL_APPLIEDUSERS";
 export const GET_APPLIEDUSER = "GET_APPLIEDUSER";
 export const GETJOB_APPLIEDUSER = "GETJOB_APPLIEDUSER";
+export const GETCOMPANY_APPLIEDUSER = "GETCOMPANY_APPLIEDUSER";
 export const UPDATE_APPLIEDUSER = "UPDATE_APPLIEDUSER";
 export const DELETE_APPLIEDUSER = "DELETE_APPLIEDUSER";
 export const CREATE_APPLIEDUSER = "CREATE_APPLIEDUSER";
 export const APPLIEDUSER_STATUS = "CITY_STATUS";
+
+// Interactions: ========
+export const ALL_INTERACTIONS = "ALL_INTERACTIONS";
+export const GET_INTERACTIONS = "GET_INTERACTIONS";
+export const GETCOMPANY_INTERACTIONS = "GETCOMPANY_INTERACTIONS";
 
 //Payment
 export const ALL_PAYMENT = "ALL_PAYMENT";
@@ -138,7 +149,20 @@ export const UPDATE_PAYMENT = "UPDATE_PAYMENT";
 export const UPDATE_PAYPAL = "UPDATE_PAYPAL";
 export const UPDATE_STRIPE = "UPDATE_STRIPE";
 
+//Offers
+export const ALL_OFFERS = "ALL_OFFERS";
+export const GET_OFFERS = "GET_OFFERS";
+export const OFFERS_BY_COMPANY = "OFFERS_BY_COMPANY";
 
+
+//JobsApi
+export const ALL_JOBS_API = "ALL_JOBS_API";
+
+//JobsBank
+export const ALL_JOBBANKS = "ALL_JOBBANKS";
+export const CREATE_JOBBANK = "CREATE_JOBBANK";
+export const UPDATE_JOBBANK = "UPDATE_JOBBANK";
+export const DELETE_JOBBANK = "DELETE_JOBBANK";
 
 
 

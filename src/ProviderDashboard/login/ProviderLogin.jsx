@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
-import { LoginUser } from "../../store"
+import { CompanyLogin } from "../../store"
 import { AiOutlineMail } from 'react-icons/ai'
 import { RiLockPasswordLine } from 'react-icons/ri'
 
-const Login = () => {
+const ProviderLogin = () => {
   const [loginData, setLoginData] = useState({ email: '', password: '' })
   const navigate = useNavigate()
   const handleChange = (e) => {
@@ -14,24 +14,24 @@ const Login = () => {
   useEffect(() => {
     const isLogin = sessionStorage.getItem("LOGIN")
     if (isLogin === "true") {
-      navigate('/userPanel')
+      navigate('/providerPanel')
     } else {
     }
   }, [])
 
   const login = () => {
-    LoginUser(loginData.email, loginData.password).then(res => {
-      const { data: { data } } = res
-      const { data: { status } } = res
-      console.log(status)
-      if (status === 'OK') {
-        sessionStorage.setItem("LOGIN", "true")
-        sessionStorage.setItem("ID", data.id)
-        sessionStorage.setItem("TYPE", "USER")
-        sessionStorage.setItem("USER", JSON.stringify(data))
-        navigate('/userPanel')
-
-      }
+    CompanyLogin(loginData.email, loginData.password).then(res => {
+        console.log(res)
+        const { data: { data }} = res;
+        const { data: {status}} = res;
+        console.log('res', status)
+        if(status === 'OK'){
+            sessionStorage.setItem("LOGIN", "true")
+            sessionStorage.setItem("ID", data.id)
+            sessionStorage.setItem("TYPE", "PROVIDER")
+            sessionStorage.setItem("PROVIDER", JSON.stringify(data))
+            navigate('/providerPanel')
+        }
     })
   }
 
@@ -53,7 +53,7 @@ const Login = () => {
             <center className="w-[40%] max-md:w-[90%] max-md:m-auto">
               <div className=' p-[10px]'><br />
                 <h1 className='text-[22px]'>Welcome Back :)</h1><br />
-                <h1 className='text-[13px] text-gray-600 font-[600]'>To keep connected with us please login with your personal information by email and password</h1><br />
+                <h1 className='text-[13px] text-gray-600 font-[600]'>To keep connected with us please login with your personal information by email and password on Provider Panel</h1><br />
                 <input type="email" name="email" onChange={handleChange} placeholder='Enter Your Email' className='shadow-lg rounded-[12px] text-[.9rem] text-gray-700 font-[500] w-[110%] max-md:w-[100%] pl-[50px] border-2 pt-[7px] pb-[7px]' /><br />
                 <div className="relative top-[-1.9rem] left-[-44%] w-[10%]"> <AiOutlineMail />
                 </div>
@@ -83,4 +83,4 @@ const Login = () => {
   )
 }
 
-export default Login
+export default ProviderLogin

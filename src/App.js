@@ -38,15 +38,28 @@ import Cv from "./components/Cv";
 import Test from "./dashboard/Test";
 import Ads from "./dashboard/Ads";
 import CoverLetter from "./components/CoverLetter";
-import ProviderPanel from "./dashboard/ProviderPanel";
+import ProviderPanel from "./ProviderDashboard/ProviderPanel";
+import Offers from "./ProviderDashboard/Offers";
+import Recommended from "./ProviderDashboard/Recommended";
+import Interactions from "./ProviderDashboard/Interactions";
+import AppliedUserProvider from "./ProviderDashboard/AppliedUser";
+import ProviderInteraction from "./ProviderDashboard/Interactions";
+import JobsProvider from "./ProviderDashboard/JobsProvider";
+import ProviderLogin from "./ProviderDashboard/login/ProviderLogin";
+import CareerJetApi from "./dashboard/CareerJetApi";
+import ApiJobs from "./dashboard/ApiJobs";
+import Email from "./dashboard/Email";
+import EmailForm from "./dashboard/form/EmailForm";
+import JobBankEdit from "./dashboard/edit/JobBankEdit";
 
 function App() {
   return (
-      <BrowserRouter>
+      <BrowserRouter basename={'/admin'}>
         <Routes>
-          <Route path="/" element={<Dashboard/>} />
+          <Route path="/userPanel" element={<Dashboard/>} />
           <Route path="/cities" element={<Cities/>} />
           <Route path="/categories" element={<Categories />} />
+          <Route path="/jobbank" element={<Email />} />
           <Route path="/companies" element={<Companies/>} />
           <Route path="/countries" element={<Countries/>} />
           <Route path="/jobs" element={<Jobs/>} />
@@ -59,11 +72,15 @@ function App() {
           <Route path="/users" element={<Users/>} />
           <Route path="/payment" element={<PaymentGateway/>} />
           <Route path="/ads" element={<Ads/>} />
+          {/* <Route path="/jobsAPI" element={<JobsAPI/>} /> */}
+          <Route path="/jobsAPI" element={<ApiJobs/>} />
+          <Route path="/careerJetApi" element={<CareerJetApi/>} />
 
 
 
           <Route path="/users/add" element={<UserForm/>} />
           <Route path="/categories/add" element={<CategoryForm/>} />
+          <Route path="/jobBanks/add" element={<EmailForm/>} />
           <Route path="/cities/add" element={<CitiesForm/>} />
           <Route path="/companies/add" element={<CompaniesForm/>} />
           <Route path="/jobs/add" element={<JobsForm/>} />
@@ -73,9 +90,10 @@ function App() {
           <Route path="/reports/add" element={<ReportsForm/>} />
           <Route path="/tags/add" element={<TagsForm/>} />
           <Route path="/transactions/add" element={<TransactionsForm/>} />
-          
+
           <Route path="/users/edit" element={<UsersEdit />} />
           <Route path="/categories/edit" element={<CategoryEdit />} />
+          <Route path="/jobBanks/edit" element={<JobBankEdit />} />
           <Route path="/countries/edit" element={<CountryEdit />} />
           <Route path="/cities/edit" element={<CitiesEdit />} />
           <Route path="/companies/edit" element={<CompanyEdit />} />
@@ -88,7 +106,17 @@ function App() {
           <Route path="/cv" element={<Cv />} />
           <Route path="/coverLetter" element={<CoverLetter />}/>
           <Route path="/test" element={<Test />} />
+
+
+          <Route path="/providerLogin" element={<ProviderLogin />} />
           <Route path="/providerPanel" element={<ProviderPanel />} />
+          <Route path="/appliedProvider" element={<AppliedUserProvider />} />
+          <Route path="/jobProvider" element={<JobsProvider />} />
+          <Route path="/offers" element={<Offers />} />
+          <Route path="/jobProvider/recommended" element={<Recommended />} />
+          <Route path="/interaction" element={<ProviderInteraction />} />
+
+
         </Routes>
       </BrowserRouter>
   );

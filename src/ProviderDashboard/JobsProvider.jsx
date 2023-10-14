@@ -2,14 +2,14 @@ import React, { useEffect, useState } from 'react'
 import PortalLayout from '../portalLayout/PortalLayout'
 import DeleteModal from '../components/DeleteModal';
 import { Link, useNavigate } from 'react-router-dom';
-import JobsView from './view/JobsView';
 import { useDispatch, useSelector } from 'react-redux';
-import { AllJobs, DeleteJob, getJobs, jobStatus } from '../store/actions/jobActions';
+import { DeleteJob, getCompanybyJob, jobStatus } from '../store/actions/jobActions';
+import JobsView from '../dashboard/view/JobsView';
 
 
 
 
-const Jobs = () => {
+const JobsProvider = () => {
 
   const [open, setOpen] = useState(false);
   const [openView, setOpenView] = useState(false);
@@ -17,7 +17,7 @@ const Jobs = () => {
   const [data, setData] = useState();
   const [deleteId, setDeleteId] = useState();
   const [search, setSearch] = useState('')
-  
+
   const dispatch = useDispatch()
   const router = useNavigate();
 
@@ -29,38 +29,26 @@ const Jobs = () => {
 
   const loading = useSelector(state => state.job.isLoading)
   const [nodata, setNodata] = useState(false)
-  
-  // //fetching jobs
-  // const jobs = useSelector(state => state.job.jobs)
-  // useEffect(() => {
-  //   console.log(jobs)
-  // }, [jobs])
-
-  // useEffect(() => {
-  //   if (jobs !== null || jobs !== undefined || jobs.length !== 0) {
-  //     dispatch(AllJobs())
-  //   }
-  // }, [dispatch])
 
   //fetching jobs
-  const jobs = useSelector(state => state.job.jobs)
+  const companybyjob = useSelector(state => state.job.jobs)
   useEffect(() => {
-    console.log('jobs', jobs)
-  }, [jobs])
+    console.log('jobByComp', companybyjob)
+  }, [companybyjob])
 
   useEffect(() => {
-    if (jobs !== null || jobs !== undefined || jobs.length !== 0) {
-      dispatch(getJobs())
+    if (companybyjob !== null || companybyjob !== undefined || companybyjob.length !== 0) {
+      dispatch(getCompanybyJob('70'))
     }
   }, [dispatch])
 
   //nodata
   useEffect(() => {
-    if (jobs?.length === 0) {
+    if (companybyjob?.length === 0) {
       setNodata(true)
     }
-    else { setNodata(false) }
-  }, [jobs])
+    else { setData(false) }
+  }, [companybyjob])
   //delete
   const handleDelete = (id) => {
     setDeleteId(id)
@@ -76,10 +64,14 @@ const Jobs = () => {
   const handleEdit = (id) => {
     router("/jobs/edit", { state: { ID: id } })
   }
+
+  const handleRecommendedUsers = (id) => {
+    console.log(id)
+    router("/jobProvider/recommended", { state: { ID: id } })
+  }
   //status update
   const UpdateStatus = (id, status) => {
     console.log(id, status)
-
     let st = 0;
     if (status === 1) {
       st = 0;
@@ -106,11 +98,11 @@ const Jobs = () => {
   }, [lastIndex])
 
   useEffect(() => {
-    if (jobs) {
-      setRecords(jobs.slice(firstIndex, lastIndex));
-      setPage(Math.ceil(jobs.length / numbersPerPage));
+    if (companybyjob) {
+      setRecords(companybyjob?.slice(firstIndex, lastIndex));
+      setPage(Math.ceil(companybyjob.length / numbersPerPage));
     }
-  }, [jobs, firstIndex])
+  }, [companybyjob, firstIndex])
 
   useEffect(() => {
     if (nPage) {
@@ -193,6 +185,10 @@ const Jobs = () => {
                       </td>
 
                       <td className="py-[2%] max-md:text-[.7rem] w-[2%] border-r-[1px] border-t-[1px]   text-center">
+                        <button onClick={() => handleRecommendedUsers(value.id)} className='bg-green-600 text-white font-[500] py-[3px] px-[10px] max-md:w-[8%] rounded-xl text-[0.6rem] max-md:py-1 max-md:px-2 max-md:text-[0.6rem] cursor-pointer'>Recommended</button>
+                      </td>
+
+                      <td className="py-[2%] max-md:text-[.7rem] w-[2%] border-r-[1px] border-t-[1px]   text-center">
                         <span onClick={() => UpdateStatus(value.id, value.status)} className={`bg-green-600 text-white font-[500] py-[3px] px-[10px] max-md:w-[8%] rounded-xl text-[0.6rem] max-md:py-1 max-md:px-2 max-md:text-[0.6rem] cursor-pointer ${value.status === 1 ? 'bg-green-500' : 'bg-red-500'} `}>{value.status === 1 ? 'Enable' : 'Disable'}</span>
                       </td>
                       <td className="py-[2%] w-[2%] max-md:text-[.7rem]  border-r-[1px] border-t-[1px]   text-center">
@@ -260,4 +256,4 @@ const Jobs = () => {
   }
 }
 
-export default Jobs
+export default JobsProvider
