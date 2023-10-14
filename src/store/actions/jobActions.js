@@ -16,8 +16,8 @@ export const AllJobs = () => async (dispatch) => {
 
 export const getJobs = () => async (dispatch) => {
     try{
-        const { data: { data } } = await api.fetchRecentJobs()
-        dispatch({ type: GET_JOBS, payload: {jobs: data}})
+        const { data: { data } } = await api.fetchJobs()
+        dispatch({ type: GET_JOBS, payload: data})
     }catch(error) {
         console.log(error)
     }

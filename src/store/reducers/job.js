@@ -12,7 +12,7 @@ const job = (state = { isLoading: true, success: false, error: false, jobs: [] }
         case ALL_JOBS:
             return { ...state, jobs: action.payload.jobs }
         case GET_JOBS:
-            return { ...state, jobs: action.payload.jobs }
+            return { ...state, jobs: action.payload }
         case GET_JOB:
             return { ...state, job: action.payload }
         case RECENT_JOB:

@@ -45,7 +45,7 @@ const Jobs = () => {
   //fetching jobs
   const jobs = useSelector(state => state.job.jobs)
   useEffect(() => {
-    console.log(jobs)
+    console.log('jobs', jobs)
   }, [jobs])
 
   useEffect(() => {
