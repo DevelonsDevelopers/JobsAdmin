@@ -1,4 +1,4 @@
-import { ALL_JOBS, CREATE_JOB, DELETE_JOB, GETCATEGORY_JOB, GETCITY_JOB, GETCOMPANY_JOB, GETCOUNTRY_JOB, GET_JOB, JOBS_STATUS, LOADING, RECENT_JOB, SUCCESS, UPDATE_JOB } from "../../Utils/Constant";
+import { ALL_JOBS, CREATE_JOB, DELETE_JOB, GETCATEGORY_JOB, GETCITY_JOB, GETCOMPANY_JOB, GETCOUNTRY_JOB, GET_JOB, GET_JOBS, JOBS_STATUS, LOADING, RECENT_JOB, SUCCESS, UPDATE_JOB } from "../../Utils/Constant";
 import * as api from '../../store/index'
 
 
@@ -14,6 +14,14 @@ export const AllJobs = () => async (dispatch) => {
     }
 }
 
+export const getJobs = () => async (dispatch) => {
+    try{
+        const { data: { data } } = await api.fetchRecentJobs()
+        dispatch({ type: GET_JOBS, payload: {jobs: data}})
+    }catch(error) {
+        console.log(error)
+    }
+}
 export const getRecentJob = () => async (dispatch) => {
     try{
         const { data: { data } } = await api.fetchRecentJobs()

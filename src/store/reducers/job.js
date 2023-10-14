@@ -1,4 +1,4 @@
-import { ALL_JOBS, CREATE_JOB, DELETE_JOB, ERROR, GETCATEGORY_JOB, GETCITY_JOB, GETCOMPANY_JOB, GETCOUNTRY_JOB, GET_JOB, JOBS_STATUS, LOADING, RECENT_JOB, SUCCESS, UPDATE_JOB } from "../../Utils/Constant"
+import { ALL_JOBS, CREATE_JOB, DELETE_JOB, ERROR, GETCATEGORY_JOB, GETCITY_JOB, GETCOMPANY_JOB, GETCOUNTRY_JOB, GET_JOB, GET_JOBS, JOBS_STATUS, LOADING, RECENT_JOB, SUCCESS, UPDATE_JOB } from "../../Utils/Constant"
 
 
 const job = (state = { isLoading: true, success: false, error: false, jobs: [] }, action) => {
@@ -10,6 +10,8 @@ const job = (state = { isLoading: true, success: false, error: false, jobs: [] }
         case ERROR:
             return { ...state, isLoading: false, success: false, error: true }
         case ALL_JOBS:
+            return { ...state, jobs: action.payload.jobs }
+        case GET_JOBS:
             return { ...state, jobs: action.payload.jobs }
         case GET_JOB:
             return { ...state, job: action.payload }

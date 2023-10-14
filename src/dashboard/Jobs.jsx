@@ -4,7 +4,7 @@ import DeleteModal from '../components/DeleteModal';
 import { Link, useNavigate } from 'react-router-dom';
 import JobsView from './view/JobsView';
 import { useDispatch, useSelector } from 'react-redux';
-import { AllJobs, DeleteJob, jobStatus } from '../store/actions/jobActions';
+import { AllJobs, DeleteJob, getJobs, jobStatus } from '../store/actions/jobActions';
 
 
 
@@ -30,6 +30,18 @@ const Jobs = () => {
   const loading = useSelector(state => state.job.isLoading)
   const [nodata, setNodata] = useState(false)
   
+  // //fetching jobs
+  // const jobs = useSelector(state => state.job.jobs)
+  // useEffect(() => {
+  //   console.log(jobs)
+  // }, [jobs])
+
+  // useEffect(() => {
+  //   if (jobs !== null || jobs !== undefined || jobs.length !== 0) {
+  //     dispatch(AllJobs())
+  //   }
+  // }, [dispatch])
+
   //fetching jobs
   const jobs = useSelector(state => state.job.jobs)
   useEffect(() => {
@@ -38,7 +50,7 @@ const Jobs = () => {
 
   useEffect(() => {
     if (jobs !== null || jobs !== undefined || jobs.length !== 0) {
-      dispatch(AllJobs())
+      dispatch(getJobs())
     }
   }, [dispatch])
 

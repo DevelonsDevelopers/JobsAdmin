@@ -34,6 +34,7 @@ export const CREATE_CITY = "CREATE_CITY";
 
 // JOBS:=====
 export const ALL_JOBS = "ALL_JOBS";
+export const GET_JOBS = "GET_JOBS";
 export const GET_JOB = "GET_JOB";
 export const RECENT_JOB = "RECENT_JOB";
 export const GETCATEGORY_JOB = "GETCATEGORY_JOB";
