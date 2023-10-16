@@ -127,9 +127,9 @@ const categories = useSelector(state => state.category.categories)
 //     console.log(categories)
 // }, [categories])
 
-// useEffect(() => {
-//   dispatch(AllCategories())
-// }, [dispatch])
+useEffect(() => {
+  dispatch(AllCategories())
+}, [dispatch])
 
 const citybyCountry = useSelector(state => state.city.citybycountry)
 // useEffect(() => {
