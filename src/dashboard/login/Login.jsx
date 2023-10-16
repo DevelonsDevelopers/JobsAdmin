@@ -54,26 +54,13 @@ const Login = () => {
               <div className=' p-[10px]'><br />
                 <h1 className='text-[22px]'>Welcome Back :)</h1><br />
                 <h1 className='text-[13px] text-gray-600 font-[600]'>To keep connected with us please login with your personal information by email and password</h1><br />
-                <input type="email" name="email" onChange={handleChange} placeholder='Enter Your Email' className='shadow-lg rounded-[12px] text-[.9rem] text-gray-700 font-[500] w-[110%] max-md:w-[100%] pl-[50px] border-2 pt-[7px] pb-[7px]' /><br />
+                <input type="email" name="email" onChange={handleChange} placeholder='Enter Your Email' className='shadow-lg rounded-[12px] text-[.9rem] text-gray-700 font-[500] w-[100%] max-md:w-[100%] pl-[50px] border-2 pt-[7px] pb-[7px]' /><br />
                 <div className="relative top-[-1.9rem] left-[-44%] w-[10%]"> <AiOutlineMail />
                 </div>
-                <input type="password" name="password" onChange={handleChange} placeholder='Password' className='shadow-lg rounded-[12px] text-[.9rem] text-gray-700 font-[500] w-[110%] max-md:w-[100%] pl-[50px] border-2 pt-[7px] pb-[7px]' /><br />
+                <input type="password" name="password" onChange={handleChange} placeholder='Password' className='shadow-lg rounded-[12px] text-[.9rem] text-gray-700 font-[500] w-[100%] max-md:w-[100%] pl-[50px] border-2 pt-[7px] pb-[7px]' /><br />
                 <div className="relative top-[-1.9rem] left-[-44%] w-[10%]"> <RiLockPasswordLine />
                 </div>
-                <div className="flex">
-                  <div className="flex gap-2">
-                    <input type="checkbox" name="" id="" />
-                    <p className="text-[.9rem] mt-[3px] font-[500]">Remember me</p>
-                  </div>
-                  <Link className="ml-auto text-[.9rem] hover:underline text-blue-600"> Forgot Password </Link>
-                </div>
                 <input type='submit' value='Log In' onClick={() => login()} className='bg-blue-600 text-white cursor-pointer font-[600] px-10 py-[5px] w-[100%] rounded-full mt-6' />
-                <h1 className="text-[.9rem] text-gray-700 font-[600] text-left mt-4">You can also join with</h1>
-                <div className="flex gap-2 mt-4">
-                  <img src='./assets/google.png' alt="" className="w-10 h-10 cursor-pointer rounded-full border-2 border-gray-100" />
-                  <img src='./assets/facebook.png' alt="" className="w-10 h-10 cursor-pointer rounded-full border-2 border-gray-100" />
-                </div>
-
               </div>
             </center>
           </div>

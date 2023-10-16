@@ -149,7 +149,7 @@ const Jobs = () => {
         </div>
         </center>
         : <>
-          {nodata ? <center> <div className=" pt-[10%]" > <img src="/assets/nodata3.png" alt="no image" className="opacity-75 w-[60%] h-[50%] mt-[-10%]" />
+          {nodata ? <center> <div className=" pt-[10%]" > <img src="./assets/nodata3.png" alt="no image" className="opacity-75 w-[60%] h-[50%] mt-[-10%]" />
             <h1 className=" text-[2rem] text-gray-500 mt-[-4rem] pt-10" >No Data Found</h1>
             <div className='mt-[2rem]'>   <Link to='/jobs/add' className=" py-[1.3%] px-[3%]  text-white text-sm bg-blue-600  rounded-[2rem] "  >   Add New  </Link>
             </div>
@@ -206,7 +206,7 @@ const Jobs = () => {
                         <span className="font-bold max-md:text-[.7rem] text-[13px] font-[300] ">{value.city_name}</span>
                       </td>
                       <td className="py-[2%] w-[3%]   border-r-[1px] border-t-[1px]   text-center">
-                        <span className="font-bold max-md:text-[.7rem] text-[13px] font-[300] ">{value.company_name}</span>
+                        <span className="font-bold max-md:text-[.7rem] text-[13px] font-[300] ">{value.company_n}</span>
                       </td>
 
                       <td className="py-[1%] w-[2%]  max-md:text-[.7rem]  border-r-[1px] border-t-[1px]   text-center">

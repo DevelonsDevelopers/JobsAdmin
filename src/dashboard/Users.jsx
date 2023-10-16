@@ -143,7 +143,7 @@ if (users?.length===0) {
         </center>
         : <>
         {nodata?
-        <center> <div className=" pt-[10%]" > <img src="/assets/nodata3.png" alt="no image" className="opacity-75 w-[60%] h-[50%] mt-[-10%]" />
+        <center> <div className=" pt-[10%]" > <img src="./assets/nodata3.png" alt="no image" className="opacity-75 w-[60%] h-[50%] mt-[-10%]" />
         <h1 className=" text-[2rem] text-gray-500 mt-[-4rem] pt-10" >No Transaction Found</h1>
       </div> </center> 
       :
