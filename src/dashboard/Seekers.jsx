@@ -75,14 +75,12 @@ console.log(seekers)
   }, [nPage])
 
   useEffect(() => {
-    if (seekers !== null || seekers !== undefined || seekers.length !== 0) {
       dispatch(AllSeekers())
-    }
   }, [dispatch])
   // nodata===========
   const [nodata, setNodata] = useState(false)
   useEffect(() => {
-    if (seekers?.lenght === 0) {
+    if (seekers?.length === 0) {
       setNodata(true)
     } else {
       setNodata(false)
@@ -188,7 +186,7 @@ console.log(seekers)
                           </td>
                           <td className="py-[2%] max-md:text-[.7rem] w-[2%] border-r-[1px] border-t-[1px]   text-center">
                             <button onClick={() => handleViewCv(value.id)} className='bg-green-600 text-white font-[500] py-[3px] px-[10px] max-md:w-[8%] rounded-xl text-[0.6rem] max-md:py-1 max-md:px-2 max-md:text-[0.6rem] cursor-pointer'>View CV </button>
-                          </td> 
+                          </td>
 
 
                           <td className="py-[2%] w-[1%] max-md:text-[.7rem]  border-t-[1px]">

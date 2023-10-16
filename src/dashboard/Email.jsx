@@ -76,7 +76,7 @@ const Cities = () => {
       setNodata(false)
 
     }
-  }, [])
+  }, [jobBanks])
 
 
   //pagination=============================

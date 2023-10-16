@@ -23,14 +23,8 @@ const Categories = () => {
   const categories = useSelector(state => state.category.categories)
   const loading = useSelector(state => state.category.isLoading)
 
-  // useEffect(() => {
-  //   console.log(categories)
-  // }, [categories])
-
   useEffect(() => {
-    if (categories !== null || categories !== undefined || categories.length !== 0) {
       dispatch(AllCategories())
-    }
   }, [dispatch])
 
   const UpdateStatus = (id, status) => {
@@ -61,7 +55,7 @@ const Categories = () => {
 
   const handleEdit = (id) => {
     router("/categories/edit", { state: { ID: id } })
-    // 
+    //
   }
 
   //pagination=============================
@@ -95,7 +89,7 @@ const Categories = () => {
     }
   }, [nPage])
   // =======================
-  // nodata============ 
+  // nodata============
   const [nodata, setNodata] = useState(false)
   useEffect(() => {
     if (categories?.length === 0) {

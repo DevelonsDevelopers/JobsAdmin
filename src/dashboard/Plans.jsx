@@ -80,7 +80,7 @@ const Plans = () => {
       setNodata(false)
 
     }
-  }, [])
+  }, [plans])
 
   const handleDelete = (id) => {
     setDeleteId(id)

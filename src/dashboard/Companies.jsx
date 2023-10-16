@@ -30,6 +30,7 @@ const Companies = () => {
   useEffect(() => {
     dispatch(AllCompanies())
   }, [dispatch]);
+
   const loading = useSelector(state => state.company.isLoading)
 
   const [nodata, setNodata] = useState(false)
@@ -43,7 +44,7 @@ const Companies = () => {
     if (companies?.length === 0) {
       setNodata(true)
     }
-    else { setData(false) }
+    else { setNodata(false) }
   }, [companies])
 
   //Delete

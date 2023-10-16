@@ -36,9 +36,7 @@ const Cities = () => {
   }, [cities])
 
   useEffect(() => {
-    if (cities !== null || cities !== undefined || cities.length !== 0) {
       dispatch(AllCities())
-    }
   }, [dispatch])
 
   //delete
@@ -78,7 +76,7 @@ const Cities = () => {
       setNodata(false)
 
     }
-  }, [])
+  }, [cities])
 
   //pagination=============================
   const [currentPage, setCurrentPage] = useState(1)

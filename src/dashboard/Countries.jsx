@@ -47,14 +47,12 @@ const Countries = () => {
   // }, [countries])
 
   useEffect(() => {
-    if (countries !== null || countries !== undefined || countries.length !== 0) {
       dispatch(AllCountries())
-    }
   }, [dispatch])
 
   //=============================
 
-  //delete 
+  //delete
   const DeleteCountry = (id) => {
     dispatch(deleteCountry(id))
     setOpen(!open)
@@ -70,7 +68,7 @@ const Countries = () => {
     if (countries?.length === 0) {
       setNodata(true)
     }
-    else { setData(false) }
+    else { setNodata(false) }
   }, [countries])
 
   //Edit
@@ -158,7 +156,7 @@ const Countries = () => {
           </div> </center> : <>
 
             <h1 className='text-[3.125rem] font-[800] text-[#000] text-center max-md:text-[2rem] uppercase'>Country</h1>
-            
+
 
             <div className="w-[100%] max-md:h-full  max-md:px-2 flex flex-col justify-center bg-gray-100">
 

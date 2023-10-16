@@ -41,9 +41,7 @@ const AppliedUsers = () => {
   }, [appliedUsers])
 
   useEffect(() => {
-    if (appliedUsers !== null || appliedUsers !== undefined || appliedUsers.length !== 0) {
       dispatch(AllAppliedUsers())
-    }
   }, [dispatch])
 
   //pagination=============================

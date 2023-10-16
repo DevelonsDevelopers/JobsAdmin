@@ -17,7 +17,7 @@ const Jobs = () => {
   const [data, setData] = useState();
   const [deleteId, setDeleteId] = useState();
   const [search, setSearch] = useState('')
-  
+
   const dispatch = useDispatch()
   const router = useNavigate();
 
@@ -29,7 +29,7 @@ const Jobs = () => {
 
   const loading = useSelector(state => state.job.isLoading)
   const [nodata, setNodata] = useState(false)
-  
+
   // //fetching jobs
   // const jobs = useSelector(state => state.job.jobs)
   // useEffect(() => {
@@ -49,9 +49,7 @@ const Jobs = () => {
   }, [jobs])
 
   useEffect(() => {
-    if (jobs !== null || jobs !== undefined || jobs.length !== 0) {
       dispatch(getJobs())
-    }
   }, [dispatch])
 
   //nodata
