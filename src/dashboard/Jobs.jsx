@@ -17,6 +17,7 @@ const Jobs = () => {
   const [data, setData] = useState();
   const [deleteId, setDeleteId] = useState();
   const [search, setSearch] = useState('')
+  const [loading, setLoading] = useState(true)
 
   const dispatch = useDispatch()
   const router = useNavigate();
@@ -27,7 +28,7 @@ const Jobs = () => {
     setViewId(id)
   }
 
-  const loading = useSelector(state => state.job.isLoading)
+  // const loading = useSelector(state => state.job.isLoading)
   const [nodata, setNodata] = useState(false)
 
   // //fetching jobs
@@ -56,8 +57,12 @@ const Jobs = () => {
   useEffect(() => {
     if (jobs?.length === 0) {
       setNodata(true)
+      setLoading(false)
     }
-    else { setNodata(false) }
+    else {
+      setNodata(false)
+      setLoading(false)
+    }
   }, [jobs])
   //delete
   const handleDelete = (id) => {
