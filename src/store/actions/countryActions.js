@@ -6,6 +6,7 @@ export const AllCountries =()=> async(dispatch) => {
     try{
         dispatch({ type: LOADING})
         const {data: { data }} = await api.fetchAllCountries()
+        console.log(data)
         dispatch({ type: ALL_COUNTRIES, payload: {countries: data} })
         dispatch({ type: SUCCESS })
     } catch(error){

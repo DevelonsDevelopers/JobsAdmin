@@ -130,7 +130,9 @@ export const deleteCity = (id) => API.delete(`/cities/delete`, {
 })
 //Jobs
 export const fetchAllJobs = () => API.post(`/jobs/all`)
-export const fetchJobs = () => API.post(`/jobs/jobs`)
+export const fetchJobs = () => API.post(`/jobs/jobs`, {
+    user: 0
+})
 export const fetchRecentJobs = () => API.get(`/jobs/recent`)
 export const fetchJob = (id) => API.post(`/jobs/get`,
     {

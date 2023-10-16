@@ -69,7 +69,7 @@ const Countries = () => {
     setDeleteId(id)
   }
 
-  
+
 
   useEffect(() => {
     console.log(countries)
