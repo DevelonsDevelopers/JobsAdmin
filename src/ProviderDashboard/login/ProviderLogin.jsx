@@ -1,8 +1,12 @@
 import React, { useEffect, useState } from "react"
-import { Link, useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 import { CompanyLogin } from "../../store"
 import { AiOutlineMail } from 'react-icons/ai'
 import { RiLockPasswordLine } from 'react-icons/ri'
+import { ToastContainer } from "react-toastify"
+import AppView from "../view/AppView"
+import axios from "axios"
+import { useGoogleLogin } from "@react-oauth/google"
 
 const ProviderLogin = () => {
   const [loginData, setLoginData] = useState({ email: '', password: '' })
@@ -21,28 +25,60 @@ const ProviderLogin = () => {
 
   const login = () => {
     CompanyLogin(loginData.email, loginData.password).then(res => {
-        console.log(res)
-        const { data: { data }} = res;
-        const { data: {status}} = res;
-        console.log('res', status)
-        if(status === 'OK'){
-            sessionStorage.setItem("LOGIN", "true")
-            sessionStorage.setItem("ID", data.id)
-            sessionStorage.setItem("TYPE", "PROVIDER")
-            sessionStorage.setItem("PROVIDER", JSON.stringify(data))
-            navigate('/providerPanel')
-        }
+      console.log(res)
+      const { data: { data } } = res;
+      const { data: { status } } = res;
+      console.log('res', status)
+      if (status === 'OK') {
+        sessionStorage.setItem("LOGIN", "true")
+        sessionStorage.setItem("ID", data.id)
+        sessionStorage.setItem("TYPE", "PROVIDER")
+        sessionStorage.setItem("PROVIDER", JSON.stringify(data))
+        navigate('/providerPanel')
+      }
     })
   }
 
-  const handleSubmit = () => {
-    // navigate('/')
-  }
 
+
+  const googleLogin = useGoogleLogin({
+    onSuccess: async tokenResponse => {
+      console.log(tokenResponse);
+
+      // fetching userinfo can be done on the client or the server
+      const userInfo = await axios
+        .get('https://www.googleapis.com/oauth2/v3/userinfo', {
+          headers: { Authorization: `Bearer ${tokenResponse.access_token}` },
+        })
+        .then(async res => {
+
+          console.log(res)
+
+        });
+      // console.log(userInfo);
+    },
+    // flow: 'implicit', // implicit is the default
+  });
+
+  const [open,setOpen] = useState()
+  const toggleOpenVisible = () => setOpen(!open)
 
   return (
     <>
       <div>
+        <AppView  open={open} toggleOpenVisible={toggleOpenVisible }  />
+        <ToastContainer
+          position="top-right"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="light"
+        />
         <div className='w-[100%] h-[24rem] bg-blue-600'>
         </div>
         <div className=' bg-gray-400 '>
@@ -54,24 +90,19 @@ const ProviderLogin = () => {
               <div className=' p-[10px]'><br />
                 <h1 className='text-[22px]'>Welcome Back :)</h1><br />
                 <h1 className='text-[13px] text-gray-600 font-[600]'>To keep connected with us please login with your personal information by email and password on Provider Panel</h1><br />
-                <input type="email" name="email" onChange={handleChange} placeholder='Enter Your Email' className='shadow-lg rounded-[12px] text-[.9rem] text-gray-700 font-[500] w-[110%] max-md:w-[100%] pl-[50px] border-2 pt-[7px] pb-[7px]' /><br />
+                <input type="email" name="email" onChange={handleChange} placeholder='Enter Your Email' className='shadow-lg rounded-[12px] text-[.9rem] text-gray-700 font-[500] w-[100%] max-md:w-[100%] pl-[50px] border-2 pt-[7px] pb-[7px]' /><br />
                 <div className="relative top-[-1.9rem] left-[-44%] w-[10%]"> <AiOutlineMail />
                 </div>
-                <input type="password" name="password" onChange={handleChange} placeholder='Password' className='shadow-lg rounded-[12px] text-[.9rem] text-gray-700 font-[500] w-[110%] max-md:w-[100%] pl-[50px] border-2 pt-[7px] pb-[7px]' /><br />
+                <input type="password" name="password" onChange={handleChange} placeholder='Password' className='shadow-lg rounded-[12px] text-[.9rem] text-gray-700 font-[500] w-[100%] max-md:w-[100%] pl-[50px] border-2 pt-[7px] pb-[7px]' /><br />
                 <div className="relative top-[-1.9rem] left-[-44%] w-[10%]"> <RiLockPasswordLine />
                 </div>
-                <div className="flex">
-                  <div className="flex gap-2">
-                    <input type="checkbox" name="" id="" />
-                    <p className="text-[.9rem] mt-[3px] font-[500]">Remember me</p>
-                  </div>
-                  <Link className="ml-auto text-[.9rem] hover:underline text-blue-600"> Forgot Password </Link>
-                </div>
+                <h1 onClick={() => toggleOpenVisible()} className="text-[.9rem] text-blue-600 text-right cursor-pointer font-[600] hover:underline">Register Now</h1>
+
                 <input type='submit' value='Log In' onClick={() => login()} className='bg-blue-600 text-white cursor-pointer font-[600] px-10 py-[5px] w-[100%] rounded-full mt-6' />
                 <h1 className="text-[.9rem] text-gray-700 font-[600] text-left mt-4">You can also join with</h1>
-                <div className="flex gap-2 mt-4">
-                  <img src='./assets/google.png' alt="" className="w-10 h-10 cursor-pointer rounded-full border-2 border-gray-100" />
-                  <img src='./assets/facebook.png' alt="" className="w-10 h-10 cursor-pointer rounded-full border-2 border-gray-100" />
+                <div onClick={() => googleLogin()} className="flex justify-center border-2 gap-2 mt-4 rounded-xl p-2 cursor-pointer hover:bg-gray-200">
+                  <img src='./assets/google.png' alt="" className="w-8 mr-auto h-8 ml-4 cursor-pointer rounded-full border-2 border-gray-100" />
+                  <p className="mr-auto ml-[-2rem] mt-[2px] text-[1.2rem] text-gray-600 font-[600]">Google</p>
                 </div>
 
               </div>

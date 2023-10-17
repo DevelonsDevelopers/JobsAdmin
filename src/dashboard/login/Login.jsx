@@ -62,6 +62,7 @@ const Login = () => {
                 </div>
                 <input type='submit' value='Log In' onClick={() => login()} className='bg-blue-600 text-white cursor-pointer font-[600] px-10 py-[5px] w-[100%] rounded-full mt-6' />
               </div>
+            
             </center>
           </div>
         </div>

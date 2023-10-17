@@ -51,9 +51,12 @@ import ApiJobs from "./dashboard/ApiJobs";
 import Email from "./dashboard/Email";
 import EmailForm from "./dashboard/form/EmailForm";
 import JobBankEdit from "./dashboard/edit/JobBankEdit";
+import { GoogleOAuthProvider } from "@react-oauth/google";
 
 function App() {
   return (
+    <GoogleOAuthProvider clientId="404623696003-doe1cpjrlljj8om770ha3ri9s9vatoc8.apps.googleusercontent.com">
+
       <BrowserRouter basename={'/admin'}>
         <Routes>
           <Route path="/userPanel" element={<Dashboard/>} />
@@ -107,7 +110,6 @@ function App() {
           <Route path="/coverLetter" element={<CoverLetter />}/>
           <Route path="/test" element={<Test />} />
 
-
           <Route path="/providerLogin" element={<ProviderLogin />} />
           <Route path="/providerPanel" element={<ProviderPanel />} />
           <Route path="/appliedProvider" element={<AppliedUserProvider />} />
@@ -119,6 +121,7 @@ function App() {
 
         </Routes>
       </BrowserRouter>
+      </GoogleOAuthProvider>
   );
 }
 
