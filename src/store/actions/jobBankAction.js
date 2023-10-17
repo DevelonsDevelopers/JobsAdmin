@@ -17,6 +17,7 @@ export const AllJobBanks = () => async (dispatch) => {
 export const CreateJobBank = (email) => async (disptach) =>{
     try{
         const {data: {data}} = await api.createJobBank(email)
+        console.log(data)
         disptach({ type: CREATE_JOBBANK, payload: data})
     }catch(error){
         console.log(error)
