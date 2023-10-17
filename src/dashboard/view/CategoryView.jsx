@@ -39,7 +39,7 @@ const CategoryView = ({ open, setOpen, title, data, ID }) => {
         <hr className='mt-2 mb-2' />
         <div className='flex justify-between '>
         <span className='!font-[800] text-[15px]  mr-4'> Description:  </span>
-        <span className='font-[600] ml-auto text-gray-600 text-[13px] ' >{category?.description}</span>
+        <span className='font-[600] ml-auto text-gray-600 text-[13px] ' dangerouslySetInnerHTML={{__html: category?.description}} ></span>
         </div>
         <hr className='mt-2 mb-2' />
       </DialogContent>

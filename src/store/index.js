@@ -180,13 +180,14 @@ export const createJob = (job) => API.post(`/jobs/create`,
         tags: job.tags,
 
     })
-export const updateJob = (id, category, country, city, title, company, designation, salary, role, description, link, type, workdays, worktime, address, experience, qualification, skills, date, tags) => API.put(`/jobs/update`, {
+export const updateJob = (id, category, country, city, title, company, company_name, designation, salary, role, description, link, type, workdays, worktime, address, experience, qualification, skills, date, tags) => API.put(`/jobs/update`, {
     id: id,
     category: category,
     country: country,
     city: city,
     title: title,
     company: company,
+    company_name: company_name,
     designation: designation,
     salary: salary,
     role: role,
