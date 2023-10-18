@@ -168,8 +168,8 @@ const PaymentGateway = () => {
         </Dialog>
       </div>
 
-      <div className='flex !w-full h-full gap-5 mt-10 px-[1rem] ' >
-        <div className=' border-[1px] w-[50%] my-[0.5rem] py-[0.5rem] px-[2.5rem] !bg-white border-gray-300 rounded-md' >
+      <div className='flex max-sm:flex-col !w-full h-full gap-5 mt-10 px-[1rem] ' >
+        <div className=' border-[1px] w-[50%] max-sm:w-full my-[0.5rem] py-[0.5rem] px-[2.5rem] !bg-white border-gray-300 rounded-md' >
           <center>
             <button onClick={handleClickOpen} className=' mt-5 py-2 px-7 bg-blue-600 text-white rounded-md font-[600] ' >Paypal Payment</button>
           </center>
@@ -202,7 +202,7 @@ const PaymentGateway = () => {
             <hr className='mt-2 mb-2' />
           </div>
         </div>
-        <div className=' border-[1px] w-[50%] my-[0.5rem] py-[0.5rem] px-[2.5rem] !bg-white border-gray-300 rounded-md' >
+        <div className=' border-[1px] w-[50%] max-sm:w-full my-[0.5rem] py-[0.5rem] px-[2.5rem] !bg-white border-gray-300 rounded-md' >
           <center>
           <button onClick={handleStripeOpen} className=' mt-5 py-2 px-7 bg-violet-600 text-white rounded-md font-[600] ml-5 ' >Stripe Payment</button>
           </center>

@@ -55,7 +55,7 @@ const Topbar = ({ showNav, setShowNav }) => {
   //   }
 
   return (
-    <div className={` w-full h-16 flex bg-violet-100 justify-between items-center transition-all duration-[400ms] ${showNav ? 'pl-[10.5rem]' : ""}`}>
+    <div className={` w-full h-16 flex bg-violet-100 justify-between items-center transition-all duration-[400ms] ${showNav ? 'pl-[10.5rem] max-sm:pl-[14rem]' : ""}`}>
       <div className='pl-4 md:pl-16'>
         <HiMenuAlt2 className='h-8 w-10 max-md:h-[20px] max-md:w-[20px]  text-gray-700 cursor-pointer ' onClick={() => setShowNav(!showNav)} />
       </div>
