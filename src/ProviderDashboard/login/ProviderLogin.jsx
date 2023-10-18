@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { CompanyLogin } from "../../store"
-import { AiOutlineMail } from 'react-icons/ai'
+import { AiFillEye, AiFillEyeInvisible, AiOutlineMail } from 'react-icons/ai'
 import { RiLockPasswordLine } from 'react-icons/ri'
 import { ToastContainer, toast } from "react-toastify"
 import AppView from "../view/AppView"
@@ -75,6 +75,25 @@ const ProviderLogin = () => {
   const [open, setOpen] = useState()
   const toggleOpenVisible = () => setOpen(!open)
 
+
+  const [show, setShow] = useState(false)
+
+  const handleSubmit = () => {
+    setShow(!show)
+    myFunction()
+  }
+  // navigate('/')
+
+
+  const  myFunction = () => {
+    var x = document.getElementById("myInput");
+    if (x.type === "password") {
+      x.type = "text";
+    } else {
+      x.type = "password";
+    }
+  }
+
   return (
     <>
       <div>
@@ -105,9 +124,16 @@ const ProviderLogin = () => {
                 <input type="email" name="email" onChange={handleChange} placeholder='Enter Your Email' className='shadow-lg rounded-[12px] text-[.9rem] text-gray-700 font-[500] w-[100%] max-md:w-[100%] pl-[50px] border-2 pt-[7px] pb-[7px]' /><br />
                 <div className="relative top-[-1.9rem] left-[-44%] w-[10%]"> <AiOutlineMail />
                 </div>
-                <input type="password" name="password" onChange={handleChange} placeholder='Password' className='shadow-lg rounded-[12px] text-[.9rem] text-gray-700 font-[500] w-[100%] max-md:w-[100%] pl-[50px] border-2 pt-[7px] pb-[7px]' /><br />
+                <input type="password" name="password" id="myInput" onChange={handleChange} placeholder='Password' className='pr-[50px] shadow-lg rounded-[12px] text-[.9rem] text-gray-700 font-[500] w-[100%] max-md:w-[100%] pl-[50px] border-2 pt-[7px] pb-[7px]' /><br />
                 <div className="relative top-[-1.9rem] left-[-44%] w-[10%]"> <RiLockPasswordLine />
                 </div>
+                {show ?
+                  <div className="relative top-[-2.9rem] left-[44%] w-[10%] text-[1.4rem]" onClick={() => handleSubmit()}> <AiFillEye />
+                  </div>
+                  :
+                  <div className="relative top-[-2.9rem] left-[44%] w-[10%] text-[1.4rem]" onClick={() => handleSubmit()}> <AiFillEyeInvisible />
+                  </div>
+                }
                 <h1 onClick={() => toggleOpenVisible()} className="text-[.9rem] text-blue-600 text-right cursor-pointer font-[600] hover:underline">Register Now</h1>
 
                 <input type='submit' value='Log In' onClick={() => login()} className='bg-blue-600 text-white cursor-pointer font-[600] px-10 py-[5px] w-[100%] rounded-full mt-6' />
