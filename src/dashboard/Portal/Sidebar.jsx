@@ -150,10 +150,10 @@ const Sidebar = forwardRef(({ }, ref) => {
 {/* ______________________________________________________________________________________________________________________________________________________________________________________________ */}
 
           <div className="flex flex-col mt-[2rem] ">
-            <div onClick={() => router('/userPanel')}>
+            <div onClick={() => router('/')}>
               <div
                 className={`pl-7 py-3 mx-5 rounded text-center cursor-pointer mb-1 flex items-center transition-colors 
-        ${location.pathname === "/userPanel"
+        ${location.pathname === "/"
                     ? "bg-gradient-to-r from-sky-600 to-cyan-400 text-white"
                     : "text-black font-[600]  hover:text-white  hover:bg-gradient-to-r from-sky-600 to-cyan-400"
                   }

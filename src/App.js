@@ -59,7 +59,7 @@ function App() {
 
       <BrowserRouter basename={'/admin'}>
         <Routes>
-          <Route path="/userPanel" element={<Dashboard/>} />
+          <Route path="/" element={<Dashboard/>} />
           <Route path="/cities" element={<Cities/>} />
           <Route path="/categories" element={<Categories />} />
           <Route path="/jobbank" element={<Email />} />

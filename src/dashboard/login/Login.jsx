@@ -30,7 +30,7 @@ const Login = () => {
         sessionStorage.setItem("ID", data.id)
         sessionStorage.setItem("TYPE", "USER")
         sessionStorage.setItem("USER", JSON.stringify(data))
-        navigate('/userPanel')
+        navigate('/')
 
       }
       else {
