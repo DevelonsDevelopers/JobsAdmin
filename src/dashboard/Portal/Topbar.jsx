@@ -6,6 +6,7 @@ import { Popover, Transition } from '@headlessui/react'
 import { AiOutlineMail } from 'react-icons/ai'
 import { SlLocationPin } from 'react-icons/sl'
 import { BiSolidEditAlt } from 'react-icons/bi'
+import {SESSION_ADMIN_LOGIN} from "../../Utils/Constant";
 const Topbar = ({ showNav, setShowNav }) => {
 
   const router = useNavigate();
@@ -15,7 +16,7 @@ const Topbar = ({ showNav, setShowNav }) => {
   const [providerData, setProviderData] = useState();
 
   const logout = () => {
-    sessionStorage.setItem("LOGIN", "false")
+    sessionStorage.setItem(SESSION_ADMIN_LOGIN, "false")
     sessionStorage.setItem("ID", null)
     sessionStorage.setItem("TYPE", null)
     sessionStorage.setItem("USER", null)

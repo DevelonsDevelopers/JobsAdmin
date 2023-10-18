@@ -7,6 +7,7 @@ import { ToastContainer, toast } from "react-toastify"
 import AppView from "../view/AppView"
 import axios from "axios"
 import { useGoogleLogin } from "@react-oauth/google"
+import {SESSION_PROVIDER_LOGIN} from "../../Utils/Constant";
 
 const ProviderLogin = () => {
   const [loginData, setLoginData] = useState({ email: '', password: '' })
@@ -16,7 +17,7 @@ const ProviderLogin = () => {
   }
 
   useEffect(() => {
-    const isLogin = sessionStorage.getItem("LOGIN")
+    const isLogin = sessionStorage.getItem(SESSION_PROVIDER_LOGIN)
     if (isLogin === "true") {
       navigate('/providerPanel')
     } else {
