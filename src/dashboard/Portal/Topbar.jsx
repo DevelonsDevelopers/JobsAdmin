@@ -6,7 +6,7 @@ import { Popover, Transition } from '@headlessui/react'
 import { AiOutlineMail } from 'react-icons/ai'
 import { SlLocationPin } from 'react-icons/sl'
 import { BiSolidEditAlt } from 'react-icons/bi'
-import {SESSION_ADMIN_LOGIN} from "../../Utils/Constant";
+import { SESSION_ADMIN_ID, SESSION_ADMIN_LOGIN, SESSION_ADMIN_TYPE, SESSION_ADMIN_USER, SESSION_PROVIDER, SESSION_PROVIDER_ID, SESSION_PROVIDER_LOGIN, SESSION_PROVIDER_TYPE, SESSION_USER } from "../../Utils/Constant";
 const Topbar = ({ showNav, setShowNav }) => {
 
   const router = useNavigate();
@@ -17,35 +17,35 @@ const Topbar = ({ showNav, setShowNav }) => {
 
   const logout = () => {
     sessionStorage.setItem(SESSION_ADMIN_LOGIN, "false")
-    sessionStorage.setItem("ID", null)
-    sessionStorage.setItem("TYPE", null)
-    sessionStorage.setItem("USER", null)
+    sessionStorage.setItem(SESSION_ADMIN_ID, null)
+    sessionStorage.setItem(SESSION_ADMIN_TYPE, null)
+    sessionStorage.setItem(SESSION_ADMIN_USER, null)
     router('/login')
   }
 
   useEffect(() => {
-    const user = sessionStorage.getItem("USER")
+    const user = sessionStorage.getItem(SESSION_USER)
     setData(JSON.parse(user))
   }, [])
 
 
 
   useEffect(() => {
-    const isProviderLogin = sessionStorage.getItem("PROVIDER")
+    const isProviderLogin = sessionStorage.getItem(SESSION_PROVIDER)
 
     if (isProviderLogin === null) {
       setProvider(false)
     } else {
       setProvider(true)
-      setProviderData(JSON.parse(sessionStorage.getItem('PROVIDER')));
+      setProviderData(JSON.parse(sessionStorage.getItem(SESSION_PROVIDER)));
     }
     // setProvider(isProviderLogin);
   }, [provider, providerData])
   const logoutProvider = () => {
-    sessionStorage.setItem("LOGIN", "false")
-    sessionStorage.setItem("ID", null)
-    sessionStorage.setItem("TYPE", null)
-    sessionStorage.setItem("PROVIDER", null)
+    sessionStorage.setItem(SESSION_PROVIDER_LOGIN, "false")
+    sessionStorage.setItem(SESSION_PROVIDER_ID, null)
+    sessionStorage.setItem(SESSION_PROVIDER_TYPE, null)
+    sessionStorage.setItem(SESSION_PROVIDER, null)
     router('/providerLogin')
   }
 
