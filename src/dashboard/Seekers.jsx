@@ -121,7 +121,7 @@ console.log(seekers)
       i = i < currentPage ? currentPage - 1 : nPage - 2;
     }
   }
-  const [select, setSelect] = useState()
+  const [select, setSelect] = useState(0)
 
 
   return (
@@ -229,6 +229,7 @@ console.log(seekers)
   function prevPage() {
     if (currentPage !== 1) {
       setCurrentPage(currentPage - 1);
+      setSelect(state => state - 1 )
     }
   }
   function changeCurrentPage(id) {
@@ -237,6 +238,7 @@ console.log(seekers)
   function nextPage() {
     if (currentPage !== nPage) {
       setCurrentPage(currentPage + 1)
+      setSelect(state => state + 1 )
     }
   }
 

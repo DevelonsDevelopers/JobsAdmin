@@ -41,7 +41,7 @@ const AppliedUsers = () => {
   }, [appliedUsers])
 
   useEffect(() => {
-      dispatch(AllAppliedUsers())
+    dispatch(AllAppliedUsers())
   }, [dispatch])
 
   //pagination=============================
@@ -75,6 +75,26 @@ const AppliedUsers = () => {
     }
   }, [nPage])
 
+  let pagination = [], i = 1;
+
+  while (i <= nPage) {
+
+    if (i <= 1 ||
+      i >= nPage - 2 ||
+      i >= currentPage - 1 && i <= currentPage + 1) {
+      pagination.push(i);
+      i++;
+    } else {
+      pagination.push('...');
+
+      //jump to the next page to be linked in the navigation
+      i = i < currentPage ? currentPage - 1 : nPage - 2;
+    }
+  }
+  const [select, setSelect] = useState(0)
+
+
+
   // nodata===========
   const [nodata, setNodata] = useState(false)
   useEffect(() => {
@@ -89,7 +109,7 @@ const AppliedUsers = () => {
   //viewCoverletter
 
   const handleViewCoverLetter = (user, job) => {
-    navigate('/coverLetter', {state: {User: user, Job: job}})
+    navigate('/coverLetter', { state: { User: user, Job: job } })
   }
   return (
     <PortalLayout>
@@ -153,7 +173,7 @@ const AppliedUsers = () => {
                             <span className=' text-[13px] font-[350]'>{moment(value.date).format('YYYY-MM-DD')}</span>
                           </td>
                           <td className="py-[2%] max-md:text-[.7rem] w-[2%] border-r-[1px] border-t-[1px]   text-center">
-                            <button onClick={() => handleViewCoverLetter(value.user, value.job)}   className='bg-green-600 text-white font-[500] py-[3px] px-[10px] max-md:w-[8%] rounded-xl text-[0.6rem] max-md:py-1 max-md:px-2 max-md:text-[0.6rem] cursor-pointer  '>Cover Letter</button>
+                            <button onClick={() => handleViewCoverLetter(value.user, value.job)} className='bg-green-600 text-white font-[500] py-[3px] px-[10px] max-md:w-[8%] rounded-xl text-[0.6rem] max-md:py-1 max-md:px-2 max-md:text-[0.6rem] cursor-pointer  '>Cover Letter</button>
                           </td>
 
 
@@ -171,19 +191,20 @@ const AppliedUsers = () => {
                     ))}
                 </table>
                 <nav className='m-auto mt-5' >
-                  <ul className="flex items-center -space-x-px h-10 text-base">
+                <ul className="flex items-center -space-x-px h-10 text-base">
                     <li>
-                      <Link to="#" onClick={prevPage} className="flex items-center justify-center px-4 h-10 ml-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-l-lg hover:bg-gray-100 hover:text-gray-700     " >
+                      <Link to="#" onClick={prevPage} className="flex items-center justify-center px-4 h-10 ml-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-l-lg hover:bg-gray-100 hover:text-gray-700  " >
                         <span className="sr-only">Previous</span>
                         <svg className="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
                           <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 1 1 5l4 4" />
                         </svg>
                       </Link>
                     </li>
-                    {Numbers?.map((n, i) => (<li> <Link to="#" onClick={() => changeCurrentPage(n)} className="flex items-center justify-center px-4 h-10 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700     ">{n}</Link> </li>))}
-
+                    {pagination?.map((n, index) => (<li><Link to="#" onClick={() => { setSelect(index); changeCurrentPage(n) }}
+                      className={` ${select === index ? 'bg-cyan-400 text-white hover:text-white' : 'bg-gray-100'} flex items-center justify-center px-4 h-10 leading-tight text-gray-500 border border-gray-300  hover:text-gray-700 `} >{n}</Link>
+                    </li>))}
                     <li>
-                      <Link to="#" onClick={nextPage} className="flex items-center justify-center px-4 h-10 leading-tight text-gray-500 bg-white border border-gray-300 rounded-r-lg hover:bg-gray-100 hover:text-gray-700     "> <span className="sr-only">Next</span><svg className="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10"> <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m1 9 4-4-4-4" /> </svg></Link>
+                      <Link to="#" onClick={nextPage} className="flex items-center justify-center px-4 h-10 leading-tight text-gray-500 bg-white border border-gray-300 rounded-r-lg hover:bg-gray-100 hover:text-gray-700  "> <span className="sr-only">Next</span><svg className="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10"> <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m1 9 4-4-4-4" /> </svg></Link>
                     </li>
                   </ul>
                 </nav>
@@ -199,6 +220,8 @@ const AppliedUsers = () => {
   function prevPage() {
     if (currentPage !== 1) {
       setCurrentPage(currentPage - 1);
+      setSelect(state => state - 1 )
+
     }
   }
   function changeCurrentPage(id) {
@@ -207,6 +230,8 @@ const AppliedUsers = () => {
   function nextPage() {
     if (currentPage !== nPage) {
       setCurrentPage(currentPage + 1)
+      setSelect(state => state + 1 )
+
     }
   }
 }

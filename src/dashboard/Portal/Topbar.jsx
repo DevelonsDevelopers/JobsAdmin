@@ -71,33 +71,32 @@ const Topbar = ({ showNav, setShowNav }) => {
               </center>
 
               <div>
-                <div className='flex items-center'>
+                {/* <div className='flex items-center'>
                   <img src="/assets/profile_thumb.png" alt="" className='w-20 max-sm:w-15 rounded-full h-auto m-auto' />
                   <span className='ml-[1rem] absolute right-[30%] top-[32%] bg-white cursor-pointer rounded-full p-1'><BiSolidEditAlt className='text-[1.5rem] z-[999]' /></span>
-                </div>
+                </div> */}
                 <h1 className='font-[600] text-[1.5rem] text-center'>{providerData?.name}</h1>
                 {provider ?
-                <>
-                  <div className='pl-[2rem] py-2 ml-2  rounded-xl'>
-                    <i className='items-center flex'><AiOutlineMail /><span className='font-[500] text-[1rem] text-gray-600 ml-[1rem]'>{providerData?.email}</span></i>
-                    <i className='items-center flex'><BsTelephone /><span className='font-[500] text-[1rem] text-gray-600 ml-[1rem] mt-2'>{providerData?.phone}</span></i>
-                    <i className='items-center flex'><SlLocationPin /><span className='font-[500] text-[1rem] text-gray-600 ml-[1rem] mt-2'>{providerData?.headquater}</span></i>
-
-                  </div> 
-                  <center>
-                  <button onClick={() => logoutProvider()} className='text-center w-[50%] rounded-xl bg-blue-400 text-white font-[700] py-1 mb-5 mt-3 shadow-md text-[1rem]'>Logout Provider</button>
-                </center>
-                </>
+                  <>
+                    <div className='pl-[2rem] py-2 ml-2  rounded-xl'>
+                      <i className='items-center flex'><AiOutlineMail /><span className='font-[500] text-[1rem] text-gray-700 ml-[1rem]'>{providerData?.email}</span></i>
+                      <i className='items-center flex'><BsTelephone /><span className='font-[500] text-[1rem] text-gray-700 ml-[1rem] mt-2'>{providerData?.phone}</span></i>
+                      <i className='items-center flex'><SlLocationPin /><span className='font-[500] text-[1rem] text-gray-700 ml-[1rem] mt-2'>{providerData?.headquater}</span></i>
+                    </div>
+                    <center>
+                      <button onClick={() => logoutProvider()} className='text-center w-[50%] rounded-xl bg-blue-400 hover:bg-blue-500 text-white font-[700] py-1 mb-5 mt-3 shadow-md text-[1rem]'>Logout Provider</button>
+                    </center>
+                  </>
                   :
                   <>
                     <div className='pl-[2rem] py-2 ml-2  rounded-xl'>
-                      <i className='items-center flex'><AiOutlineMail /><span className='font-[500] text-[1rem] text-gray-600 ml-[1rem]'>{data?.email}</span></i>
-                      <i className='items-center flex'><BsTelephone /><span className='font-[500] text-[1rem] text-gray-600 ml-[1rem] mt-2'>{data?.phone}</span></i>
-                      <i className='items-center flex'><SlLocationPin /><span className='font-[500] text-[1rem] text-gray-600 ml-[1rem] mt-2'>{data?.address}</span></i>
+                      <i className='items-center flex'><AiOutlineMail /><span className='font-[600] text-[1rem] text-gray-600 ml-[1rem]'>{data?.email}</span></i>
+                      <i className='items-center flex'><BsTelephone /><span className='font-[600] text-[1rem] text-gray-600 ml-[1rem] mt-2'>{data?.phone}</span></i>
+                      <i className='items-center flex'><SlLocationPin /><span className='font-[600] text-[1rem] text-gray-600 ml-[1rem] mt-2'>{data?.address}</span></i>
 
                     </div>
                     <center>
-                      <button onClick={() => logout()} className='text-center w-[50%] rounded-xl bg-blue-400 text-white font-[700] py-1 mb-5 mt-3 shadow-md text-[1rem]'>Logout</button>
+                      <button onClick={() => logout()} className='text-center w-[50%] rounded-xl bg-blue-400 hover:bg-blue-500 text-white font-[600] py-1 mb-5 mt-3 shadow-md text-[1rem]'>Logout</button>
                     </center>
                   </>
                 }

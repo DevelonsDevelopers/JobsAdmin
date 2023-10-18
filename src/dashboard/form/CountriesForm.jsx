@@ -27,7 +27,16 @@ const CountriesForm = () => {
       dispatch(createCountry(countryData))
       navigate('/countries')
     } else {
-      alert('plz fill the data')
+      toast.error('Enter Required Data', {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
     }
   }
 

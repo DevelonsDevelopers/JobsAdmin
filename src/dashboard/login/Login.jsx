@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom"
 import { LoginUser } from "../../store"
 import { AiOutlineMail } from 'react-icons/ai'
 import { RiLockPasswordLine } from 'react-icons/ri'
+import { ToastContainer, toast } from "react-toastify"
 
 const Login = () => {
   const [loginData, setLoginData] = useState({ email: '', password: '' })
@@ -32,6 +33,19 @@ const Login = () => {
         navigate('/userPanel')
 
       }
+      else {
+        toast.error('Invalid Username or Password', {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        });
+
+      }
     })
   }
 
@@ -43,6 +57,18 @@ const Login = () => {
   return (
     <>
       <div>
+        <ToastContainer
+          position="top-right"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="light"
+        />
         <div className='w-[100%] h-[24rem] bg-blue-600'>
         </div>
         <div className=' bg-gray-400 '>
@@ -62,7 +88,7 @@ const Login = () => {
                 </div>
                 <input type='submit' value='Log In' onClick={() => login()} className='bg-blue-600 text-white cursor-pointer font-[600] px-10 py-[5px] w-[100%] rounded-full mt-6' />
               </div>
-            
+
             </center>
           </div>
         </div>

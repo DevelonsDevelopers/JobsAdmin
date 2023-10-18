@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom"
 import { CompanyLogin } from "../../store"
 import { AiOutlineMail } from 'react-icons/ai'
 import { RiLockPasswordLine } from 'react-icons/ri'
-import { ToastContainer } from "react-toastify"
+import { ToastContainer, toast } from "react-toastify"
 import AppView from "../view/AppView"
 import axios from "axios"
 import { useGoogleLogin } from "@react-oauth/google"
@@ -36,6 +36,18 @@ const ProviderLogin = () => {
         sessionStorage.setItem("PROVIDER", JSON.stringify(data))
         navigate('/providerPanel')
       }
+      else {
+        toast.error('Invalid Username or Password', {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        });
+      }
     })
   }
 
@@ -60,13 +72,13 @@ const ProviderLogin = () => {
     // flow: 'implicit', // implicit is the default
   });
 
-  const [open,setOpen] = useState()
+  const [open, setOpen] = useState()
   const toggleOpenVisible = () => setOpen(!open)
 
   return (
     <>
       <div>
-        <AppView  open={open} toggleOpenVisible={toggleOpenVisible }  />
+        <AppView open={open} toggleOpenVisible={toggleOpenVisible} />
         <ToastContainer
           position="top-right"
           autoClose={5000}

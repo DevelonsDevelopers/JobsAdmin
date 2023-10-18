@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import { AllCountries } from '../../store/actions/countryActions';
 import { getCitybyCountry } from '../../store/actions/cityActions';
 import Select from 'react-select'
+import { ToastContainer, toast } from 'react-toastify';
 
 
 const options = [
@@ -70,7 +71,16 @@ const CompaniesForm = () => {
       dispatch(createCompany(companyData))
       navigate('/companies')
     } else {
-      alert('plz fill the data')
+      toast.error('Enter Required Data', {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
     }
   }
   //input values
@@ -91,6 +101,18 @@ const CompaniesForm = () => {
   //=================================
   return (
     <PortalLayout>
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
       <h1 className='text-center bg-gradient-to-r from-sky-600 to-cyan-400  text-white font-[600] mb-5 py-4 rounded-xl shadow-md shadow-blue-300 text-[1.5rem]'>ADD COMPANY</h1>
       <form className="bg-white shadow-md rounded-xl px-[10rem] pt-6 pb-8 mb-4 flex flex-col  my-2">
         <div className="-mx-3 mt-[-1.2rem] mb-6">
@@ -174,7 +196,7 @@ const CompaniesForm = () => {
               onInputChange={cityInputChange}
               onChange={cityChange}
               //  name='country'
-               id="grid-state"
+              id="grid-state"
             >
             </Select>
           </div>

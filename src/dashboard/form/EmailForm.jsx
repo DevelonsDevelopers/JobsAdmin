@@ -3,10 +3,11 @@ import PortalLayout from '../../portalLayout/PortalLayout'
 import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { CreateJobBank } from '../../store/actions/jobBankAction'
+import { ToastContainer, toast } from 'react-toastify'
 
 const EmailForm = () => {
   const [email, setEmail] = useState()
-  const [val, setVal]  = useState([])
+  const [val, setVal] = useState([])
 
 
   const dispatch = useDispatch()
@@ -19,7 +20,7 @@ const EmailForm = () => {
 
   const handleChange = (e, i) => {
     const inputData = [...val]
-    inputData[i]= e.target.value
+    inputData[i] = e.target.value
     setVal(inputData)
   }
   // const handleInput = (e, i) => {
@@ -29,7 +30,7 @@ const EmailForm = () => {
   // }
   console.log('data', val)
 
-  const handleDelete = (e,i) => {
+  const handleDelete = (e, i) => {
     e.preventDefault()
     const deleteVal = [...val]
     deleteVal.splice(i, 1)
@@ -37,13 +38,22 @@ const EmailForm = () => {
   }
 
   const handleSubmit = (e) => {
-      e.preventDefault()
-      if(email){
-        dispatch(CreateJobBank(email));
-        navigate('/jobbank')
-      } else{
-        alert("plz fill the data")
-      }
+    e.preventDefault()
+    if (email) {
+      dispatch(CreateJobBank(email));
+      navigate('/jobbank')
+    } else {
+      toast.error('Enter Required Data', {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
+    }
   }
 
   // useEffect(() => {
@@ -53,6 +63,18 @@ const EmailForm = () => {
 
   return (
     <PortalLayout>
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
       <h1 className='text-center bg-gradient-to-r from-sky-600 to-cyan-400  text-white font-[600] mb-5 py-4 rounded-xl shadow-md shadow-blue-300 text-[1.5rem]'>ADD Email</h1>
       <div className="bg-white shadow-md rounded-xl px-8 pt-6 pb-8 mb-4 flex flex-col  my-2">
         <form action="">
