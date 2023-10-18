@@ -48,11 +48,7 @@ const Jobs = () => {
   useEffect(() => {
     console.log('jobs', jobs)
   }, [jobs])
-
-  useEffect(() => {
-      dispatch(getJobs())
-  }, [dispatch])
-
+  
   //nodata
   useEffect(() => {
     if (jobs?.length === 0) {
@@ -64,6 +60,11 @@ const Jobs = () => {
       setLoading(false)
     }
   }, [jobs])
+  
+  useEffect(() => {
+      dispatch(getJobs())
+  }, [dispatch])
+
   //delete
   const handleDelete = (id) => {
     setDeleteId(id)
