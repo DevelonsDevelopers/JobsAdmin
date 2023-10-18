@@ -8,6 +8,7 @@ import { Transition } from '@headlessui/react';
 import Topbar from '../dashboard/Portal/Topbar';
 import Sidebar from '../dashboard/Portal/Sidebar';
 import { useEffect } from 'react';
+import {SESSION_ADMIN_LOGIN} from "../Utils/Constant";
 
 const PortalLayout = ({ children }) => {
 
@@ -16,10 +17,10 @@ const PortalLayout = ({ children }) => {
 	const [login, setLogin] = useState(false)
 	const [isLoading, setIsLoading] = useState(true)
 	const router = useNavigate()
-	
+
 
 	useEffect(() => {
-		const isLogin = sessionStorage.getItem("LOGIN")
+		const isLogin = sessionStorage.getItem(SESSION_ADMIN_LOGIN)
 		if (isLogin === "true"){
 			setLogin(true)
 		} else {
@@ -87,7 +88,7 @@ const PortalLayout = ({ children }) => {
 					</main>
 				</div>
 
-			
+
 		</div>
 	)
 }
