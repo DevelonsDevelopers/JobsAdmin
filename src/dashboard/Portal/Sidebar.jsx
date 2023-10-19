@@ -8,6 +8,7 @@ import { BiCategoryAlt, BiUserCheck } from 'react-icons/bi'
 import { AiOutlineTag, AiOutlineTransaction, AiOutlineOrderedList, AiOutlineNotification } from 'react-icons/ai'
 import { PiBriefcaseLight, PiBuildingsLight } from 'react-icons/pi'
 import { useLocation, useNavigate } from "react-router-dom";
+import { SESSION_PROVIDER } from "../../Utils/Constant";
 
 
 
@@ -17,7 +18,7 @@ const Sidebar = forwardRef(({ }, ref) => {
   const [provider, setProvider] = useState(false)
 
   useEffect(() => {
-    const isProviderLogin = sessionStorage.getItem("PROVIDER")
+    const isProviderLogin = sessionStorage.getItem(SESSION_PROVIDER)
     
     if(isProviderLogin){
       setProvider(true)

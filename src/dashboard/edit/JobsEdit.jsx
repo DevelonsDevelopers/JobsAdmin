@@ -114,9 +114,9 @@ const deleteSkill = (val) => {
       setJobData({ category: job?.category, country: job?.country, city: job?.city, city_name: job?.city_name, title: job?.title, company: job?.company, company_name: job?.company_n, designation: job?.designation, salary: job?.salary, role: job?.role, description: job?.description, link: job?.link, type: job?.type, workdays: job?.workdays, worktime: job?.worktime, address: job?.address, experience: job?.experience, qualification: job?.qualification, skills: job?.skills, date: moment(job?.date).format('YYYY-MM-DD'), tags: job?.tags })
     }
   }, [job])
-  useEffect(() => {
-    console.log('jobdata', jobData)
-  }, [jobData])
+  // useEffect(() => {
+  //   console.log('jobdata', jobData)
+  // }, [jobData])
 
   const ClickInput = (e) => {
 
