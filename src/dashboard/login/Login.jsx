@@ -4,6 +4,7 @@ import { LoginUser } from "../../store"
 import { AiFillEye, AiFillEyeInvisible, AiOutlineMail } from 'react-icons/ai'
 import { RiLockPasswordLine } from 'react-icons/ri'
 import { ToastContainer, toast } from "react-toastify"
+import { SESSION_ADMIN_ID, SESSION_ADMIN_LOGIN, SESSION_ADMIN_TYPE, SESSION_ADMIN_USER } from "../../Utils/Constant"
 
 const Login = () => {
   const [loginData, setLoginData] = useState({ email: '', password: '' })
@@ -13,7 +14,7 @@ const Login = () => {
   }
 
   useEffect(() => {
-    const isLogin = sessionStorage.getItem("LOGIN")
+    const isLogin = sessionStorage.getItem(SESSION_ADMIN_LOGIN)
     if (isLogin === "true") {
       navigate('/')
     } else {
@@ -26,10 +27,10 @@ const Login = () => {
       const { data: { status } } = res
       console.log(status)
       if (status === 'OK') {
-        sessionStorage.setItem("LOGIN", "true")
-        sessionStorage.setItem("ID", data.id)
-        sessionStorage.setItem("TYPE", "USER")
-        sessionStorage.setItem("USER", JSON.stringify(data))
+        sessionStorage.setItem(SESSION_ADMIN_LOGIN, "true")
+        sessionStorage.setItem(SESSION_ADMIN_ID, data.id)
+        sessionStorage.setItem(SESSION_ADMIN_TYPE, "USER")
+        sessionStorage.setItem(SESSION_ADMIN_USER, JSON.stringify(data))
         navigate('/')
 
       }

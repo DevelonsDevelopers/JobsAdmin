@@ -9,6 +9,7 @@ import moment from 'moment'
 import { GetOffersByCompany } from '../store/actions/offersActions'
 import { getRecentJob } from '../store/actions/jobActions'
 import { useNavigate } from 'react-router-dom'
+import { SESSION_ADMIN_ID, SESSION_ADMIN_TYPE, SESSION_PROVIDER, SESSION_PROVIDER_LOGIN } from '../Utils/Constant'
 
 const ProviderPanel = () => {
     const form03 = [
@@ -67,21 +68,21 @@ const ProviderPanel = () => {
     const offerByCompany = useSelector(state => state.offer.offers)
 
     useEffect(() => {
-      console.log('offerbyCompany', offerByCompany)
+        console.log('offerbyCompany', offerByCompany)
     }, [offerByCompany])
-  
+
     useEffect(() => {
-      dispatch(GetOffersByCompany('70'))
+        dispatch(GetOffersByCompany('70'))
     }, [dispatch])
 
     const recentJobs = useSelector(state => state.job.jobs)
 
     useEffect(() => {
-      console.log('recentJobs', recentJobs)
+        console.log('recentJobs', recentJobs)
     }, [recentJobs])
-  
+
     useEffect(() => {
-      dispatch(getRecentJob())
+        dispatch(getRecentJob())
     }, [dispatch])
 
 
@@ -90,18 +91,18 @@ const ProviderPanel = () => {
         return moment(date).format('MMM Do YY');
     };
 
-    
+
     const logout = () => {
-        sessionStorage.setItem("LOGIN", "false")
-        sessionStorage.setItem("ID", null)
-        sessionStorage.setItem("TYPE", null)
-        sessionStorage.setItem("PROVIDER", null)
+        sessionStorage.setItem(SESSION_PROVIDER_LOGIN, "false")
+        sessionStorage.setItem(SESSION_ADMIN_ID, null)
+        sessionStorage.setItem(SESSION_ADMIN_TYPE, null)
+        sessionStorage.setItem(SESSION_PROVIDER, null)
         router('/providerLogin')
-      }
-    
+    }
+
     return (
         <PortalLayout>
-            <button onClick={()=> logout()} className='bg-blue-600 text-white cursor-pointer font-[600] px-10 py-[5px] w-[100%] rounded-full mt-6'>logout</button>
+            <button onClick={() => logout()} className='bg-blue-600 text-white cursor-pointer font-[600] px-10 py-[5px] w-[100%] rounded-full mt-6'>logout</button>
             <div className='px-20 py-10 border-2 rounded-xl bg-white'>
                 <div className='grid grid-cols-2 max-md:grid-cols-1 md:w-[100%] '>
                     <div className='w-[90%] mt-4'>
@@ -192,7 +193,7 @@ const ProviderPanel = () => {
                                         </td>
 
                                         <td className="w-[30%] text-center py-4">
-                                        {moment(value.date).format('MMM Do YY')}
+                                            {moment(value.date).format('MMM Do YY')}
                                         </td>
                                     </tr>
                                 ))}
@@ -227,7 +228,7 @@ const ProviderPanel = () => {
                                         </td>
 
                                         <td className="w-[30%] text-center py-4">
-                                        {moment(value.date).format('MMM Do YY')}
+                                            {moment(value.date).format('MMM Do YY')}
                                         </td>
                                     </tr>
                                 ))}

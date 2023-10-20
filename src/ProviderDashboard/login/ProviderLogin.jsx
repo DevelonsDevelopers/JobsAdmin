@@ -7,7 +7,7 @@ import { ToastContainer, toast } from "react-toastify"
 import AppView from "../view/AppView"
 import axios from "axios"
 import { useGoogleLogin } from "@react-oauth/google"
-import {SESSION_PROVIDER_LOGIN} from "../../Utils/Constant";
+import { SESSION_ADMIN_ID, SESSION_ADMIN_TYPE, SESSION_PROVIDER, SESSION_PROVIDER_LOGIN } from "../../Utils/Constant";
 
 const ProviderLogin = () => {
   const [loginData, setLoginData] = useState({ email: '', password: '' })
@@ -31,10 +31,10 @@ const ProviderLogin = () => {
       const { data: { status } } = res;
       console.log('res', status)
       if (status === 'OK') {
-        sessionStorage.setItem("LOGIN", "true")
-        sessionStorage.setItem("ID", data.id)
-        sessionStorage.setItem("TYPE", "PROVIDER")
-        sessionStorage.setItem("PROVIDER", JSON.stringify(data))
+        sessionStorage.setItem(SESSION_PROVIDER_LOGIN, "true")
+        sessionStorage.setItem(SESSION_ADMIN_ID, data.id)
+        sessionStorage.setItem(SESSION_ADMIN_TYPE, "PROVIDER")
+        sessionStorage.setItem(SESSION_PROVIDER, JSON.stringify(data))
         navigate('/providerPanel')
       }
       else {
@@ -86,7 +86,7 @@ const ProviderLogin = () => {
   // navigate('/')
 
 
-  const  myFunction = () => {
+  const myFunction = () => {
     var x = document.getElementById("myInput");
     if (x.type === "password") {
       x.type = "text";
