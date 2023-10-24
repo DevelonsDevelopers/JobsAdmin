@@ -175,4 +175,8 @@ export const SESSION_PROVIDER_ID = "JOBS_AU_PROVIDER_ID"
 export const SESSION_PROVIDER_TYPE = "JOBS_AU_PROVIDER_TYPE"
 
 
+//Ads
+export const GET_ADS = "GET_ADS";
+export const UPDATE_ADS = "UPDATE_ADS";
+
 

@@ -19,6 +19,7 @@ import offer from "./offer";
 import interaction from "./interaction";
 import apiJob from "./apiJob";
 import jobBank from "./jobBank";
+import ad from "./ads";
 
 export default combineReducers({
      dashboard,
@@ -40,5 +41,6 @@ export default combineReducers({
      offer,
      interaction,
      apiJob,
-     jobBank
+     jobBank,
+     ad
      })

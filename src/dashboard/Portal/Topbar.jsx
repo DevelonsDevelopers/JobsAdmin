@@ -12,8 +12,10 @@ const Topbar = ({ showNav, setShowNav }) => {
   const router = useNavigate();
 
   const [data, setData] = useState();
+  console.log(data)
   const [provider, setProvider] = useState(false);
   const [providerData, setProviderData] = useState();
+  console.log(providerData)
 
   const logout = () => {
     sessionStorage.setItem(SESSION_ADMIN_LOGIN, "false")
@@ -22,7 +24,8 @@ const Topbar = ({ showNav, setShowNav }) => {
     sessionStorage.setItem(SESSION_ADMIN_USER, null)
     router('/login')
   }
-
+  
+  console.log('goods')
   useEffect(() => {
     const user = sessionStorage.getItem(SESSION_USER)
     setData(JSON.parse(user))
@@ -58,7 +61,12 @@ const Topbar = ({ showNav, setShowNav }) => {
   return (
     <div className={` w-full h-16 flex bg-violet-100 justify-between items-center transition-all duration-[400ms] ${showNav ? 'pl-[10.5rem] max-sm:pl-[14rem]' : ""}`}>
       <div className='pl-4 md:pl-16'>
-        <HiMenuAlt2 className='h-8 w-10 max-md:h-[20px] max-md:w-[20px]  text-gray-700 cursor-pointer ' onClick={() => setShowNav(!showNav)} />
+        <HiMenuAlt2 className='h-8 w-10 max-md:h-[20px] max-md:w-[20px]  text-gray-700 cursor-pointer ' 
+        onClick={() => {
+          setShowNav(!showNav) 
+          console.log(data)
+        }
+          } />
       </div>
       <div className='flex items-center  pr-4 md:pr-16'>
         <Popover className="relative">

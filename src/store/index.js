@@ -2,7 +2,7 @@ import axios from "axios"
 
 
 
-const API = axios.create({ baseURL: 'http://jobss.com.au/api' })
+const API = axios.create({ baseURL: 'https://jobss.com.au/api' })
 
 
 //Login
@@ -590,3 +590,17 @@ export const deleteJobBank = (id) => API.delete(`/jobBanks/:delete`, {
     }
 })
 // export const fetchAllSeekers = () => API.get(`/seekers/all`)
+
+//ADs
+
+export const fetchAds = () => API.get(`/ads/get`)
+export const updateAds = (banner_ad, interstitial_ad, count, app_open, publisher_key, id) => API.get(`/applied/update`, {
+    data: {
+        banner_ad: banner_ad,
+        interstitial_ad: interstitial_ad,
+        count: count,
+        app_open: app_open,
+        publisher_key: publisher_key,
+        id: id
+    }
+})

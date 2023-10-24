@@ -110,7 +110,7 @@ const Cv = () => {
           <h1 style={{ textAlign: 'center', fontSize: 16, marginTop: 20 }} className='font-[600]'>QUALIFICATIONS</h1>
           <h1 style={{ backgroundColor: 'gray', height: 1, marginTop: 20 }} ></h1>
 
-          {cv.educations.map((item) => (
+          {cv.educations?.map((item) => (
             <div >
               <div style={{ flexDirection: 'row', display: 'flex', gap: 5 }}>
                 <h1 className='font-[600]'>
