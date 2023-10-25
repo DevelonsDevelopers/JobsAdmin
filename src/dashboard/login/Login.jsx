@@ -7,6 +7,11 @@ import { ToastContainer, toast } from "react-toastify"
 import { SESSION_ADMIN_ID, SESSION_ADMIN_LOGIN, SESSION_ADMIN_TYPE, SESSION_ADMIN_USER } from "../../Utils/Constant"
 
 const Login = () => {
+
+
+  const [loading, setLoading] = useState(false)
+
+
   const [loginData, setLoginData] = useState({ email: '', password: '' })
   const navigate = useNavigate()
   const handleChange = (e) => {
@@ -22,11 +27,13 @@ const Login = () => {
   }, [])
 
   const login = () => {
+    setLoading(true)
     LoginUser(loginData.email, loginData.password).then(res => {
       const { data: { data } } = res
       const { data: { status } } = res
       console.log(status)
       if (status === 'OK') {
+        setLoading(false)
         sessionStorage.setItem(SESSION_ADMIN_LOGIN, "true")
         sessionStorage.setItem(SESSION_ADMIN_ID, data.id)
         sessionStorage.setItem(SESSION_ADMIN_TYPE, "USER")
@@ -35,6 +42,7 @@ const Login = () => {
 
       }
       else {
+        setLoading(false)
         toast.error('Invalid Username or Password', {
           position: "top-right",
           autoClose: 5000,
@@ -107,8 +115,14 @@ const Login = () => {
                   <div className="relative top-[-2.9rem] left-[44%] w-[10%] text-[1.4rem]" onClick={() => handleSubmit()}> <AiFillEyeInvisible />
                   </div>
                 }
-
-                <input type='submit' value='Log In' onClick={() => login()} className='bg-blue-600 text-white cursor-pointer font-[600] px-10 py-[5px] w-[100%] rounded-full mt-6' />
+                {loading ?
+                  <center> <div className="flex justify-center items-center bg-blue-600 px-10 py-[8px] w-[100%] rounded-full mt-6">
+                    <div className="animate-spin rounded-full h-4 w-4 border-t-2 border-white"></div>
+                  </div>
+                  </center>
+                  :
+                  <input type='submit' value='Log In' onClick={() => login()} className='bg-blue-600 text-white cursor-pointer font-[600] px-10 py-[5px] w-[100%] rounded-full mt-6' />
+                }
               </div>
 
             </center>

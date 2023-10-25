@@ -50,7 +50,6 @@ const Jobs = () => {
   }, [jobs])
 
 
-
   useEffect(() => {
     if (jobs?.length === 0) {
       setNodata(true)
