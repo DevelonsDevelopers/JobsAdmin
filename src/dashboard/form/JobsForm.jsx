@@ -1,12 +1,14 @@
-import React, { useEffect, useMemo, useRef, useState } from 'react'
+import React, { useEffect,  useRef, useState } from 'react'
+// import React, { useEffect, useMemo, useRef, useState } from 'react'
 import PortalLayout from '../../portalLayout/PortalLayout'
 import { createJob } from '../../store/actions/jobActions'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { AllCountries } from '../../store/actions/countryActions'
-import { AllCities, getCitybyCountry } from '../../store/actions/cityActions'
+import { getCitybyCountry } from '../../store/actions/cityActions'
+// import { AllCities, getCitybyCountry } from '../../store/actions/cityActions'
 import { AllCategories } from '../../store/actions/categoryActions'
-import { AllCompanies } from '../../store/actions/companyActions'
+// import { AllCompanies } from '../../store/actions/companyActions'
 import Select from 'react-select'
 import JoditEditor from 'jodit-react'
 import moment from 'moment'
@@ -16,7 +18,8 @@ import { ToastContainer, toast } from 'react-toastify'
 
 const JobsForm = ({ }) => {
   const [jobData, setJobData] = useState({ category: '', country: '', city: '', title: '', company: 0, company_name: '', designation: '', salary: '', role: '', description: '', link: '', type: '', workdays: '', worktime: '', address: '', experience: '', qualification: '', skills: '', date: '', tags: '' })
-  const [country, setCountry] = useState()
+  // const [country, setCountry] = useState()
+  const [setCountry] = useState()
   const [tagValue, setTagValue] = useState("");
 
   const [startTime, setStartTime] = useState()
