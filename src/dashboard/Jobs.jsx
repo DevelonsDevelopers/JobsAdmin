@@ -21,7 +21,14 @@ const Jobs = () => {
 
   const dispatch = useDispatch()
   const router = useNavigate();
+  const [nodata, setNodata] = useState(false)
 
+  useEffect(() => {
+    dispatch(getJobs())
+    setNodata(false)
+    setLoading(false)
+  }, [dispatch])
+  
   //onChange
   const handleClick = (id) => {
     setOpenView(!open)
@@ -29,7 +36,6 @@ const Jobs = () => {
   }
 
   // const loading = useSelector(state => state.job.isLoading)
-  const [nodata, setNodata] = useState(false)
 
   // //fetching jobs
   // const jobs = useSelector(state => state.job.jobs)
@@ -45,23 +51,25 @@ const Jobs = () => {
 
   //fetching jobs
   const jobs = useSelector(state => state.job.jobs)
+
   useEffect(() => {
     console.log('jobs', jobs)
   }, [jobs])
 
 
+
+ 
+
   useEffect(() => {
     if (jobs?.length === 0) {
-      setNodata(true)
-      setLoading(false)
-      dispatch(getJobs())
+      setLoading(true)
+      //  setNodata(true)
     }
     else {
       setNodata(false)
       setLoading(false)
-      dispatch(getJobs())
-    }
-  }, [dispatch, jobs])
+     }
+  }, [jobs])
 
   //delete
   const handleDelete = (id) => {
