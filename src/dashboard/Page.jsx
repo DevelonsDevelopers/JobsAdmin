@@ -91,7 +91,7 @@ const Dashboard = () => {
       </center> : <>
         <div className='p-10 border-2  rounded-xl  bg-white'>
           <div className='flex max-md:flex-col gap-6'>
-            <div className='grid grid-cols-3 max-md:grid-cols-2 md:w-[70%] gap-6 mt-[5.7rem]'>
+            <div className='grid grid-cols-3 max-md:grid-cols-2 md:w-[70%] gap-6 mt-[5.7rem]' style={{ userSelect: 'none' }}>
 
               <div className="bg-[#4D38E3] rounded-xl  text-white mt-[-3rem] max-md:mt-0 h-[6.5rem] shadow-xl shadow-gray-300 ">
                 <ul className='flex flex-row-reverse  '>
@@ -137,25 +137,29 @@ const Dashboard = () => {
               </div>
 
             </div>
-            <div className='white border-2 p-3 md:w-[30%] h-[19rem] rounded-xl shadow-xl shadow-gray-300  max-md:mr-0'>
-              <span className=' ml-[2rem] font-[600] text-[1rem]'>Memory Status</span>
+            <div
+              className='white border-2 p-3 md:w-[30%] h-[19rem] rounded-xl shadow-xl shadow-gray-300 max-md:mr-0'
+              style={{ outline: 'none' }}
+              tabIndex={0}
+              onFocus={(e) => e.target.blur()}
+            >
+              <span className='ml-[2rem] font-[600] text-[1rem]'>Memory Status</span>
               <ResponsiveContainer width="100%" height={240}>
                 <PieChart width={430} height={200} margin={{ top: 40, right: 20, bottom: 0, left: 20 }}>
-                  {/* <Pie data={data01} dataKey="value2" nameKey="name" cx="50%" cy="50%" outerRadius={40} fill="#2994FF" /> */}
-                  <Pie data={pieData} dataKey="value" nameKey="name" cx="50%" cy="50%" outerRadius={70} fill="#4D38E3" label >
+                  <Pie data={pieData} dataKey="value" nameKey="name" cx="50%" cy="50%" outerRadius={70} fill="#4D38E3" label>
                     {pieData.map((entry, index) => (
                       <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
                     ))}
                   </Pie>
                   <Tooltip />
-
                 </PieChart>
               </ResponsiveContainer>
             </div>
 
+
           </div>
 
-          <div className='flex max-md:flex-col  max-md:grid-cols-1 gap-8 items-center'>
+          <div className='flex max-md:flex-col  max-md:grid-cols-1 gap-8 items-center' style={{ userSelect: 'none' }}>
             <div className='mt-10 w-[70%] max-md:w-[100%] py-2 bg-white border-2 p-8 rounded-xl shadow-xl shadow-gray-300 '>
               <ResponsiveContainer width="100%" height={350}>
                 <AreaChart data={lineChart}
@@ -210,7 +214,7 @@ const Dashboard = () => {
               </table>
             </div>
           </div>
-          <div className='grid  grid-cols-2 max-md:grid-cols-1 gap-10'>
+          <div className='grid  grid-cols-2 max-md:grid-cols-1 gap-10' style={{ userSelect: 'none' }}>
             <div className=" border-2 shadow-xl bg-white p-5 rounded-xl shadow-gray-300 mt-5 max-md:mt-[-17px] ">
               <span className=' ml-[1.5rem]  font-[600] text-[1rem]'>Applied</span>
               <table className="w-[100%] mt-3 text-sm text-left text-gray-500 :text-gray-400">
@@ -281,12 +285,9 @@ const Dashboard = () => {
                 </tbody>
               </table>
             </div>
-
-
-
           </div>
 
-          <div className='grid grid-cols-1 max-md:grid-cols-1 justify-center gap-6 mt-5'>
+          <div className='grid grid-cols-1 max-md:grid-cols-1 justify-center gap-6 mt-5' style={{ userSelect: 'none' }}>
             <div className='bg-white border-2 p-2 rounded-xl shadow-xl shadow-gray-300'>
               <span className=' ml-[2rem] font-[600] text-[1rem]'>Memory Status</span>
               <ResponsiveContainer width="100%" height={400}>
