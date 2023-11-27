@@ -9,7 +9,8 @@ import { AiOutlineTag, AiOutlineTransaction, AiOutlineOrderedList, AiOutlineNoti
 import { PiBriefcaseLight, PiBuildingsLight } from 'react-icons/pi'
 import { useLocation, useNavigate } from "react-router-dom";
 import { SESSION_PROVIDER } from "../../Utils/Constant";
-
+import { TfiCloudDown, TfiPieChart } from "react-icons/tfi";
+import { LuLeaf } from "react-icons/lu";
 
 
 const Sidebar = forwardRef(({ }, ref) => {
@@ -200,7 +201,7 @@ const Sidebar = forwardRef(({ }, ref) => {
 `}
               >
                 <div className="mr-2">
-                  <BiCategoryAlt className="h-5 w-5" />
+                  <LuLeaf className="h-5 w-5" />
                 </div>
                 <div>
                   <p>Job Banks</p>
@@ -276,7 +277,7 @@ const Sidebar = forwardRef(({ }, ref) => {
             `}
           >
             <div className="mr-2">
-              <PiBriefcaseLight className="h-5 w-5" />
+              <TfiPieChart className="h-5 w-5" />
             </div>
             <div>
               <p>Jobs API</p>
@@ -295,7 +296,7 @@ const Sidebar = forwardRef(({ }, ref) => {
             `}
           >
             <div className="mr-2">
-              <PiBriefcaseLight className="h-5 w-5" />
+              <TfiCloudDown className="h-5 w-5" />
             </div>
             <div>
               <p>Career JetAPI</p>
