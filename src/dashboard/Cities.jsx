@@ -5,6 +5,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { AllCities, DeleteCity, cityStatus } from '../store/actions/cityActions'
 import CityModal from './view/CitiyView'
+import { Pagination, Stack, ThemeProvider, createTheme } from '@mui/material'
 
 
 const Cities = () => {
@@ -36,7 +37,7 @@ const Cities = () => {
   }, [cities])
 
   useEffect(() => {
-      dispatch(AllCities())
+    dispatch(AllCities())
   }, [dispatch])
 
   //delete
@@ -67,6 +68,7 @@ const Cities = () => {
     dispatch(cityStatus(id, st))
   }
 
+
   // nodata===============
   const [nodata, setNodata] = useState(false)
   useEffect(() => {
@@ -78,53 +80,24 @@ const Cities = () => {
     }
   }, [cities])
 
-  //pagination=============================
-  const [currentPage, setCurrentPage] = useState(1)
-  const numbersPerPage = 10;
-  const [records, setRecords] = useState()
-  const [nPage, setPage] = useState()
-  const [Numbers, setNumbers] = useState()
-  const [lastIndex, setLastIndex] = useState()
-  const [firstIndex, setFirstIndex] = useState()
+  const theme = createTheme({ palette: { primary: { main: '#0D3049', contrastText: '#EEE' }, }, })
 
-  useEffect(() => {
-    setLastIndex(currentPage * numbersPerPage);
-  }, [currentPage])
-
-  useEffect(() => {
-    setFirstIndex(lastIndex - numbersPerPage);
-  }, [lastIndex])
-
+  const itemsPerPage = 10;
+  const [currentPage, setCurrentPage] = useState(1);
+  const handlePageChange = (event, newPage) => {
+    setCurrentPage(newPage);
+  };
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+  const [paginatedData, setPaginatedData] = useState();
   useEffect(() => {
     if (cities) {
-      setRecords(cities.slice(firstIndex, lastIndex));
-      setPage(Math.ceil(cities.length / numbersPerPage));
+      setPaginatedData(cities?.slice(startIndex, endIndex))
     }
-  }, [cities, firstIndex])
+  }, [cities, startIndex])
 
-  useEffect(() => {
-    if (nPage) {
-      setNumbers([...Array(nPage + 1).keys()].slice(1))
-    }
-  }, [nPage])
-  //================================
-  let pagination = [], i = 1;
 
-  while (i <= nPage) {
 
-    if (i <= 1 ||
-      i >= nPage - 2 ||
-      i >= currentPage - 1 && i <= currentPage + 1) {
-      pagination.push(i);
-      i++;
-    } else {
-      pagination.push('...');
-
-      //jump to the next page to be linked in the navigation
-      i = i < currentPage ? currentPage - 1 : nPage - 2;
-    }
-  }
-  const [select, setSelect] = useState(0)
 
 
   return (
@@ -174,7 +147,7 @@ const Cities = () => {
 
                   </thead>
 
-                  {records?.filter((value) => {
+                  {paginatedData?.filter((value) => {
                     return search.toLowerCase() === '' ?
                       value : value.name.toLowerCase().includes(search)
                   }).map((value, index) => (
@@ -224,53 +197,23 @@ const Cities = () => {
                     </tbody>
                   ))}
                 </table>
-                <nav className='m-auto mt-5' >
-                  <ul className="flex items-center -space-x-px h-10 text-base">
-                  <li>
-                      <Link to="#" onClick={prevPage} className="flex items-center justify-center px-4 h-10 ml-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-l-lg hover:bg-gray-100 hover:text-gray-700  " >
-                        <span className="sr-only">Previous</span>
-                        <svg className="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-                          <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 1 1 5l4 4" />
-                        </svg>
-                      </Link>
-                    </li>
-                    {pagination?.map((n, index) => (<li><Link to="#" onClick={() => { setSelect(index); changeCurrentPage(n) }}
-                      className={` ${select === index ? 'bg-cyan-400 text-white hover:text-white' : 'bg-gray-100'} flex items-center justify-center px-4 h-10 leading-tight text-gray-500 border border-gray-300  hover:text-gray-700 `} >{n}</Link>
-                    </li>))}
-                    <li>
-                      <Link to="#" onClick={nextPage} className="flex items-center justify-center px-4 h-10 leading-tight text-gray-500 bg-white border border-gray-300 rounded-r-lg hover:bg-gray-100 hover:text-gray-700  "> <span className="sr-only">Next</span><svg className="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10"> <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m1 9 4-4-4-4" /> </svg></Link>
-                    </li>
-                  </ul>
-                </nav>
-
-
-
-                <center>
-                </center>
+                <ThemeProvider theme={theme}>
+                  <Stack direction="row" justifyContent="center" marginTop={2}>
+                    <Pagination
+                      count={Math.ceil(cities?.length / itemsPerPage)}
+                      page={currentPage}
+                      onChange={handlePageChange}
+                      color="primary"
+                    />
+                  </Stack>
+                </ThemeProvider>
               </div>
             </>}
         </>}
 
     </PortalLayout>
   )
-  //pagination====================
-  function prevPage() {
-    if (currentPage !== 1) {
-      setCurrentPage(currentPage - 1);
-      setSelect(state => state - 1 )
-
-    }
-  }
-  function changeCurrentPage(id) {
-    setCurrentPage(id)
-  }
-  function nextPage() {
-    if (currentPage !== nPage) {
-      setCurrentPage(currentPage + 1)
-      setSelect(state => state + 1 )
-
-    }
-  }
+   
 }
 
 export default Cities

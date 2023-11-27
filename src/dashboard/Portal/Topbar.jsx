@@ -67,7 +67,7 @@ const Topbar = ({ showNav, setShowNav }) => {
       <div className='flex items-center  pr-4 md:pr-16'>
         <Popover className="relative">
           <Popover.Button className="outline-none mr-5 md:mr-8 cursor-pointer text-gray-700">
-            <HiOutlineUserCircle className='h-6 w-6' />
+            <HiOutlineUserCircle className='h-8 w-8' />
           </Popover.Button>
           <Transition as={Fragment} enter='transition ease-out duration-100' enterFrom='transform scale-95' enterTo='transform scale-100' leave='transition ease-in duration-75' leaveFrom='transform scale-100' leaveTo='transform scale-95'>
             <Popover.Panel className="absolute -right-16 max-sm:right-0 z-50 mt-2 bg-white shadow-sm rounded-md max-w-xs max-sm:w-[230px] w-[250px]">
