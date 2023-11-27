@@ -89,46 +89,45 @@ const Dashboard = () => {
         <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-blue-500"></div>
       </div>
       </center> : <>
-        <div className='p-10 border-2  rounded-xl  bg-white'>
+        <div className='px-10 py-6 border-2  rounded-xl  bg-white'>
           <div className='flex max-md:flex-col gap-6'>
-            <div className='grid grid-cols-3 max-md:grid-cols-2 md:w-[70%] gap-6 mt-[5.7rem]' style={{ userSelect: 'none' }}>
-
-              <div className="bg-[#4D38E3] rounded-xl  text-white mt-[-3rem] max-md:mt-0 h-[6.5rem] shadow-xl shadow-gray-300 ">
+            <div className='grid grid-cols-3 max-md:grid-cols-2 md:w-[100%] gap-6' style={{ userSelect: 'none' }}>
+              <div className="bg-[#4D38E3] rounded-xl  text-white  max-md:mt-0 h-[6.5rem] shadow-xl shadow-gray-300 ">
                 <ul className='flex flex-row-reverse  '>
                   <li><RiUserSearchLine className='w-25 text-[3rem] mb-[-2rem] pr-4 pt-2 ml-auto' /></li>
                 </ul>
                 <h1 className='text-left ml-5 mt-6 text-[1rem] font-[600]'>Jobs</h1>
                 <h1 className='text-left ml-5 mt-[-0.5rem] text-[2rem] font-[700] '>{dashboard?.jobs}</h1>
               </div>
-              <div className="bg-[#47A9FA] rounded-xl  text-white mt-[-3rem] max-md:mt-0 h-[6.5rem] shadow-xl shadow-gray-300 ">
+              <div className="bg-[#47A9FA] rounded-xl  text-white  max-md:mt-0 h-[6.5rem] shadow-xl shadow-gray-300 ">
                 <ul className='flex flex-row-reverse  '>
                   <li><BsSunFill className='w-25 text-[3rem] mb-[-2rem] pr-4 pt-2 ml-auto' /></li>
                 </ul>
                 <h1 className='text-left ml-5 mt-6 text-[1rem] font-[600]'>Categories</h1>
                 <h1 className='text-left ml-5 mt-[-0.5rem] text-[2rem] font-[700] '>{dashboard?.categories}</h1>
               </div>
-              <div className="bg-[#8AC942] rounded-xl  text-white mt-[-3rem] max-md:mt-0 h-[6.5rem] shadow-xl shadow-gray-300 ">
+              <div className="bg-[#8AC942] rounded-xl  text-white  max-md:mt-0 h-[6.5rem] shadow-xl shadow-gray-300 ">
                 <ul className='flex flex-row-reverse  '>
                   <li><BiUserCheck className='w-25 text-[3rem] mb-[-2rem] pr-4 pt-2 ml-auto' /></li>
                 </ul>
                 <h1 className='text-left ml-5 mt-6 text-[1rem] font-[600]'>Seekers</h1>
                 <h1 className='text-left ml-5 mt-[-0.5rem] text-[2rem] font-[700] '>{dashboard?.seekers}</h1>
               </div>
-              <div className="bg-[#1AD185] rounded-xl  text-white mt-[-3rem] max-md:mt-0 h-[6.5rem] shadow-xl shadow-gray-300 ">
+              <div className="bg-[#1AD185] rounded-xl  text-white  max-md:mt-0 h-[6.5rem] shadow-xl shadow-gray-300 ">
                 <ul className='flex flex-row-reverse  '>
                   <li><BiUserCheck className='w-25 text-[3rem] mb-[-2rem] pr-4 pt-2 ml-auto' /></li>
                 </ul>
                 <h1 className='text-left ml-5 mt-6 text-[1rem] font-[600]'>Cities</h1>
                 <h1 className='text-left ml-5 mt-[-0.5rem] text-[2rem] font-[700] '>{dashboard?.cities}</h1>
               </div>
-              <div className="bg-[#fcbf49] rounded-xl  text-white mt-[-3rem] max-md:mt-0 h-[6.5rem] shadow-xl shadow-gray-300 ">
+              <div className="bg-[#fcbf49] rounded-xl  text-white  max-md:mt-0 h-[6.5rem] shadow-xl shadow-gray-300 ">
                 <ul className='flex flex-row-reverse  '>
                   <li><RiAccountPinCircleFill className='w-25 text-[3rem] mb-[-2rem] pr-4 pt-2 ml-auto' /></li>
                 </ul>
                 <h1 className='text-left ml-5 mt-6 text-[1rem] font-[600]'>Companies</h1>
                 <h1 className='text-left ml-5 mt-[-0.5rem] text-[2rem] font-[700] '>{dashboard?.companies}</h1>
               </div>
-              <div className="bg-[#f77f00] rounded-xl  text-white mt-[-3rem] max-md:mt-0 h-[6.5rem] shadow-xl shadow-gray-300 ">
+              <div className="bg-[#f77f00] rounded-xl  text-white  max-md:mt-0 h-[6.5rem] shadow-xl shadow-gray-300 ">
                 <ul className='flex flex-row-reverse  '>
                   <li><BsSunFill className='w-25 text-[3rem] mb-[-2rem] pr-4 pt-2 ml-auto' /></li>
                 </ul>
@@ -137,30 +136,10 @@ const Dashboard = () => {
               </div>
 
             </div>
-            <div
-              className='white border-2 p-3 md:w-[30%] h-[19rem] rounded-xl shadow-xl shadow-gray-300 max-md:mr-0'
-              style={{ outline: 'none' }}
-              tabIndex={0}
-              onFocus={(e) => e.target.blur()}
-            >
-              <span className='ml-[2rem] font-[600] text-[1rem]'>Memory Status</span>
-              <ResponsiveContainer width="100%" height={240}>
-                <PieChart width={430} height={200} margin={{ top: 40, right: 20, bottom: 0, left: 20 }}>
-                  <Pie data={pieData} dataKey="value" nameKey="name" cx="50%" cy="50%" outerRadius={70} fill="#4D38E3" label>
-                    {pieData.map((entry, index) => (
-                      <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
-                    ))}
-                  </Pie>
-                  <Tooltip />
-                </PieChart>
-              </ResponsiveContainer>
-            </div>
-
-
           </div>
 
-          <div className='flex max-md:flex-col  max-md:grid-cols-1 gap-8 items-center' style={{ userSelect: 'none' }}>
-            <div className='mt-10 w-[70%] max-md:w-[100%] py-2 bg-white border-2 p-8 rounded-xl shadow-xl shadow-gray-300 '>
+          <div className='flex max-md:flex-col max-md:grid-cols-1 gap-8' style={{ userSelect: 'none' }}>
+            <div className='w-[70%] max-md:w-[100%] bg-white border-2 mt-10 rounded-xl shadow-xl shadow-gray-300 '>
               <ResponsiveContainer width="100%" height={350}>
                 <AreaChart data={lineChart}
                   margin={{ top: 20, right: 30, left: 0, bottom: 0 }}>
@@ -177,7 +156,27 @@ const Dashboard = () => {
               </ResponsiveContainer>
             </div>
 
-            <div className=" border-2 shadow-xl h-full  max-md:w-[100%] max-md:mb-[30px] p-5 bg-white rounded-xl shadow-xl shadow-gray-300 mt-10 h-[374px] ">
+            <div
+              className='white border-2 p-3 mt-10 md:w-[30%] h-full rounded-xl shadow-xl shadow-gray-300 max-md:mr-0'
+              style={{ outline: 'none' }}
+              tabIndex={0}
+              onFocus={(e) => e.target.blur()}
+            >
+              <span className='ml-[2rem] font-[600] text-[1rem]'>Memory Status</span>
+              <ResponsiveContainer width="100%" height={300}>
+                <PieChart width={430} height={200} margin={{ top: 10, right: 20, bottom: 0, left: 20 }}>
+                  <Pie data={pieData} dataKey="value" nameKey="name" cx="50%" cy="50%" outerRadius={70} fill="#4D38E3" label>
+                    {pieData.map((entry, index) => (
+                      <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+                    ))}
+                  </Pie>
+                  <Tooltip />
+                </PieChart>
+              </ResponsiveContainer>
+            </div>
+          </div>
+          <div className='grid  grid-cols-2 max-md:grid-cols-1 my-10 gap-10' style={{ userSelect: 'none' }}>
+          {/* <div className=" border-2 shadow-xl  max-md:w-[100%] max-md:mb-[30px] p-5 bg-white rounded-xl shadow-xl shadow-gray-300 ">
               <span className=' ml-[1.6rem]  font-[600] text-[1rem]'>Transactions</span>
 
               <table className="w-[100%] mt-3 text-sm text-left text-gray-500 :text-gray-400">
@@ -212,78 +211,88 @@ const Dashboard = () => {
                   ))}
                 </tbody>
               </table>
+            </div> */}
+            <div class="relative flex h-full w-full flex-col rounded-[10px] border-[1px] border-gray-200 bg-white bg-clip-border shadow-md shadow-[#F3F3F3]">
+                    <div class="flex items-center justify-between rounded-t-2xl bg-white px-4 pt-4 shadow-2xl shadow-gray-100">
+                      <h4 class="text-lg font-bold text-gray-600">
+                      Transactions
+                      </h4>
+                      {/* <button
+                        onClick={() => navigate('/dashboard/transactions')}
+                        className="text-red-700 underline"
+                      >
+                        See all
+                      </button> */}
+                    </div>
+                    <div className="bg-white shadow-md h-full shadow-[#F3F3F3]">
+                      <table className="rounded-xl h-full shadow-xl w-[100%] max-md:w-[100%] max-md:h-[400px] mt-4">
+                        <thead className=''>
+                          <tr className="bg-[#2994FF] text-white uppercase text-sm leading-normal w-[100%]">
+                            <th className="py-[2%] w-[25%] max-md:text-[.7rem] text-center">Id</th>
+                            <th className="py-[2%] w-[25%] max-md:text-[.7rem] text-center">Date</th>
+                            <th className="py-[2%] w-[25%] max-md:text-[.7rem] text-center">Amount</th>
+                          </tr>
+                        </thead>
+                        {transactions?.map((value) => (
+                          <tbody className="text-gray-600 text-sm font-light w-[100%]">
+                            <tr className={`border-b border-gray-300 bg-white`} >
+                              <td className="py-[2%] w-[25%] max-md:text-[.7rem] text-center">
+                                <span className="font-medium">{value.id}</span>
+                              </td>
+                              <td className="py-[2%] w-[25%] max-md:text-[.7rem] text-center">
+                                <span>{moment(value.date).format('YYYY-MM-DD')}</span>
+                              </td>
+                              <td className="py-[2%] w-[25%] max-md:text-[.7rem]  text-center">
+                                <div className="flex items-center justify-center text-[#A52922] font-[500]">
+                                  {value.amount}
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        ))}
+                      </table>
+                    </div>
             </div>
-          </div>
-          <div className='grid  grid-cols-2 max-md:grid-cols-1 gap-10' style={{ userSelect: 'none' }}>
-            <div className=" border-2 shadow-xl bg-white p-5 rounded-xl shadow-gray-300 mt-5 max-md:mt-[-17px] ">
-              <span className=' ml-[1.5rem]  font-[600] text-[1rem]'>Applied</span>
-              <table className="w-[100%] mt-3 text-sm text-left text-gray-500 :text-gray-400">
-                <thead className="text-xs text-white uppercase bg-[#2994FF] :bg-gray-700 :text-gray-400">
-                  <tr>
-                    <th scope="col" className="w-[30%] text-center  py-3">
-                      Job
-                    </th>
-                    <th scope="col" className="w-[30%] text-center  py-3">
-                      Date
-                    </th>
-                    <th scope="col" className="w-[30%] text-center  py-3">
-                      Applieds
-                    </th>
-
-                  </tr>
-                </thead>
-                <tbody>
-                  {form03.map((value, index) => (
-                    <tr className={`bg-white border-b :bg-gray-800 :border-gray-700 ${index % 2 ? 'bg-[#A4D2FF]' : 'bg-[#FFDF9F]'}`}>
-                      <th scope="row" className="w-[30%] text-center  py-4 font-medium text-gray-900 whitespace-nowrap :text-white">
-                        {value.job}
-                      </th>
-                      <td className="w-[30%] text-center  py-4">
-                        {value.date}
-                      </td>
-
-                      <td className="w-[30%] text-center py-4">
-                        {value.report}
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-            <div className=" border-2 shadow-xl bg-white p-5 rounded-xl shadow-gray-300 mt-5 max-md:mt-[-17px] ">
-              <span className=' ml-[1.6rem]  font-[600] text-[1rem]'>Reports</span>
-              <table className="w-[100%] mt-3 text-sm text-left text-gray-500 :text-gray-400">
-                <thead className="text-xs text-white uppercase bg-[#2994FF] :bg-gray-700 :text-gray-400">
-                  <tr>
-                    <th scope="col" className="text-center py-3">
-                      Job
-                    </th>
-                    <th scope="col" className="text-center py-3">
-                      Date
-                    </th>
-                    <th scope="col" className="text-center py-3">
-                      Reports
-                    </th>
-
-                  </tr>
-                </thead>
-                <tbody>
-                  {reports?.map((value, index) => (
-                    <tr className={`bg-white border-b :bg-gray-800 :border-gray-700 ${index % 2 ? 'bg-[#A4D2FF]' : 'bg-[#FFDF9F]'}`}>
-                      <th scope="row" className="text-center px-3  py-4 font-medium text-gray-900 whitespace-nowrap :text-white">
-                        {value.job}
-                      </th>
-                      <td className=" text-center text-[0.7rem]">
-                        {moment(value.date).format('MMM Do YY')}
-                      </td>
-
-                      <td className=" text-center">
-                        {value.feedback}
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
+            <div class="relative flex h-full w-full flex-col rounded-[10px] border-[1px] border-gray-200 bg-white bg-clip-border shadow-md shadow-[#F3F3F3]">
+                    <div class="flex items-center justify-between rounded-t-2xl bg-white px-4 pt-4 shadow-2xl shadow-gray-100">
+                      <h4 class="text-lg font-bold text-gray-600">
+                        Reports
+                      </h4>
+                      {/* <button
+                        onClick={() => navigate('/dashboard/transactions')}
+                        className="text-red-700 underline"
+                      >
+                        See all
+                      </button> */}
+                    </div>
+                    <div className="bg-white shadow-md h-full shadow-[#F3F3F3]">
+                      <table className="rounded-xl h-full shadow-xl w-[100%] max-md:w-[100%] max-md:h-[400px] mt-4">
+                        <thead>
+                          <tr className="bg-[#2994FF] text-white uppercase text-sm leading-normal w-[100%]">
+                            <th className="py-[2%] w-[25%] max-md:text-[.7rem] text-center">Job</th>
+                            <th className="py-[2%] w-[25%] max-md:text-[.7rem] text-center">Date</th>
+                            <th className="py-[2%] w-[25%] max-md:text-[.7rem] text-center">Reports</th>
+                          </tr>
+                        </thead>
+                        {reports?.map((value) => (
+                          <tbody className="text-gray-600 text-sm font-light w-[100%]">
+                            <tr className={`border-b border-gray-300 bg-white`} >
+                              <td className="py-[2%] w-[25%] max-md:text-[.7rem] text-center">
+                                <span className="font-medium">{value.job}</span>
+                              </td>
+                              <td className="py-[2%] w-[25%] max-md:text-[.7rem] text-center">
+                                <span>{moment(value.date).format('YYYY-MM-DD')}</span>
+                              </td>
+                              <td className="py-[2%] w-[25%] max-md:text-[.7rem]  text-center">
+                                <div className="flex items-center justify-center text-[#A52922] font-[500]">
+                                  {value.feedback}
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        ))}
+                      </table>
+                    </div>
             </div>
           </div>
 
