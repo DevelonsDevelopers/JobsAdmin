@@ -1,5 +1,5 @@
 import * as api from '../../store/index'
-import { ALL_COMPANIES, COMPANY_STATUS, CREATE_COMPANY, DELETE_COMPANIES, DELETE_COMPANY, GET_COMPANIES, GET_COMPANY, LOADING, SUCCESS, UPDATE_COMPANIES, UPDATE_COMPANY } from '../../Utils/Constant';
+import { ALL_COMPANIES, COMPANY_STATUS, CREATE_COMPANY, DELETE_COMPANIES, DELETE_COMPANY, GET_COMPANIES, GET_COMPANY, LOADING, RESET_STATE, SUCCESS, UPDATE_COMPANIES, UPDATE_COMPANY } from '../../Utils/Constant';
 
 export const AllCompanies = () => async (dispatch) => {
     try {
@@ -32,8 +32,7 @@ export const createCompany = (company) => async (disptach) => {
 
 export const updateCompany = (id , company) => async (dispatch) => {
     try{
-        const { data } = await api.updateCompany(id, company.name, company.size, company.city, company.country,  company.phone,  company.email, company.headquater, company.type)
-        console.log(data)
+        const { data: { data } } = await api.updateCompany(id, company.name, company.size, company.city, company.country,  company.phone,  company.email, company.headquater, company.type)
         dispatch({ type: UPDATE_COMPANY, payload: data})
     }catch(error){
         console.log(error)

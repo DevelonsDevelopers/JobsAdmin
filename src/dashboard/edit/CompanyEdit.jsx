@@ -10,7 +10,7 @@ import Select from 'react-select'
 
 const CompanyEdit = () => {
 
-  const [companyData, setCompanyData] = useState({city: '', country: '', email: '', password: '', headquater: '', name: '', phone: '', size: '', type: ''})
+  const [companyData, setCompanyData] = useState({name: '', size: '',city: '', country: '', email: '', password: '', headquater: '',  phone: '',  type: ''})
   const [country, setCountry] = useState('')
 
   const dispatch = useDispatch()
@@ -30,7 +30,7 @@ useEffect(() => {
   setCompanyData({ ...companyData, city: selectedCityValue?.id})
 }, [selectedCityValue])
 
-console.log(selectedCityValue)
+// console.log(selectedCityValue)
 
 const handleInputChange = (value) => {
   setValue(value)

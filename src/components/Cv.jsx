@@ -26,7 +26,7 @@ const Cv = () => {
 
   const id = params.state.Id;
 
-  console.log(id)
+  console.log('newId', id)
 
   const cv = useSelector(state => state.cv.cv);
 

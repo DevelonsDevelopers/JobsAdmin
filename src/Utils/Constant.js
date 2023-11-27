@@ -97,6 +97,8 @@ export const GET_COVER_BY_USER = "GET_COVER_BY_USER";
 
 //CV : ====
 export const CVBY_USER = "CVBY_USER"
+export const RESET_STATE = "RESET_STATE";
+
 
 // TAGS:=====
 export const ALL_TAGS = "ALL_TAGS";

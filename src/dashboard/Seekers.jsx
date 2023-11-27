@@ -15,7 +15,6 @@ import { Link, useNavigate } from 'react-router-dom';
 const Seekers = () => {
   // search===============
   const [search, setSearch] = useState('')
-  console.log(search)
   // =============
 
 
@@ -154,7 +153,7 @@ console.log(seekers)
                     <tr className=" uppercase  text-sm leading-normal w-[100%]">
                       <th className="py-[2%] border-r-[1px] border-b-[2px] border-b-black  w-[3%] max-md:text-[.6rem] max-md:font-[400] text-center max-md:w-[2%]  text-[13px]">ID </th>
                       <th className="py-[2%] border-r-[1px] border-b-[2px] border-b-black  w-[10%] max-md:text-[.6rem] max-md:font-[400] text-center max-md:w-[2%] text-[13px]">User</th>
-                      <th className="py-[2%] border-r-[1px] border-b-[2px] border-b-black w-[1%] max-md:text-[.6rem] max-md:font-[400] text-center max-md:w-[3%] text-[13px]">Country</th>
+                      <th className="py-[2%] border-r-[1px] border-b-[2px] border-b-black w-[1%] max-md:text-[.6rem] max-md:font-[400] text-center max-md:w-[3%] text-[13px]">Phone No.</th>
                       <th className="py-[2%] border-r-[1px] border-b-[2px] border-b-black w-[2%] max-md:text-[.6rem] max-md:font-[400] text-center text-[13px]">Status</th>
                       <th className="py-[2%] border-r-[1px] border-b-[2px] border-b-black  w-[2%] max-md:text-[.6rem] max-md:font-[400] text-center text-[13px]">Actions</th>
                       <th className="py-[2%]   border-b-[2px] border-b-black  w-[1%] max-md:text-[.6rem] max-md:font-[400] text-center"></th>
@@ -178,7 +177,7 @@ console.log(seekers)
                             <span className=" max-md:text-[.7rem] text-[13px] font-[350]">{value.username}</span>
                           </td>
                           <td className="py-[1%] w-[2%]  max-md:text-[.7rem]  border-r-[1px] border-t-[1px]   text-center">
-                            <span className=' text-[13px] font-[350]'>{value.country}</span>
+                            <span className=' text-[13px] font-[350]'>{value.phone}</span>
                           </td>
 
                           <td className="py-[2%] max-md:text-[.7rem] w-[2%] border-r-[1px] border-t-[1px]   text-center">

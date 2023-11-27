@@ -594,13 +594,12 @@ export const deleteJobBank = (id) => API.delete(`/jobBanks/:delete`, {
 //ADs
 
 export const fetchAds = () => API.get(`/ads/get`)
-export const updateAds = (banner_ad, interstitial_ad, count, app_open, publisher_key, id) => API.get(`/applied/update`, {
-    data: {
+export const updateAds = (banner_ad, interstitial_ad, count, app_open, publisher_id, id) => API.put(`/ads/update`, 
+{ 
         banner_ad: banner_ad,
         interstitial_ad: interstitial_ad,
         count: count,
         app_open: app_open,
-        publisher_key: publisher_key,
+        publisher_id: publisher_id,
         id: id
-    }
 })

@@ -7,7 +7,10 @@ import { getUser, updateUser } from '../../store/actions/userActions'
 
 const UsersEdit = () => {
 
-  const [userData, setUserData] = useState({address: '', email: '', name: '', password: '', phone: '', username: ''})
+  const [userData, setUserData] = useState({name: '', username: '', email: '', password: '', phone: '', address: ''})
+  useEffect(() => {
+    console.log(userData)
+  }, [userData])
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
@@ -17,9 +20,9 @@ const UsersEdit = () => {
 
   const user = useSelector(state => state.user.user)
 
-  useEffect(() => {
-    console.log(user)
-  }, [user])
+  // useEffect(() => {
+  //   console.log(user)
+  // }, [user])
 
   useEffect(()=> {
     dispatch(getUser(id))
@@ -38,7 +41,7 @@ const UsersEdit = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if(userData.name && userData.username && userData.email && userData.password && userData.phone && userData.address){
-      dispatch(updateUser(userData))
+      dispatch(updateUser(id, userData))
       navigate('/users')
     } else{
       alert('plz fill the data')

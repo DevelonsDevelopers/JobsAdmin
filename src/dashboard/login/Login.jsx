@@ -29,7 +29,7 @@ const Login = () => {
       if (status === 'OK') {
         sessionStorage.setItem(SESSION_ADMIN_LOGIN, "true")
         sessionStorage.setItem(SESSION_ADMIN_ID, data.id)
-        sessionStorage.setItem(SESSION_ADMIN_TYPE, "USER")
+        sessionStorage.setItem(SESSION_ADMIN_TYPE, "SESSION_USER")
         sessionStorage.setItem(SESSION_ADMIN_USER, JSON.stringify(data))
         navigate('/')
 

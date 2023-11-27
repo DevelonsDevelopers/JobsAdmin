@@ -12,7 +12,6 @@ const Topbar = ({ showNav, setShowNav }) => {
   const router = useNavigate();
 
   const [data, setData] = useState();
-  console.log(data)
   const [provider, setProvider] = useState(false);
   const [providerData, setProviderData] = useState();
   console.log(providerData)
@@ -25,13 +24,10 @@ const Topbar = ({ showNav, setShowNav }) => {
     router('/login')
   }
   
-  console.log('goods')
   useEffect(() => {
-    const user = sessionStorage.getItem(SESSION_USER)
+    const user = sessionStorage.getItem(SESSION_ADMIN_USER)
     setData(JSON.parse(user))
   }, [])
-
-
 
   useEffect(() => {
     const isProviderLogin = sessionStorage.getItem(SESSION_PROVIDER)

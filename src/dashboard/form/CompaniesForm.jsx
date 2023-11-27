@@ -18,6 +18,9 @@ const options = [
 
 const CompaniesForm = () => {
   const [companyData, setCompanyData] = useState({ name: '', size: '', city: '', country: '', phone: '', email: '', password: '', headquater: '', type: '' });
+  useEffect(() => {
+    console.log(companyData);
+  }, [companyData])
 
   const dispatch = useDispatch();
   const navigate = useNavigate();

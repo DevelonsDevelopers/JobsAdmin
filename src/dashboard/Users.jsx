@@ -17,7 +17,6 @@ const users = [
 const Users = () => {
   // search===============
   const [search, setSearch] = useState('')
-  console.log(search)
   // =============
 
 
@@ -109,7 +108,6 @@ const Users = () => {
     } else {
       st = 1;
     }
-    console.log('click')
     dispatch(userStatus(id, st))
   }
 

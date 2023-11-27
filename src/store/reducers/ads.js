@@ -12,7 +12,7 @@ const ad = (state = { isLoading: true, success: false, error: false, ads: [] }, 
         case GET_ADS:
             return { ...state, ads: action.payload.ads }
         case UPDATE_ADS:
-            return { ...state, ads: state.ads.map((ad) => (ad.id === action.payload.id ? action.payload : ad)) }
+            return {...state, ad: action.payload}
         default:
             return state;
     }

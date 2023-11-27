@@ -13,9 +13,10 @@ export const getAds = () => async(dispatch) => {
     }
 }
 
-export const updateAds = (ads, id) => async(dispatch) => {
+export const UpdateAds = (ad, id) => async(dispatch) => {
     try{
-        const { data } = await api.updateAds(ads.banner_ad, ads.interstitial_ad, ads.count, ads.app_open, ads.publisher_id, id)
+        const { data } = await api.updateAds(ad.banner_ad, ad.interstitial_ad, ad.count, ad.app_open, ad.publisher_id, id)
+        console.log(ad)
         dispatch ({ type: UPDATE_ADS, payload: data })
     } catch(error) {
         console.log(error)

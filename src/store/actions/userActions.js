@@ -33,7 +33,8 @@ export const createUser = (user) => async (disptach) =>{
 
 export const updateUser = (id , user) => async (dispatch) => {
     try{
-        const { data } = await api.updateUser(id, user.name, user.username, user.email, user.password, user.phone, user.address)
+        console.log('actionUser', user)
+        const { data: {data} } = await api.updateUser(id, user.name, user.username, user.email, user.password, user.phone, user.address)
         dispatch({ type: UPDATE_USER, payload: data})
     }catch(error){
         console.log(error)
