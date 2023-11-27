@@ -76,14 +76,14 @@ function App() {
           <Route path="/payment" element={<PaymentGateway/>} />
           <Route path="/ads" element={<Ads/>} />
           {/* <Route path="/jobsAPI" element={<JobsAPI/>} /> */}
-          <Route path="/jobsAPI" element={<ApiJobs/>} />
-          <Route path="/careerJetApi" element={<CareerJetApi/>} />
+          {/* <Route path="/jobsAPI" element={<ApiJobs/>} /> */}
+          {/* <Route path="/careerJetApi" element={<CareerJetApi/>} /> */}
 
 
 
           <Route path="/users/add" element={<UserForm/>} />
           <Route path="/categories/add" element={<CategoryForm/>} />
-          <Route path="/jobBanks/add" element={<EmailForm/>} />
+          {/* <Route path="/jobBanks/add" element={<EmailForm/>} /> */}
           <Route path="/cities/add" element={<CitiesForm/>} />
           <Route path="/companies/add" element={<CompaniesForm/>} />
           <Route path="/jobs/add" element={<JobsForm/>} />

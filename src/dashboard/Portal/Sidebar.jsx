@@ -2,7 +2,7 @@ import { forwardRef, useEffect, useState } from "react";
 import { HiOutlineHome, HiOutlineUsers } from "react-icons/hi";
 
 import { RiEarthLine, RiHomeOfficeLine, RiUserSearchLine } from 'react-icons/ri'
-import { FaRegListAlt, } from 'react-icons/fa'
+import { FaListUl, FaRegListAlt, } from 'react-icons/fa'
 import { BiCategoryAlt, BiUserCheck } from 'react-icons/bi'
 
 import { AiOutlineTag, AiOutlineTransaction, AiOutlineOrderedList, AiOutlineNotification } from 'react-icons/ai'
@@ -190,7 +190,7 @@ const Sidebar = forwardRef(({ }, ref) => {
               </div>
             </div>
           </div>
-          <div className="flex flex-col ">
+          {/* <div className="flex flex-col ">
             <div onClick={() => router('/jobbank')}>
               <div
                 className={`pl-7 py-3 mx-5 rounded text-center cursor-pointer mb-1 flex items-center transition-colors 
@@ -208,7 +208,7 @@ const Sidebar = forwardRef(({ }, ref) => {
                 </div>
               </div>
             </div>
-          </div>
+          </div> */}
           <div className="flex flex-col ">
             <div onClick={() => router('/countries')}>
               <div
@@ -266,7 +266,7 @@ const Sidebar = forwardRef(({ }, ref) => {
               </div>
             </div>
           </div>
-          <div className="flex flex-col ">
+          {/* <div className="flex flex-col ">
         <div onClick={() => router('/jobsAPI')}>
           <div
             className={`pl-7 py-3 mx-5 rounded text-center cursor-pointer mb-1 flex items-center transition-colors 
@@ -284,8 +284,8 @@ const Sidebar = forwardRef(({ }, ref) => {
             </div>
           </div>
         </div>
-      </div>
-      <div className="flex flex-col ">
+      </div> */}
+      {/* <div className="flex flex-col ">
         <div onClick={() => router('/careerJetApi')}>
           <div
             className={`pl-7 py-3 mx-5 rounded text-center cursor-pointer mb-1 flex items-center transition-colors 
@@ -303,7 +303,7 @@ const Sidebar = forwardRef(({ }, ref) => {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
           <div className="flex flex-col ">
             <div onClick={() => router('/companies')}>
               <div
@@ -448,7 +448,7 @@ const Sidebar = forwardRef(({ }, ref) => {
   `}
               >
                 <div className="mr-2">
-                  <AiOutlineOrderedList className="h-5 w-5" />
+                  <FaListUl className="h-5 w-5" />
                 </div>
                 <div>
                   <p>Plans</p>

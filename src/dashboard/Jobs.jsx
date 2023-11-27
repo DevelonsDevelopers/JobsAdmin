@@ -62,7 +62,7 @@ const Jobs = () => {
 
   useEffect(() => {
     if (jobs?.length === 0) {
-      setLoading(true)
+      setNodata(true)
       //  setNodata(true)
     }
     else {
