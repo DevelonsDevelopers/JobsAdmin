@@ -31,21 +31,69 @@ const Login = () => {
     LoginUser(loginData.email, loginData.password).then(res => {
       const { data: { data } } = res
       const { data: { status } } = res
-      console.log(status)
-      if (status === 'OK') {
-        setLoading(false)
-        sessionStorage.setItem(SESSION_ADMIN_LOGIN, "true")
-        sessionStorage.setItem(SESSION_ADMIN_ID, data.id)
-        sessionStorage.setItem(SESSION_ADMIN_TYPE, "SESSION_USER")
-        sessionStorage.setItem(SESSION_ADMIN_USER, JSON.stringify(data))
-        navigate('/')
+      if (loginData?.email?.length || loginData?.password?.length !== 0) {
+        if (loginData?.email?.length != 0) {
+          if (loginData?.password?.length != 0) {
+            if (status === 'OK') {
+              setLoading(false)
+              sessionStorage.setItem(SESSION_ADMIN_LOGIN, "true")
+              sessionStorage.setItem(SESSION_ADMIN_ID, data.id)
+              sessionStorage.setItem(SESSION_ADMIN_TYPE, "SESSION_USER")
+              sessionStorage.setItem(SESSION_ADMIN_USER, JSON.stringify(data))
+              navigate('/',
+                toast.success('Login Successfully', {
+                  position: "top-right",
+                  autoClose: 1000,
+                  hideProgressBar: false,
+                  closeOnClick: true,
+                  pauseOnHover: true,
+                  draggable: true,
+                  progress: undefined,
+                  theme: "light",
+                }))
+            } else {
+              toast.error('No Email or Password Exists', {
+                position: "top-right",
+                autoClose: 2000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+              });
+            }
 
+          } else {
+            toast.error('Enter Your Valid Password', {
+              position: "top-right",
+              autoClose: 2000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+              theme: "light",
+            });
+          }
+
+        } else {
+          toast.error('Please Enter Your Valid Email', {
+            position: "top-right",
+            autoClose: 2000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+          });
+        }
       }
       else {
-        setLoading(false)
-        toast.error('Invalid Username or Password', {
+        toast.error('Enter Your Valid Email Address or Password', {
           position: "top-right",
-          autoClose: 5000,
+          autoClose: 2000,
           hideProgressBar: false,
           closeOnClick: true,
           pauseOnHover: true,
@@ -53,10 +101,13 @@ const Login = () => {
           progress: undefined,
           theme: "light",
         });
-
       }
+      setTimeout(() => {
+        setLoading(false);
+      }, 2000);
     })
   }
+
   const [show, setShow] = useState(false)
 
   const handleSubmit = () => {
