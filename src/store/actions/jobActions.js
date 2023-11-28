@@ -16,9 +16,10 @@ export const AllJobs = () => async (dispatch) => {
 
 export const getJobs = () => async (dispatch) => {
     try {
-        dispatch({ })
+        dispatch({ type: LOADING })
         const { data: { data } } = await api.fetchJobs()
         dispatch({ type: GET_JOBS, payload: data })
+        dispatch({ type: SUCCESS })
     } catch (error) {
         console.log(error)
     }
@@ -79,6 +80,7 @@ export const getCompanybyJob = (company) => async (dispatch) => {
 }
 
 export const createJob = (job) => async (disptach) => {
+    console.log('actionjob', job)
     try {
         const { data: { data } } = await api.createJob(job)
         console.log(data)
