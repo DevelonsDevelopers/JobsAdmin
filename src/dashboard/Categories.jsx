@@ -9,9 +9,6 @@ import { Pagination, Stack, ThemeProvider, createTheme } from '@mui/material'
 
 const Categories = () => {
 
-  const [search, setSearch] = useState('')
-
-
   const [open, setOpen] = useState(false);
   const [openView, setOpenView] = useState(false);
   const router = useNavigate();
@@ -19,8 +16,16 @@ const Categories = () => {
   const [deleteID, setDeleteID] = useState();
   const [viewId, setViewId] = useState();
 
-  const dispatch = useDispatch()
+  //rearch
+  const [search, setSearch] = useState('')
+  useEffect(() => {
+    const result = categories?.filter((item) => {
+      return item?.name.toLowerCase()?.match(search?.toLocaleLowerCase());
+    });
+    setPaginatedData(result)
+  }, [search])
 
+  const dispatch = useDispatch()
   const categories = useSelector(state => state.category.categories)
   const loading = useSelector(state => state.category.isLoading)
 
@@ -137,10 +142,7 @@ const Categories = () => {
                   </thead>
 
 
-                  {paginatedData?.filter((value,) => {
-                    return search.toLowerCase() === ''
-                      ? value : value.name.toLowerCase().includes(search);
-                  }).map((value, index) => (
+                  {paginatedData?.map((value, index) => (
                     <tbody className="text-[#000000] text-sm font-light w-[100%] bg-white" key={index}>
                       <tr className='' >
                         <td className="py-[2%] w-[3%]   border-r-[1px] border-t-[1px] text-center">

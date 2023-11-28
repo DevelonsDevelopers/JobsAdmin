@@ -26,9 +26,12 @@ const Countries = () => {
 
   // search=========
   const [search, setSearch] = useState('')
-  const Filter = (event) => {
-    setPaginatedData(paginatedData.filter(f => f.name.toLowerCase().includes(event.target.value)))
-  }
+  useEffect(() => {
+    const result = countries?.filter((item) => {
+      return item?.name.toLowerCase()?.match(search?.toLocaleLowerCase());
+    });
+    setPaginatedData(result)
+  }, [search])
 
 
 
@@ -111,8 +114,6 @@ const Countries = () => {
     }
   }, [countries, startIndex])
 
-
-
   return (
     <PortalLayout>
 
@@ -161,11 +162,7 @@ const Countries = () => {
 
                 </thead>
 
-                {paginatedData?.filter((value) => {
-                  return search.toLowerCase() === ''
-                    ? value : value.name.toLowerCase().includes(search);
-                })
-                  .map((value) => (
+                {paginatedData?.map((value) => (
                     <tbody className="text-[#000000] text-sm font-light w-[100%] bg-white " key={value.id}>
                       <tr className='' >
                         <td className="py-[2%] w-[3%]   border-r-[1px] border-t-[1px]   text-center">

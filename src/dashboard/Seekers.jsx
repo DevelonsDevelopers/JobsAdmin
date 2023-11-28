@@ -16,6 +16,12 @@ import { Pagination, Stack, ThemeProvider, createTheme } from '@mui/material';
 const Seekers = () => {
   // search===============
   const [search, setSearch] = useState('')
+  useEffect(() => {
+    const result = seekers?.filter((item) => {
+      return item?.name.toLowerCase()?.match(search?.toLocaleLowerCase());
+    });
+    setPaginatedData(result)
+  }, [search])
   // =============
 
 
@@ -129,12 +135,7 @@ const Seekers = () => {
 
                   </thead>
 
-                  {paginatedData?.
-                    filter((value) => {
-                      return search.toLowerCase() === ''
-                        ? value : value.name.toLowerCase().includes(search);
-                    })
-                    .map((value, index) => (
+                  {paginatedData?.map((value, index) => (
                       <tbody className="text-[#000000] text-sm font-light w-[100%] bg-white " key={value?.id}>
                         <tr className='' >
                           <td className="py-[2%] w-[3%]   border-r-[1px] border-t-[1px]   text-center">
