@@ -1,14 +1,16 @@
 import { forwardRef, useEffect, useState } from "react";
-import { HiOutlineHome, HiOutlineUsers } from "react-icons/hi";
-import { RiEarthLine, RiHomeOfficeLine, RiUserSearchLine } from 'react-icons/ri'
-import { FaListUl, FaRegListAlt, FaUserTie, } from 'react-icons/fa'
-import { BiCategoryAlt, BiUserCheck } from 'react-icons/bi'
+import { HiOutlineHome, HiOutlineUsers, HiSpeakerphone } from "react-icons/hi";
+import { RiEarthLine, RiHomeOfficeLine, RiSearchFill, RiUserSearchLine } from 'react-icons/ri'
+import { FaListUl, FaRegListAlt, FaTags, FaUser, FaUserTie, } from 'react-icons/fa'
+import { BiCategoryAlt, BiSolidBuildingHouse, BiSolidCategory, BiUserCheck, BiWorld } from 'react-icons/bi'
 import { AiOutlineTag, AiOutlineTransaction, AiOutlineOrderedList, AiOutlineNotification } from 'react-icons/ai'
 import { PiBriefcaseLight, PiBuildingsLight } from 'react-icons/pi'
 import { useLocation, useNavigate } from "react-router-dom";
 import { SESSION_PROVIDER, SESSION_PROVIDER_LOGIN } from "../../Utils/Constant";
-import { MdDashboard, MdLocalOffer, MdWork } from "react-icons/md";
-import { SiOpenlayers } from "react-icons/si";
+import { MdDashboard, MdLocalOffer, MdReport, MdSpaceDashboard, MdWork } from "react-icons/md";
+import { SiOpenlayers, SiPlanetscale } from "react-icons/si";
+import { FaCircleDollarToSlot, FaTreeCity } from "react-icons/fa6";
+import { IoNavigate } from "react-icons/io5";
 
 
 
@@ -29,7 +31,7 @@ const Sidebar = forwardRef(({ adminLogin, providerLogin }, ref) => {
   }, [provider])
 
   return (
-    <div ref={ref} className="mt-[-4rem] fixed w-56 h-full bg-white shadow-sm max-md:w-[40%] overflow-auto no-scrollbar">
+    <div ref={ref} className="mt-[-4rem] fixed w-56 h-full bg-[#0D1858] shadow-sm max-md:w-[40%] overflow-auto no-scrollbar">
 
       {providerLogin && (
         <>
@@ -38,8 +40,8 @@ const Sidebar = forwardRef(({ adminLogin, providerLogin }, ref) => {
               <div
                 className={`pl-7 py-3 mx-5 rounded text-center cursor-pointer mb-1 flex items-center transition-colors 
         ${location.pathname === "/providerPanel"
-        ? "text-[#3489C8]"
-        : " hover:text-[#3489C8] "
+                    ? "text-blue-500"
+                    : " hover:text-blue-200 text-gray-100"
                   }
   `}
               >
@@ -61,8 +63,8 @@ const Sidebar = forwardRef(({ adminLogin, providerLogin }, ref) => {
               <div
                 className={`pl-7 py-3 mx-5 rounded text-center cursor-pointer mb-1 flex items-center transition-colors 
                   ${location.pathname === "/jobProvider"
-                    ? "text-[#3489C8]"
-                    : " hover:text-[#3489C8] "
+                    ? "text-blue-500"
+                    : " hover:text-blue-200 text-gray-100"
                   }
   `}
               >
@@ -85,8 +87,8 @@ const Sidebar = forwardRef(({ adminLogin, providerLogin }, ref) => {
               <div
                 className={`pl-7 py-3 mx-5 rounded text-center cursor-pointer mb-1 flex items-center transition-colors 
                   ${location.pathname === "/appliedProvider"
-                  ? "text-[#3489C8]"
-                  : " hover:text-[#3489C8] "
+                    ? "text-blue-500"
+                    : " hover:text-blue-200 text-gray-100"
                   }
                   `}
               >
@@ -106,8 +108,8 @@ const Sidebar = forwardRef(({ adminLogin, providerLogin }, ref) => {
               <div
                 className={`pl-7 py-3 mx-5 rounded text-center cursor-pointer mb-1 flex items-center transition-colors 
                   ${location.pathname === "/offers"
-                  ? "text-[#3489C8]"
-                  : " hover:text-[#3489C8] "
+                    ? "text-blue-500"
+                    : " hover:text-blue-200 text-gray-100"
                   }
                   `}
               >
@@ -125,8 +127,8 @@ const Sidebar = forwardRef(({ adminLogin, providerLogin }, ref) => {
               <div
                 className={`pl-7 py-3 mx-5 rounded text-center cursor-pointer mb-1 flex items-center transition-colors 
                   ${location.pathname === "/interaction"
-                  ? "text-[#3489C8]"
-                  : " hover:text-[#3489C8] "
+                    ? "text-blue-500"
+                    : " hover:text-blue-200 text-gray-100"
                   }
                   `}
               >
@@ -155,14 +157,14 @@ const Sidebar = forwardRef(({ adminLogin, providerLogin }, ref) => {
               <div
                 className={`pl-7 py-3 mx-5 rounded text-center cursor-pointer mb-1 flex items-center transition-colors 
         ${location.pathname === "/userPanel"
-                    ? "bg-gradient-to-r from-sky-600 to-cyan-400 text-white"
-                    : "text-black font-[600]  hover:text-white  hover:bg-gradient-to-r from-sky-600 to-cyan-400"
+                    ? "text-blue-400"
+                    : " hover:text-blue-200 text-gray-100"
                   }
   `}
               >
 
                 <div className="mr-2">
-                  <HiOutlineHome className="h-5 w-5" />
+                  <MdSpaceDashboard className="h-5 w-5" />
                 </div>
                 <div>
                   <p>Dashboard</p>
@@ -175,13 +177,13 @@ const Sidebar = forwardRef(({ adminLogin, providerLogin }, ref) => {
               <div
                 className={`pl-7 py-3 mx-5 rounded text-center cursor-pointer mb-1 flex items-center transition-colors 
       ${location.pathname === "/categories"
-                    ? "bg-gradient-to-r from-sky-600 to-cyan-400 text-white"
-                    : "text-black font-[600]  hover:text-white  hover:bg-gradient-to-r from-sky-600 to-cyan-400"
+                    ? "text-blue-500"
+                    : " hover:text-blue-200 text-gray-100"
                   }
 `}
               >
                 <div className="mr-2">
-                  <BiCategoryAlt className="h-5 w-5" />
+                  <BiSolidCategory className="h-5 w-5" />
                 </div>
                 <div>
                   <p>Categories</p>
@@ -213,13 +215,13 @@ const Sidebar = forwardRef(({ adminLogin, providerLogin }, ref) => {
               <div
                 className={`pl-7 py-3 mx-5 rounded text-center cursor-pointer mb-1 flex items-center transition-colors 
         ${location.pathname === "/countries"
-                    ? "bg-gradient-to-r from-sky-600 to-cyan-400 text-white"
-                    : "text-black font-[600] hover:text-white  hover:bg-gradient-to-r from-sky-600 to-cyan-400 hover:bg-blue-100 hover:text-blue-500"
+                    ? "text-blue-500"
+                    : " hover:text-blue-200 text-gray-100"
                   }
   `}
               >
                 <div className="mr-2">
-                  <RiEarthLine className="h-5 w-5" />
+                  <BiWorld className="h-5 w-5" />
                 </div>
                 <div>
                   <p>Countries</p>
@@ -232,13 +234,13 @@ const Sidebar = forwardRef(({ adminLogin, providerLogin }, ref) => {
               <div
                 className={`pl-7 py-3 mx-5 rounded text-center cursor-pointer mb-1 flex items-center transition-colors 
         ${location.pathname === "/cities"
-                    ? "bg-gradient-to-r from-sky-600 to-cyan-400 text-white"
-                    : "text-black font-[600] hover:text-white  hover:bg-gradient-to-r from-sky-600 to-cyan-400 hover:bg-blue-100 hover:text-blue-500"
+                    ? "text-blue-500"
+                    : " hover:text-blue-200 text-gray-100"
                   }
   `}
               >
                 <div className="mr-2">
-                  <PiBuildingsLight className="h-5 w-5" />
+                  <FaTreeCity className="h-5 w-5" />
                 </div>
                 <div>
                   <p>Cities</p>
@@ -251,13 +253,13 @@ const Sidebar = forwardRef(({ adminLogin, providerLogin }, ref) => {
               <div
                 className={`pl-7 py-3 mx-5 rounded text-center cursor-pointer mb-1 flex items-center transition-colors 
         ${location.pathname === "/jobs"
-                    ? "bg-gradient-to-r from-sky-600 to-cyan-400 text-white"
-                    : "text-black font-[600] hover:text-white  hover:bg-gradient-to-r from-sky-600 to-cyan-400 hover:bg-blue-100 hover:text-blue-500"
+                    ? "text-blue-500"
+                    : " hover:text-blue-200 text-gray-100"
                   }
   `}
               >
                 <div className="mr-2">
-                  <PiBriefcaseLight className="h-5 w-5" />
+                  <MdWork className="h-5 w-5" />
                 </div>
                 <div>
                   <p>Jobs</p>
@@ -308,13 +310,13 @@ const Sidebar = forwardRef(({ adminLogin, providerLogin }, ref) => {
               <div
                 className={`pl-7 py-3 mx-5 rounded text-center cursor-pointer mb-1 flex items-center transition-colors 
         ${location.pathname === "/companies"
-                    ? "bg-gradient-to-r from-sky-600 to-cyan-400 text-white"
-                    : "text-black font-[600] hover:text-white  hover:bg-gradient-to-r from-sky-600 to-cyan-400 hover:bg-blue-100 hover:text-blue-500"
+                    ? "text-blue-500"
+                    : " hover:text-blue-200 text-gray-100"
                   }
   `}
               >
                 <div className="mr-2">
-                  <RiHomeOfficeLine className="h-5 w-5" />
+                  <BiSolidBuildingHouse className="h-5 w-5" />
                 </div>
                 <div>
                   <p>Companies</p>
@@ -327,13 +329,13 @@ const Sidebar = forwardRef(({ adminLogin, providerLogin }, ref) => {
               <div
                 className={`pl-7 py-3 mx-5 rounded text-center cursor-pointer mb-1 flex items-center transition-colors 
         ${location.pathname === "/tags"
-                    ? "bg-gradient-to-r from-sky-600 to-cyan-400 text-white"
-                    : "text-black font-[600] hover:text-white  hover:bg-gradient-to-r from-sky-600 to-cyan-400 hover:bg-blue-100 hover:text-blue-500"
+                    ? "text-blue-500"
+                    : " hover:text-blue-200 text-gray-100"
                   }
   `}
               >
                 <div className="mr-2">
-                  <AiOutlineTag className="h-5 w-5" />
+                  <FaTags className="h-5 w-5" />
                 </div>
                 <div>
                   <p>Tags</p>
@@ -346,13 +348,13 @@ const Sidebar = forwardRef(({ adminLogin, providerLogin }, ref) => {
               <div
                 className={`pl-7 py-3 mx-5 rounded text-center cursor-pointer mb-1 flex items-center transition-colors 
         ${location.pathname === "/appliedusers"
-                    ? "bg-gradient-to-r from-sky-600 to-cyan-400 text-white"
-                    : "text-black font-[600] hover:text-white  hover:bg-gradient-to-r from-sky-600 to-cyan-400 hover:bg-blue-100 hover:text-blue-500"
+                    ? "text-blue-500"
+                    : " hover:text-blue-200 text-gray-100"
                   }
   `}
               >
                 <div className="mr-2">
-                  <BiUserCheck className="h-5 w-5" />
+                  <FaUserTie className="h-5 w-5" />
                 </div>
                 <div>
                   <p>Applied Users</p>
@@ -365,13 +367,13 @@ const Sidebar = forwardRef(({ adminLogin, providerLogin }, ref) => {
               <div
                 className={`pl-7 py-3 mx-5 rounded text-center cursor-pointer mb-1 flex items-center transition-colors 
         ${location.pathname === "/seekers"
-                    ? "bg-gradient-to-r from-sky-600 to-cyan-400 text-white"
-                    : "text-black font-[600] hover:text-white  hover:bg-gradient-to-r from-sky-600 to-cyan-400 hover:bg-blue-100 hover:text-blue-500"
+                    ? "text-blue-500"
+                    : " hover:text-blue-200 text-gray-100"
                   }
   `}
               >
                 <div className="mr-2">
-                  <RiUserSearchLine className="h-5 w-5" />
+                  <RiSearchFill className="h-5 w-5" />
                 </div>
                 <div>
                   <p>Seekers</p>
@@ -384,13 +386,13 @@ const Sidebar = forwardRef(({ adminLogin, providerLogin }, ref) => {
               <div
                 className={`pl-7 py-3 mx-5 rounded text-center cursor-pointer mb-1 flex items-center transition-colors 
         ${location.pathname === "/transactions"
-                    ? "bg-gradient-to-r from-sky-600 to-cyan-400 text-white"
-                    : "text-black font-[600] hover:text-white  hover:bg-gradient-to-r from-sky-600 to-cyan-400 hover:bg-blue-100 hover:text-blue-500"
+                    ? "text-blue-500"
+                    : " hover:text-blue-200 text-gray-100"
                   }
   `}
               >
                 <div className="mr-2">
-                  <AiOutlineTransaction className="h-5 w-5" />
+                  <FaCircleDollarToSlot className="h-5 w-5" />
                 </div>
                 <div>
                   <p>Transactions</p>
@@ -403,13 +405,13 @@ const Sidebar = forwardRef(({ adminLogin, providerLogin }, ref) => {
               <div
                 className={`pl-7 py-3 mx-5 rounded text-center cursor-pointer mb-1 flex items-center transition-colors 
         ${location.pathname === "/reports"
-                    ? "bg-gradient-to-r from-sky-600 to-cyan-400 text-white"
-                    : "text-black font-[600] hover:text-white  hover:bg-gradient-to-r from-sky-600 to-cyan-400 hover:bg-blue-100 hover:text-blue-500"
+                    ? "text-blue-500"
+                    : " hover:text-blue-200 text-gray-100"
                   }
   `}
               >
                 <div className="mr-2">
-                  <FaRegListAlt className="h-5 w-5" />
+                  <MdReport className="h-5 w-5" />
                 </div>
                 <div>
                   <p>Reports</p>
@@ -422,13 +424,13 @@ const Sidebar = forwardRef(({ adminLogin, providerLogin }, ref) => {
               <div
                 className={`pl-7 py-3 mx-5 rounded text-center cursor-pointer mb-1 flex items-center transition-colors 
         ${location.pathname === "/users"
-                    ? "bg-gradient-to-r from-sky-600 to-cyan-400 text-white"
-                    : "text-black font-[600] hover:text-white  hover:bg-gradient-to-r from-sky-600 to-cyan-400 hover:bg-blue-100 hover:text-blue-500"
+                    ? "text-blue-500"
+                    : " hover:text-blue-200 text-gray-100"
                   }
   `}
               >
                 <div className="mr-2">
-                  <HiOutlineUsers className="h-5 w-5" />
+                  <FaUser className="h-5 w-5" />
                 </div>
                 <div>
                   <p>Users</p>
@@ -441,13 +443,13 @@ const Sidebar = forwardRef(({ adminLogin, providerLogin }, ref) => {
               <div
                 className={`pl-7 py-3 mx-5 rounded text-center cursor-pointer mb-1 flex items-center transition-colors 
         ${location.pathname === "/plans"
-                    ? "bg-gradient-to-r from-sky-600 to-cyan-400 text-white"
-                    : "text-black font-[600] hover:text-white  hover:bg-gradient-to-r from-sky-600 to-cyan-400 hover:bg-blue-100 hover:text-blue-500"
+                    ? "text-blue-500"
+                    : " hover:text-blue-200 text-gray-100"
                   }
   `}
               >
                 <div className="mr-2">
-                  <FaListUl className="h-5 w-5" />
+                  <SiPlanetscale className="h-5 w-5" />
                 </div>
                 <div>
                   <p>Plans</p>
@@ -460,16 +462,16 @@ const Sidebar = forwardRef(({ adminLogin, providerLogin }, ref) => {
               <div
                 className={`pl-3 py-3 mx-5 rounded text-center cursor-pointer mb-1 flex items-center justify-center transition-colors 
         ${location.pathname === "/payment"
-                    ? "bg-gradient-to-r from-sky-600 to-cyan-400 text-white"
-                    : "text-black font-[600] hover:text-white  hover:bg-gradient-to-r from-sky-600 to-cyan-400 hover:bg-blue-100 hover:text-blue-500"
+                    ? "text-blue-500"
+                    : " hover:text-blue-200 text-gray-100"
                   }
   `}
               >
-                <div className="mr-2">
-                  <HiOutlineHome className="h-5 w-5" />
+                <div className="ml-2">
+                  <IoNavigate className="h-5 w-5" />
                 </div>
                 <div>
-                  <p className="text-[0.9rem]">Payment Gateway</p>
+                  <p className="text-[0.9rem] ml-[10px]">Payment Gateway</p>
                 </div>
               </div>
             </div>
@@ -479,13 +481,13 @@ const Sidebar = forwardRef(({ adminLogin, providerLogin }, ref) => {
               <div
                 className={`pl-7 py-3 mx-5 rounded text-center cursor-pointer mb-1 flex items-center transition-colors 
         ${location.pathname === "/ads"
-                    ? "bg-gradient-to-r from-sky-600 to-cyan-400 text-white"
-                    : "text-black font-[600] hover:text-white  hover:bg-gradient-to-r from-sky-600 to-cyan-400 hover:bg-blue-100 hover:text-blue-500"
+                    ? "text-blue-500"
+                    : " hover:text-blue-200 text-gray-100"
                   }
   `}
               >
                 <div className="mr-2">
-                  <AiOutlineNotification className="h-5 w-5" />
+                  <HiSpeakerphone className="h-5 w-5" />
                 </div>
                 <div>
                   <p>ADs</p>
