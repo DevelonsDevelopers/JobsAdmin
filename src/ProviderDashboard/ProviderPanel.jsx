@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import PortalLayout from '../portalLayout/PortalLayout'
 import { Area, AreaChart, Bar, BarChart, Cell, Legend, Pie, PieChart, ReferenceLine, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts'
 import { RiUserSearchLine } from 'react-icons/ri'
@@ -9,7 +9,7 @@ import moment from 'moment'
 import { GetOffersByCompany } from '../store/actions/offersActions'
 import { getRecentJob } from '../store/actions/jobActions'
 import { useNavigate } from 'react-router-dom'
-import { SESSION_ADMIN_ID, SESSION_ADMIN_TYPE, SESSION_PROVIDER, SESSION_PROVIDER_LOGIN } from '../Utils/Constant'
+import { SESSION_PROVIDER, SESSION_PROVIDER_ID, SESSION_PROVIDER_LOGIN } from '../Utils/Constant'
 
 const ProviderPanel = () => {
     const form03 = [
@@ -32,6 +32,8 @@ const ProviderPanel = () => {
 
     const dispatch = useDispatch();
     const router = useNavigate()
+
+    const [providerData, setProviderData] = useState(false)
 
     const COLORS = ['#fcbf49', '#4D38E3', '#8AC942'];
 
@@ -91,18 +93,32 @@ const ProviderPanel = () => {
         return moment(date).format('MMM Do YY');
     };
 
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        const isProviderLogin = sessionStorage.getItem(SESSION_PROVIDER_LOGIN)
+        if (isProviderLogin === "true") {
+            setProviderData(true)
+        } else {
+            setProviderData(false)
+            navigate('/providerLogin')
+        }
+      }, [])
+
 
     const logout = () => {
         sessionStorage.setItem(SESSION_PROVIDER_LOGIN, "false")
-        sessionStorage.setItem(SESSION_ADMIN_ID, null)
-        sessionStorage.setItem(SESSION_ADMIN_TYPE, null)
+        sessionStorage.setItem(SESSION_PROVIDER_ID, null)
+        sessionStorage.setItem(SESSION_PROVIDER_LOGIN, null)
         sessionStorage.setItem(SESSION_PROVIDER, null)
         router('/providerLogin')
     }
 
     return (
         <PortalLayout>
-            <button onClick={() => logout()} className='bg-blue-600 text-white cursor-pointer font-[600] px-10 py-[5px] w-[100%] rounded-full mt-6'>logout</button>
+        {providerData ?
+        <>
+                        <button onClick={() => logout()} className='bg-blue-600 text-white cursor-pointer font-[600] px-10 py-[5px] w-[100%] rounded-full mt-6'>logout</button>
             <div className='px-20 py-10 border-2 rounded-xl bg-white'>
                 <div className='grid grid-cols-2 max-md:grid-cols-1 md:w-[100%] '>
                     <div className='w-[90%] mt-4'>
@@ -136,8 +152,6 @@ const ProviderPanel = () => {
                                 <h1 className='mr-5 text-[1rem]  font-[600]'>$ 7.60</h1>
                             </div>
                             <h1 className='text-right mr-5  mt-2 text-[0.9rem] font-[500]'>Paid This Month</h1>
-
-
                         </div>
                     </div>
                     {/* <div className='border-2 p-3 h-[19rem] rounded-xl shadow-xl shadow-gray-300  max-md:mr-0'>
@@ -238,6 +252,13 @@ const ProviderPanel = () => {
 
                 </div>
             </div>
+        </>
+        :
+        <div>
+            Chuti karo
+        </div>
+        }
+
         </PortalLayout>
     )
 }

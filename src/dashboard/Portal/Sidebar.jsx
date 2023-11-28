@@ -8,7 +8,7 @@ import { BiCategoryAlt, BiUserCheck } from 'react-icons/bi'
 import { AiOutlineTag, AiOutlineTransaction, AiOutlineOrderedList, AiOutlineNotification } from 'react-icons/ai'
 import { PiBriefcaseLight, PiBuildingsLight } from 'react-icons/pi'
 import { useLocation, useNavigate } from "react-router-dom";
-import { SESSION_PROVIDER } from "../../Utils/Constant";
+import { SESSION_PROVIDER, SESSION_PROVIDER_LOGIN } from "../../Utils/Constant";
 import { TfiCloudDown, TfiPieChart } from "react-icons/tfi";
 import { LuLeaf } from "react-icons/lu";
 
@@ -19,18 +19,19 @@ const Sidebar = forwardRef(({ }, ref) => {
   const [provider, setProvider] = useState(false)
 
   useEffect(() => {
-    const isProviderLogin = sessionStorage.getItem(SESSION_PROVIDER)
+    const isLogin = sessionStorage.getItem(SESSION_PROVIDER_LOGIN)
     
-    if(isProviderLogin){
+    if(isLogin === "true"){
       setProvider(true)
     } else{
       setProvider(false)
     }
     // setProvider(isProviderLogin);
-  }, [])
+  }, [provider])
 
   return (
     <div ref={ref} className="mt-[-4rem] fixed w-56 h-full bg-white shadow-sm max-md:w-[40%] overflow-auto no-scrollbar">
+
       {provider ?
         <>
           <div className="flex flex-col mt-[2rem] ">

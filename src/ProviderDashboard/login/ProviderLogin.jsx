@@ -7,7 +7,7 @@ import { ToastContainer, toast } from "react-toastify"
 import AppView from "../view/AppView"
 import axios from "axios"
 import { useGoogleLogin } from "@react-oauth/google"
-import { SESSION_ADMIN_ID, SESSION_ADMIN_TYPE, SESSION_PROVIDER, SESSION_PROVIDER_LOGIN } from "../../Utils/Constant";
+import { SESSION_PROVIDER, SESSION_PROVIDER_ID, SESSION_PROVIDER_LOGIN, SESSION_PROVIDER_TYPE } from "../../Utils/Constant";
 
 const ProviderLogin = () => {
   const [loginData, setLoginData] = useState({ email: '', password: '' })
@@ -32,8 +32,8 @@ const ProviderLogin = () => {
       console.log('res', status)
       if (status === 'OK') {
         sessionStorage.setItem(SESSION_PROVIDER_LOGIN, "true")
-        sessionStorage.setItem(SESSION_ADMIN_ID, data.id)
-        sessionStorage.setItem(SESSION_ADMIN_TYPE, "PROVIDER")
+        sessionStorage.setItem(SESSION_PROVIDER_ID, data.id)
+        sessionStorage.setItem(SESSION_PROVIDER_TYPE, "PROVIDER")
         sessionStorage.setItem(SESSION_PROVIDER, JSON.stringify(data))
         navigate('/providerPanel')
       }

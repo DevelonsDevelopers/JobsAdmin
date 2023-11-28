@@ -58,9 +58,9 @@ function App() {
   return (
     <GoogleOAuthProvider clientId="404623696003-doe1cpjrlljj8om770ha3ri9s9vatoc8.apps.googleusercontent.com">
 
-      <BrowserRouter basename={'/admin'}>
+      <BrowserRouter basename={'/panel'}>
         <Routes>
-          <Route path="/" element={<Dashboard/>} />
+          <Route path="/userPanel" element={<Dashboard/>} />
           <Route path="/cities" element={<Cities/>} />
           <Route path="/categories" element={<Categories />} />
           {/* <Route path="/jobbank" element={<Email />} /> */}
@@ -79,8 +79,6 @@ function App() {
           {/* <Route path="/jobsAPI" element={<JobsAPI/>} /> */}
           {/* <Route path="/jobsAPI" element={<ApiJobs/>} /> */}
           {/* <Route path="/careerJetApi" element={<CareerJetApi/>} /> */}
-
-
 
           <Route path="/users/add" element={<UserForm/>} />
           <Route path="/categories/add" element={<CategoryForm/>} />
@@ -119,7 +117,6 @@ function App() {
           <Route path="/jobProvider/recommended" element={<Recommended />} />
           <Route path="/interaction" element={<ProviderInteraction />} />
           <Route path="*" element={<NoPage />} />
-
 
         </Routes>
       </BrowserRouter>

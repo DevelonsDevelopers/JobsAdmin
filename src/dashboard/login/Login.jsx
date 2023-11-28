@@ -40,7 +40,7 @@ const Login = () => {
               sessionStorage.setItem(SESSION_ADMIN_ID, data.id)
               sessionStorage.setItem(SESSION_ADMIN_TYPE, "SESSION_USER")
               sessionStorage.setItem(SESSION_ADMIN_USER, JSON.stringify(data))
-              navigate('/',
+              navigate('/userPanel',
                 toast.success('Login Successfully', {
                   position: "top-right",
                   autoClose: 1000,
