@@ -99,11 +99,12 @@ const ProviderPanel = () => {
         const isProviderLogin = sessionStorage.getItem(SESSION_PROVIDER_LOGIN)
         if (isProviderLogin === "true") {
             setProviderData(true)
+            navigate('/providerPanel')
         } else {
             setProviderData(false)
             navigate('/providerLogin')
         }
-      }, [])
+      }, [providerData])
 
 
     const logout = () => {

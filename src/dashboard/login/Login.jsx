@@ -21,7 +21,7 @@ const Login = () => {
   useEffect(() => {
     const isLogin = sessionStorage.getItem(SESSION_ADMIN_LOGIN)
     if (isLogin === "true") {
-      navigate('/')
+      navigate('/userPanel')
     } else {
     }
   }, [])

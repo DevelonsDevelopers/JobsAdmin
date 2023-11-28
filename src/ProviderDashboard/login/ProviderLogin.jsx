@@ -24,7 +24,7 @@ const ProviderLogin = () => {
     }
   }, [])
 
-  const login = () => {
+  const ProviderLogin = () => {
     CompanyLogin(loginData.email, loginData.password).then(res => {
       console.log(res)
       const { data: { data } } = res;
@@ -137,7 +137,7 @@ const ProviderLogin = () => {
                 }
                 <h1 onClick={() => toggleOpenVisible()} className="text-[.9rem] text-blue-600 text-right cursor-pointer font-[600] hover:underline">Register Now</h1>
 
-                <input type='submit' value='Log In' onClick={() => login()} className='bg-blue-600 text-white cursor-pointer font-[600] px-10 py-[5px] w-[100%] rounded-full mt-6' />
+                <input type='submit' value='Log In' onClick={() => ProviderLogin()} className='bg-blue-600 text-white cursor-pointer font-[600] px-10 py-[5px] w-[100%] rounded-full mt-6' />
                 <h1 className="text-[.9rem] text-gray-700 font-[600] text-left mt-4">You can also join with</h1>
                 <div onClick={() => googleLogin()} className="flex justify-center border-2 gap-2 mt-4 rounded-xl p-2 cursor-pointer hover:bg-gray-200">
                   <img src='./assets/google.png' alt="" className="w-8 mr-auto h-8 ml-4 cursor-pointer rounded-full border-2 border-gray-100" />

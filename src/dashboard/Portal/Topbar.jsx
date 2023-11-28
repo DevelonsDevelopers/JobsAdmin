@@ -32,20 +32,16 @@ const Topbar = ({ showNav, setShowNav }) => {
   }
 
   useEffect(() => {
-    const user = sessionStorage.getItem(SESSION_ADMIN_USER)
-    setData(JSON.parse(user))
-  }, [])
-
-
-  useEffect(() => {
     console.log(data)
   }, [data])
 
   useEffect(() => {
     const isProviderLogin = sessionStorage.getItem(SESSION_PROVIDER_LOGIN)
 
-    if (isProviderLogin === "false") {
+    if (isProviderLogin === "false" || null) {
       setProvider(false)
+      const user = sessionStorage.getItem(SESSION_ADMIN_USER)
+      setData(JSON.parse(user))
     } else {
       setProvider(true)
       setProviderData(JSON.parse(sessionStorage.getItem(SESSION_PROVIDER)));
