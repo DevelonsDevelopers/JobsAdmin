@@ -8,7 +8,7 @@ import { Transition } from '@headlessui/react';
 import Topbar from '../dashboard/Portal/Topbar';
 import Sidebar from '../dashboard/Portal/Sidebar';
 import { useEffect } from 'react';
-import {SESSION_ADMIN_LOGIN} from "../Utils/Constant";
+import {SESSION_ADMIN_LOGIN, SESSION_PROVIDER_LOGIN} from "../Utils/Constant";
 
 const PortalLayout = ({ children }) => {
 
@@ -21,13 +21,16 @@ const PortalLayout = ({ children }) => {
 
 	useEffect(() => {
 		const isLogin = sessionStorage.getItem(SESSION_ADMIN_LOGIN)
+		const isProviderLogin = sessionStorage.getItem(SESSION_PROVIDER_LOGIN)
 		if (isLogin === "true"){
 			setLogin(true)
-		} else {
+		} else if (isProviderLogin === "true") {
+			setLogin(true)
+	 } else {
 			setLogin(false)
-			router('/login')
+			router('/providerLogin')
 		}
-	}, [])
+	}, [login])
 
 	// const { data: session } = useSession({})
 

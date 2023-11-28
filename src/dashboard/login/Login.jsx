@@ -4,7 +4,7 @@ import { LoginUser } from "../../store"
 import { AiFillEye, AiFillEyeInvisible, AiOutlineMail } from 'react-icons/ai'
 import { RiLockPasswordLine } from 'react-icons/ri'
 import { ToastContainer, toast } from "react-toastify"
-import { SESSION_ADMIN_ID, SESSION_ADMIN_LOGIN, SESSION_ADMIN_TYPE, SESSION_ADMIN_USER } from "../../Utils/Constant"
+import { SESSION_ADMIN_ID, SESSION_ADMIN_LOGIN, SESSION_ADMIN_TYPE, SESSION_ADMIN_USER, SESSION_PROVIDER_LOGIN } from "../../Utils/Constant"
 
 const Login = () => {
 
@@ -20,7 +20,8 @@ const Login = () => {
 
   useEffect(() => {
     const isLogin = sessionStorage.getItem(SESSION_ADMIN_LOGIN)
-    if (isLogin === "true") {
+    const adminType = sessionStorage.getItem(SESSION_ADMIN_TYPE)
+    if (isLogin === "true" && adminType === "USER" ) {
       navigate('/userPanel')
     } else {
     }
@@ -38,8 +39,9 @@ const Login = () => {
               setLoading(false)
               sessionStorage.setItem(SESSION_ADMIN_LOGIN, "true")
               sessionStorage.setItem(SESSION_ADMIN_ID, data.id)
-              sessionStorage.setItem(SESSION_ADMIN_TYPE, "SESSION_USER")
+              sessionStorage.setItem(SESSION_ADMIN_TYPE, "USER")
               sessionStorage.setItem(SESSION_ADMIN_USER, JSON.stringify(data))
+              sessionStorage.setItem(SESSION_PROVIDER_LOGIN, "false")
               navigate('/userPanel',
                 toast.success('Login Successfully', {
                   position: "top-right",

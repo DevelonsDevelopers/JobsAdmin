@@ -9,7 +9,7 @@ import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getBarChart, getDashboard, getLineChart, getReports, getTransaction, getpiechart } from '../store/actions/dashboardActions';
 import moment from 'moment/moment';
-import { SESSION_ADMIN_LOGIN } from '../Utils/Constant';
+import { SESSION_ADMIN_LOGIN, SESSION_PROVIDER_LOGIN } from '../Utils/Constant';
 import { useNavigate } from 'react-router-dom';
 
 
@@ -24,13 +24,14 @@ const Dashboard = () => {
   const navigate = useNavigate()
 
   
-  useEffect(() => {
-    const isLogin = sessionStorage.getItem(SESSION_ADMIN_LOGIN)
-    if (isLogin === "false") {
-      navigate('/login')
-    } else {
-    }
-  }, [])
+  // useEffect(() => {
+  //   const isLogin = sessionStorage.getItem(SESSION_ADMIN_LOGIN)
+  //   const isProviderLogin = sessionStorage.getItem(SESSION_PROVIDER_LOGIN)
+  //   if (isLogin === "false" ) {
+  //     navigate('/login')
+  //   } else {
+  //   }
+  // }, [])
 
   const dispatch = useDispatch();
   const [pieData, setPieData] = useState([{ 'value': 0, 'name': 'Companies' }, { 'value': 0, 'name': 'Jobs', 'color': '#ffffff' }, { 'value': 0, 'name': 'Seekers' }])

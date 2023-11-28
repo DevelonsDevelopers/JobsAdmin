@@ -95,16 +95,15 @@ const ProviderPanel = () => {
 
     const navigate = useNavigate();
 
-    useEffect(() => {
-        const isProviderLogin = sessionStorage.getItem(SESSION_PROVIDER_LOGIN)
-        if (isProviderLogin === "true") {
-            setProviderData(true)
-            navigate('/providerPanel')
-        } else {
-            setProviderData(false)
-            navigate('/providerLogin')
-        }
-      }, [providerData])
+    // useEffect(() => {
+    //     const isProviderLogin = sessionStorage.getItem(SESSION_PROVIDER_LOGIN)
+    //     if (isProviderLogin === "true") {
+    //         navigate('/providerLogin')
+    //         // setProviderData(false)
+    //         // setProviderData(true)
+    //     } else {
+    //     }
+    //   }, [providerData])
 
 
     const logout = () => {
@@ -117,8 +116,6 @@ const ProviderPanel = () => {
 
     return (
         <PortalLayout>
-        {providerData ?
-        <>
                         <button onClick={() => logout()} className='bg-blue-600 text-white cursor-pointer font-[600] px-10 py-[5px] w-[100%] rounded-full mt-6'>logout</button>
             <div className='px-20 py-10 border-2 rounded-xl bg-white'>
                 <div className='grid grid-cols-2 max-md:grid-cols-1 md:w-[100%] '>
@@ -253,12 +250,6 @@ const ProviderPanel = () => {
 
                 </div>
             </div>
-        </>
-        :
-        <div>
-            Chuti karo
-        </div>
-        }
 
         </PortalLayout>
     )
