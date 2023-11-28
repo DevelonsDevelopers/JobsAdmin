@@ -13,8 +13,12 @@ import { Pagination, Stack, ThemeProvider, createTheme } from '@mui/material';
 const Plans = () => {
   // search===============
   const [search, setSearch] = useState('')
-  // console.log(search)
-  // ============
+  useEffect(() => {
+    const result = plans?.filter((item) => {
+      return item?.name.toLowerCase()?.match(search?.toLocaleLowerCase());
+    });
+    setPaginatedData(result)
+  }, [search])
 
   const [deleteId, setDeleteId] = useState();
   const navigate = useNavigate();
@@ -144,11 +148,7 @@ const Plans = () => {
 
                   </thead>
 
-                  {paginatedData?.filter((value) => {
-                    return search.toLowerCase() === ''
-                      ? value : value.name.toLowerCase().includes(search);
-                  })
-                    .map((value, index) => (
+                  {paginatedData?.map((value, index) => (
                       <tbody className="text-[#000000] text-sm font-light w-[100%] bg-white " key={value?.id}>
                         <tr className='' >
                           <td className="py-[2%] w-[1%]   border-r-[1px] border-t-[1px]   text-center">
