@@ -7,6 +7,13 @@ import { AiOutlineMail } from 'react-icons/ai'
 import { SlLocationPin } from 'react-icons/sl'
 import { BiSolidEditAlt } from 'react-icons/bi'
 import { SESSION_ADMIN_ID, SESSION_ADMIN_LOGIN, SESSION_ADMIN_TYPE, SESSION_ADMIN_USER, SESSION_PROVIDER, SESSION_PROVIDER_ID, SESSION_PROVIDER_LOGIN, SESSION_PROVIDER_TYPE, SESSION_USER } from "../../Utils/Constant";
+import { IoIosArrowDropup } from "react-icons/io";
+import { IoIosArrowDropdown } from "react-icons/io";
+import { CiUser } from "react-icons/ci";
+
+
+
+
 const Topbar = ({ showNav, setShowNav }) => {
 
   const router = useNavigate();
@@ -14,7 +21,7 @@ const Topbar = ({ showNav, setShowNav }) => {
   const [data, setData] = useState();
   const [provider, setProvider] = useState(false);
   const [providerData, setProviderData] = useState();
-  console.log(providerData)
+
 
   const logout = () => {
     sessionStorage.setItem(SESSION_ADMIN_LOGIN, "false")
@@ -23,11 +30,16 @@ const Topbar = ({ showNav, setShowNav }) => {
     sessionStorage.setItem(SESSION_ADMIN_USER, null)
     router('/login')
   }
-  
+
   useEffect(() => {
     const user = sessionStorage.getItem(SESSION_ADMIN_USER)
     setData(JSON.parse(user))
   }, [])
+
+
+  useEffect(() => {
+    console.log(data)
+  }, [data])
 
   useEffect(() => {
     const isProviderLogin = sessionStorage.getItem(SESSION_PROVIDER_LOGIN)
@@ -49,6 +61,12 @@ const Topbar = ({ showNav, setShowNav }) => {
     router('/providerLogin')
   }
 
+  const [isOpen, setIsOpen] = React.useState(false);
+
+  const toggleMenu = () => {
+    setIsOpen(!isOpen);
+  }
+
 
   //   const handleSignOut = () => {
   //     signOut()
@@ -56,25 +74,42 @@ const Topbar = ({ showNav, setShowNav }) => {
   //   }
 
   return (
-    <div className={` w-full h-16 flex bg-violet-100 justify-between items-center transition-all duration-[400ms] ${showNav ? 'pl-[10.5rem] max-sm:pl-[14rem]' : ""}`}>
+    <div className={` w-full h-16 flex bg-gray-100 justify-between items-center transition-all duration-[400ms] ${showNav ? 'pl-[10.5rem] max-sm:pl-[14rem]' : ""}`}>
       <div className='pl-4 md:pl-16'>
-        <HiMenuAlt2 className='h-8 w-10 max-md:h-[20px] max-md:w-[20px]  text-gray-700 cursor-pointer ' 
-        onClick={() => {
-          setShowNav(!showNav) 
-          console.log(data)
-        }
+        <HiMenuAlt2 className='h-8 w-10 max-md:h-[20px] max-md:w-[20px]  text-gray-700 cursor-pointer '
+          onClick={() => {
+            setShowNav(!showNav)
+            console.log(data)
+          }
           } />
       </div>
-      <div className='flex items-center  pr-4 md:pr-16'>
+      <div className=' items-center  pr-4 md:pr-16'>
         <Popover className="relative">
-          <Popover.Button className="outline-none mr-5 md:mr-8 cursor-pointer text-gray-700">
-            <HiOutlineUserCircle className='h-8 w-8' />
+          <Popover.Button onClick={toggleMenu} className="flex gap-2 outline-none mr-5 md:mr-8 cursor-pointer text-gray-700">
+            <CiUser className='h-10  w-10 border-2 rounded-full  border-gray-800 p-2 mt-[6px]' />
+            <div>
+              {!provider ?
+                <div>
+                  <p className='text-left text-[.9rem text-gray-700 ]'>{data?.name}</p>
+                  <p className=' text-[.9rem text-gray-700 ]'>{data?.email}</p>
+                </div>
+                :
+                <div>
+                  <p className=' text-[.9rem text-gray-700 ]'>{providerData?.name}</p>
+                  <p className=' text-[.9rem text-gray-700 ]'>{providerData?.email}</p>
+                </div>
+              }
+            </div>
+            {isOpen ?
+              <IoIosArrowDropup className='mt-[14px] cursor-pointer text-[1.7rem] text-gray-700' />
+              :
+              <IoIosArrowDropdown className='mt-[14px] cursor-pointer text-[1.7rem] text-gray-700' />
+            }
+
           </Popover.Button>
           <Transition as={Fragment} enter='transition ease-out duration-100' enterFrom='transform scale-95' enterTo='transform scale-100' leave='transition ease-in duration-75' leaveFrom='transform scale-100' leaveTo='transform scale-95'>
             <Popover.Panel className="absolute -right-16 max-sm:right-0 z-50 mt-2 bg-white shadow-sm rounded-md max-w-xs max-sm:w-[230px] w-[250px]">
-              <center>
-                <h1 className='text-center text-black font-[700] mb-3 py-2 text-[1.5rem] w-[50%]'>Profile</h1>
-              </center>
+
 
               <div>
                 {/* <div className='flex items-center'>
@@ -95,6 +130,9 @@ const Topbar = ({ showNav, setShowNav }) => {
                   </>
                   :
                   <>
+                    <center>
+                      <h1 className='text-center text-black font-[700] mb-3 py-2 text-[1.5rem] w-[50%]'>Profile</h1>
+                    </center>
                     <div className='pl-[2rem] py-2 ml-2  rounded-xl'>
                       <i className='items-center flex'><AiOutlineMail /><span className='font-[600] text-[1rem] text-gray-600 ml-[1rem]'>{data?.email}</span></i>
                       <i className='items-center flex'><BsTelephone /><span className='font-[600] text-[1rem] text-gray-600 ml-[1rem] mt-2'>{data?.phone}</span></i>
