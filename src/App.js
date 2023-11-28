@@ -52,6 +52,7 @@ import Email from "./dashboard/Email";
 import EmailForm from "./dashboard/form/EmailForm";
 import JobBankEdit from "./dashboard/edit/JobBankEdit";
 import { GoogleOAuthProvider } from "@react-oauth/google";
+import NoPage from "./dashboard/NoPage";
 
 function App() {
   return (
@@ -62,7 +63,7 @@ function App() {
           <Route path="/" element={<Dashboard/>} />
           <Route path="/cities" element={<Cities/>} />
           <Route path="/categories" element={<Categories />} />
-          <Route path="/jobbank" element={<Email />} />
+          {/* <Route path="/jobbank" element={<Email />} /> */}
           <Route path="/companies" element={<Companies/>} />
           <Route path="/countries" element={<Countries/>} />
           <Route path="/jobs" element={<Jobs/>} />
@@ -117,6 +118,7 @@ function App() {
           <Route path="/offers" element={<Offers />} />
           <Route path="/jobProvider/recommended" element={<Recommended />} />
           <Route path="/interaction" element={<ProviderInteraction />} />
+          <Route path="*" element={<NoPage />} />
 
 
         </Routes>
