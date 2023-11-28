@@ -31,7 +31,7 @@ const Sidebar = forwardRef(({ adminLogin, providerLogin }, ref) => {
   }, [provider])
 
   return (
-    <div ref={ref} className="mt-[-4rem] fixed w-56 h-full bg-[#0D1858] shadow-sm max-md:w-[40%] overflow-auto no-scrollbar">
+    <div ref={ref} className="mt-[-4rem] fixed w-56 h-full bg-[#0D1858] rounded-r-[1.4rem] shadow-sm max-md:w-[40%] overflow-auto no-scrollbar">
 
       {providerLogin && (
         <>
