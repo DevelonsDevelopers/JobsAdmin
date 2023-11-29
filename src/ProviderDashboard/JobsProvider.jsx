@@ -28,20 +28,20 @@ const JobsProvider = () => {
   const loading = useSelector(state => state.job.isLoading)
   const [nodata, setNodata] = useState(false)
 
-  const providerId = sessionStorage.getItem(SESSION_PROVIDER_ID)
   
-  useEffect(() => {
-    console.log('jobByID', providerId)
-  }, [providerId])
-
+  // useEffect(() => {
+  //   console.log('jobByID', providerId)
+  // }, [providerId])
+  
   //fetching jobs
+  const providerId = sessionStorage.getItem(SESSION_PROVIDER_ID)
   const companybyjob = useSelector(state => state.job.jobs)
   useEffect(() => {
     console.log('jobByComp', companybyjob)
   }, [companybyjob])
-
+  
   useEffect(() => {
-    if (companybyjob !== null || companybyjob !== undefined || companybyjob.length !== 0) {
+    if (companybyjob) {
       dispatch(getCompanybyJob(providerId))
     }
   }, [dispatch, providerId])
