@@ -31,9 +31,9 @@ const Topbar = ({ showNav, setShowNav }) => {
     router('/login')
   }
 
-  useEffect(() => {
-    console.log(data)
-  }, [data])
+  // useEffect(() => {
+  //   console.log(data)
+  // }, [data])
   
   const isProviderLogin = sessionStorage.getItem(SESSION_PROVIDER_LOGIN)
   const user = sessionStorage.getItem(SESSION_ADMIN_USER)
