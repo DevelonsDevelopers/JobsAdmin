@@ -52,7 +52,6 @@ const Seekers = () => {
       setNodata(true)
     } else {
       setNodata(false)
-
     }
   }, [seekers])
 
