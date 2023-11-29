@@ -59,10 +59,10 @@ function App() {
     <GoogleOAuthProvider clientId="404623696003-doe1cpjrlljj8om770ha3ri9s9vatoc8.apps.googleusercontent.com">
       <BrowserRouter basename={"/"}>
         <Routes>
-          {/* <Route
+          <Route
             path="*"
             element={<Navigate to="/userPanel" replace={true} />}
-          /> */}
+          />
           <Route path="/userPanel" element={<Dashboard />} />
           <Route path="/cities" element={<Cities />} />
           <Route path="/categories" element={<Categories />} />
@@ -119,7 +119,7 @@ function App() {
           <Route path="/offers" element={<Offers />} />
           <Route path="/jobProvider/recommended" element={<Recommended />} />
           <Route path="/interaction" element={<ProviderInteraction />} />
-          {/* <Route path="*" element={<NoPage />} /> */}
+          <Route path="*" element={<NoPage />} />
         </Routes>
       </BrowserRouter>
     </GoogleOAuthProvider>

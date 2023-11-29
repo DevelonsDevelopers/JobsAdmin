@@ -7,12 +7,6 @@ import { AllSeekers, seekerStatus } from '../store/actions/seekerActions';
 import { Link, useNavigate } from 'react-router-dom';
 import { Pagination, Stack, ThemeProvider, createTheme } from '@mui/material';
 
-
-
-
-
-
-
 const Seekers = () => {
   // search===============
   const [search, setSearch] = useState('')
