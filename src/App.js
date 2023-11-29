@@ -58,6 +58,7 @@ function App() {
   return (
     <GoogleOAuthProvider clientId="404623696003-doe1cpjrlljj8om770ha3ri9s9vatoc8.apps.googleusercontent.com">
       <BrowserRouter basename={"/"}>
+
         <Routes>
           <Route
             path="*"
