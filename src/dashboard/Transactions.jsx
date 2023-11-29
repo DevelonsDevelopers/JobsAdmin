@@ -109,8 +109,8 @@ if (transactions?.length===0) {
         </div>
         </center>
         : <>
-        {nodata? <center> <div className=" pt-[10%]" > <img src="./assets/nodata3.png" alt="no image" className="opacity-75 w-[60%] h-[50%] mt-[-10%]" />
-            <h1 className=" text-[2rem] text-gray-500 mt-[-4rem] pt-10" >No Transaction Found</h1>
+        {nodata? <center> <div className=" pt-[10%]" > 
+            <h1 className=" text-[2rem] text-gray-500 " >No Transaction Found</h1>
           </div> </center> 
           :
            <>
@@ -121,7 +121,7 @@ if (transactions?.length===0) {
         <div className='flex justify-center mt-[3rem] w-[90%] m-auto'>
 
           <input type="search" onChange={(e) => setSearch(e.target.value)}
-            name="" id="" placeholder='Search...' className='border-2 border-gray-600 pl-[4rem] rounded-[1.0625rem] py-2  w-[27.8125rem] mr-auto max-md:py-[1px] max-md:w-[15rem] max-md:text-[0.7rem] focus:outline-none focus:ring-0 focus:border-gray-900 peer' />
+            name="" id="" placeholder='Search...' className='border-2 border-gray-600 pl-[4rem]  pr-[1rem] rounded-[1.0625rem] py-2  w-[27.8125rem] mr-auto max-md:py-[1px] max-md:w-[15rem] max-md:text-[0.7rem] focus:outline-none focus:ring-0 focus:border-gray-900 peer' />
         </div>
         <TransactionsView open={openView} setOpen={setOpenView} title={" VIEW"} data={data} ID={viewId} />
         <table className="rounded-xl p-5 bg-white w-[90%] m-auto max-md:w-[100%]  mt-6 ">

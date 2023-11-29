@@ -123,8 +123,8 @@ const Countries = () => {
         </div>
         </center>
         : <>
-          {nodata ? <center> <div className=" pt-[10%] my-auto" > <img src="./assets/nodata3.png" alt="no image" className="opacity-75 w-[60%] h-[50%] mt-[-10%]" />
-            <h1 className=" text-[2rem] text-gray-500 mt-[-4rem] pt-10" >No Data Found</h1>
+          {nodata ? <center> <div className=" pt-[10%] my-auto" > 
+            <h1 className=" text-[2rem] text-gray-500 " >No Data Found</h1>
             <div className='mt-[2rem]'>   <Link to='/countries/add' className=" py-[1.3%] px-[3%]  text-white text-sm bg-blue-600  rounded-[2rem] "  >   Add New  </Link>
             </div>
           </div> </center> : <>
@@ -138,7 +138,7 @@ const Countries = () => {
 
                 <input type="search"
                   onChange={(e) => setSearch(e.target.value)}
-                  name="" id="" placeholder='Search...' className='border-2 border-gray-600 pl-[4rem] rounded-[1.0625rem] py-2  w-[27.8125rem] mr-auto max-md:py-[1px] max-md:w-[15rem] max-md:text-[0.7rem] focus:outline-none focus:ring-0 focus:border-gray-900 peer' />
+                  name="" id="" placeholder='Search...' className='border-2 border-gray-600 pl-[4rem]  pr-[1rem] rounded-[1.0625rem] py-2  w-[27.8125rem] mr-auto max-md:py-[1px] max-md:w-[15rem] max-md:text-[0.7rem] focus:outline-none focus:ring-0 focus:border-gray-900 peer' />
                 <Link to="/countries/add"> <button className="bg-[#0047FF] cursor-pointer  max-md:text-[.6rem] py-2 px-[1rem] max-md:px-[1rem] max-md:py-[5px] text-white font-[500] max-md:font-[400] rounded-[1.375rem] ml-auto "  >
                   Add New
                 </button>

@@ -109,7 +109,7 @@ const ProviderInteraction = () => {
                 <div className='flex justify-center mt-[3rem] w-[90%] m-auto'>
 
                   <input type="search" onChange={(e) => setSearch(e.target.value)}
-                    name="" id="" placeholder='Search...' className='border-2 border-gray-600 pl-[4rem] rounded-[1.0625rem] py-2  w-[27.8125rem] mr-auto max-md:py-[1px] max-md:w-[15rem] max-md:text-[0.7rem] focus:outline-none focus:ring-0 focus:border-gray-900 peer' />
+                    name="" id="" placeholder='Search...' className='border-2 border-gray-600 pl-[4rem]  pr-[1rem] rounded-[1.0625rem] py-2  w-[27.8125rem] mr-auto max-md:py-[1px] max-md:w-[15rem] max-md:text-[0.7rem] focus:outline-none focus:ring-0 focus:border-gray-900 peer' />
 
 
                 </div>

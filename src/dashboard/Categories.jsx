@@ -90,7 +90,7 @@ const Categories = () => {
 
   }, [categories])
 
-   
+
   return (
     <PortalLayout>
       {loading ? <center> <div className="flex justify-center items-center h-screen">
@@ -100,8 +100,8 @@ const Categories = () => {
         :
         <>
           {nodata ?
-            <center> <div className=" pt-[10%]" > <img src="./assets/nodata3.png" alt="no image" className="opacity-75 w-[60%] h-[50%] mt-[-10%]" />
-              <h1 className=" text-[2rem] text-gray-500 mt-[-4rem] pt-10" >No Companies Found</h1>
+            <center> <div className=" pt-[10%]" >
+              <h1 className=" text-[2rem] text-gray-500 " >No Category Found</h1>
               <div className='mt-[2rem]'>
                 <Link to='/categories/add' className=" py-[1.3%] px-[3%]  text-white text-sm bg-blue-600  rounded-[2rem] ">Add New</Link>
               </div>
@@ -109,13 +109,13 @@ const Categories = () => {
             </div> </center>
             :
             <>
-              <h1 className='text-[3.125rem] font-[800] text-[#000] text-center max-md:text-[2rem]'>Categories</h1>
+              <h1 className='text-[3.125rem] font-[800] text-[#000] text-center max-md:text-[2rem] uppercase'>Categories</h1>
 
               <div className="w-[100%] max-md:h-full  max-md:px-2 flex flex-col justify-center bg-gray-100">
 
                 <div className='flex justify-center mt-[3rem] w-[90%] m-auto'>
 
-                  <input onChange={(e) => setSearch(e.target.value)} type="search" name="" id="" placeholder='Search...' className='border-2 border-gray-600 pl-[4rem] rounded-[1.0625rem] py-2  w-[27.8125rem] mr-auto max-md:py-[1px] max-md:w-[15rem] max-md:text-[0.7rem] focus:outline-none focus:ring-0 focus:border-gray-900 peer' />
+                  <input onChange={(e) => setSearch(e.target.value)} type="search" name="" id="" placeholder='Search...' className='border-2 border-gray-600 pl-[4rem]  pr-[1rem] rounded-[1.0625rem] py-2  w-[27.8125rem] mr-auto max-md:py-[1px] max-md:w-[15rem] max-md:text-[0.7rem] focus:outline-none focus:ring-0 focus:border-gray-900 peer' />
                   <Link to="/categories/add"> <button className="bg-[#0047FF] cursor-pointer  max-md:text-[.6rem] py-2 px-[1rem] max-md:px-[1rem] max-md:py-[5px] text-white font-[600] max-md:font-[400] rounded-[1.375rem] ml-auto "  >
                     Add New
                   </button>

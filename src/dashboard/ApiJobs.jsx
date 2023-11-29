@@ -144,7 +144,7 @@ const ApiJobs = () => {
               <div className="w-[100%] max-md:h-full  max-md:px-2 flex flex-col justify-center bg-gray-100">
 
                 <div className='flex justify-center mt-[3rem] w-[90%] m-auto'>
-                  <input type="search" name="" id="" placeholder='Search...' onChange={(e) => setSearch(e.target.value)} className='border-2 border-gray-600 pl-[4rem] rounded-[1.0625rem] py-2  w-[27.8125rem] mr-auto max-md:py-[1px] max-md:w-[15rem] max-md:text-[0.7rem]' />
+                  <input type="search" name="" id="" placeholder='Search...' onChange={(e) => setSearch(e.target.value)} className='border-2 border-gray-600 pl-[4rem]  pr-[1rem] rounded-[1.0625rem] py-2  w-[27.8125rem] mr-auto max-md:py-[1px] max-md:w-[15rem] max-md:text-[0.7rem]' />
                 </div>
                 <table className="rounded-xl p-5 bg-white w-[90%] m-auto max-md:w-[100%]  mt-6 ">
 

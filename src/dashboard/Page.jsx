@@ -175,7 +175,7 @@ const Dashboard = () => {
               tabIndex={0}
               onFocus={(e) => e.target.blur()}
             >
-              <span className='ml-[2rem] font-[600] text-[1rem] text '>Memory Status</span>
+              <span className='ml-[2rem] font-[600] text-[1rem] text '>Current Status</span>
               <ResponsiveContainer width="100%" height={300}>
                 <PieChart width={430} height={200} margin={{ top: 10, right: 20, bottom: 0, left: 20 }}>
                   <Pie data={pieData} dataKey="value" nameKey="name" cx="50%" cy="50%" outerRadius={70} fill="#4D38E3" label>
@@ -311,7 +311,7 @@ const Dashboard = () => {
 
           <div className='grid grid-cols-1 max-md:grid-cols-1 justify-center gap-6 mt-5' style={{ userSelect: 'none' }}>
             <div className='bg-white border-2 p-2 rounded-xl shadow-xl shadow-gray-300'>
-              <span className=' ml-[2rem] font-[600] text-[1rem]'>Memory Status</span>
+              <span className=' ml-[2rem] font-[600] text-[1rem]'>Applied Users</span>
               <ResponsiveContainer width="100%" height={400}>
                 <BarChart width={430} height={250} data={barChart} margin={{ top: 40, right: 20, bottom: 0, left: 20 }} >
                   <XAxis

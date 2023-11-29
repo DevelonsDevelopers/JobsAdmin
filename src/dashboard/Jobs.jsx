@@ -29,7 +29,7 @@ const Jobs = () => {
     setNodata(false)
     setLoading(false)
   }, [dispatch])
-  
+
   //onChange
   const handleClick = (id) => {
     setOpenView(!open)
@@ -60,7 +60,7 @@ const Jobs = () => {
   useEffect(() => {
     dispatch(getJob())
   }, [dispatch])
- 
+
   useEffect(() => {
     if (jobs?.length === 0) {
       setNodata(true)
@@ -69,7 +69,7 @@ const Jobs = () => {
     else {
       setNodata(false)
       setLoading(false)
-     }
+    }
   }, [jobs])
 
   //delete
@@ -124,8 +124,8 @@ const Jobs = () => {
         </div>
         </center>
         : <>
-          {nodata ? <center> <div className=" pt-[10%]" > <img src="./assets/nodata3.png" alt="no image" className="opacity-75 w-[60%] h-[50%] mt-[-10%]" />
-            <h1 className=" text-[2rem] text-gray-500 mt-[-4rem] pt-10" >No Data Found</h1>
+          {nodata ? <center> <div className=" pt-[10%]" >
+            <h1 className=" text-[2rem] text-gray-500 " >No Jobs Found</h1>
             <div className='mt-[2rem]'>   <Link to='/jobs/add' className=" py-[1.3%] px-[3%]  text-white text-sm bg-blue-600  rounded-[2rem] "  >   Add New  </Link>
             </div>
 
@@ -136,7 +136,7 @@ const Jobs = () => {
 
               <div className='flex justify-center mt-[3rem] w-[90%] m-auto'>
 
-                <input type="search" name="search" id="" placeholder='Search...' onChange={(e) => setSearch(e.target.value)} className='border-2 border-gray-600 pl-[4rem] rounded-[1.0625rem] py-2  w-[27.8125rem] mr-auto max-md:py-[1px] max-md:w-[15rem] max-md:text-[0.7rem] focus:outline-none focus:ring-0 focus:border-gray-900 peer' />
+                <input type="search" name="search" id="" placeholder='Search...' onChange={(e) => setSearch(e.target.value)} className='border-2 border-gray-600 pl-[4rem]  pr-[1rem] rounded-[1.0625rem] py-2  w-[27.8125rem] mr-auto max-md:py-[1px] max-md:w-[15rem] max-md:text-[0.7rem] focus:outline-none focus:ring-0 focus:border-gray-900 peer' />
                 <Link to="/jobs/add"> <button className="bg-[#0047FF] cursor-pointer  max-md:text-[.6rem] py-2 px-[1rem] max-md:px-[1rem] max-md:py-[5px] text-white font-[600] max-md:font-[400] rounded-[1.375rem] ml-auto "  >
                   Add New
                 </button>
@@ -219,21 +219,21 @@ const Jobs = () => {
                 ))}
               </table>
               <ThemeProvider theme={theme}>
-                    <Stack direction="row" justifyContent="center" marginTop={2}>
-                      <Pagination
-                        count={Math.ceil(jobs?.length / itemsPerPage)}
-                        page={currentPage}
-                        onChange={handlePageChange}
-                        color="primary"
-                      />
-                    </Stack>
-                  </ThemeProvider>
+                <Stack direction="row" justifyContent="center" marginTop={2}>
+                  <Pagination
+                    count={Math.ceil(jobs?.length / itemsPerPage)}
+                    page={currentPage}
+                    onChange={handlePageChange}
+                    color="primary"
+                  />
+                </Stack>
+              </ThemeProvider>
             </div>
           </>}
         </>}
     </PortalLayout>
   )
-   
+
 }
 
 export default Jobs
