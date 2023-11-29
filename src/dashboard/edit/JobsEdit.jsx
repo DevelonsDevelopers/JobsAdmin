@@ -10,6 +10,7 @@ import { getJob, updateJob } from '../../store/actions/jobActions'
 import moment from 'moment'
 import JoditEditor from 'jodit-react'
 import Select from 'react-select'
+import { SESSION_PROVIDER_LOGIN } from '../../Utils/Constant'
 
 
 const JobsEdit = () => {
@@ -19,9 +20,18 @@ const JobsEdit = () => {
   const [startTime, setStartTime] = useState()
   const [endTime, setEndTime] = useState()
   const [date, setDate] = useState()
+  const [providerLogin, setProviderLogin] = useState(false)
 
   const dispatch = useDispatch()
   const navigate = useNavigate()
+
+  useEffect(() => {
+    const isprovider = sessionStorage.getItem(SESSION_PROVIDER_LOGIN)
+    if( isprovider === "true"){
+      setProviderLogin(true)
+    }
+
+  }, [providerLogin])
 
   const [tagValue, setTagValue] = useState("");
   const [tags, setTags] = useState([])
@@ -171,7 +181,7 @@ const deleteSkill = (val) => {
     e.preventDefault()
     if (jobData.category && jobData.country && jobData.city && jobData.title && jobData.company_name && jobData.designation && jobData.salary && jobData.role && jobData.description && jobData.type && jobData.workdays && jobData.worktime && jobData.address && jobData.experience && jobData.qualification && jobData.skills && jobData.date && jobData.tags) {
       dispatch(updateJob(id, jobData))
-      navigate('/jobs')
+      navigate(providerLogin ? '/jobProvider' :'/jobs')
     } else {
       alert('plz fill the data')
     }
@@ -179,7 +189,7 @@ const deleteSkill = (val) => {
 
   return (
     <PortalLayout>
-      <h1 className='text-center bg-gradient-to-r from-sky-600 to-cyan-400  text-white font-[600] mb-5 py-4 rounded-xl shadow-md shadow-blue-300 text-[1.5rem]'>ADD JOBS</h1>
+      <h1 className='text-center bg-gradient-to-r from-sky-600 to-cyan-400  text-white font-[600] mb-5 py-4 rounded-xl shadow-md shadow-blue-300 text-[1.5rem]'>EDIT JOBS</h1>
       <div className="bg-white shadow-md rounded-xl px-[10rem] pt-6 pb-8 mb-4 flex flex-col  my-2">
         <div className="-mx-3 mt-[-1.2rem] mb-6">
           <div className="w-[100%] px-3 mb-6 md:mb-0 mt-5">
@@ -194,8 +204,11 @@ const deleteSkill = (val) => {
             <label className="block text-left tracking-wide text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4" for="grid-first-name">
               Company
             </label>
-            <input type="text" value={jobData.company_name} name="company_name" id="floating_email" onChange={ClickInput} className="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="Enter Company" required />
-
+            {providerLogin ?
+          <input type="text" value={jobData?.company_name}  id="floating_email" disabled className="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="Enter Company" required />
+        :
+          <input type="text" value={jobData?.company_name} name="company_name" id="floating_email" onChange={ClickInput} className="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="Enter Company" required />
+        }
           </div>
         </div>
 

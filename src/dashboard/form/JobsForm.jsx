@@ -14,17 +14,30 @@ import JoditEditor from 'jodit-react'
 import moment from 'moment'
 import { AllTags } from '../../store/actions/tagActions'
 import { ToastContainer, toast } from 'react-toastify'
+import { SESSION_PROVIDER, SESSION_PROVIDER_ID, SESSION_PROVIDER_LOGIN } from '../../Utils/Constant'
 
 
 const JobsForm = ({ }) => {
-  const [jobData, setJobData] = useState({ category: '', country: '', city: '', title: '', company: 0, company_name: '', designation: '', salary: '', role: '', description: '', link: '', type: '', workdays: '', worktime: '', address: '', experience: '', qualification: '', skills: '', date: '', tags: '' })
+  const providerId = sessionStorage.getItem(SESSION_PROVIDER_ID)
+  const providerData = JSON.parse(sessionStorage.getItem(SESSION_PROVIDER))
+  const [jobData, setJobData] = useState({ category: '', country: '', city: '', title: '', company: providerId, company_name: providerData?.name, designation: '', salary: '', role: '', description: '', link: '', type: '', workdays: '', worktime: '', address: '', experience: '', qualification: '', skills: '', date: '', tags: '' })
   // const [country, setCountry] = useState()
   const [setCountry] = useState()
   const [tagValue, setTagValue] = useState("");
-
+  const [companyName, setCompanyName] = useState('')
+  const [providerLogin, setProviderLogin] = useState(false)
   const [startTime, setStartTime] = useState()
   const [endTime, setEndTime] = useState()
   const [date, setDate] = useState()
+
+  useEffect(() => {
+    const isprovider = sessionStorage.getItem(SESSION_PROVIDER_LOGIN)
+    if( isprovider === "true"){
+      setProviderLogin(true)
+      setCompanyName(providerData?.name)
+    }
+
+  }, [companyName, providerLogin])
 
 
   // useEffect(() => {
@@ -38,8 +51,6 @@ const JobsForm = ({ }) => {
 
   const editor = useRef(null);
   const [content, setContent] = useState('');
-  // console.log(content)
-
   const [tags, setTags] = useState([])
   const [skillValue, setSkillValue] = useState("");
   const [skills, setSkills] = useState([])
@@ -254,7 +265,7 @@ const handleSubmit = (e) => {
   e.preventDefault()
   if (jobData.category && jobData.country && jobData.city && jobData.title && jobData.company_name && jobData.designation && jobData.salary && jobData.role && jobData.description && jobData.type && jobData.workdays && jobData.worktime && jobData.address && jobData.experience && jobData.qualification && jobData.skills && jobData.date && jobData.tags) {
     dispatch(createJob(jobData))
-    navigate('/jobs')
+    navigate(providerLogin ? '/jobProvider' : '/jobs')
   } else {
     toast.error('Enter Required Data', {
       position: "top-right",
@@ -315,7 +326,11 @@ return (
             id="grid-state"
           >
           </Select> */}
+          {providerLogin ?
+          <input type="text" value={companyName} name="company_name" id="floating_email" disabled onChange={ClickInput} className="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="Enter Company" required />
+        :
           <input type="text" name="company_name" id="floating_email" onChange={ClickInput} className="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="Enter Company" required />
+        }
         </div>
       </div>
 

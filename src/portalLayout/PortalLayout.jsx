@@ -3,7 +3,7 @@
 // import { useSession } from 'next-auth/react';
 // import { useRouter } from 'next/navigation';
 import React, { Fragment, useState } from 'react'
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { Transition } from '@headlessui/react';
 import Topbar from '../dashboard/Portal/Topbar';
 import Sidebar from '../dashboard/Portal/Sidebar';
@@ -14,23 +14,30 @@ const PortalLayout = ({ children }) => {
 
 	const [showNav, setShowNav] = useState(true);
 	const [isMobile, setIsMobile] = useState(false);
-	const [login, setLogin] = useState(false)
+	const [adminLogin, setAdminLogin] = useState(false)
+	const [providerLogin, setProviderLogin] = useState(false)
 	const [isLoading, setIsLoading] = useState(true)
 	const router = useNavigate()
+	const location = useLocation();
 
 
 	useEffect(() => {
 		const isLogin = sessionStorage.getItem(SESSION_ADMIN_LOGIN)
 		const isProviderLogin = sessionStorage.getItem(SESSION_PROVIDER_LOGIN)
 		if (isLogin === "true"){
-			setLogin(true)
-		} else if (isProviderLogin === "true") {
-			setLogin(true)
-	 } else {
-			setLogin(false)
+			setAdminLogin(true)
+			setProviderLogin(false)
+		} else if(isProviderLogin === "true") {
+			setAdminLogin(false)
+			setProviderLogin(true)
+		} else if(isProviderLogin !== "true" && location.pathname === "/login"){
+			setProviderLogin(false)
 			router('/providerLogin')
+		} else {
+			setAdminLogin(false)
+			router('/login')
 		}
-	}, [login])
+	}, [adminLogin, providerLogin])
 
 	// const { data: session } = useSession({})
 
@@ -81,7 +88,7 @@ const PortalLayout = ({ children }) => {
 						leaveFrom="translate-x-0"
 						leaveTo="-translate-x-full"
 					>
-						<Sidebar showNav={showNav} />
+						<Sidebar showNav={showNav} adminLogin={adminLogin} providerLogin={providerLogin} />
 					</Transition>
 
 					<main

@@ -13,7 +13,7 @@ import { TfiCloudDown, TfiPieChart } from "react-icons/tfi";
 import { LuLeaf } from "react-icons/lu";
 
 
-const Sidebar = forwardRef(({ }, ref) => {
+const Sidebar = forwardRef(({ adminLogin, providerLogin }, ref) => {
   const router = useNavigate();
   const location = useLocation();
   const [provider, setProvider] = useState(false)
@@ -32,7 +32,7 @@ const Sidebar = forwardRef(({ }, ref) => {
   return (
     <div ref={ref} className="mt-[-4rem] fixed w-56 h-full bg-white shadow-sm max-md:w-[40%] overflow-auto no-scrollbar">
 
-      {provider ?
+      {providerLogin && (
         <>
           <div className="flex flex-col mt-[2rem] ">
             <div onClick={() => router('/providerPanel')}>
@@ -142,9 +142,8 @@ const Sidebar = forwardRef(({ }, ref) => {
           </div>
 
         </>
-        :
-
-
+      )}
+      {adminLogin && (
         <>
 {/* ______________________________________________________________________________________________________________________________________________________________________________________________ */}
 {/* ------------------------------------------------------------------Dashboard------------------------------------------------------------------------------------------------------------ */}
@@ -498,8 +497,7 @@ const Sidebar = forwardRef(({ }, ref) => {
           <div className="flex flex-col ">
           </div>
         </>
-
-      }
+      )}
 
     </div>
   );

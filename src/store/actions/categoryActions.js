@@ -5,7 +5,6 @@ export const AllCategories = () => async (dispatch) => {
     try {
         dispatch ({ type: LOADING })
         const { data: { data } } = await api.fetchAllCategories();
-        console.log(data)
         dispatch ({ type: ALL_CATEGORIES, payload: { categories: data }})
         dispatch ({ type: SUCCESS })
     } catch (error) {

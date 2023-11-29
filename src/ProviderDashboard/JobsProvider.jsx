@@ -5,6 +5,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { DeleteJob, getCompanybyJob, jobStatus } from '../store/actions/jobActions';
 import JobsView from '../dashboard/view/JobsView';
+import { SESSION_PROVIDER_ID } from '../Utils/Constant';
 
 
 
@@ -30,6 +31,12 @@ const JobsProvider = () => {
   const loading = useSelector(state => state.job.isLoading)
   const [nodata, setNodata] = useState(false)
 
+  const providerId = sessionStorage.getItem(SESSION_PROVIDER_ID)
+  
+  useEffect(() => {
+    console.log('jobByID', providerId)
+  }, [providerId])
+
   //fetching jobs
   const companybyjob = useSelector(state => state.job.jobs)
   useEffect(() => {
@@ -38,9 +45,9 @@ const JobsProvider = () => {
 
   useEffect(() => {
     if (companybyjob !== null || companybyjob !== undefined || companybyjob.length !== 0) {
-      dispatch(getCompanybyJob('70'))
+      dispatch(getCompanybyJob(providerId))
     }
-  }, [dispatch])
+  }, [dispatch, providerId])
 
   //nodata
   useEffect(() => {
@@ -143,7 +150,6 @@ const JobsProvider = () => {
               <JobsView open={openView} setOpen={setOpenView} title={" VIEW"} data={data} ID={viewId} />
               <table className="rounded-xl p-5 bg-white w-[90%] m-auto max-md:w-[100%]  mt-6 max-md:overflow-auto">
                 <thead className='mt-10'>
-
                   <tr className=" uppercase  text-sm leading-normal w-[100%]">
                     <th className="py-[2%] border-r-[1px] border-b-[2px] border-b-black  w-[1%] max-md:text-[.6rem] max-md:font-[400] text-center max-md:w-[2%]  text-[13px]">ID </th>
                     <th className="py-[2%] border-r-[1px] border-b-[2px] border-b-black  w-[1%] max-md:text-[.6rem] max-md:font-[400] text-center max-md:w-[1%]  text-[13px]">Title </th>
