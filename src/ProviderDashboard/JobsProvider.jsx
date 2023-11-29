@@ -7,9 +7,6 @@ import { DeleteJob, getCompanybyJob, jobStatus } from '../store/actions/jobActio
 import JobsView from '../dashboard/view/JobsView';
 import { SESSION_PROVIDER_ID } from '../Utils/Constant';
 
-
-
-
 const JobsProvider = () => {
 
   const [open, setOpen] = useState(false);

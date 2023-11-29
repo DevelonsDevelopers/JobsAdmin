@@ -121,7 +121,7 @@ const Topbar = ({ showNav, setShowNav }) => {
                       <i className='items-center flex'><SlLocationPin /><span className='font-[500] text-[1rem] text-gray-700 ml-[1rem] mt-2'>{providerData?.headquater}</span></i>
                     </div>
                     <center>
-                      <button onClick={() => logoutProvider()} className='text-center w-[50%] rounded-xl bg-blue-400 hover:bg-blue-500 text-white font-[700] py-1 mb-5 mt-3 shadow-md text-[1rem]'>Logout Provider</button>
+                      <button onClick={() => logoutProvider()} className='text-center w-[50%] rounded-xl bg-blue-400 hover:bg-blue-500 text-white font-[700] py-1 mb-5 mt-3 shadow-md text-[1rem]'>Logout</button>
                     </center>
                   </>
                   :

@@ -116,7 +116,6 @@ const ProviderPanel = () => {
 
     return (
         <PortalLayout>
-                        <button onClick={() => logout()} className='bg-blue-600 text-white cursor-pointer font-[600] px-10 py-[5px] w-[100%] rounded-full mt-6'>logout</button>
             <div className='px-20 py-10 border-2 rounded-xl bg-white'>
                 <div className='grid grid-cols-2 max-md:grid-cols-1 md:w-[100%] '>
                     <div className='w-[90%] mt-4'>

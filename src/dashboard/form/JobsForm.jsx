@@ -75,9 +75,9 @@ const JobsForm = ({ }) => {
   const [selectedTagValue, setSelectedTagValue] = useState([])
   // console.log('name', selectedTagValue?.map((value) => (value.name)))
 
-  useEffect(() => {
-    console.log(jobData);
-  }, [jobData])
+  // useEffect(() => {
+  //   console.log(jobData);
+  // }, [jobData])
 
 
 //onChange function
