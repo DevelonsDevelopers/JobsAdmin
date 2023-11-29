@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { DeleteJob, getCompanybyJob, jobStatus } from '../store/actions/jobActions';
 import JobsView from '../dashboard/view/JobsView';
 import { SESSION_PROVIDER_ID } from '../Utils/Constant';
+import { Pagination, Stack, ThemeProvider, createTheme } from '@mui/material';
 
 const JobsProvider = () => {
 
@@ -14,7 +15,7 @@ const JobsProvider = () => {
   const [viewId, setViewId] = useState(false);
   const [data, setData] = useState();
   const [deleteId, setDeleteId] = useState();
-  const [search, setSearch] = useState('')
+
 
   const dispatch = useDispatch()
   const router = useNavigate();
@@ -84,37 +85,35 @@ const JobsProvider = () => {
     }
     dispatch(jobStatus(id, st))
   }
-  //pagination=============================
-  const [currentPage, setCurrentPage] = useState(1)
-  const numbersPerPage = 10;
-  const [records, setRecords] = useState()
-  const [nPage, setPage] = useState()
-  const [Numbers, setNumbers] = useState()
-  const [lastIndex, setLastIndex] = useState()
-  const [firstIndex, setFirstIndex] = useState()
 
-  useEffect(() => {
-    setLastIndex(currentPage * numbersPerPage);
-  }, [currentPage])
 
-  useEffect(() => {
-    setFirstIndex(lastIndex - numbersPerPage);
-  }, [lastIndex])
 
+  const theme = createTheme({ palette: { primary: { main: '#E5E7EB', contrastText: '#4B5564' }, } })
+
+  const itemsPerPage = 10;
+  const [currentPage, setCurrentPage] = useState(1);
+  const handlePageChange = (event, newPage) => {
+    setCurrentPage(newPage);
+  };
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+  const [paginatedData, setPaginatedData] = useState();
   useEffect(() => {
     if (companybyjob) {
-      setRecords(companybyjob?.slice(firstIndex, lastIndex));
-      setPage(Math.ceil(companybyjob.length / numbersPerPage));
+      setPaginatedData(companybyjob?.slice(startIndex, endIndex))
     }
-  }, [companybyjob, firstIndex])
+  }, [companybyjob, startIndex])
+
+
+  const [search, setSearch] = useState()
 
   useEffect(() => {
-    if (nPage) {
-      setNumbers([...Array(nPage + 1).keys()].slice(1))
-    }
-  }, [nPage])
+    const result = companybyjob?.data?.filter((item) => {
+      return item.title.toLowerCase()?.match(search?.toLocaleLowerCase());
+    });
+    setPaginatedData(result)
+  }, [search])
 
-  //====================================
 
   return (
     <PortalLayout >
@@ -152,7 +151,7 @@ const JobsProvider = () => {
                     <th className="py-[2%] border-r-[1px] border-b-[2px] border-b-black  w-[1%] max-md:text-[.6rem] max-md:font-[400] text-center max-md:w-[1%]  text-[13px]">Title </th>
                     <th className="py-[2%] border-r-[1px] border-b-[2px] border-b-black  w-[3%] max-md:text-[.6rem] max-md:font-[400] text-center max-md:w-[2%]  text-[13px]">Category </th>
                     <th className="py-[2%] border-r-[1px] border-b-[2px] border-b-black  w-[3%] max-md:text-[.6rem] max-md:font-[400] text-center max-md:w-[2%]  text-[13px]">City </th>
-                    <th className="py-[2%] border-r-[1px] border-b-[2px] border-b-black  w-[3%] max-md:text-[.6rem] max-md:font-[400] text-center max-md:w-[2%]  text-[13px]">Company </th>
+                    {/* <th className="py-[2%] border-r-[1px] border-b-[2px] border-b-black  w-[3%] max-md:text-[.6rem] max-md:font-[400] text-center max-md:w-[2%]  text-[13px]">Company </th> */}
 
                     <th className="py-[2%] border-r-[1px] border-b-[2px] border-b-black w-[1%] max-md:text-[.6rem] max-md:font-[400] text-center max-md:w-[3%] text-[13px]">Role</th>
                     <th className="py-[2%] border-r-[1px] border-b-[2px] border-b-black w-[2%] max-md:text-[.6rem] max-md:font-[400] text-center text-[13px]">Status</th>
@@ -161,10 +160,7 @@ const JobsProvider = () => {
                   </tr>
                 </thead>
 
-                {records?.filter((value) => {
-                  return search.toLowerCase() === ''
-                    ? value : value.title.toLowerCase().includes(search);
-                }).map((value, index) => (
+                {paginatedData?.map((value, index) => (
                   <tbody className="text-[#000000] text-sm font-light w-[100%] bg-white " key={value.id} >
                     <tr className='' >
                       <td className="py-[2%] w-[1%]   border-r-[1px] border-t-[1px]   text-center">
@@ -179,9 +175,9 @@ const JobsProvider = () => {
                       <td className="py-[2%] w-[3%]   border-r-[1px] border-t-[1px]   text-center">
                         <span className="font-bold max-md:text-[.7rem] text-[13px] font-[300] ">{value.city_name}</span>
                       </td>
-                      <td className="py-[2%] w-[3%]   border-r-[1px] border-t-[1px]   text-center">
+                      {/* <td className="py-[2%] w-[3%]   border-r-[1px] border-t-[1px]   text-center">
                         <span className="font-bold max-md:text-[.7rem] text-[13px] font-[300] ">{value.company_name}</span>
-                      </td>
+                      </td> */}
 
                       <td className="py-[1%] w-[2%]  max-md:text-[.7rem]  border-r-[1px] border-t-[1px]   text-center">
                         <span className='text-[13px] font-[350]'>{value.role}</span>
@@ -198,12 +194,12 @@ const JobsProvider = () => {
                         <div className="flex item-center justify-center gap-3">
 
                           <div className="w-4 mr-2 transform hover:text-blue-500  hover:scale-110" onClick={() => handleEdit(value.id)}>
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="blue">
+                            <svg fill="none" viewBox="0 0 24 24" stroke="blue">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
                             </svg>
                           </div>
                           <div className="w-4 mr-2 transform hover:text-blue-500  hover:scale-110" onClick={() => handleDelete(value.id)}>
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="red">
+                            <svg fill="none" viewBox="0 0 24 24" stroke="red">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
                             </svg>
                           </div>
@@ -211,7 +207,7 @@ const JobsProvider = () => {
                       </td>
 
                       <td className="py-[2%] w-[1%] max-md:text-[.7rem]  border-t-[1px]   ">
-                        <div className="w-4 m-auto transform hover:text-blue-500  hover:scale-110 " onClick={() => handleClick(value.id)}>   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" >
+                        <div className="w-4 m-auto transform hover:text-blue-500  hover:scale-110 " onClick={() => handleClick(value.id)}>   <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" >
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
                         </svg>
@@ -221,42 +217,22 @@ const JobsProvider = () => {
                   </tbody>
                 ))}
               </table>
-              <nav className='m-auto mt-5' >
-                <ul className="flex items-center -space-x-px h-10 text-base">
-                  <li>
-                    <Link to="#" onClick={prevPage} className="flex items-center justify-center px-4 h-10 ml-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-l-lg hover:bg-gray-100 hover:text-gray-700  " >
-                      <span className="sr-only">Previous</span>
-                      <svg className="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-                        <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 1 1 5l4 4" />
-                      </svg>
-                    </Link>
-                  </li>
-                  {Numbers?.map((n, i) => (<li> <Link to="#" onClick={() => changeCurrentPage(n)} className="flex items-center justify-center px-4 h-10 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700  ">{n}</Link> </li>))}
-                  <li>
-                    <Link to="#" onClick={nextPage} className="flex items-center justify-center px-4 h-10 leading-tight text-gray-500 bg-white border border-gray-300 rounded-r-lg hover:bg-gray-100 hover:text-gray-700  "> <span className="sr-only">Next</span><svg className="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10"> <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m1 9 4-4-4-4" /> </svg></Link>
-                  </li>
-                </ul>
-              </nav>
-              <center>
-              </center>
+              <ThemeProvider theme={theme}>
+                <Stack direction="row" justifyContent="center" marginTop={2}>
+                  <Pagination
+                    count={Math.ceil(companybyjob?.length / itemsPerPage)}
+                    page={currentPage}
+                    onChange={handlePageChange}
+                    color="primary"
+                  />
+                </Stack>
+              </ThemeProvider>
             </div>
           </>}
         </>}
     </PortalLayout>
   )
-  function prevPage() {
-    if (currentPage !== 1) {
-      setCurrentPage(currentPage - 1);
-    }
-  }
-  function changeCurrentPage(id) {
-    setCurrentPage(id)
-  }
-  function nextPage() {
-    if (currentPage !== nPage) {
-      setCurrentPage(currentPage + 1)
-    }
-  }
+  
 }
 
 export default JobsProvider

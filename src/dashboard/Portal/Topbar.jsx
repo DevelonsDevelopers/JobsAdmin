@@ -82,24 +82,24 @@ const Topbar = ({ showNav, setShowNav }) => {
       <div className=' items-center  pr-4 md:pr-16'>
         <Popover className="relative">
           <Popover.Button onClick={toggleMenu} className="flex gap-2 outline-none mr-5 md:mr-8 cursor-pointer text-gray-700">
-            <CiUser className='h-10  w-10 border-2 rounded-full  border-gray-800 p-2 mt-[6px]' />
+            <CiUser className='h-10  w-10 border-2 rounded-full  border-gray-600 p-2 mt-[6px]' />
             <div>
               {!provider ?
                 <div>
-                  <p className='text-left text-[.9rem text-gray-700 ]'>{data?.name}</p>
-                  <p className=' text-[.9rem text-gray-700 ]'>{data?.email}</p>
+                  <p className='text-left text-gray-700 '>{data?.name}</p>
+                  <p className='text-left text-gray-700 '>{data?.email}</p>
                 </div>
                 :
                 <div>
-                  <p className=' text-[.9rem text-gray-700 ]'>{providerData?.name}</p>
-                  <p className=' text-[.9rem text-gray-700 ]'>{providerData?.email}</p>
+                  <p className='text-left text-gray-700 '>{providerData?.name}</p>
+                  <p className='text-left text-gray-700 '>{providerData?.email}</p>
                 </div>
               }
             </div>
             {isOpen ?
-              <IoIosArrowDropup className='mt-[14px] cursor-pointer text-[1.7rem] text-gray-700' />
+              <IoIosArrowDropup className='mt-[14px] cursor-pointer text-[1.5rem] text-gray-600' />
               :
-              <IoIosArrowDropdown className='mt-[14px] cursor-pointer text-[1.7rem] text-gray-700' />
+              <IoIosArrowDropdown className='mt-[14px] cursor-pointer text-[1.5rem] text-gray-600' />
             }
 
           </Popover.Button>

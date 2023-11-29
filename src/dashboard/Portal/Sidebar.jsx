@@ -1,16 +1,15 @@
 import { forwardRef, useEffect, useState } from "react";
 import { HiOutlineHome, HiOutlineUsers } from "react-icons/hi";
-
 import { RiEarthLine, RiHomeOfficeLine, RiUserSearchLine } from 'react-icons/ri'
-import { FaListUl, FaRegListAlt, } from 'react-icons/fa'
+import { FaListUl, FaRegListAlt, FaUserTie, } from 'react-icons/fa'
 import { BiCategoryAlt, BiUserCheck } from 'react-icons/bi'
-
 import { AiOutlineTag, AiOutlineTransaction, AiOutlineOrderedList, AiOutlineNotification } from 'react-icons/ai'
 import { PiBriefcaseLight, PiBuildingsLight } from 'react-icons/pi'
 import { useLocation, useNavigate } from "react-router-dom";
 import { SESSION_PROVIDER, SESSION_PROVIDER_LOGIN } from "../../Utils/Constant";
-import { TfiCloudDown, TfiPieChart } from "react-icons/tfi";
-import { LuLeaf } from "react-icons/lu";
+import { MdDashboard, MdLocalOffer, MdWork } from "react-icons/md";
+import { SiOpenlayers } from "react-icons/si";
+
 
 
 const Sidebar = forwardRef(({ adminLogin, providerLogin }, ref) => {
@@ -20,10 +19,10 @@ const Sidebar = forwardRef(({ adminLogin, providerLogin }, ref) => {
 
   useEffect(() => {
     const isLogin = sessionStorage.getItem(SESSION_PROVIDER_LOGIN)
-    
-    if(isLogin === "true"){
+
+    if (isLogin === "true") {
       setProvider(true)
-    } else{
+    } else {
       setProvider(false)
     }
     // setProvider(isProviderLogin);
@@ -34,22 +33,22 @@ const Sidebar = forwardRef(({ adminLogin, providerLogin }, ref) => {
 
       {providerLogin && (
         <>
-          <div className="flex flex-col mt-[2rem] ">
+          <div className="flex flex-col mt-[100%] ">
             <div onClick={() => router('/providerPanel')}>
               <div
                 className={`pl-7 py-3 mx-5 rounded text-center cursor-pointer mb-1 flex items-center transition-colors 
         ${location.pathname === "/providerPanel"
-                    ? "bg-gradient-to-r from-sky-600 to-cyan-400 text-white"
-                    : "text-black font-[600]  hover:text-white  hover:bg-gradient-to-r from-sky-600 to-cyan-400"
+        ? "text-[#3489C8]"
+        : " hover:text-[#3489C8] "
                   }
   `}
               >
-{/* ---------------------------------------------------------Dashboard------------------------------------------------------------------------------------------------------------ */}
-{/* ---------------------------------------------------------Dashboard------------------------------------------------------------------------------------------------------------ */}
-{/* ---------------------------------------------------------Dashboard------------------------------------------------------------------------------------------------------------ */}
-{/* ---------------------------------------------------------Dashboard------------------------------------------------------------------------------------------------------------ */}
+                {/* ---------------------------------------------------------Dashboard------------------------------------------------------------------------------------------------------------ */}
+                {/* ---------------------------------------------------------Dashboard------------------------------------------------------------------------------------------------------------ */}
+                {/* ---------------------------------------------------------Dashboard------------------------------------------------------------------------------------------------------------ */}
+                {/* ---------------------------------------------------------Dashboard------------------------------------------------------------------------------------------------------------ */}
                 <div className="mr-2">
-                  <HiOutlineHome className="h-5 w-5" />
+                  <MdDashboard className="h-5 w-5" />
                 </div>
                 <div>
                   <p>Dashboard</p>
@@ -62,18 +61,18 @@ const Sidebar = forwardRef(({ adminLogin, providerLogin }, ref) => {
               <div
                 className={`pl-7 py-3 mx-5 rounded text-center cursor-pointer mb-1 flex items-center transition-colors 
                   ${location.pathname === "/jobProvider"
-                    ? "bg-gradient-to-r from-sky-600 to-cyan-400 text-white"
-                    : "text-black font-[600] hover:text-white  hover:bg-gradient-to-r from-sky-600 to-cyan-400 hover:bg-blue-100 hover:text-blue-500"
+                    ? "text-[#3489C8]"
+                    : " hover:text-[#3489C8] "
                   }
   `}
               >
-{/* ------------------------------------------------------------------Jobs------------------------------------------------------------------------------------------------------------ */}
-{/* ------------------------------------------------------------------Jobs------------------------------------------------------------------------------------------------------------ */}
-{/* ------------------------------------------------------------------Jobs------------------------------------------------------------------------------------------------------------ */}
-{/* ------------------------------------------------------------------Jobs------------------------------------------------------------------------------------------------------------ */}
-{/* ------------------------------------------------------------------Jobs------------------------------------------------------------------------------------------------------------ */}
+                {/* ------------------------------------------------------------------Jobs------------------------------------------------------------------------------------------------------------ */}
+                {/* ------------------------------------------------------------------Jobs------------------------------------------------------------------------------------------------------------ */}
+                {/* ------------------------------------------------------------------Jobs------------------------------------------------------------------------------------------------------------ */}
+                {/* ------------------------------------------------------------------Jobs------------------------------------------------------------------------------------------------------------ */}
+                {/* ------------------------------------------------------------------Jobs------------------------------------------------------------------------------------------------------------ */}
                 <div className="mr-2">
-                  <PiBriefcaseLight className="h-5 w-5" />
+                  <MdWork className="h-5 w-5" />
                 </div>
                 <div>
                   <p>Jobs</p>
@@ -86,15 +85,15 @@ const Sidebar = forwardRef(({ adminLogin, providerLogin }, ref) => {
               <div
                 className={`pl-7 py-3 mx-5 rounded text-center cursor-pointer mb-1 flex items-center transition-colors 
                   ${location.pathname === "/appliedProvider"
-                    ? "bg-gradient-to-r from-sky-600 to-cyan-400 text-white"
-                    : "text-black font-[600] hover:text-white  hover:bg-gradient-to-r from-sky-600 to-cyan-400 hover:bg-blue-100 hover:text-blue-500"
+                  ? "text-[#3489C8]"
+                  : " hover:text-[#3489C8] "
                   }
                   `}
               >
-{/* ------------------------------------------------------------------Applied Users------------------------------------------------------------------------------------------------------------ */}
+                {/* ------------------------------------------------------------------Applied Users------------------------------------------------------------------------------------------------------------ */}
 
                 <div className="mr-2">
-                  <BiUserCheck className="h-5 w-5" />
+                  <FaUserTie className="h-5 w-5" />
                 </div>
                 <div>
                   <p>AppliedUsers</p>
@@ -107,13 +106,13 @@ const Sidebar = forwardRef(({ adminLogin, providerLogin }, ref) => {
               <div
                 className={`pl-7 py-3 mx-5 rounded text-center cursor-pointer mb-1 flex items-center transition-colors 
                   ${location.pathname === "/offers"
-                    ? "bg-gradient-to-r from-sky-600 to-cyan-400 text-white"
-                    : "text-black font-[600] hover:text-white  hover:bg-gradient-to-r from-sky-600 to-cyan-400 hover:bg-blue-100 hover:text-blue-500"
+                  ? "text-[#3489C8]"
+                  : " hover:text-[#3489C8] "
                   }
                   `}
               >
                 <div className="mr-2">
-                  <BiUserCheck className="h-5 w-5" />
+                  <MdLocalOffer className="h-5 w-5" />
                 </div>
                 <div>
                   <p>Offers</p>
@@ -126,13 +125,13 @@ const Sidebar = forwardRef(({ adminLogin, providerLogin }, ref) => {
               <div
                 className={`pl-7 py-3 mx-5 rounded text-center cursor-pointer mb-1 flex items-center transition-colors 
                   ${location.pathname === "/interaction"
-                    ? "bg-gradient-to-r from-sky-600 to-cyan-400 text-white"
-                    : "text-black font-[600] hover:text-white  hover:bg-gradient-to-r from-sky-600 to-cyan-400 hover:bg-blue-100 hover:text-blue-500"
+                  ? "text-[#3489C8]"
+                  : " hover:text-[#3489C8] "
                   }
                   `}
               >
                 <div className="mr-2">
-                  <BiUserCheck className="h-5 w-5" />
+                  <SiOpenlayers className="h-5 w-5" />
                 </div>
                 <div>
                   <p>Interaction</p>
@@ -145,11 +144,11 @@ const Sidebar = forwardRef(({ adminLogin, providerLogin }, ref) => {
       )}
       {adminLogin && (
         <>
-{/* ______________________________________________________________________________________________________________________________________________________________________________________________ */}
-{/* ------------------------------------------------------------------Dashboard------------------------------------------------------------------------------------------------------------ */}
-{/* ------------------------------------------------------------------Dashboard------------------------------------------------------------------------------------------------------------ */}
-{/* ------------------------------------------------------------------Dashboard------------------------------------------------------------------------------------------------------------ */}
-{/* ______________________________________________________________________________________________________________________________________________________________________________________________ */}
+          {/* ______________________________________________________________________________________________________________________________________________________________________________________________ */}
+          {/* ------------------------------------------------------------------Dashboard------------------------------------------------------------------------------------------------------------ */}
+          {/* ------------------------------------------------------------------Dashboard------------------------------------------------------------------------------------------------------------ */}
+          {/* ------------------------------------------------------------------Dashboard------------------------------------------------------------------------------------------------------------ */}
+          {/* ______________________________________________________________________________________________________________________________________________________________________________________________ */}
 
           <div className="flex flex-col mt-[2rem] ">
             <div onClick={() => router('/userPanel')}>
@@ -285,7 +284,7 @@ const Sidebar = forwardRef(({ adminLogin, providerLogin }, ref) => {
           </div>
         </div>
       </div> */}
-      {/* <div className="flex flex-col ">
+          {/* <div className="flex flex-col ">
         <div onClick={() => router('/careerJetApi')}>
           <div
             className={`pl-7 py-3 mx-5 rounded text-center cursor-pointer mb-1 flex items-center transition-colors 
