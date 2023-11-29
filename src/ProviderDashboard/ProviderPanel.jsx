@@ -37,6 +37,9 @@ const ProviderPanel = () => {
 
     const COLORS = ['#fcbf49', '#4D38E3', '#8AC942'];
 
+    const providerId = sessionStorage.getItem(SESSION_PROVIDER_ID)
+
+
     const dashboard = useSelector(state => state.dashboard.companyDashboard)
 
     useEffect(() => {
@@ -44,8 +47,8 @@ const ProviderPanel = () => {
     }, [dashboard])
 
     useEffect(() => {
-        dispatch(getCompanyDashboard('70'))
-    }, [dispatch])
+        dispatch(getCompanyDashboard(providerId))
+    }, [dispatch, providerId])
 
     const barChart = useSelector(state => state.dashboard.barchart)
 
@@ -54,8 +57,8 @@ const ProviderPanel = () => {
     // }, [barChart])
 
     useEffect(() => {
-        dispatch(getBarChart())
-    }, [dispatch])
+        dispatch(getBarChart(providerId))
+    }, [dispatch, providerId])
 
     const lineChart = useSelector(state => state.dashboard.companylinechart)
 
@@ -64,8 +67,8 @@ const ProviderPanel = () => {
     }, [lineChart])
 
     useEffect(() => {
-        dispatch(getCompanyLineChart('70'))
-    }, [dispatch])
+        dispatch(getCompanyLineChart(providerId))
+    }, [dispatch, providerId])
 
     const offerByCompany = useSelector(state => state.offer.offers)
 
@@ -74,8 +77,8 @@ const ProviderPanel = () => {
     }, [offerByCompany])
 
     useEffect(() => {
-        dispatch(GetOffersByCompany('70'))
-    }, [dispatch])
+        dispatch(GetOffersByCompany(providerId))
+    }, [dispatch, providerId])
 
     const recentJobs = useSelector(state => state.job.jobs)
 
@@ -84,8 +87,8 @@ const ProviderPanel = () => {
     }, [recentJobs])
 
     useEffect(() => {
-        dispatch(getRecentJob())
-    }, [dispatch])
+        dispatch(getRecentJob(providerId))
+    }, [dispatch, providerId])
 
 
 
