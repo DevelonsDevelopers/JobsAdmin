@@ -125,17 +125,17 @@ const Categories = () => {
 
                 <DeleteModal open={open} setOpen={setOpen} ID={deleteID} deleteFunction={deleteCategory} />
                 <CategoryView open={openView} setOpen={setOpenView} title={" VIEW"} data={data} ID={viewId} />
-                <table className="rounded-xl p-5 bg-white w-[90%] m-auto max-md:w-[100%]  mt-6 ">
+                <table className="rounded-xl p-5 bg-black text-gray-100 w-[90%] m-auto max-md:w-[100%]  mt-6 ">
                   <thead className='mt-10'>
 
                     <tr className=" uppercase  text-sm leading-normal w-[100%]">
-                      <th className="py-[2%] border-r-[1px] border-b-[2px] border-b-black  w-[3%] max-md:text-[.6rem] max-md:font-[400] text-center max-md:w-[2%]  text-[13px]">ID </th>
-                      <th className="py-[2%] border-r-[1px] border-b-[2px] border-b-black  w-[10%] max-md:text-[.6rem] max-md:font-[400] text-center max-md:w-[2%] text-[13px]">Name</th>
-                      <th className="py-[2%] border-r-[1px] border-b-[2px] border-b-black w-[1%] max-md:text-[.6rem] max-md:font-[400] text-center max-md:w-[3%] text-[13px]">Images</th>
-                      <th className="py-[2%] border-r-[1px] border-b-[2px] border-b-black w-[1%] max-md:text-[.6rem] max-md:font-[400] text-center max-md:w-[3%] text-[13px]">Jobs</th>
-                      <th className="py-[2%] border-r-[1px] border-b-[2px] border-b-black w-[2%] max-md:text-[.6rem] max-md:font-[400] text-center text-[13px]">Status</th>
-                      <th className="py-[2%] border-r-[1px] border-b-[2px] border-b-black  w-[2%] max-md:text-[.6rem] max-md:font-[400] text-center text-[13px]">Actions</th>
-                      <th className="py-[2%]   border-b-[2px] border-b-black  w-[1%] max-md:text-[.6rem] max-md:font-[400] text-center"></th>
+                      <th className="py-[2%] border-r-[1px] border-b-[3px] border-b-yellow-400  w-[3%] max-md:text-[.6rem] max-md:font-[400] text-center max-md:w-[2%]  text-[13px]">ID </th>
+                      <th className="py-[2%] border-r-[1px] border-b-[3px] border-b-yellow-400  w-[10%] max-md:text-[.6rem] max-md:font-[400] text-center max-md:w-[2%] text-[13px]">Name</th>
+                      <th className="py-[2%] border-r-[1px] border-b-[3px] border-b-yellow-400 w-[1%] max-md:text-[.6rem] max-md:font-[400] text-center max-md:w-[3%] text-[13px]">Images</th>
+                      <th className="py-[2%] border-r-[1px] border-b-[3px] border-b-yellow-400 w-[1%] max-md:text-[.6rem] max-md:font-[400] text-center max-md:w-[3%] text-[13px]">Jobs</th>
+                      <th className="py-[2%] border-r-[1px] border-b-[3px] border-b-yellow-400 w-[2%] max-md:text-[.6rem] max-md:font-[400] text-center text-[13px]">Status</th>
+                      <th className="py-[2%] border-b-[3px] border-b-yellow-400  w-[2%] max-md:text-[.6rem] max-md:font-[400] text-center text-[13px]">Actions</th>
+                      <th className="py-[2%]   border-b-[3px] border-b-yellow-400  w-[1%] max-md:text-[.6rem] max-md:font-[400] text-center"></th>
 
                     </tr>
 

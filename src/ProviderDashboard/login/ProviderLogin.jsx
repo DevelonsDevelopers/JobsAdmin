@@ -8,6 +8,10 @@ import AppView from "../view/AppView"
 import axios from "axios"
 import { useGoogleLogin } from "@react-oauth/google"
 import { SESSION_PROVIDER, SESSION_PROVIDER_ID, SESSION_PROVIDER_LOGIN, SESSION_PROVIDER_TYPE, SESSION_ADMIN_LOGIN } from "../../Utils/Constant";
+import picture from '../../assets/panelLogin.png'
+import googleImg from '../../assets/google.png'
+import { IoMail } from "react-icons/io5"
+import { FaKey } from "react-icons/fa"
 
 const ProviderLogin = () => {
   const [loginData, setLoginData] = useState({ email: '', password: '' })
@@ -118,17 +122,17 @@ const ProviderLogin = () => {
         <div className=' bg-gray-400 '>
           <div className="flex bg-white py-10 rounded-xl w-[60%] relative top-[-250px] m-auto ">
             <div className="w-[50%] mt-[10%] max-md:hidden">
-              <img src="./assets/panelLogin.png" alt="" className="w-160 " />
+              <img src={picture} alt="" className="w-160 " />
             </div>
             <center className="w-[40%] max-md:w-[90%] max-md:m-auto">
               <div className=' p-[10px]'><br />
                 <h1 className='text-[22px]'>Welcome Back :)</h1><br />
                 <h1 className='text-[13px] text-gray-600 font-[600]'>To keep connected with us please login with your personal information by email and password on Provider Panel</h1><br />
                 <input type="email" name="email" onChange={handleChange} placeholder='Enter Your Email' className='shadow-lg rounded-[12px] text-[.9rem] text-gray-700 font-[500] w-[100%] max-md:w-[100%] pl-[50px] border-2 pt-[7px] pb-[7px]' /><br />
-                <div className="relative top-[-1.9rem] left-[-44%] w-[10%]"> <AiOutlineMail />
+                <div className="relative top-[-1.9rem] left-[-44%] w-[10%]"> <IoMail />
                 </div>
                 <input type="password" name="password" id="myInput" onChange={handleChange} placeholder='Password' className='pr-[50px] shadow-lg rounded-[12px] text-[.9rem] text-gray-700 font-[500] w-[100%] max-md:w-[100%] pl-[50px] border-2 pt-[7px] pb-[7px]' /><br />
-                <div className="relative top-[-1.9rem] left-[-44%] w-[10%]"> <RiLockPasswordLine />
+                <div className="relative top-[-1.9rem] left-[-44%] w-[10%]"> <FaKey />
                 </div>
                 {show ?
                   <div className="relative top-[-2.9rem] left-[44%] w-[10%] text-[1.4rem]" onClick={() => handleSubmit()}> <AiFillEye />
@@ -142,7 +146,7 @@ const ProviderLogin = () => {
                 <input type='submit' value='Log In' onClick={() => ProviderLogin()} className='bg-blue-600 text-white cursor-pointer font-[600] px-10 py-[5px] w-[100%] rounded-full mt-6' />
                 <h1 className="text-[.9rem] text-gray-700 font-[600] text-left mt-4">You can also join with</h1>
                 <div onClick={() => googleLogin()} className="flex justify-center border-2 gap-2 mt-4 rounded-xl p-2 cursor-pointer hover:bg-gray-200">
-                  <img src='./assets/google.png' alt="" className="w-8 mr-auto h-8 ml-4 cursor-pointer rounded-full border-2 border-gray-100" />
+                  <img src={googleImg} alt="" className="w-8 mr-auto h-8 ml-4 cursor-pointer rounded-full border-2 border-gray-100" />
                   <p className="mr-auto ml-[-2rem] mt-[2px] text-[1.2rem] text-gray-600 font-[600]">Google</p>
                 </div>
 

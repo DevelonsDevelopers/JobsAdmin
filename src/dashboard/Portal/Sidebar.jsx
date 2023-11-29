@@ -31,7 +31,7 @@ const Sidebar = forwardRef(({ adminLogin, providerLogin }, ref) => {
   }, [provider])
 
   return (
-    <div ref={ref} className="mt-[-4rem] fixed w-56 h-full bg-[#0D1858] rounded-r-[1.4rem] shadow-sm max-md:w-[40%] overflow-auto no-scrollbar">
+    <div ref={ref} className="mt-[-4rem] fixed w-56 h-full bg-black rounded-r-[1.4rem] shadow-sm max-md:w-[40%] overflow-auto no-scrollbar">
 
       {providerLogin && (
         <>
@@ -40,7 +40,7 @@ const Sidebar = forwardRef(({ adminLogin, providerLogin }, ref) => {
               <div
                 className={`pl-7 py-3 mx-5 rounded text-center cursor-pointer mb-1 flex items-center transition-colors 
         ${location.pathname === "/providerPanel"
-                    ? "text-blue-500"
+                    ? "text-yellow-400"
                     : " hover:text-blue-200 text-gray-100"
                   }
   `}
@@ -63,7 +63,7 @@ const Sidebar = forwardRef(({ adminLogin, providerLogin }, ref) => {
               <div
                 className={`pl-7 py-3 mx-5 rounded text-center cursor-pointer mb-1 flex items-center transition-colors 
                   ${location.pathname === "/jobProvider"
-                    ? "text-blue-500"
+                    ? "text-yellow-400"
                     : " hover:text-blue-200 text-gray-100"
                   }
   `}
@@ -87,7 +87,7 @@ const Sidebar = forwardRef(({ adminLogin, providerLogin }, ref) => {
               <div
                 className={`pl-7 py-3 mx-5 rounded text-center cursor-pointer mb-1 flex items-center transition-colors 
                   ${location.pathname === "/appliedProvider"
-                    ? "text-blue-500"
+                    ? "text-yellow-400"
                     : " hover:text-blue-200 text-gray-100"
                   }
                   `}
@@ -108,7 +108,7 @@ const Sidebar = forwardRef(({ adminLogin, providerLogin }, ref) => {
               <div
                 className={`pl-7 py-3 mx-5 rounded text-center cursor-pointer mb-1 flex items-center transition-colors 
                   ${location.pathname === "/offers"
-                    ? "text-blue-500"
+                    ? "text-yellow-400"
                     : " hover:text-blue-200 text-gray-100"
                   }
                   `}
@@ -127,7 +127,7 @@ const Sidebar = forwardRef(({ adminLogin, providerLogin }, ref) => {
               <div
                 className={`pl-7 py-3 mx-5 rounded text-center cursor-pointer mb-1 flex items-center transition-colors 
                   ${location.pathname === "/interaction"
-                    ? "text-blue-500"
+                    ? "text-yellow-400"
                     : " hover:text-blue-200 text-gray-100"
                   }
                   `}
@@ -157,7 +157,7 @@ const Sidebar = forwardRef(({ adminLogin, providerLogin }, ref) => {
               <div
                 className={`pl-7 py-3 mx-5 rounded text-center cursor-pointer mb-1 flex items-center transition-colors 
         ${location.pathname === "/userPanel"
-                    ? "text-blue-400"
+                    ? "text-yellow-400"
                     : " hover:text-blue-200 text-gray-100"
                   }
   `}
@@ -177,7 +177,7 @@ const Sidebar = forwardRef(({ adminLogin, providerLogin }, ref) => {
               <div
                 className={`pl-7 py-3 mx-5 rounded text-center cursor-pointer mb-1 flex items-center transition-colors 
       ${location.pathname === "/categories"
-                    ? "text-blue-500"
+                    ? "text-yellow-400"
                     : " hover:text-blue-200 text-gray-100"
                   }
 `}
@@ -215,7 +215,7 @@ const Sidebar = forwardRef(({ adminLogin, providerLogin }, ref) => {
               <div
                 className={`pl-7 py-3 mx-5 rounded text-center cursor-pointer mb-1 flex items-center transition-colors 
         ${location.pathname === "/countries"
-                    ? "text-blue-500"
+                    ? "text-yellow-400"
                     : " hover:text-blue-200 text-gray-100"
                   }
   `}
@@ -234,7 +234,7 @@ const Sidebar = forwardRef(({ adminLogin, providerLogin }, ref) => {
               <div
                 className={`pl-7 py-3 mx-5 rounded text-center cursor-pointer mb-1 flex items-center transition-colors 
         ${location.pathname === "/cities"
-                    ? "text-blue-500"
+                    ? "text-yellow-400"
                     : " hover:text-blue-200 text-gray-100"
                   }
   `}
@@ -253,7 +253,7 @@ const Sidebar = forwardRef(({ adminLogin, providerLogin }, ref) => {
               <div
                 className={`pl-7 py-3 mx-5 rounded text-center cursor-pointer mb-1 flex items-center transition-colors 
         ${location.pathname === "/jobs"
-                    ? "text-blue-500"
+                    ? "text-yellow-400"
                     : " hover:text-blue-200 text-gray-100"
                   }
   `}
@@ -273,7 +273,7 @@ const Sidebar = forwardRef(({ adminLogin, providerLogin }, ref) => {
             className={`pl-7 py-3 mx-5 rounded text-center cursor-pointer mb-1 flex items-center transition-colors 
             ${location.pathname === "/jobsAPI"
                 ? "bg-gradient-to-r from-sky-600 to-cyan-400 text-white"
-                : "text-black font-[600] hover:text-white  hover:bg-gradient-to-r from-sky-600 to-cyan-400 hover:bg-blue-100 hover:text-blue-500"
+                : "text-black font-[600] hover:text-white  hover:bg-gradient-to-r from-sky-600 to-cyan-400 hover:bg-blue-100 hover:text-yellow-400"
               }
             `}
           >
@@ -292,7 +292,7 @@ const Sidebar = forwardRef(({ adminLogin, providerLogin }, ref) => {
             className={`pl-7 py-3 mx-5 rounded text-center cursor-pointer mb-1 flex items-center transition-colors 
             ${location.pathname === "/careerJetApi"
                 ? "bg-gradient-to-r from-sky-600 to-cyan-400 text-white"
-                : "text-black font-[600] hover:text-white  hover:bg-gradient-to-r from-sky-600 to-cyan-400 hover:bg-blue-100 hover:text-blue-500"
+                : "text-black font-[600] hover:text-white  hover:bg-gradient-to-r from-sky-600 to-cyan-400 hover:bg-blue-100 hover:text-yellow-400"
               }
             `}
           >
@@ -310,7 +310,7 @@ const Sidebar = forwardRef(({ adminLogin, providerLogin }, ref) => {
               <div
                 className={`pl-7 py-3 mx-5 rounded text-center cursor-pointer mb-1 flex items-center transition-colors 
         ${location.pathname === "/companies"
-                    ? "text-blue-500"
+                    ? "text-yellow-400"
                     : " hover:text-blue-200 text-gray-100"
                   }
   `}
@@ -329,7 +329,7 @@ const Sidebar = forwardRef(({ adminLogin, providerLogin }, ref) => {
               <div
                 className={`pl-7 py-3 mx-5 rounded text-center cursor-pointer mb-1 flex items-center transition-colors 
         ${location.pathname === "/tags"
-                    ? "text-blue-500"
+                    ? "text-yellow-400"
                     : " hover:text-blue-200 text-gray-100"
                   }
   `}
@@ -348,7 +348,7 @@ const Sidebar = forwardRef(({ adminLogin, providerLogin }, ref) => {
               <div
                 className={`pl-7 py-3 mx-5 rounded text-center cursor-pointer mb-1 flex items-center transition-colors 
         ${location.pathname === "/appliedusers"
-                    ? "text-blue-500"
+                    ? "text-yellow-400"
                     : " hover:text-blue-200 text-gray-100"
                   }
   `}
@@ -367,7 +367,7 @@ const Sidebar = forwardRef(({ adminLogin, providerLogin }, ref) => {
               <div
                 className={`pl-7 py-3 mx-5 rounded text-center cursor-pointer mb-1 flex items-center transition-colors 
         ${location.pathname === "/seekers"
-                    ? "text-blue-500"
+                    ? "text-yellow-400"
                     : " hover:text-blue-200 text-gray-100"
                   }
   `}
@@ -386,7 +386,7 @@ const Sidebar = forwardRef(({ adminLogin, providerLogin }, ref) => {
               <div
                 className={`pl-7 py-3 mx-5 rounded text-center cursor-pointer mb-1 flex items-center transition-colors 
         ${location.pathname === "/transactions"
-                    ? "text-blue-500"
+                    ? "text-yellow-400"
                     : " hover:text-blue-200 text-gray-100"
                   }
   `}
@@ -405,7 +405,7 @@ const Sidebar = forwardRef(({ adminLogin, providerLogin }, ref) => {
               <div
                 className={`pl-7 py-3 mx-5 rounded text-center cursor-pointer mb-1 flex items-center transition-colors 
         ${location.pathname === "/reports"
-                    ? "text-blue-500"
+                    ? "text-yellow-400"
                     : " hover:text-blue-200 text-gray-100"
                   }
   `}
@@ -424,7 +424,7 @@ const Sidebar = forwardRef(({ adminLogin, providerLogin }, ref) => {
               <div
                 className={`pl-7 py-3 mx-5 rounded text-center cursor-pointer mb-1 flex items-center transition-colors 
         ${location.pathname === "/users"
-                    ? "text-blue-500"
+                    ? "text-yellow-400"
                     : " hover:text-blue-200 text-gray-100"
                   }
   `}
@@ -443,7 +443,7 @@ const Sidebar = forwardRef(({ adminLogin, providerLogin }, ref) => {
               <div
                 className={`pl-7 py-3 mx-5 rounded text-center cursor-pointer mb-1 flex items-center transition-colors 
         ${location.pathname === "/plans"
-                    ? "text-blue-500"
+                    ? "text-yellow-400"
                     : " hover:text-blue-200 text-gray-100"
                   }
   `}
@@ -462,7 +462,7 @@ const Sidebar = forwardRef(({ adminLogin, providerLogin }, ref) => {
               <div
                 className={`pl-3 py-3 mx-5 rounded text-center cursor-pointer mb-1 flex items-center justify-center transition-colors 
         ${location.pathname === "/payment"
-                    ? "text-blue-500"
+                    ? "text-yellow-400"
                     : " hover:text-blue-200 text-gray-100"
                   }
   `}
@@ -481,7 +481,7 @@ const Sidebar = forwardRef(({ adminLogin, providerLogin }, ref) => {
               <div
                 className={`pl-7 py-3 mx-5 rounded text-center cursor-pointer mb-1 flex items-center transition-colors 
         ${location.pathname === "/ads"
-                    ? "text-blue-500"
+                    ? "text-yellow-400"
                     : " hover:text-blue-200 text-gray-100"
                   }
   `}
