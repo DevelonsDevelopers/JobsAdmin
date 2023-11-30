@@ -47,7 +47,7 @@ const CategoryForm = () => {
     } else {
       toast.error('Enter Full Data', {
         position: "top-right",
-        autoClose: 5000,
+        autoClose: 2000,
         hideProgressBar: false,
         closeOnClick: true,
         pauseOnHover: true,
@@ -155,17 +155,17 @@ const CategoryForm = () => {
         pauseOnHover
         theme="light"
       />
-      <h1 className='text-center bg-gradient-to-r from-sky-600 to-cyan-400  text-white font-[600] mb-5 py-4 rounded-xl shadow-md shadow-blue-300 text-[1.5rem]'>ADD CATEGORY</h1>
-      <div className="bg-white shadow-md rounded-xl px-[10rem] max-md:px-4 pt-10 pb-8 mb-4 flex flex-col  my-2">
+      <h1 className='text-center bg-black text-white font-[600] mb-5 py-4 rounded-[8px] shadow-lg text-[1.5rem]'>ADD CATEGORY</h1>
+      <div className="bg-yellow-400 shadow-md rounded-xl px-[10rem] max-md:px-4 py-10 mb-4 flex flex-col my-2">
         <form action="">
           <div className='grid grid-cols-2 gap-10 max-md:grid-cols-1 '>
             <div className='flex-col'>
-              <div className="-mx-3 mt-[-1.2rem] mb-6">
-                <div className="w-[100%] px-3 mb-6 md:mb-0">
-                  <label className="block  tracking-wide text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4" htmlFor="grid-first-name">
+              <div className="">
+                <div className="w-[100%] mb-6 md:mb-0">
+                  <label className="block tracking-wide text-grey-darker text-[0.7rem] font-[600] mb-[3px] uppercase ml-4" htmlFor="grid-first-name">
                     Name
                   </label>
-                  <input type="text" name="name" id="floating_email" onChange={inputClick} className="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="Enter Job" required />
+                  <input type="text" name="name" id="floating_email" onChange={inputClick} className="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-100 rounded-[8px] border-[0.7px] border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="Enter Job" required />
                 </div>
               </div>
               <div className="-mx-3 mt-5">
@@ -173,13 +173,16 @@ const CategoryForm = () => {
                   <label className="block uppercase tracking-wide text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4" htmlFor="grid-Name">
                     Description
                   </label>
-                  <textarea name='description' minLength='30' maxLength='500' rows='7' onChange={inputClick} className="appearance-none block w-full bg-gray-50  border-gray-lighter rounded py-3 px-4 rounded-[9px] mb-3 border-[0.7px] border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer text-[14px]" id="grid-Name" type="text" placeholder="Enter Description" />
+                  <textarea name='description' minLength='30' maxLength='500' rows='7' onChange={inputClick} className="block w-full bg-gray-100  border-gray-lighter rounded-[8px] py-3 px-4 mb-3 border-[0.7px] border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer text-[14px]" id="grid-Name" type="text" placeholder="Enter Description" />
                 </div>
               </div>
             </div>
 
             <div className=" w-full max-md:mt-[-25px]">
-              <label htmlFor="dropzone-file" className="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 ">
+            <label className="block uppercase tracking-wide text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4" htmlFor="grid-Name">
+                    Image
+            </label>
+              <label htmlFor="dropzone-file" className="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-[8px] cursor-pointer bg-gray-100 ">
                 {Base64IMG ?
                   <>
                     <img src={Base64IMG.toString()} alt="" className='h-full w-full object-cover rounded-md' />
@@ -202,8 +205,13 @@ const CategoryForm = () => {
           </div>
 
 
-          <div className='flex justify-center'>
-            <input type='submit' onClick={handleSubmit} className='bg-gradient-to-r from-sky-600 to-cyan-400 cursor-pointer text-white font-[500] py-2 px-[2.4rem] mt-4  rounded-lg text-[1rem]' value="Submit" />
+          <div className="flex justify-center">
+            <input
+              type="submit"
+              onClick={handleSubmit}
+              className="bg-black text-white hover:bg-yellow-400 hover:text-black border-2 transition-all ease-in-out duration-75 border-black font-[600] py-2 px-[2.4rem] mt-5 cursor-pointer rounded-[9px] text-[1rem]"
+              value="Submit"
+            />
           </div>
         </form>
 
