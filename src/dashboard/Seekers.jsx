@@ -127,39 +127,39 @@ const Seekers = () => {
                   <thead className='mt-10'>
 
                     <tr className=" uppercase  text-sm leading-normal w-[100%]">
-                      <th className="py-[2%] border-r-[1px] border-gray-300 border-b-[3px] border-b-yellow-300  w-[3%] max-md:text-[.6rem] max-md:font-[400] text-center max-md:w-[2%]  text-[13px]">ID </th>
-                      <th className="py-[2%] border-r-[1px] border-gray-300 border-b-[3px] border-b-yellow-300  w-[10%] max-md:text-[.6rem] max-md:font-[400] text-center max-md:w-[2%] text-[13px]">User</th>
-                      <th className="py-[2%] border-r-[1px] border-gray-300 border-b-[3px] border-b-yellow-300 w-[1%] max-md:text-[.6rem] max-md:font-[400] text-center max-md:w-[3%] text-[13px]">Phone No.</th>
-                      <th className="py-[2%] border-r-[1px] border-gray-300 border-b-[3px] border-b-yellow-300 w-[2%] max-md:text-[.6rem] max-md:font-[400] text-center text-[13px]">Status</th>
-                      <th className="py-[2%] border-b-[3px] border-b-yellow-300  w-[2%] max-md:text-[.6rem] max-md:font-[400] text-center text-[13px]">Actions</th>
-                      <th className="py-[2%] border-b-[3px] border-b-yellow-300  w-[1%] max-md:text-[.6rem] max-md:font-[400] text-center"></th>
+                      <th className="py-[2%] border-r-[1px] border-gray-300 border-b-[3px]   w-[3%] max-md:text-[.6rem] max-md:font-[400] text-center max-md:w-[2%]  text-[13px]">ID </th>
+                      <th className="py-[2%] border-r-[1px] border-gray-300 border-b-[3px]   w-[10%] max-md:text-[.6rem] max-md:font-[400] text-center max-md:w-[2%] text-[13px]">User</th>
+                      <th className="py-[2%] border-r-[1px] border-gray-300 border-b-[3px]  w-[1%] max-md:text-[.6rem] max-md:font-[400] text-center max-md:w-[3%] text-[13px]">Phone No.</th>
+                      <th className="py-[2%] border-r-[1px] border-gray-300 border-b-[3px]  w-[2%] max-md:text-[.6rem] max-md:font-[400] text-center text-[13px]">Status</th>
+                      <th className="py-[2%] border-b-[3px] border-gray-300  w-[2%] max-md:text-[.6rem] max-md:font-[400] text-center text-[13px]">Actions</th>
+                      <th className="py-[2%] border-b-[3px] border-gray-300  w-[1%] max-md:text-[.6rem] max-md:font-[400] text-center"></th>
 
                     </tr>
 
                   </thead>
 
                   {paginatedData?.map((value, index) => (
-                      <tbody className="text-[#000000] text-sm font-light w-[100%] bg-gray-100 " key={value?.id}>
+                      <tbody className="text-[#000000] text-sm font-light w-[100%] bg-yellow-300 " key={value?.id}>
                         <tr className='' >
-                          <td className="py-[2%] w-[3%]   border-r-[1px] border-t-[1px]   text-center">
+                          <td className="py-[2%] w-[3%]   border-r-[1px] border-t-[1px] border-black   text-center">
                             <span className="font-bold max-md:text-[.7rem] text-[13px] text-blue-500">{value.id}</span>
                           </td>
-                          <td className="py-[2%] w-[10%]   border-r-[1px] border-t-[1px]   text-center">
+                          <td className="py-[2%] w-[10%]   border-r-[1px] border-t-[1px] border-black   text-center">
                             <span className=" max-md:text-[.7rem] text-[13px] font-[350]">{value.username}</span>
                           </td>
-                          <td className="py-[1%] w-[2%]  max-md:text-[.7rem]  border-r-[1px] border-t-[1px]   text-center">
+                          <td className="py-[1%] w-[2%]  max-md:text-[.7rem]  border-r-[1px] border-t-[1px] border-black   text-center">
                             <span className=' text-[13px] font-[350]'>{value.phone}</span>
                           </td>
 
-                          <td className="py-[2%] max-md:text-[.7rem] w-[2%] border-r-[1px] border-t-[1px]   text-center">
+                          <td className="py-[2%] max-md:text-[.7rem] w-[2%] border-r-[1px] border-t-[1px] border-black   text-center">
                             <span onClick={() => UpdateStatus(value.id, value.status)} className={`bg-green-600 text-white font-[500] py-[3px] px-[10px] max-md:w-[8%] rounded-xl text-[0.6rem] max-md:py-1 max-md:px-2 max-md:text-[0.6rem] cursor-pointer ${value.status === 1 ? 'bg-green-500' : 'bg-red-500'} `}>{value.status === 1 ? 'Enable' : 'Disable'}</span>
                           </td>
-                          <td className="py-[2%] max-md:text-[.7rem] w-[2%] border-r-[1px] border-t-[1px]   text-center">
+                          <td className="py-[2%] max-md:text-[.7rem] w-[2%] border-r-[1px] border-t-[1px] border-black   text-center">
                             <button onClick={() => handleViewCv(value.id)} className='bg-green-600 text-white font-[500] py-[3px] px-[10px] max-md:w-[8%] rounded-xl text-[0.6rem] max-md:py-1 max-md:px-2 max-md:text-[0.6rem] cursor-pointer'>View CV </button>
                           </td>
 
 
-                          <td className="py-[2%] w-[1%] max-md:text-[.7rem]  border-t-[1px]">
+                          <td className="py-[2%] w-[1%] max-md:text-[.7rem]  border-t-[1px] border-black">
                             <div className="w-4 m-auto transform hover:text-blue-500  hover:scale-110 " onClick={() => handleClick(value.id)}>   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" >
                               <path stroke-linecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                               <path stroke-linecap="round" strokeLinejoin="round" strokeWidth="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />

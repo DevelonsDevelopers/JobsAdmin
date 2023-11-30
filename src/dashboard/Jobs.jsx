@@ -188,32 +188,32 @@ const Jobs = () => {
                 <table className="rounded-xl p-5 bg-black text-gray-100 w-[90%] m-auto max-md:w-[100%]  mt-6 max-md:overflow-auto">
                   <thead className="mt-10">
                     <tr className=" uppercase  text-sm leading-normal w-[100%]">
-                      <th className="py-[2%] border-r-[1px] border-gray-300 border-b-[3px] border-b-yellow-300  w-[1%] max-md:text-[.6rem] max-md:font-[400] text-center max-md:w-[2%]  text-[13px]">
+                      <th className="py-[2%] border-r-[1px] border-gray-300 border-b-[3px]   w-[1%] max-md:text-[.6rem] max-md:font-[400] text-center max-md:w-[2%]  text-[13px]">
                         ID{" "}
                       </th>
-                      <th className="py-[2%] border-r-[1px] border-gray-300 border-b-[3px] border-b-yellow-300  w-[1%] max-md:text-[.6rem] max-md:font-[400] text-center max-md:w-[1%]  text-[13px]">
+                      <th className="py-[2%] border-r-[1px] border-gray-300 border-b-[3px]   w-[1%] max-md:text-[.6rem] max-md:font-[400] text-center max-md:w-[1%]  text-[13px]">
                         Title{" "}
                       </th>
-                      <th className="py-[2%] border-r-[1px] border-gray-300 border-b-[3px] border-b-yellow-300  w-[3%] max-md:text-[.6rem] max-md:font-[400] text-center max-md:w-[2%]  text-[13px]">
+                      <th className="py-[2%] border-r-[1px] border-gray-300 border-b-[3px]   w-[3%] max-md:text-[.6rem] max-md:font-[400] text-center max-md:w-[2%]  text-[13px]">
                         Category{" "}
                       </th>
-                      <th className="py-[2%] border-r-[1px] border-gray-300 border-b-[3px] border-b-yellow-300  w-[3%] max-md:text-[.6rem] max-md:font-[400] text-center max-md:w-[2%]  text-[13px]">
+                      <th className="py-[2%] border-r-[1px] border-gray-300 border-b-[3px]   w-[3%] max-md:text-[.6rem] max-md:font-[400] text-center max-md:w-[2%]  text-[13px]">
                         City{" "}
                       </th>
-                      <th className="py-[2%] border-r-[1px] border-gray-300 border-b-[3px] border-b-yellow-300  w-[3%] max-md:text-[.6rem] max-md:font-[400] text-center max-md:w-[2%]  text-[13px]">
+                      <th className="py-[2%] border-r-[1px] border-gray-300 border-b-[3px]   w-[3%] max-md:text-[.6rem] max-md:font-[400] text-center max-md:w-[2%]  text-[13px]">
                         Company{" "}
                       </th>
 
-                      <th className="py-[2%] border-r-[1px] border-gray-300 border-b-[3px] border-b-yellow-300 w-[1%] max-md:text-[.6rem] max-md:font-[400] text-center max-md:w-[3%] text-[13px]">
+                      <th className="py-[2%] border-r-[1px] border-gray-300 border-b-[3px]  w-[1%] max-md:text-[.6rem] max-md:font-[400] text-center max-md:w-[3%] text-[13px]">
                         Role
                       </th>
-                      <th className="py-[2%] border-r-[1px] border-gray-300 border-b-[3px] border-b-yellow-300 w-[2%] max-md:text-[.6rem] max-md:font-[400] text-center text-[13px]">
+                      <th className="py-[2%] border-r-[1px] border-gray-300 border-b-[3px]  w-[2%] max-md:text-[.6rem] max-md:font-[400] text-center text-[13px]">
                         Status
                       </th>
-                      <th className="py-[2%] border-b-[3px] border-b-yellow-300  w-[2%] max-md:text-[.6rem] max-md:font-[400] text-center text-[13px]">
+                      <th className="py-[2%] border-b-[3px] border-gray-300  w-[2%] max-md:text-[.6rem] max-md:font-[400] text-center text-[13px]">
                         Actions
                       </th>
-                      <th className="py-[2%]   border-gray-300 border-b-[3px] border-b-yellow-300  w-[1%] max-md:text-[.6rem] max-md:font-[400] text-center"></th>
+                      <th className="py-[2%]   border-gray-300 border-b-[3px]   w-[1%] max-md:text-[.6rem] max-md:font-[400] text-center"></th>
                     </tr>
                   </thead>
 
@@ -225,43 +225,43 @@ const Jobs = () => {
                     })
                     .map((value, index) => (
                       <tbody
-                        className="text-[#000000] text-sm font-light w-[100%] bg-gray-100"
+                        className="text-[#000000] text-sm font-light w-[100%] bg-yellow-300"
                         key={value.id}
                       >
                         <tr className="">
-                          <td className="py-[2%] w-[1%]   border-r-[1px] border-t-[1px]   text-center">
+                          <td className="py-[2%] w-[1%]   border-r-[1px] border-t-[1px] border-black   text-center">
                             <span className="font-bold max-md:text-[.7rem] text-[13px] text-blue-500">
                               {value.id}
                             </span>
                           </td>
-                          <td className="py-[2%] w-[2%]   border-r-[1px] border-t-[1px]   text-center">
+                          <td className="py-[2%] w-[2%]   border-r-[1px] border-t-[1px] border-black   text-center">
                             <span className="font-bold max-md:text-[.7rem] text-[13px] font-[300] ">
                               {value.title}
                             </span>
                           </td>
-                          <td className="py-[2%] w-[3%]   border-r-[1px] border-t-[1px]   text-center">
+                          <td className="py-[2%] w-[3%]   border-r-[1px] border-t-[1px] border-black   text-center">
                             <span className="font-bold max-md:text-[.7rem] text-[13px] font-[300] ">
                               {value.category_name}
                             </span>
                           </td>
-                          <td className="py-[2%] w-[3%]   border-r-[1px] border-t-[1px]   text-center">
+                          <td className="py-[2%] w-[3%]   border-r-[1px] border-t-[1px] border-black   text-center">
                             <span className="font-bold max-md:text-[.7rem] text-[13px] font-[300] ">
                               {value.city_name}
                             </span>
                           </td>
-                          <td className="py-[2%] w-[3%]   border-r-[1px] border-t-[1px]   text-center">
+                          <td className="py-[2%] w-[3%]   border-r-[1px] border-t-[1px] border-black   text-center">
                             <span className="font-bold max-md:text-[.7rem] text-[13px] font-[300] ">
                               {value.company_n}
                             </span>
                           </td>
 
-                          <td className="py-[1%] w-[2%]  max-md:text-[.7rem]  border-r-[1px] border-t-[1px]   text-center">
+                          <td className="py-[1%] w-[2%]  max-md:text-[.7rem]  border-r-[1px] border-t-[1px] border-black   text-center">
                             <span className="text-[13px] font-[350]">
                               {value.role}
                             </span>
                           </td>
 
-                          <td className="py-[2%] max-md:text-[.7rem] w-[2%] border-r-[1px] border-t-[1px]   text-center">
+                          <td className="py-[2%] max-md:text-[.7rem] w-[2%] border-r-[1px] border-t-[1px] border-black   text-center">
                             <span
                               onClick={() =>
                                 UpdateStatus(value.id, value.status)
@@ -275,7 +275,7 @@ const Jobs = () => {
                               {value.status === 1 ? "Enable" : "Disable"}
                             </span>
                           </td>
-                          <td className="py-[2%] w-[2%] max-md:text-[.7rem]  border-r-[1px] border-t-[1px]   text-center">
+                          <td className="py-[2%] w-[2%] max-md:text-[.7rem]  border-r-[1px] border-t-[1px] border-black   text-center">
                             <div className="flex item-center justify-center gap-3">
                               <div
                                 className="w-4 mr-2 transform hover:text-blue-500  hover:scale-110"
@@ -316,7 +316,7 @@ const Jobs = () => {
                             </div>
                           </td>
 
-                          <td className="py-[2%] w-[1%] max-md:text-[.7rem]  border-t-[1px]   ">
+                          <td className="py-[2%] w-[1%] max-md:text-[.7rem]  border-t-[1px]  border-black ">
                             <div
                               className="w-4 m-auto transform hover:text-blue-500  hover:scale-110 "
                               onClick={() => handleClick(value.id)}
