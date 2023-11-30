@@ -114,7 +114,7 @@ const PaymentGateway = () => {
 
       <div className='flex max-sm:flex-col justify-center !w-full h-full gap-5 mt-10 px-[1rem] ' >
 
-          <div className=' border-[1px] w-[70%] max-sm:w-full my-[0.5rem] py-[0.5rem] px-[2.5rem] !bg-white border-gray-300 rounded-md' >
+          <div className=' border-[1px] w-[70%] max-sm:w-full my-[0.5rem] py-[0.5rem] px-[2.5rem] !bg-gray-100 border-gray-300 rounded-md' >
             <center>
               <button onClick={handleClickOpen} className=' mt-5 py-2 px-7 bg-blue-600 text-white rounded-md font-[600] ' >ADs EDIT</button>
             </center>

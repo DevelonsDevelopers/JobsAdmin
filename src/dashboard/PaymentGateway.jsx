@@ -93,7 +93,7 @@ const PaymentGateway = () => {
                 <input type="text" value={paypalData?.paypal_client_id} name="paypal_client_id" onChange={onChangePaypalData} className="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="Enter Company Name" required />
               </div>
             </div>
-            <div className="-mx-3 mt-[-1.2rem] mb-6">
+            <div className="-mx-3 mt-[-1.2rem]  mb-6">
               <div className="w-[100%] px-3 mb-6 md:mb-0 mt-5">
                 <label className="block  tracking-wide text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4" for="grid-first-name">
                   Secret ID
@@ -168,13 +168,13 @@ const PaymentGateway = () => {
         </Dialog>
       </div>
 
-      <div className='flex max-sm:flex-col !w-full h-full gap-5 mt-10 px-[1rem] ' >
-        <div className=' border-[1px] w-[50%] max-sm:w-full my-[0.5rem] py-[0.5rem] px-[2.5rem] !bg-white border-gray-300 rounded-md' >
+      <div className='flex max-sm:flex-col  !w-full h-full gap-5 mt-10 px-[1rem] ' >
+        <div className=' border-[1px] w-[50%] bg-gray-100 max-sm:w-full my-[0.5rem] py-[0.5rem] px-[2.5rem] border-gray-300 rounded-md' >
           <center>
             <button onClick={handleClickOpen} className=' mt-5 py-2 px-7 bg-blue-600 text-white rounded-md font-[600] ' >Paypal Payment</button>
           </center>
 
-          <div className=' items-center w-[100%] py-[2rem] '>
+          <div className=' items-center  w-[100%] py-[2rem] '>
             <div className='flex justify-between '>
               <span className='!font-[800] text-[15px]'>Client ID:  </span>
               <span className='font-[600] ml-auto text-gray-600 text-[13px] ' >{payments?.paypal_client_id}</span>
@@ -202,7 +202,7 @@ const PaymentGateway = () => {
             <hr className='mt-2 mb-2' />
           </div>
         </div>
-        <div className=' border-[1px] w-[50%] max-sm:w-full my-[0.5rem] py-[0.5rem] px-[2.5rem] !bg-white border-gray-300 rounded-md' >
+        <div className=' border-[1px] w-[50%] bg-gray-100 max-sm:w-full my-[0.5rem] py-[0.5rem] px-[2.5rem] border-gray-300 rounded-md' >
           <center>
           <button onClick={handleStripeOpen} className=' mt-5 py-2 px-7 bg-violet-600 text-white rounded-md font-[600] ml-5 ' >Stripe Payment</button>
           </center>
