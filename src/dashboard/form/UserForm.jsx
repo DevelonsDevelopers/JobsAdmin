@@ -79,7 +79,7 @@ const UserForm = () => {
                 name="name"
                 id="floating_email"
                 onChange={ClickInput}
-                className="pl-4 block py-[9px] px-0 w-full text-sm  bg-gray-100 rounded-[8px] border-[0.7px] border-gray-300 appearance-none dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                className="pl-4 block py-[9px] px-0 w-full text-sm  bg-gray-100 rounded-[8px] border-[0.7px] border-gray-600 appearance-none dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                 placeholder="Enter User Name"
                 required
               />
@@ -99,7 +99,7 @@ const UserForm = () => {
                   name="username"
                   id="floating_email"
                   onChange={ClickInput}
-                  className="pl-4 block py-[9px] px-0 w-full text-sm  bg-gray-100 rounded-[8px] border-[0.7px] border-gray-300 appearance-none dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                  className="pl-4 block py-[9px] px-0 w-full text-sm  bg-gray-100 rounded-[8px] border-[0.7px] border-gray-600 appearance-none dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                   placeholder="Enter User Name"
                   required
                 />
@@ -118,7 +118,7 @@ const UserForm = () => {
                   name="email"
                   id="floating_email"
                   onChange={ClickInput}
-                  className="pl-4 block py-[9px] px-0 w-full text-sm  bg-gray-100 rounded-[8px] border-[0.7px] border-gray-300 appearance-none dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                  className="pl-4 block py-[9px] px-0 w-full text-sm  bg-gray-100 rounded-[8px] border-[0.7px] border-gray-600 appearance-none dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                   placeholder="Enter  Email "
                   required
                 />
@@ -139,7 +139,7 @@ const UserForm = () => {
                   name="password"
                   id="floating_email"
                   onChange={ClickInput}
-                  className="pl-4 block py-[9px] px-0 w-full text-sm  bg-gray-100 rounded-[8px] border-[0.7px] border-gray-300 appearance-none dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                  className="pl-4 block py-[9px] px-0 w-full text-sm  bg-gray-100 rounded-[8px] border-[0.7px] border-gray-600 appearance-none dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                   placeholder="Enter Password"
                   required
                 />
@@ -158,7 +158,7 @@ const UserForm = () => {
                   name="phone"
                   id="floating_email"
                   onChange={ClickInput}
-                  className="pl-4 block py-[9px] px-0 w-full text-sm  bg-gray-100 rounded-[8px] border-[0.7px] border-gray-300 appearance-none dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                  className="pl-4 block py-[9px] px-0 w-full text-sm  bg-gray-100 rounded-[8px] border-[0.7px] border-gray-600 appearance-none dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                   placeholder="Enter Contact Number "
                   required
                 />
@@ -178,7 +178,7 @@ const UserForm = () => {
                 type="text"
                 name="address"
                 id="floating_email"
-                className="pl-4 block py-[9px] px-0 w-full text-sm  bg-gray-100 rounded-[8px] border-[0.7px] border-gray-300 appearance-none dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                className="pl-4 block py-[9px] px-0 w-full text-sm  bg-gray-100 rounded-[8px] border-[0.7px] border-gray-600 appearance-none dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                 placeholder="Enter Address"
                 required
               />

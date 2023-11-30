@@ -248,7 +248,7 @@ const Dashboard = () => {
                         </thead>
                         {transactions?.map((value) => (
                           <tbody className="text-gray-600 text-sm font-light w-[100%]">
-                            <tr className={`border-b border-gray-300 bg-white`} >
+                            <tr className={`border-b border-gray-600 bg-white`} >
                               <td className="py-[2%] w-[25%] max-md:text-[.7rem] text-center">
                                 <span className="font-medium">{value.id}</span>
                               </td>
@@ -289,7 +289,7 @@ const Dashboard = () => {
                         </thead>
                         {reports?.map((value) => (
                           <tbody className="text-gray-600 text-sm font-light w-[100%]">
-                            <tr className={`border-b border-gray-300 bg-white`} >
+                            <tr className={`border-b border-gray-600 bg-white`} >
                               <td className="py-[2%] w-[25%] max-md:text-[.7rem] text-center">
                                 <span className="font-medium">{value.job}</span>
                               </td>

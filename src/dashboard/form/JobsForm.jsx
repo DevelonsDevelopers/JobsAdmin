@@ -350,7 +350,7 @@ const JobsForm = ({}) => {
               name="title"
               id="floating_email"
               onChange={ClickInput}
-              className="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-100 rounded-[8px] border-[0.7px] border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+              className="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-100 rounded-[8px] border-[0.7px] border-gray-600 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer"
               placeholder="Enter Title"
               required
             />
@@ -389,7 +389,7 @@ const JobsForm = ({}) => {
                 id="floating_email"
                 disabled
                 onChange={ClickInput}
-                className="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-100 rounded-[8px] border-[0.7px] border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                className="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-100 rounded-[8px] border-[0.7px] border-gray-600 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                 placeholder="Enter Company"
                 required
               />
@@ -399,7 +399,7 @@ const JobsForm = ({}) => {
                 name="company_name"
                 id="floating_email"
                 onChange={ClickInput}
-                className="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-100 rounded-[8px] border-[0.7px] border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                className="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-100 rounded-[8px] border-[0.7px] border-gray-600 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                 placeholder="Enter Company"
                 required
               />
@@ -421,7 +421,7 @@ const JobsForm = ({}) => {
                 name="experience"
                 id="floating_email"
                 onChange={ClickInput}
-                className="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-100 rounded-[8px] border-[0.7px] border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                className="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-100 rounded-[8px] border-[0.7px] border-gray-600 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                 placeholder="Enter Experience"
                 required
               />
@@ -440,7 +440,7 @@ const JobsForm = ({}) => {
                 name="qualification"
                 id="floating_email"
                 onChange={ClickInput}
-                className="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-100 rounded-[8px] border-[0.7px] border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                className="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-100 rounded-[8px] border-[0.7px] border-gray-600 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                 placeholder="Enter Qualification "
                 required
               />
@@ -459,7 +459,7 @@ const JobsForm = ({}) => {
             <select
               onChange={ClickInput}
               name="type"
-              className="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-100 rounded-[8px] border-[0.7px] border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+              className="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-100 rounded-[8px] border-[0.7px] border-gray-600 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer"
               id="grid-state"
             >
               <option>Select Type</option>
@@ -573,7 +573,7 @@ const JobsForm = ({}) => {
                   isMulti={true}
                   id="grid-state"
                 ></Select>
-                {/* <div name="tags" className='  w-full flex text-sm text-gray-900 bg-gray-100 rounded-[8px] flex-wrap appearance-none  border-2 border-black border-[0.7px] border-gray-300 focus:outline-none focus:ring-0 focus:border-blue-600 peer'>
+                {/* <div name="tags" className='  w-full flex text-sm text-gray-900 bg-gray-100 rounded-[8px] flex-wrap appearance-none  border-2 border-black border-[0.7px] border-gray-600 focus:outline-none focus:ring-0 focus:border-blue-600 peer'>
                   {tags.map((item, index) => (
                     <button onClick={() => deleteTag(item)} className=' m-2 text-white bg-black outline-none border-none px-4 py-1 rounded-lg' key={index}>
                       {item}
@@ -598,7 +598,7 @@ const JobsForm = ({}) => {
                 name="address"
                 id="floating_email"
                 onChange={ClickInput}
-                className="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-100 rounded-[8px] border-[0.7px] border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                className="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-100 rounded-[8px] border-[0.7px] border-gray-600 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                 placeholder="Enter Address(eg. Lahore, Pakistan)"
                 required
               />
@@ -615,7 +615,7 @@ const JobsForm = ({}) => {
                 </label>
                 <div
                   name="skills"
-                  className="  w-full flex text-sm text-gray-900 bg-gray-100 rounded-[8px] flex-wrap appearance-none  border-2 border-black border-[0.7px] border-gray-300 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                  className="  w-full flex text-sm text-gray-900 bg-gray-100 rounded-[8px] flex-wrap appearance-none  border-2 border-black border-[0.7px] border-gray-600 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                 >
                   {skills.map((item, index) => (
                     <button
@@ -654,7 +654,7 @@ const JobsForm = ({}) => {
                   name="workdays"
                   id="floating_email"
                   onChange={ClickInput}
-                  className="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-100 rounded-[8px] border-[0.7px] border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                  className="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-100 rounded-[8px] border-[0.7px] border-gray-600 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                   placeholder="Work Days(eg. mon-friday, mon,tue,wed,etc) "
                   required
                 />
@@ -675,7 +675,7 @@ const JobsForm = ({}) => {
                   name="worktime"
                   id="floating_email"
                   onChange={(e) => setStartTime(e.target.value)}
-                  className="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-100 rounded-[8px] border-[0.7px] border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                  className="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-100 rounded-[8px] border-[0.7px] border-gray-600 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                   placeholder="Enter Start Time"
                   required
                 />
@@ -694,7 +694,7 @@ const JobsForm = ({}) => {
                   name="worktime"
                   id="floating_email"
                   onChange={(e) => setEndTime(e.target.value)}
-                  className="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-100 rounded-[8px] border-[0.7px] border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                  className="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-100 rounded-[8px] border-[0.7px] border-gray-600 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                   placeholder="Enter End Time"
                   required
                 />
@@ -712,7 +712,7 @@ const JobsForm = ({}) => {
                   type="date"
                   id="floating_email"
                   onChange={(e) => setDate(e.target.value)}
-                  className="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-100 rounded-[8px] border-[0.7px] border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                  className="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-100 rounded-[8px] border-[0.7px] border-gray-600 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                   placeholder="Enter Company Role "
                   required
                 />
@@ -733,7 +733,7 @@ const JobsForm = ({}) => {
                   name="salary"
                   id="floating_email"
                   onChange={ClickInput}
-                  className="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-100 rounded-[8px] border-[0.7px] border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                  className="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-100 rounded-[8px] border-[0.7px] border-gray-600 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                   placeholder="Enter Salary (eg. 1000-5000$, etc)"
                   required
                 />
@@ -752,7 +752,7 @@ const JobsForm = ({}) => {
                   name="role"
                   id="floating_email"
                   onChange={ClickInput}
-                  className="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-100 rounded-[8px] border-[0.7px] border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                  className="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-100 rounded-[8px] border-[0.7px] border-gray-600 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                   placeholder="Enter Role(eg. Designer)"
                   required
                 />
@@ -773,7 +773,7 @@ const JobsForm = ({}) => {
                   name="designation"
                   id="floating_email"
                   onChange={ClickInput}
-                  className="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-100 rounded-[8px] border-[0.7px] border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                  className="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-100 rounded-[8px] border-[0.7px] border-gray-600 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                   placeholder="Enter Designation"
                   required
                 />
@@ -792,7 +792,7 @@ const JobsForm = ({}) => {
                   name="link"
                   id="floating_email"
                   onChange={ClickInput}
-                  className="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-100 rounded-[8px] border-[0.7px] border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                  className="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-100 rounded-[8px] border-[0.7px] border-gray-600 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                   placeholder="Enter Link"
                   required
                 />

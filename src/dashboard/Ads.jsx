@@ -69,7 +69,7 @@ const PaymentGateway = () => {
                 <label className="block  tracking-wide text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4" for="grid-first-name">
                   Banner Ad
                 </label>
-                <input type="text" value={adsData?.banner_ad} name="banner_ad" onChange={onChangeAdsData} className="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="Enter Company Name" required />
+                <input type="text" value={adsData?.banner_ad} name="banner_ad" onChange={onChangeAdsData} className="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-600 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="Enter Company Name" required />
               </div>
             </div>
             <div className="-mx-3 mt-[-1.2rem] mb-6">
@@ -77,7 +77,7 @@ const PaymentGateway = () => {
                 <label className="block  tracking-wide text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4" for="grid-first-name">
                   Interstitial Ad
                 </label>
-                <input type="text" value={adsData?.interstitial_ad} name="interstitial_ad" onChange={onChangeAdsData} className="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="Enter Company Name" required />
+                <input type="text" value={adsData?.interstitial_ad} name="interstitial_ad" onChange={onChangeAdsData} className="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-600 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="Enter Company Name" required />
               </div>
             </div>
             <div className="-mx-3 mt-[-1.2rem] mb-6">
@@ -85,7 +85,7 @@ const PaymentGateway = () => {
                 <label className="block  tracking-wide text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4" for="grid-first-name">
                   Count
                 </label>
-                <input type="text" value={adsData?.count} name="count" onChange={onChangeAdsData} className="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="Enter Company Name" required />
+                <input type="text" value={adsData?.count} name="count" onChange={onChangeAdsData} className="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-600 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="Enter Company Name" required />
               </div>
             </div>
             <div className="-mx-3 mt-[-1.2rem] mb-6">
@@ -93,7 +93,7 @@ const PaymentGateway = () => {
                 <label className="block  tracking-wide text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4" for="grid-first-name">
                   App Open
                 </label>
-                <input type="text" value={adsData?.app_open} name="app_open" onChange={onChangeAdsData} className="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="Enter Company Name" required />
+                <input type="text" value={adsData?.app_open} name="app_open" onChange={onChangeAdsData} className="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-600 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="Enter Company Name" required />
               </div>
             </div>
             <div className="-mx-3 mt-[-1.2rem] mb-6">
@@ -101,7 +101,7 @@ const PaymentGateway = () => {
                 <label className="block  tracking-wide text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4" for="grid-first-name">
                   Publisher ID
                 </label>
-                <input type="text" value={adsData?.publisher_id} name="publisher_id" onChange={onChangeAdsData} className="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="Enter Company Name" required />
+                <input type="text" value={adsData?.publisher_id} name="publisher_id" onChange={onChangeAdsData} className="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px] border-gray-600 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="Enter Company Name" required />
               </div>
             </div>
           </DialogContent>
@@ -114,7 +114,7 @@ const PaymentGateway = () => {
 
       <div className='flex max-sm:flex-col justify-center !w-full h-full gap-5 mt-10 px-[1rem] ' >
 
-          <div className=' border-[1px] w-[70%] max-sm:w-full my-[0.5rem] py-[0.5rem] px-[2.5rem] !bg-gray-100 border-gray-300 rounded-md' >
+          <div className=' border-[1px] w-[70%] max-sm:w-full my-[0.5rem] py-[0.5rem] px-[2.5rem] !bg-gray-100 border-gray-600 rounded-md' >
             <center>
               <button onClick={handleClickOpen} className=' mt-5 py-2 px-7 bg-blue-600 text-white rounded-md font-[600] ' >ADs EDIT</button>
             </center>

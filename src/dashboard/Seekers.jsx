@@ -127,10 +127,10 @@ const Seekers = () => {
                   <thead className='mt-10'>
 
                     <tr className=" uppercase  text-sm leading-normal w-[100%]">
-                      <th className="py-[2%] border-r-[1px] border-gray-300 border-b-[3px] border-b-yellow-300  w-[3%] max-md:text-[.6rem] max-md:font-[400] text-center max-md:w-[2%]  text-[13px]">ID </th>
-                      <th className="py-[2%] border-r-[1px] border-gray-300 border-b-[3px] border-b-yellow-300  w-[10%] max-md:text-[.6rem] max-md:font-[400] text-center max-md:w-[2%] text-[13px]">User</th>
-                      <th className="py-[2%] border-r-[1px] border-gray-300 border-b-[3px] border-b-yellow-300 w-[1%] max-md:text-[.6rem] max-md:font-[400] text-center max-md:w-[3%] text-[13px]">Phone No.</th>
-                      <th className="py-[2%] border-r-[1px] border-gray-300 border-b-[3px] border-b-yellow-300 w-[2%] max-md:text-[.6rem] max-md:font-[400] text-center text-[13px]">Status</th>
+                      <th className="py-[2%] border-r-[1px] border-gray-600 border-b-[3px] border-b-yellow-300  w-[3%] max-md:text-[.6rem] max-md:font-[400] text-center max-md:w-[2%]  text-[13px]">ID </th>
+                      <th className="py-[2%] border-r-[1px] border-gray-600 border-b-[3px] border-b-yellow-300  w-[10%] max-md:text-[.6rem] max-md:font-[400] text-center max-md:w-[2%] text-[13px]">User</th>
+                      <th className="py-[2%] border-r-[1px] border-gray-600 border-b-[3px] border-b-yellow-300 w-[1%] max-md:text-[.6rem] max-md:font-[400] text-center max-md:w-[3%] text-[13px]">Phone No.</th>
+                      <th className="py-[2%] border-r-[1px] border-gray-600 border-b-[3px] border-b-yellow-300 w-[2%] max-md:text-[.6rem] max-md:font-[400] text-center text-[13px]">Status</th>
                       <th className="py-[2%] border-b-[3px] border-b-yellow-300  w-[2%] max-md:text-[.6rem] max-md:font-[400] text-center text-[13px]">Actions</th>
                       <th className="py-[2%] border-b-[3px] border-b-yellow-300  w-[1%] max-md:text-[.6rem] max-md:font-[400] text-center"></th>
 

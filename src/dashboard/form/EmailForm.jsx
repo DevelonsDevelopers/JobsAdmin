@@ -84,11 +84,11 @@ const EmailForm = () => {
               <label className="block mt-3 tracking-wide text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4" htmlFor="grid-first-name">
                 Email
               </label>
-              <input type="text" name="name" onChange={(e) => setEmail(e.target.value)} id="floating_email" className="pl-4 mb-3 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-2xl border-[0.7px] border-gray-300 appearance-none  border-gray-600  focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="Enter Tag " required />
+              <input type="text" name="name" onChange={(e) => setEmail(e.target.value)} id="floating_email" className="pl-4 mb-3 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-2xl border-[0.7px] border-gray-600 appearance-none  border-gray-600  focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="Enter Tag " required />
               {/* {val?.map((data, i) => {
                 return(
                 <div className='flex mb-3'>
-                <input type="text" value={data} name="name" id="floating_email"  onChange={(e) => handleChange(e,i)} className="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-s-2xl border-[0.7px] border-gray-300 appearance-none  border-gray-600  focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="Enter Tag " required />
+                <input type="text" value={data} name="name" id="floating_email"  onChange={(e) => handleChange(e,i)} className="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-s-2xl border-[0.7px] border-gray-600 appearance-none  border-gray-600  focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="Enter Tag " required />
                 <button className='border-2 border-gray-600 px-2' onClick={(e) => handleDelete(e, i)}>X</button>
                 </div>
                 )

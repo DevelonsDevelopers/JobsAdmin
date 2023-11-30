@@ -25,7 +25,7 @@ const CountryView = ({ open, setOpen, title, data, ID }) => {
       <DialogTitle id="customized-dialog-title" onClose={handleClose} className='!m-auto !mt-[-1rem] !font-[700] !text-[2.2rem] '>
         {country?.name}
       </DialogTitle>
-   <div className=' border-[1px] my-[0.5rem] py-[0.5rem] px-[1.5rem] !bg-gray-100 border-gray-300' >
+   <div className=' border-[1px] my-[0.5rem] py-[0.5rem] px-[1.5rem] !bg-gray-100 border-gray-600' >
       <DialogContent className=' items-center w-[100%] '>
         <div className='flex justify-between '>
         <span className='!font-[800] text-[15px]'> Name:  </span>

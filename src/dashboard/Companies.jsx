@@ -178,22 +178,22 @@ const Companies = () => {
                 <table className="rounded-xl p-5 bg-black text-gray-100 w-[90%] m-auto max-md:w-[100%]  mt-6 ">
                   <thead className="mt-10">
                     <tr className=" uppercase  text-sm leading-normal w-[100%]">
-                      <th className="py-[2%] border-r-[1px] border-gray-300 border-b-[3px] border-b-yellow-300  w-[3%] max-md:text-[.6rem] max-md:font-[400] text-center max-md:w-[2%]  text-[13px]">
+                      <th className="py-[2%] border-r-[1px] border-gray-600 border-b-[3px] border-b-yellow-300  w-[3%] max-md:text-[.6rem] max-md:font-[400] text-center max-md:w-[2%]  text-[13px]">
                         ID{" "}
                       </th>
-                      <th className="py-[2%] border-r-[1px] border-gray-300 border-b-[3px] border-b-yellow-300  w-[10%] max-md:text-[.6rem] max-md:font-[400] text-center max-md:w-[2%] text-[13px]">
+                      <th className="py-[2%] border-r-[1px] border-gray-600 border-b-[3px] border-b-yellow-300  w-[10%] max-md:text-[.6rem] max-md:font-[400] text-center max-md:w-[2%] text-[13px]">
                         Name
                       </th>
-                      <th className="py-[2%] border-r-[1px] border-gray-300 border-b-[3px] border-b-yellow-300 w-[1%] max-md:text-[.6rem] max-md:font-[400] text-center max-md:w-[3%] text-[13px]">
+                      <th className="py-[2%] border-r-[1px] border-gray-600 border-b-[3px] border-b-yellow-300 w-[1%] max-md:text-[.6rem] max-md:font-[400] text-center max-md:w-[3%] text-[13px]">
                         Jobs
                       </th>
-                      <th className="py-[2%] border-r-[1px] border-gray-300 border-b-[3px] border-b-yellow-300 w-[2%] max-md:text-[.6rem] max-md:font-[400] text-center text-[13px]">
+                      <th className="py-[2%] border-r-[1px] border-gray-600 border-b-[3px] border-b-yellow-300 w-[2%] max-md:text-[.6rem] max-md:font-[400] text-center text-[13px]">
                         Status
                       </th>
                       <th className="py-[2%] border-b-[3px] border-b-yellow-300  w-[2%] max-md:text-[.6rem] max-md:font-[400] text-center text-[13px]">
                         Actions
                       </th>
-                      <th className="py-[2%] border-gray-300 border-b-[3px] border-b-yellow-300  w-[1%] max-md:text-[.6rem] max-md:font-[400] text-center"></th>
+                      <th className="py-[2%] border-gray-600 border-b-[3px] border-b-yellow-300  w-[1%] max-md:text-[.6rem] max-md:font-[400] text-center"></th>
                     </tr>
                   </thead>
 

@@ -8,7 +8,7 @@ const AppView = ({ open, toggleOpenVisible }) => {
       <DialogTitle id="customized-dialog-title" onClose={toggleOpenVisible} className='!m-auto !mt-[-1rem] !font-[700] !text-[2.2rem] max-md:!text-[1rem] '>
         Download Now To Register
       </DialogTitle>
-      <div className=' border-[1px] my-[0.5rem] py-[0.5rem] px-[1.5rem] !bg-gray-100 border-gray-300' >
+      <div className=' border-[1px] my-[0.5rem] py-[0.5rem] px-[1.5rem] !bg-gray-100 border-gray-600' >
         <DialogContent className=' items-center w-[100%] '>
           <div className='flex'>
             <div className=' max-md:w-[70%] max-md:m-auto w-[30%] h-[80%] ml-[10%]'>

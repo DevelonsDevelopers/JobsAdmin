@@ -165,7 +165,7 @@ const CategoryForm = () => {
                   <label className="block tracking-wide text-grey-darker text-[0.7rem] font-[600] mb-[3px] uppercase ml-4" htmlFor="grid-first-name">
                     Name
                   </label>
-                  <input type="text" name="name" id="floating_email" onChange={inputClick} className="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-100 rounded-[8px] border-[0.7px] border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="Enter Job" required />
+                  <input type="text" name="name" id="floating_email" onChange={inputClick} className="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-100 rounded-[8px] border-[0.7px] border-gray-600 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="Enter Category" required />
                 </div>
               </div>
               <div className="-mx-3 mt-5">
@@ -173,7 +173,7 @@ const CategoryForm = () => {
                   <label className="block uppercase tracking-wide text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4" htmlFor="grid-Name">
                     Description
                   </label>
-                  <textarea name='description' minLength='30' maxLength='500' rows='7' onChange={inputClick} className="block w-full bg-gray-100  border-gray-lighter rounded-[8px] py-3 px-4 mb-3 border-[0.7px] border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer text-[14px]" id="grid-Name" type="text" placeholder="Enter Description" />
+                  <textarea name='description' minLength='30' maxLength='500' rows='7' onChange={inputClick} className="block w-full bg-gray-100  border-gray-lighter rounded-[8px] py-3 px-4 mb-3 border-[0.7px] border-gray-600 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer text-[14px]" id="grid-Name" type="text" placeholder="Enter Description" />
                 </div>
               </div>
             </div>
@@ -182,7 +182,7 @@ const CategoryForm = () => {
             <label className="block uppercase tracking-wide text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4" htmlFor="grid-Name">
                     Image
             </label>
-              <label htmlFor="dropzone-file" className="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-[8px] cursor-pointer bg-gray-100 ">
+              <label htmlFor="dropzone-file" className="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-600 border-dashed rounded-[8px] cursor-pointer bg-gray-100 ">
                 {Base64IMG ?
                   <>
                     <img src={Base64IMG.toString()} alt="" className='h-full w-full object-cover rounded-md' />

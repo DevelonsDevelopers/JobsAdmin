@@ -78,13 +78,13 @@ const CitiesForm = () => {
                     <label className="block text-left tracking-wide uppercase text-[0.7rem] font-[600] mb-[3px] ml-4" htmlFor="grid-first-name">
                       Name
                     </label>
-                    <input type="text" name="name" id="name" onChange={ClickInput} className="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-100 rounded-[8px] border-[0.7px] border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="Enter city" required />
+                    <input type="text" name="name" id="name" onChange={ClickInput} className="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-100 rounded-[8px] border-[0.7px] border-gray-600 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="Enter city" required />
                   </div>
                   <div className="w-[50%] px-3  mt-5 mb-6 md:mb-0">
                     <label className="block text-left tracking-wide uppercase text-[0.7rem] font-[600] mb-[3px] ml-4" htmlFor="grid-first-name">
                       Country
                     </label>
-                    <select onChange={ClickInput} name='country' className="pl-4 block py-[9px] px-0 w-full text-sm text-gray-500 bg-gray-100 rounded-[8px] border-[0.7px] border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer" id="grid-state">
+                    <select onChange={ClickInput} name='country' className="pl-4 block py-[9px] px-0 w-full text-sm text-gray-500 bg-gray-100 rounded-[8px] border-[0.7px] border-gray-600 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer" id="grid-state">
                          <option>Select Country</option>
                       {countries?.map((value) => {
                         return <option value={value.id} key={value.id}>{value.name}</option>
@@ -97,7 +97,7 @@ const CitiesForm = () => {
                     <label className="block text-left uppercase tracking-wide text-[0.7rem] font-[600] mb-[3px] ml-4" htmlFor="grid-Name">
                       Description
                     </label>
-                    <textarea name='description' rows='7'  minLength='30' maxLength='500' onChange={ClickInput} className="block w-full bg-gray-100  border-gray-lighter py-3 px-4 rounded-[8px] mb-3 border-[0.7px] border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer text-[14px]" id="grid-Name" type="text" placeholder="Enter Description" />
+                    <textarea name='description' rows='7'  minLength='30' maxLength='500' onChange={ClickInput} className="block w-full bg-gray-100  border-gray-lighter py-3 px-4 rounded-[8px] mb-3 border-[0.7px] border-gray-600 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer text-[14px]" id="grid-Name" type="text" placeholder="Enter Description" />
                   </div>
                 </div>
               </div>

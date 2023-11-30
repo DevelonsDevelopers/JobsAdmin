@@ -165,7 +165,7 @@ const CountriesForm = () => {
                     name="name"
                     id="floating_email"
                     onChange={ClickInput}
-                    className="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-100 rounded-[9px] border-[0.7px] border-gray-300 appearance-none   focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                    className="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-100 rounded-[9px] border-[0.7px] border-gray-600 appearance-none   focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                     placeholder="Enter Country"
                     required
                   />
@@ -185,7 +185,7 @@ const CountriesForm = () => {
                     onChange={ClickInput}
                     minLength="30"
                     maxLength="500"
-                    className="appearance-none block w-full bg-gray-100  border-gray-lighter py-3 px-4 rounded-[9px] mb-3 border-[0.7px] border-gray-300  focus:outline-none focus:ring-0 focus:border-blue-600 peer text-[14px]"
+                    className="appearance-none block w-full bg-gray-100  border-gray-lighter py-3 px-4 rounded-[9px] mb-3 border-[0.7px] border-gray-600  focus:outline-none focus:ring-0 focus:border-blue-600 peer text-[14px]"
                     id="grid-Name"
                     type="text"
                     placeholder="Enter Description"
@@ -202,7 +202,7 @@ const CountriesForm = () => {
               </label>
               <label
                 htmlFor="dropzone-file"
-                className="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-100 hover:bg-gray-300    "
+                className="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-600 border-dashed rounded-lg cursor-pointer bg-gray-100 hover:bg-gray-300    "
               >
                 {Base64IMG ? (
                   <>
