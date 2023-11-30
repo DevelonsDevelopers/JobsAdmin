@@ -102,7 +102,7 @@ const Dashboard = () => {
         <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-blue-500"></div>
       </div>
       </center> : <>
-        <div className='px-10 py-6 border-2  rounded-xl  bg-white'>
+        <div className='py-6'>
           <div className='flex max-md:flex-col gap-6'>
             <div className='grid grid-cols-3 max-md:grid-cols-2 md:w-[100%] gap-6' style={{ userSelect: 'none' }}>
               <div className="bg-[#4D38E3] rounded-xl  text-white  max-md:mt-0 h-[6.5rem] shadow-xl shadow-gray-300 ">

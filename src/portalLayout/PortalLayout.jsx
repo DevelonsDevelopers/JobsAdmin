@@ -92,9 +92,9 @@ const PortalLayout = ({ children }) => {
 					</Transition>
 
 					<main
-						className={`bg-gray-100 pt-6 transition-all duration-[400ms] ${showNav && !isMobile ? "pl-56" : ""
+						className={`bg-white pt-6 transition-all duration-[400ms] ${showNav && !isMobile ? "pl-56" : ""
 							}`}>
-						<div className="bg-gray-100 px-4 md:px-16 min-h-screen max-h-[100%] pb-[4rem] ">{children}</div>
+						<div className="bg-white px-4 md:px-16 min-h-screen max-h-[100%] pb-[4rem] ">{children}</div>
 					</main>
 				</div>
 

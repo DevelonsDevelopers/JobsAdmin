@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { AllSeekers, seekerStatus } from '../store/actions/seekerActions';
 import { Link, useNavigate } from 'react-router-dom';
 import { Pagination, Stack, ThemeProvider, createTheme } from '@mui/material';
+import { IoIosSearch } from 'react-icons/io';
 
 const Seekers = () => {
   // search===============
@@ -71,7 +72,7 @@ const Seekers = () => {
     navigate('/cv', { state: { Id: id } })
   }
 
-  const theme = createTheme({ palette: { primary: { main: '#0D3049', contrastText: '#EEE' }, }, })
+  const theme = createTheme({ palette: { primary: { main: '#000', contrastText: '#EEE' }, }, })
 
   const itemsPerPage = 10;
   const [currentPage, setCurrentPage] = useState(1);
@@ -104,32 +105,41 @@ const Seekers = () => {
             <>
               <h1 className='text-[3.125rem] font-[800] text-[#000] text-center max-md:text-[2rem] uppercase'>seeker</h1>
 
-              <div className="w-[100%] max-md:h-full  max-md:px-2 flex flex-col justify-center bg-gray-100">
+              <div className="w-[100%] max-md:h-full  max-md:px-2 flex flex-col justify-center bg-white">
 
                 <div className='flex justify-center mt-[3rem] w-[90%] m-auto'>
 
-                  <input type="search" onChange={(e) => setSearch(e.target.value)} name="" id="" placeholder='Search...' className='border-2 border-gray-600 pl-[4rem]  pr-[1rem] rounded-[1.0625rem] py-2  w-[27.8125rem] mr-auto max-md:py-[1px] max-md:w-[15rem] max-md:text-[0.7rem] focus:outline-none focus:ring-0 focus:border-gray-900 peer' />
-
+                <div className="border-2 flex bg-black border-gray-600pl-[1rem] rounded-[8px]  w-[27.8125rem] mr-auto max-md:py-[1px] max-md:w-[15rem] max-md:text-[0.7rem] focus:outline-none focus:ring-0 focus:border-gray-900 peer">
+                    <IoIosSearch className="text-[2rem] my-auto ml-2 text-white" />
+                    <input
+                      onChange={(e) => setSearch(e.target.value)}
+                      type="search"
+                      name=""
+                      id=""
+                      placeholder="Search..."
+                      className="ml-2 pl-5 w-full bg-white outline-none"
+                    />
+                  </div>
                 </div>
 
                 <SeekersView open={openView} setOpen={setOpenView} title={" VIEW"} data={data} ID={viewId} />
-                <table className="rounded-xl p-5 bg-white w-[90%] m-auto max-md:w-[100%]  mt-6 ">
+                <table className="rounded-xl p-5 bg-black text-gray-100 w-[90%] m-auto max-md:w-[100%]  mt-6 ">
                   <thead className='mt-10'>
 
                     <tr className=" uppercase  text-sm leading-normal w-[100%]">
-                      <th className="py-[2%] border-r-[1px] border-b-[2px] border-b-black  w-[3%] max-md:text-[.6rem] max-md:font-[400] text-center max-md:w-[2%]  text-[13px]">ID </th>
-                      <th className="py-[2%] border-r-[1px] border-b-[2px] border-b-black  w-[10%] max-md:text-[.6rem] max-md:font-[400] text-center max-md:w-[2%] text-[13px]">User</th>
-                      <th className="py-[2%] border-r-[1px] border-b-[2px] border-b-black w-[1%] max-md:text-[.6rem] max-md:font-[400] text-center max-md:w-[3%] text-[13px]">Phone No.</th>
-                      <th className="py-[2%] border-r-[1px] border-b-[2px] border-b-black w-[2%] max-md:text-[.6rem] max-md:font-[400] text-center text-[13px]">Status</th>
-                      <th className="py-[2%] border-r-[1px] border-b-[2px] border-b-black  w-[2%] max-md:text-[.6rem] max-md:font-[400] text-center text-[13px]">Actions</th>
-                      <th className="py-[2%]   border-b-[2px] border-b-black  w-[1%] max-md:text-[.6rem] max-md:font-[400] text-center"></th>
+                      <th className="py-[2%] border-r-[1px] border-gray-300 border-b-[3px] border-b-yellow-300  w-[3%] max-md:text-[.6rem] max-md:font-[400] text-center max-md:w-[2%]  text-[13px]">ID </th>
+                      <th className="py-[2%] border-r-[1px] border-gray-300 border-b-[3px] border-b-yellow-300  w-[10%] max-md:text-[.6rem] max-md:font-[400] text-center max-md:w-[2%] text-[13px]">User</th>
+                      <th className="py-[2%] border-r-[1px] border-gray-300 border-b-[3px] border-b-yellow-300 w-[1%] max-md:text-[.6rem] max-md:font-[400] text-center max-md:w-[3%] text-[13px]">Phone No.</th>
+                      <th className="py-[2%] border-r-[1px] border-gray-300 border-b-[3px] border-b-yellow-300 w-[2%] max-md:text-[.6rem] max-md:font-[400] text-center text-[13px]">Status</th>
+                      <th className="py-[2%] border-b-[3px] border-b-yellow-300  w-[2%] max-md:text-[.6rem] max-md:font-[400] text-center text-[13px]">Actions</th>
+                      <th className="py-[2%] border-b-[3px] border-b-yellow-300  w-[1%] max-md:text-[.6rem] max-md:font-[400] text-center"></th>
 
                     </tr>
 
                   </thead>
 
                   {paginatedData?.map((value, index) => (
-                      <tbody className="text-[#000000] text-sm font-light w-[100%] bg-white " key={value?.id}>
+                      <tbody className="text-[#000000] text-sm font-light w-[100%] bg-gray-100 " key={value?.id}>
                         <tr className='' >
                           <td className="py-[2%] w-[3%]   border-r-[1px] border-t-[1px]   text-center">
                             <span className="font-bold max-md:text-[.7rem] text-[13px] text-blue-500">{value.id}</span>
