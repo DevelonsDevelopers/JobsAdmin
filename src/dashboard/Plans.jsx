@@ -227,7 +227,7 @@ const Plans = () => {
                         </td>
 
                         <td className="py-[1%] w-[2%]  max-md:text-[.7rem]  border-r-[1px] border-t-[1px] border-black text-center">
-                          <span className="text-[13px] font-[350]">
+                          <span className="text-[13px] font-[600]">
                             {value.timeperiod}
                           </span>
                         </td>

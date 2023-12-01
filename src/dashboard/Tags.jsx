@@ -197,7 +197,7 @@ const Tags = () => {
                           </span>
                         </td>
                         <td className="py-[2%] w-[10%]   border-r-[1px] border-t-[1px] border-black   text-center">
-                          <span className=" max-md:text-[.7rem] text-[13px] font-[350]">
+                          <span className=" max-md:text-[.7rem] text-[13px] font-[600]">
                             {value.name}
                           </span>
                         </td>

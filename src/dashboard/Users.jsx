@@ -186,17 +186,17 @@ const Users = () => {
                           </span>
                         </td>
                         <td className="py-[2%] w-[6%]   border-r-[1px] border-t-[1px] border-black   text-center">
-                          <span className=" max-md:text-[.7rem] text-[13px] font-[350]">
+                          <span className=" max-md:text-[.7rem] text-[13px] font-[600]">
                             {value.name}
                           </span>
                         </td>
                         <td className="py-[1%] w-[2%]  max-md:text-[.7rem]  border-r-[1px] border-t-[1px] border-black   text-center">
-                          <span className=" text-[13px] font-[350]">
+                          <span className=" text-[13px] font-[600]">
                             {value.phone}
                           </span>
                         </td>
                         <td className="py-[1%] w-[2%]  max-md:text-[.7rem]  border-r-[1px] border-t-[1px] border-black   text-center">
-                          <span className=" text-[13px] font-[350]">
+                          <span className=" text-[13px] font-[600]">
                             {value.email}
                           </span>
                         </td>

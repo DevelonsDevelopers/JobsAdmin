@@ -230,33 +230,33 @@ const Jobs = () => {
                       >
                         <tr className="">
                           <td className="py-[2%] w-[1%]   border-r-[1px] border-t-[1px] border-black   text-center">
-                            <span className="font-bold max-md:text-[.7rem] text-[13px] text-blue-500">
+                            <span className="font-[600] max-md:text-[.7rem] text-[13px] text-blue-500">
                               {value.id}
                             </span>
                           </td>
                           <td className="py-[2%] w-[2%]   border-r-[1px] border-t-[1px] border-black   text-center">
-                            <span className="font-bold max-md:text-[.7rem] text-[13px] font-[300] ">
+                            <span className="font-[600] max-md:text-[.7rem] text-[13px]  ">
                               {value.title}
                             </span>
                           </td>
                           <td className="py-[2%] w-[3%]   border-r-[1px] border-t-[1px] border-black   text-center">
-                            <span className="font-bold max-md:text-[.7rem] text-[13px] font-[300] ">
+                            <span className="font-[600] max-md:text-[.7rem] text-[13px]  ">
                               {value.category_name}
                             </span>
                           </td>
                           <td className="py-[2%] w-[3%]   border-r-[1px] border-t-[1px] border-black   text-center">
-                            <span className="font-bold max-md:text-[.7rem] text-[13px] font-[300] ">
+                            <span className="font-[600] max-md:text-[.7rem] text-[13px]  ">
                               {value.city_name}
                             </span>
                           </td>
                           <td className="py-[2%] w-[3%]   border-r-[1px] border-t-[1px] border-black   text-center">
-                            <span className="font-bold max-md:text-[.7rem] text-[13px] font-[300] ">
+                            <span className="font-[600] max-md:text-[.7rem] text-[13px]  ">
                               {value.company_n}
                             </span>
                           </td>
 
                           <td className="py-[1%] w-[2%]  max-md:text-[.7rem]  border-r-[1px] border-t-[1px] border-black   text-center">
-                            <span className="text-[13px] font-[350]">
+                            <span className="text-[13px] font-[600]">
                               {value.role}
                             </span>
                           </td>

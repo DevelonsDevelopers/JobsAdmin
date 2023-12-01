@@ -137,7 +137,7 @@ const ProviderPanel = () => {
 
   return (
     <PortalLayout>
-      <div className="px-20 py-10 border-2 rounded-xl bg-white">
+      <div className="py-10">
         <div className="">
           <div className="grid grid-cols-2 max-md:grid-cols-1 gap-5 w-[100%] mt-4">
             <div className="bg-[#4D38E3] rounded-xl text-white max-md:mt-0 h-[7.9rem] shadow-xl shadow-gray-300 ">
@@ -285,7 +285,7 @@ const ProviderPanel = () => {
                 </thead>
                 {offerByCompany?.map((value) => (
                   <tbody className="text-gray-600 text-sm font-light w-[100%]">
-                    <tr className={`border-b border-gray-600 bg-white`}>
+                    <tr className={`border-b border-gray-300 bg-white`}>
                       <td className="py-[2%] w-[25%] max-md:text-[.7rem] text-center">
                         <span className="font-medium">{value.job}</span>
                       </td>
@@ -330,7 +330,7 @@ const ProviderPanel = () => {
                 </thead>
                 {recentJobs?.map((value) => (
                   <tbody className="text-gray-600 text-sm font-light w-[100%]">
-                    <tr className={`border-b border-gray-600 bg-white`}>
+                    <tr className={`border-b border-gray-300 bg-white`}>
                       <td className="py-[2%] w-[25%] max-md:text-[.7rem] text-center">
                         <span className="font-medium">{value.role}</span>
                       </td>
