@@ -35,7 +35,7 @@ const Sidebar = forwardRef(({ adminLogin, providerLogin }, ref) => {
 
       {providerLogin && (
         <>
-          <div className="flex flex-col mt-[100%] ">
+          <div className="flex flex-col mt-[65%] ">
             <div onClick={() => router('/providerPanel')}>
               <div
                 className={`pl-7 py-3 mx-5 rounded text-center cursor-pointer mb-1 flex items-center transition-colors 
