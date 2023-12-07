@@ -16,8 +16,6 @@ const AppliedUsers = () => {
   console.log(search)
   // =============
 
-
-
   const [open, setOpen] = useState(false);
   const [openView, setOpenView] = useState(false);
   const [viewId, setViewId] = useState()
@@ -35,7 +33,6 @@ const AppliedUsers = () => {
   const appliedUsers = useSelector(state => state.appliedUser.appliedUsers)
   const loading = useSelector(state => state.appliedUser.isLoading)
 
-
   useEffect(() => {
     console.log(appliedUsers)
   }, [appliedUsers])
@@ -52,7 +49,6 @@ const AppliedUsers = () => {
   const [Numbers, setNumbers] = useState()
   const [lastIndex, setLastIndex] = useState()
   const [firstIndex, setFirstIndex] = useState()
-
 
   useEffect(() => {
     setLastIndex(currentPage * numbersPerPage);
@@ -92,8 +88,6 @@ const AppliedUsers = () => {
     }
   }
   const [select, setSelect] = useState(0)
-
-
 
   // nodata===========
   const [nodata, setNodata] = useState(false)
