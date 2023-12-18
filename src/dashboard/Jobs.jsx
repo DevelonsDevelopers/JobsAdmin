@@ -19,7 +19,6 @@ const Jobs = () => {
   const [viewId, setViewId] = useState(false);
   const [data, setData] = useState();
   const [deleteId, setDeleteId] = useState();
-  const [search, setSearch] = useState("");
   const [loading, setLoading] = useState(true);
 
   const dispatch = useDispatch();
@@ -117,6 +116,16 @@ const Jobs = () => {
       setPaginatedData(jobs?.slice(startIndex, endIndex));
     }
   }, [jobs, startIndex]);
+
+    // search===============
+    const [search, setSearch] = useState("");
+    useEffect(() => {
+      const result = jobs?.filter((item) => {
+        return item?.name?.toLowerCase()?.match(search?.toLocaleLowerCase());
+      });
+      setPaginatedData(result);
+    }, [search]);
+  
 
   return (
     <PortalLayout>
@@ -217,13 +226,7 @@ const Jobs = () => {
                     </tr>
                   </thead>
 
-                  {paginatedData
-                    ?.filter((value) => {
-                      return search.toLowerCase() === ""
-                        ? value
-                        : value.title.toLowerCase().includes(search);
-                    })
-                    .map((value, index) => (
+                  {paginatedData?.map((value, index) => (
                       <tbody
                         className="text-[#000000] text-sm font-light w-[100%] bg-yellow-300"
                         key={value.id}

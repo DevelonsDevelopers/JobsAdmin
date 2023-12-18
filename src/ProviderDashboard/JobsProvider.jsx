@@ -54,7 +54,7 @@ const JobsProvider = () => {
     if (companybyjob?.length === 0) {
       setNodata(true);
     } else {
-      setData(false);
+      setNodata(false);
     }
   }, [companybyjob]);
   //delete
@@ -107,11 +107,11 @@ const JobsProvider = () => {
     }
   }, [companybyjob, startIndex]);
 
-  const [search, setSearch] = useState();
-
+  // search===============
+  const [search, setSearch] = useState("");
   useEffect(() => {
-    const result = companybyjob?.data?.filter((item) => {
-      return item.title.toLowerCase()?.match(search?.toLocaleLowerCase());
+    const result = companybyjob?.filter((item) => {
+      return item?.title?.toLowerCase()?.match(search?.toLocaleLowerCase());
     });
     setPaginatedData(result);
   }, [search]);
@@ -129,29 +129,21 @@ const JobsProvider = () => {
         <>
           {nodata ? (
             <center>
-              {" "}
-              <div className=" pt-[10%]">
-                {" "}
-                <img
-                  src="./assets/nodata3.png"
-                  alt="no image"
-                  className="opacity-75 w-[60%] h-[50%] mt-[-10%]"
-                />
-                <h1 className=" text-[2rem] text-gray-500 mt-[-4rem] pt-10">
-                  No Data Found
-                </h1>
-                <div className="mt-[2rem]">
-                  {" "}
-                  <Link
-                    to="/jobs/add"
-                    className=" py-[1.3%] px-[3%]  text-white text-sm bg-blue-600  rounded-[2rem] "
-                  >
-                    {" "}
-                    Add New{" "}
-                  </Link>
-                </div>
-              </div>{" "}
-            </center>
+            {" "}
+            <div className=" pt-[10%]">
+              <h1 className=" text-[2rem] text-gray-500 ">
+                No Jobs Yet
+              </h1>
+              <div className="mt-[2rem]">
+                <Link
+                  to="/jobs/add"
+                  className="bg-white border-2 border-black hover:bg-black hover:text-white transition-all ease-in-out duration-75 cursor-pointer max-md:text-[.6rem] py-2 px-[1rem] max-md:px-[1rem] max-md:py-[5px] font-[600] max-md:font-[400] rounded-[2rem] "
+                >
+                  Add New
+                </Link>
+              </div>
+            </div>{" "}
+          </center>
           ) : (
             <>
               <h1 className="text-[3.125rem] font-[800] text-[#000] text-center max-md:text-[2rem] uppercase">

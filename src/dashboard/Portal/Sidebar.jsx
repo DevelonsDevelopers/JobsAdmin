@@ -399,7 +399,7 @@ const Sidebar = forwardRef(({ adminLogin, providerLogin }, ref) => {
               </div>
             </div>
           </div>
-          <div className="flex flex-col ">
+          {/* <div className="flex flex-col ">
             <div onClick={() => router('/reports')}>
               <div
                 className={`pl-7 py-3 mx-5 rounded text-center cursor-pointer mb-1 flex items-center transition-colors 
@@ -417,7 +417,7 @@ const Sidebar = forwardRef(({ adminLogin, providerLogin }, ref) => {
                 </div>
               </div>
             </div>
-          </div>
+          </div> */}
           <div className="flex flex-col ">
             <div onClick={() => router('/users')}>
               <div
