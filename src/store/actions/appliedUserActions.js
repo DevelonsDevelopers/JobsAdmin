@@ -31,8 +31,10 @@ export const getJobbyAppliedUser = (job) => async (dispatch) => {
 }
 export const getCompanybyAppliedUser = (company) => async (dispatch) => {
     try{
+        dispatch({ type: LOADING })
         const { data: {data} } = await api.fetchCompanybyAppliedUser(company)
         dispatch({ type: GETCOMPANY_APPLIEDUSER, payload: data})
+        dispatch({ type: SUCCESS })
     } catch(error){
         console.log(error)
     }

@@ -24,8 +24,10 @@ export const getOffers = (id) => async (dispatch) => {
 
 export const GetOffersByCompany = (company) => async(dispatch) => {
     try{
+        dispatch({ type: LOADING })
         const {data: {data} } = await api.fetchOfferByCompany(company)
         dispatch ({ type: OFFERS_BY_COMPANY, payload: data})
+        dispatch({ type: SUCCESS })
     } catch(error) {
         console.log(error)
     }

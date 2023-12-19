@@ -23,9 +23,11 @@ export const getInteractionById = (id) => async(dispatch) => {
 }
 export const getInteractionByCompany = (company) => async(dispatch) => {
     try{
+        dispatch({ type: LOADING })
         const {data: {data} } = await api.fetchInteractionByCompany(company)
         console.log(data)
         dispatch ({ type: GETCOMPANY_INTERACTIONS, payload: data })
+        dispatch({ type: SUCCESS })
     } catch(error) {
         console.log(error)
     }
