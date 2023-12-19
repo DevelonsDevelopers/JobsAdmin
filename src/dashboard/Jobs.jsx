@@ -232,39 +232,39 @@ const Jobs = () => {
                         key={value.id}
                       >
                         <tr className="">
-                          <td className="py-[2%] w-[1%]   border-r-[1px] border-t-[1px] border-black   text-center">
+                          <td className="py-[2%] w-[1%]   border-r-[1px] border-t-[1px] border-gray-400   text-center">
                             <span className="font-[600] max-md:text-[.7rem] text-[13px] text-blue-500">
                               {value.id}
                             </span>
                           </td>
-                          <td className="py-[2%] w-[2%]   border-r-[1px] border-t-[1px] border-black   text-center">
+                          <td className="py-[2%] w-[2%]   border-r-[1px] border-t-[1px] border-gray-400   text-center">
                             <span className="font-[600] max-md:text-[.7rem] text-[13px]  ">
                               {value.title}
                             </span>
                           </td>
-                          <td className="py-[2%] w-[3%]   border-r-[1px] border-t-[1px] border-black   text-center">
+                          <td className="py-[2%] w-[3%]   border-r-[1px] border-t-[1px] border-gray-400   text-center">
                             <span className="font-[600] max-md:text-[.7rem] text-[13px]  ">
                               {value.category_name}
                             </span>
                           </td>
-                          <td className="py-[2%] w-[3%]   border-r-[1px] border-t-[1px] border-black   text-center">
+                          <td className="py-[2%] w-[3%]   border-r-[1px] border-t-[1px] border-gray-400   text-center">
                             <span className="font-[600] max-md:text-[.7rem] text-[13px]  ">
                               {value.city_name}
                             </span>
                           </td>
-                          <td className="py-[2%] w-[3%]   border-r-[1px] border-t-[1px] border-black   text-center">
+                          <td className="py-[2%] w-[3%]   border-r-[1px] border-t-[1px] border-gray-400   text-center">
                             <span className="font-[600] max-md:text-[.7rem] text-[13px]  ">
                               {value.company_n}
                             </span>
                           </td>
 
-                          <td className="py-[1%] w-[2%]  max-md:text-[.7rem]  border-r-[1px] border-t-[1px] border-black   text-center">
+                          <td className="py-[1%] w-[2%]  max-md:text-[.7rem]  border-r-[1px] border-t-[1px] border-gray-400   text-center">
                             <span className="text-[13px] font-[600]">
                               {value.role}
                             </span>
                           </td>
 
-                          <td className="py-[2%] max-md:text-[.7rem] w-[2%] border-r-[1px] border-t-[1px] border-black   text-center">
+                          <td className="py-[2%] max-md:text-[.7rem] w-[2%] border-r-[1px] border-t-[1px] border-gray-400   text-center">
                             <span
                               onClick={() =>
                                 UpdateStatus(value.id, value.status)
@@ -278,7 +278,7 @@ const Jobs = () => {
                               {value.status === 1 ? "Enable" : "Disable"}
                             </span>
                           </td>
-                          <td className="py-[2%] w-[2%] max-md:text-[.7rem]  border-r-[1px] border-t-[1px] border-black   text-center">
+                          <td className="py-[2%] w-[2%] max-md:text-[.7rem]  border-r-[1px] border-t-[1px] border-gray-400   text-center">
                             <div className="flex item-center justify-center gap-3">
                               <div
                                 className="w-4 mr-2 transform hover:text-blue-500  hover:scale-110 cursor-pointer"
@@ -319,7 +319,7 @@ const Jobs = () => {
                             </div>
                           </td>
 
-                          <td className="py-[2%] w-[1%] max-md:text-[.7rem]  border-t-[1px]  border-black ">
+                          <td className="py-[2%] w-[1%] max-md:text-[.7rem]  border-t-[1px]  border-gray-400 ">
                             <div
                               className="w-4 m-auto transform hover:text-blue-500  hover:scale-110 cursor-pointer "
                               onClick={() => handleClick(value.id)}

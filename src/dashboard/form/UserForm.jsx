@@ -80,7 +80,7 @@ const UserForm = () => {
                 id="floating_email"
                 onChange={ClickInput}
                 className="pl-4 block py-[9px] px-0 w-full text-sm  bg-gray-100 rounded-[8px] border-[0.7px] border-gray-600 appearance-none dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-                placeholder="Enter User Name"
+                placeholder="Enter Name"
                 required
               />
             </div>

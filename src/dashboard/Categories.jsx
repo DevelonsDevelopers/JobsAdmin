@@ -130,7 +130,7 @@ const Categories = () => {
 
               <div className="w-[100%] max-md:h-full  max-md:px-2 flex flex-col justify-center bg-white">
                 <div className="flex justify-center mt-[3rem] w-[90%] m-auto">
-                  <div className="border-2 flex bg-black border-gray-600pl-[1rem] rounded-[8px]  w-[27.8125rem] mr-auto max-md:py-[1px] max-md:w-[15rem] max-md:text-[0.7rem] focus:outline-none focus:ring-0 focus:border-gray-900 peer">
+                  <div className="border-2 flex bg-black border-gray-400pl-[1rem] rounded-[8px]  w-[27.8125rem] mr-auto max-md:py-[1px] max-md:w-[15rem] max-md:text-[0.7rem] focus:outline-none focus:ring-0 focus:border-gray-900 peer">
                     <IoIosSearch className="text-[2rem] my-auto ml-2 text-white" />
                     <input
                       onChange={(e) => setSearch(e.target.value)}
@@ -165,25 +165,25 @@ const Categories = () => {
                 <table className="rounded-xl shadow-lg p-5 bg-black text-gray-100 w-[90%] m-auto max-md:w-[100%]  mt-6 ">
                   <thead className="mt-10">
                     <tr className=" uppercase  text-sm leading-normal w-[100%]">
-                      <th className="py-[2%] border-r-[1px] border-b-[3px] border-gray-300  w-[3%] max-md:text-[.6rem] max-md:font-[400] text-center max-md:w-[2%]  text-[13px]">
+                      <th className="py-[2%] border-r-[1px] border-b-[3px] border-gray-400  w-[3%] max-md:text-[.6rem] max-md:font-[400] text-center max-md:w-[2%]  text-[13px]">
                         ID{" "}
                       </th>
-                      <th className="py-[2%] border-r-[1px] border-b-[3px] border-gray-300  w-[10%] max-md:text-[.6rem] max-md:font-[400] text-center max-md:w-[2%] text-[13px]">
+                      <th className="py-[2%] border-r-[1px] border-b-[3px] border-gray-400  w-[10%] max-md:text-[.6rem] max-md:font-[400] text-center max-md:w-[2%] text-[13px]">
                         Name
                       </th>
-                      <th className="py-[2%] border-r-[1px] border-b-[3px] border-gray-300 w-[1%] max-md:text-[.6rem] max-md:font-[400] text-center max-md:w-[3%] text-[13px]">
+                      <th className="py-[2%] border-r-[1px] border-b-[3px] border-gray-400 w-[1%] max-md:text-[.6rem] max-md:font-[400] text-center max-md:w-[3%] text-[13px]">
                         Images
                       </th>
-                      <th className="py-[2%] border-r-[1px] border-b-[3px] border-gray-300 w-[1%] max-md:text-[.6rem] max-md:font-[400] text-center max-md:w-[3%] text-[13px]">
+                      <th className="py-[2%] border-r-[1px] border-b-[3px] border-gray-400 w-[1%] max-md:text-[.6rem] max-md:font-[400] text-center max-md:w-[3%] text-[13px]">
                         Jobs
                       </th>
-                      <th className="py-[2%] border-r-[1px] border-b-[3px] border-gray-300 w-[2%] max-md:text-[.6rem] max-md:font-[400] text-center text-[13px]">
+                      <th className="py-[2%] border-r-[1px] border-b-[3px] border-gray-400 w-[2%] max-md:text-[.6rem] max-md:font-[400] text-center text-[13px]">
                         Status
                       </th>
-                      <th className="py-[2%] border-b-[3px] border-gray-300  w-[2%] max-md:text-[.6rem] max-md:font-[400] text-center text-[13px]">
+                      <th className="py-[2%] border-b-[3px] border-gray-400  w-[2%] max-md:text-[.6rem] max-md:font-[400] text-center text-[13px]">
                         Actions
                       </th>
-                      <th className="py-[2%]   border-b-[3px] border-gray-300  w-[1%] max-md:text-[.6rem] max-md:font-[400] text-center"></th>
+                      <th className="py-[2%]   border-b-[3px] border-gray-400  w-[1%] max-md:text-[.6rem] max-md:font-[400] text-center"></th>
                     </tr>
                   </thead>
 
@@ -193,17 +193,17 @@ const Categories = () => {
                       key={index}
                     >
                       <tr className="">
-                        <td className="py-[2%] w-[3%]   border-r-[1px] border-t-[1px] border-black text-center">
+                        <td className="py-[2%] w-[3%]   border-r-[1px] border-t-[1px] border-gray-400 text-center">
                           <span className="font-bold max-md:text-[.7rem] text-[13px] text-blue-500">
                             {value.id}
                           </span>
                         </td>
-                        <td className="py-[2%] w-[10%] border-r-[1px] border-t-[1px] border-black text-center">
+                        <td className="py-[2%] w-[10%] border-r-[1px] border-t-[1px] border-gray-400 text-center">
                           <span className=" max-md:text-[.7rem] text-[13px] font-[600]">
                             {value.name}
                           </span>
                         </td>
-                        <td className="py-[1%] px-[1%] w-[2%]  max-md:text-[.7rem]  border-r-[1px] border-t-[1px] border-black   text-center">
+                        <td className="py-[1%] px-[1%] w-[2%]  max-md:text-[.7rem]  border-r-[1px] border-t-[1px] border-gray-400   text-center">
                           <center>
                             <img
                               src={value.image}
@@ -212,13 +212,13 @@ const Categories = () => {
                             />
                           </center>
                         </td>
-                        <td className="py-[1%] w-[2%]  max-md:text-[.7rem]  border-r-[1px] border-t-[1px] border-black   text-center">
+                        <td className="py-[1%] w-[2%]  max-md:text-[.7rem]  border-r-[1px] border-t-[1px] border-gray-400   text-center">
                           <span className=" text-[13px] font-[600]">
                             {value.jobs}
                           </span>
                         </td>
 
-                        <td className="py-[2%] max-md:text-[.7rem] w-[2%] border-r-[1px] border-t-[1px] border-black text-center">
+                        <td className="py-[2%] max-md:text-[.7rem] w-[2%] border-r-[1px] border-t-[1px] border-gray-400 text-center">
                           <span
                             onClick={() => UpdateStatus(value.id, value.status)}
                             className={`bg-green-600 text-white font-[500] py-[3px] px-[10px] max-md:w-[8%] rounded-xl text-[0.6rem] max-md:py-1 max-md:px-2 max-md:text-[0.6rem] cursor-pointer ${
@@ -228,7 +228,7 @@ const Categories = () => {
                             {value.status === 1 ? "Enable" : "Disable"}
                           </span>
                         </td>
-                        <td className="py-[2%] w-[2%] max-md:text-[.7rem]  border-r-[1px] border-t-[1px] border-black   text-center">
+                        <td className="py-[2%] w-[2%] max-md:text-[.7rem]  border-r-[1px] border-t-[1px] border-gray-400   text-center">
                           <div className="flex item-center justify-center gap-3">
                             <div
                               className="w-4 mr-2 transform hover:text-blue-500  hover:scale-110 cursor-pointer"
@@ -269,7 +269,7 @@ const Categories = () => {
                           </div>
                         </td>
 
-                        <td className="py-[2%] w-[1%] max-md:text-[.7rem]  border-t-[1px]  border-black ">
+                        <td className="py-[2%] w-[1%] max-md:text-[.7rem]  border-t-[1px]  border-gray-400 ">
                           <div
                             className="w-4 m-auto transform hover:text-blue-500  hover:scale-110 cursor-pointer"
                             onClick={() => handleClick(value.id)}

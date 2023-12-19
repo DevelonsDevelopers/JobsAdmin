@@ -140,22 +140,22 @@ const AppliedUserProvider = () => {
                 <table className="rounded-xl shadow-lg p-5 bg-black text-gray-100 w-[90%] m-auto max-md:w-[100%]  mt-6 max-md:overflow-auto">
                   <thead className="mt-10">
                     <tr className=" uppercase  text-sm leading-normal w-[100%]">
-                      <th className="py-[2%] border-r-[1px] border-gray-300 border-b-[3px] border-black-[3px]  w-[1%] max-md:text-[.6rem] max-md:font-[400] text-center max-md:w-[2%]  text-[13px]">
+                      <th className="py-[2%] border-r-[1px] border-gray-300 border-b-[3px] border-gray-400-[3px]  w-[1%] max-md:text-[.6rem] max-md:font-[400] text-center max-md:w-[2%]  text-[13px]">
                         ID{" "}
                       </th>
-                      <th className="py-[2%] border-r-[1px] border-gray-300 border-b-[3px] border-black-[3px]  w-[1%] max-md:text-[.6rem] max-md:font-[400] text-center max-md:w-[2%]  text-[13px]">
+                      <th className="py-[2%] border-r-[1px] border-gray-300 border-b-[3px] border-gray-400-[3px]  w-[1%] max-md:text-[.6rem] max-md:font-[400] text-center max-md:w-[2%]  text-[13px]">
                         User
                       </th>
-                      <th className="py-[2%] border-r-[1px] border-gray-300 border-b-[3px] border-black-[3px]  w-[1%] max-md:text-[.6rem] max-md:font-[400] text-center max-md:w-[2%]  text-[13px]">
+                      <th className="py-[2%] border-r-[1px] border-gray-300 border-b-[3px] border-gray-400-[3px]  w-[1%] max-md:text-[.6rem] max-md:font-[400] text-center max-md:w-[2%]  text-[13px]">
                         job
                       </th>
-                      <th className="py-[2%] border-r-[1px] border-gray-300 border-b-[3px] border-black-[3px]  w-[1%] max-md:text-[.6rem] max-md:font-[400] text-center max-md:w-[2%]  text-[13px]">
+                      <th className="py-[2%] border-r-[1px] border-gray-300 border-b-[3px] border-gray-400-[3px]  w-[1%] max-md:text-[.6rem] max-md:font-[400] text-center max-md:w-[2%]  text-[13px]">
                         Date
                       </th>
-                      <th className="py-[2%] border-r-[1px] border-gray-300 border-b-[3px] border-black-[3px]  w-[1%] max-md:text-[.6rem] max-md:font-[400] text-center max-md:w-[2%]  text-[13px]">
+                      <th className="py-[2%] border-r-[1px] border-gray-300 border-b-[3px] border-gray-400-[3px]  w-[1%] max-md:text-[.6rem] max-md:font-[400] text-center max-md:w-[2%]  text-[13px]">
                         Cover Letter / Cv
                       </th>
-                      <th className="py-[2%] border-r-[1px] border-gray-300 border-b-[3px] border-black-[3px]  w-[1%] max-md:text-[.6rem] max-md:font-[400] text-center max-md:w-[2%]  text-[13px]"></th>
+                      <th className="py-[2%] border-r-[1px] border-gray-300 border-b-[3px] border-gray-400-[3px]  w-[1%] max-md:text-[.6rem] max-md:font-[400] text-center max-md:w-[2%]  text-[13px]"></th>
                     </tr>
                   </thead>
 
@@ -165,28 +165,28 @@ const AppliedUserProvider = () => {
                       key={index}
                     >
                       <tr className="">
-                        <td className="py-[2%] w-[1%] border-r-[1px] border-t-[1px] border-black   text-center">
+                        <td className="py-[2%] w-[1%] border-r-[1px] border-t-[1px] border-gray-400   text-center">
                           <span className="font-bold max-md:text-[.7rem] text-[13px] text-blue-500">
                             {value.id}
                           </span>
                         </td>
 
-                        <td className="py-[2%] w-[1%] border-r-[1px] border-t-[1px] border-black   text-center">
+                        <td className="py-[2%] w-[1%] border-r-[1px] border-t-[1px] border-gray-400   text-center">
                           <span className=" text-[13px] font-[350]">
                             {value.name}
                           </span>
                         </td>
-                        <td className="py-[2%] w-[1%] border-r-[1px] border-t-[1px] border-black   text-center">
+                        <td className="py-[2%] w-[1%] border-r-[1px] border-t-[1px] border-gray-400   text-center">
                           <span className=" text-[13px] font-[350]">
                             {value.job}
                           </span>
                         </td>
-                        <td className="py-[2%] w-[1%] border-r-[1px] border-t-[1px] border-black   text-center">
+                        <td className="py-[2%] w-[1%] border-r-[1px] border-t-[1px] border-gray-400   text-center">
                           <span className=" text-[13px] font-[350]">
                             {moment(value.date).format("YYYY-MM-DD")}
                           </span>
                         </td>
-                        <td className="py-[2%] w-[1%] border-r-[1px] border-t-[1px] border-black text-center">
+                        <td className="py-[2%] w-[1%] border-r-[1px] border-t-[1px] border-gray-400 text-center">
                           <button
                             onClick={() =>
                               handleViewCoverLetter(value.user, value.job)
@@ -200,7 +200,7 @@ const AppliedUserProvider = () => {
 
                         </td>
 
-                        <td className="py-[2%] w-[1%] border-r-[1px] border-t-[1px] border-black text-center">
+                        <td className="py-[2%] w-[1%] border-r-[1px] border-t-[1px] border-gray-400 text-center">
                           <div
                             className="w-4 m-auto transform hover:text-blue-500  hover:scale-110 cursor-pointer"
                             onClick={() => handleClick(value.id)}

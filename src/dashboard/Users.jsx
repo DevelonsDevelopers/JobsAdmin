@@ -180,28 +180,28 @@ const Users = () => {
                       key={value.id}
                     >
                       <tr className="">
-                        <td className="py-[2%] w-[3%]   border-r-[1px] border-t-[1px] border-black   text-center">
+                        <td className="py-[2%] w-[3%]   border-r-[1px] border-t-[1px] border-gray-400   text-center">
                           <span className="font-bold max-md:text-[.7rem] text-[13px] text-blue-500">
                             {value.id}
                           </span>
                         </td>
-                        <td className="py-[2%] w-[6%]   border-r-[1px] border-t-[1px] border-black   text-center">
+                        <td className="py-[2%] w-[6%]   border-r-[1px] border-t-[1px] border-gray-400   text-center">
                           <span className=" max-md:text-[.7rem] text-[13px] font-[600]">
                             {value.name}
                           </span>
                         </td>
-                        <td className="py-[1%] w-[2%]  max-md:text-[.7rem]  border-r-[1px] border-t-[1px] border-black   text-center">
+                        <td className="py-[1%] w-[2%]  max-md:text-[.7rem]  border-r-[1px] border-t-[1px] border-gray-400   text-center">
                           <span className=" text-[13px] font-[600]">
                             {value.phone}
                           </span>
                         </td>
-                        <td className="py-[1%] w-[2%]  max-md:text-[.7rem]  border-r-[1px] border-t-[1px] border-black   text-center">
+                        <td className="py-[1%] w-[2%]  max-md:text-[.7rem]  border-r-[1px] border-t-[1px] border-gray-400   text-center">
                           <span className=" text-[13px] font-[600]">
                             {value.email}
                           </span>
                         </td>
 
-                        <td className="py-[2%] max-md:text-[.7rem] w-[2%] border-r-[1px] border-t-[1px] border-black   text-center">
+                        <td className="py-[2%] max-md:text-[.7rem] w-[2%] border-r-[1px] border-t-[1px] border-gray-400   text-center">
                           <span
                             onClick={() => UpdateStatus(value.id, value.status)}
                             className={`bg-green-600 text-white font-[500] py-[3px] px-[10px] max-md:w-[8%] rounded-xl text-[0.6rem] max-md:py-1 max-md:px-2 max-md:text-[0.6rem] cursor-pointer ${
@@ -211,7 +211,7 @@ const Users = () => {
                             {value.status === 1 ? "Enable" : "Disable"}
                           </span>
                         </td>
-                        <td className="py-[2%] w-[2%] max-md:text-[.7rem]  border-r-[1px] border-t-[1px] border-black   text-center">
+                        <td className="py-[2%] w-[2%] max-md:text-[.7rem]  border-r-[1px] border-t-[1px] border-gray-400   text-center">
                           <div className="flex item-center justify-center gap-3">
                             <div
                               className="w-4 mr-2 transform hover:text-blue-500  hover:scale-110"
@@ -252,7 +252,7 @@ const Users = () => {
                           </div>
                         </td>
 
-                        <td className="py-[2%] w-[1%] max-md:text-[.7rem]  border-t-[1px] border-black">
+                        <td className="py-[2%] w-[1%] max-md:text-[.7rem]  border-t-[1px] border-gray-400">
                           <div
                             className="w-4 m-auto transform hover:text-blue-500  hover:scale-110 "
                             onClick={() => handleClick(value.id)}

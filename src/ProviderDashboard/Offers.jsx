@@ -127,32 +127,32 @@ const Offers = () => {
                 <table className="rounded-xl shadow-lg p-5 bg-black text-gray-100 w-[90%] m-auto max-md:w-[100%]  mt-6 max-md:overflow-auto">
                   <thead className='mt-10'>
                     <tr className=" uppercase  text-sm leading-normal w-[100%]">
-                      <th className="py-[2%] border-r-[1px] border-gray-300 border-b-[3px] border-black-[3px]  w-[1%] max-md:text-[.6rem] max-md:font-[400] text-center max-md:w-[2%]  text-[13px]">ID </th>
-                      <th className="py-[2%] border-r-[1px] border-gray-300 border-b-[3px] border-black-[3px]  w-[1%] max-md:text-[.6rem] max-md:font-[400] text-center max-md:w-[2%]  text-[13px]">OfferType</th>
-                      <th className="py-[2%] border-r-[1px] border-gray-300 border-b-[3px] border-black-[3px]  w-[1%] max-md:text-[.6rem] max-md:font-[400] text-center max-md:w-[2%]  text-[13px]">job</th>
-                      <th className="py-[2%] border-r-[1px] border-gray-300 border-b-[3px] border-black-[3px]  w-[1%] max-md:text-[.6rem] max-md:font-[400] text-center max-md:w-[2%]  text-[13px]">Date</th>
-                      <th className="py-[2%] border-r-[1px] border-gray-300 border-b-[3px] border-black-[3px]  w-[1%] max-md:text-[.6rem] max-md:font-[400] text-center max-md:w-[2%]  text-[13px]"></th>
+                      <th className="py-[2%] border-r-[1px] border-gray-300 border-b-[3px] border-gray-400-[3px]  w-[1%] max-md:text-[.6rem] max-md:font-[400] text-center max-md:w-[2%]  text-[13px]">ID </th>
+                      <th className="py-[2%] border-r-[1px] border-gray-300 border-b-[3px] border-gray-400-[3px]  w-[1%] max-md:text-[.6rem] max-md:font-[400] text-center max-md:w-[2%]  text-[13px]">OfferType</th>
+                      <th className="py-[2%] border-r-[1px] border-gray-300 border-b-[3px] border-gray-400-[3px]  w-[1%] max-md:text-[.6rem] max-md:font-[400] text-center max-md:w-[2%]  text-[13px]">job</th>
+                      <th className="py-[2%] border-r-[1px] border-gray-300 border-b-[3px] border-gray-400-[3px]  w-[1%] max-md:text-[.6rem] max-md:font-[400] text-center max-md:w-[2%]  text-[13px]">Date</th>
+                      <th className="py-[2%] border-r-[1px] border-gray-300 border-b-[3px] border-gray-400-[3px]  w-[1%] max-md:text-[.6rem] max-md:font-[400] text-center max-md:w-[2%]  text-[13px]"></th>
                     </tr>
                   </thead>
 
                   {paginatedData?.map((value, index) => (
                       <tbody className="text-[#000000] text-sm font-light w-[100%] bg-gray-50" key={value?.id}>
                         <tr className='' >
-                          <td className="py-[2%] w-[1%] border-r-[1px] border-t-[1px] border-black   text-center">
+                          <td className="py-[2%] w-[1%] border-r-[1px] border-t-[1px] border-gray-400   text-center">
                             <span className="font-bold max-md:text-[.7rem] text-[13px] text-blue-500">{value.id}</span>
                           </td>
 
-                          <td className="py-[2%] w-[1%] border-r-[1px] border-t-[1px] border-black   text-center">
+                          <td className="py-[2%] w-[1%] border-r-[1px] border-t-[1px] border-gray-400   text-center">
                             <span className=' text-[13px] font-[350]'>{value.offerType}</span>
                           </td>
-                          <td className="py-[2%] w-[1%] border-r-[1px] border-t-[1px] border-black   text-center">
+                          <td className="py-[2%] w-[1%] border-r-[1px] border-t-[1px] border-gray-400   text-center">
                             <span className=' text-[13px] font-[350]'>{value.job}</span>
                           </td>
-                          <td className="py-[2%] w-[1%] border-r-[1px] border-t-[1px] border-black   text-center">
+                          <td className="py-[2%] w-[1%] border-r-[1px] border-t-[1px] border-gray-400   text-center">
                             <span className=' text-[13px] font-[350]'>{moment(value.date).format('YYYY-MM-DD')}</span>
                           </td>
 
-                          <td className="py-[2%] w-[1%] border-r-[1px] border-t-[1px] border-black   text-center ">
+                          <td className="py-[2%] w-[1%] border-r-[1px] border-t-[1px] border-gray-400   text-center ">
                             <div className="w-4 m-auto transform hover:text-blue-500  hover:scale-110 cursor-pointer" onClick={() => handleClick(value.id)}>   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" >
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
