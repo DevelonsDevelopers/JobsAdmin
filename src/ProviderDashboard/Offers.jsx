@@ -124,7 +124,7 @@ const Offers = () => {
 
                 </div>
                 <OfferView open={openView} setOpen={setOpenView} title={"VIEW"} data={data} ID={viewId} />
-                <table className="rounded-xl p-5 bg-black text-gray-100 w-[90%] m-auto max-md:w-[100%]  mt-6 max-md:overflow-auto">
+                <table className="rounded-xl shadow-lg p-5 bg-black text-gray-100 w-[90%] m-auto max-md:w-[100%]  mt-6 max-md:overflow-auto">
                   <thead className='mt-10'>
                     <tr className=" uppercase  text-sm leading-normal w-[100%]">
                       <th className="py-[2%] border-r-[1px] border-gray-300 border-b-[3px] border-black-[3px]  w-[1%] max-md:text-[.6rem] max-md:font-[400] text-center max-md:w-[2%]  text-[13px]">ID </th>
@@ -136,7 +136,7 @@ const Offers = () => {
                   </thead>
 
                   {paginatedData?.map((value, index) => (
-                      <tbody className="text-[#000000] text-sm font-light w-[100%] bg-yellow-300" key={value?.id}>
+                      <tbody className="text-[#000000] text-sm font-light w-[100%] bg-gray-50" key={value?.id}>
                         <tr className='' >
                           <td className="py-[2%] w-[1%] border-r-[1px] border-t-[1px] border-black   text-center">
                             <span className="font-bold max-md:text-[.7rem] text-[13px] text-blue-500">{value.id}</span>
