@@ -26,7 +26,7 @@ import { useDispatch, useSelector } from "react-redux";
 import moment from "moment";
 import { GetOffersByCompany } from "../store/actions/offersActions";
 import { getRecentJob } from "../store/actions/jobActions";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {
   SESSION_PROVIDER,
   SESSION_PROVIDER_ID,
@@ -139,7 +139,18 @@ const ProviderPanel = () => {
     <PortalLayout>
       <div className="py-10">
         <div className="">
-          <div className="grid grid-cols-2 max-md:grid-cols-1 gap-5 w-[100%] mt-4">
+          <div className="flex max-md:flex-col gap-5">
+          <div className="w-[40%] max-md:w-[100%] flex flex-col items-center py-5 px-10 border-2 rounded-[8px] shadow-md" >
+            <h1 className="text-[2rem] font-[600]">Post a Job.</h1>
+            <p className="w-[90%] text-center">Empower your career journey! We're seeking dynamic individuals to join our team. Explore growth, impact, and endless possibilities with us!</p>
+            <Link to="/jobs/add">
+              {" "}
+              <button className="mt-5 bg-white border-2 border-black hover:bg-black hover:text-white transition-all ease-in-out duration-75 cursor-pointer max-md:text-[.6rem] py-2 px-[1rem] max-md:px-[1rem] max-md:py-[5px] font-[600] max-md:font-[400] rounded-[8px] ml-auto ">
+                ADD JOB
+              </button>
+            </Link>
+          </div>
+          <div className="grid grid-cols-2 max-sm:grid-cols-1 gap-5 w-[60%] max-md:w-[100%]">
             <div className="bg-[#4D38E3] rounded-xl text-white max-md:mt-0 h-[7.9rem] shadow-xl shadow-gray-300 ">
               <ul className="flex flex-row-reverse">
                 <li>
@@ -180,7 +191,7 @@ const ProviderPanel = () => {
               </h1>
             </div>
             <div className="bg-[#EEB167] rounded-xl text-white  px-2 py-4  max-md:mt-0 h-[7.9rem] shadow-xl shadow-gray-300 ">
-              <h1 className="text-left ml-5 text-[1.2rem] font-[700]">
+              <h1 className="text-left ml-5 text-[1rem] font-[700]">
                 Current Subscribed Plan
               </h1>
               <div className="flex justify-between mt-3">
@@ -193,6 +204,7 @@ const ProviderPanel = () => {
                 Paid This Month
               </h1>
             </div>
+          </div>
           </div>
           {/* <div className='border-2 p-3 h-[19rem] rounded-xl shadow-xl shadow-gray-300  max-md:mr-0'>
                         <span className=' ml-[2rem] font-[600] text-[1rem]'>Memory Status</span>

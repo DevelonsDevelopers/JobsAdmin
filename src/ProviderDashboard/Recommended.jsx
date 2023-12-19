@@ -6,16 +6,14 @@ import moment from 'moment';
 import { getInteractionByCompany } from '../store/actions/interactionActions';
 import { GetRecommendedSeeker } from '../store/actions/seekerActions';
 import RecommendedUser from './view/RecommendedUser';
+import { Pagination, Stack, ThemeProvider, createTheme } from '@mui/material';
 
 
 
 
 
 const Recommended = () => {
-  // search===============
-  const [search, setSearch] = useState('')
   // =============
-
   const params = useLocation()
   const id = params.state.ID
 
@@ -47,36 +45,32 @@ const Recommended = () => {
   }, [dispatch])
 
   //pagination=============================
-  const [currentPage, setCurrentPage] = useState(1)
-  const numbersPerPage = 10;
-  const [records, setRecords] = useState()
-  const [nPage, setPage] = useState()
-  const [Numbers, setNumbers] = useState()
-  const [lastIndex, setLastIndex] = useState()
-  const [firstIndex, setFirstIndex] = useState()
+  const theme = createTheme({
+    palette: { primary: { main: "#000", contrastText: "#EEE" } },
+  });
 
-
-  useEffect(() => {
-    setLastIndex(currentPage * numbersPerPage);
-  }, [currentPage])
-
-  useEffect(() => {
-    setFirstIndex(lastIndex - numbersPerPage);
-  }, [lastIndex])
-
+  const itemsPerPage = 10;
+  const [currentPage, setCurrentPage] = useState(1);
+  const handlePageChange = (event, newPage) => {
+    setCurrentPage(newPage);
+  };
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+  const [paginatedData, setPaginatedData] = useState();
   useEffect(() => {
     if (recommendedSeeker) {
-      setRecords(recommendedSeeker?.slice(firstIndex, lastIndex));
-      setPage(Math.ceil(recommendedSeeker.length / numbersPerPage));
+      setPaginatedData(recommendedSeeker?.slice(startIndex, endIndex));
     }
-  }, [recommendedSeeker, firstIndex])
+  }, [recommendedSeeker, startIndex]);
 
+  // search===============
+  const [search, setSearch] = useState("");
   useEffect(() => {
-    if (nPage) {
-      setNumbers([...Array(nPage + 1).keys()].slice(1))
-    }
-  }, [nPage])
-
+    const result = recommendedSeeker?.filter((item) => {
+      return item?.name?.toLowerCase()?.match(search?.toLocaleLowerCase());
+    });
+    setPaginatedData(result);
+  }, [search]);
   // nodata===========
   const [nodata, setNodata] = useState(false)
   useEffect(() => {
@@ -105,7 +99,7 @@ const Recommended = () => {
 
               <h1 className='text-[3.125rem] font-[800] text-[#000] text-center max-md:text-[2rem] uppercase'>Recommended Users</h1>
 
-              <div className="w-[100%] max-md:h-full  max-md:px-2 flex flex-col justify-center bg-gray-100">
+              <div className="w-[100%] max-md:h-full  max-md:px-2 flex flex-col justify-center bg-white">
 
                 <div className='flex justify-center mt-[3rem] w-[90%] m-auto'>
 
@@ -115,46 +109,41 @@ const Recommended = () => {
 
                 </div>
                 <RecommendedUser open={openView} setOpen={setOpenView} ID={viewId} />
-                <table className="rounded-xl p-5 bg-white w-[90%] m-auto max-md:w-[100%]  mt-6 ">
+                <table className="rounded-xl p-5 bg-black text-gray-100 w-[90%] m-auto max-md:w-[100%]  mt-6 max-md:overflow-auto ">
                   <thead className='mt-10'>
                     <tr className=" uppercase  text-sm leading-normal w-[100%]">
-                      <th className="py-[2%] border-r-[1px] border-b-[2px] border-b-black  w-[3%] max-md:text-[.6rem] max-md:font-[400] text-center max-md:w-[2%]  text-[13px]">ID </th>
-                      <th className="py-[2%] border-r-[1px] border-b-[2px] border-b-black w-[1%] max-md:text-[.6rem] max-md:font-[400] text-center max-md:w-[3%] text-[13px]">Name</th>
-                      <th className="py-[2%] border-r-[1px] border-b-[2px] border-b-black w-[1%] max-md:text-[.6rem] max-md:font-[400] text-center max-md:w-[3%] text-[13px]">Role</th>
-                      <th className="py-[2%] border-r-[1px] border-b-[2px] border-b-black w-[1%] max-md:text-[.6rem] max-md:font-[400] text-center max-md:w-[3%] text-[13px]">offer</th>
-                      <th className="py-[2%] border-r-[1px] border-b-[2px] border-b-black w-[1%] max-md:text-[.6rem] max-md:font-[400] text-center max-md:w-[3%] text-[13px]">Address</th>
-                      <th className="py-[2%]   border-b-[2px] border-b-black  w-[1%] max-md:text-[.6rem] max-md:font-[400] text-center"></th>
+                      <th className="py-[2%] border-r-[1px] border-gray-300 border-b-[3px] border-black-[3px]  w-[1%] max-md:text-[.6rem] max-md:font-[400] text-center max-md:w-[2%]  text-[13px]">ID </th>
+                      <th className="py-[2%] border-r-[1px] border-gray-300 border-b-[3px] border-black-[3px]  w-[1%] max-md:text-[.6rem] max-md:font-[400] text-center max-md:w-[2%]  text-[13px]">Name</th>
+                      <th className="py-[2%] border-r-[1px] border-gray-300 border-b-[3px] border-black-[3px]  w-[1%] max-md:text-[.6rem] max-md:font-[400] text-center max-md:w-[2%]  text-[13px]">Role</th>
+                      <th className="py-[2%] border-r-[1px] border-gray-300 border-b-[3px] border-black-[3px]  w-[1%] max-md:text-[.6rem] max-md:font-[400] text-center max-md:w-[2%]  text-[13px]">offer</th>
+                      <th className="py-[2%] border-r-[1px] border-gray-300 border-b-[3px] border-black-[3px]  w-[1%] max-md:text-[.6rem] max-md:font-[400] text-center max-md:w-[2%]  text-[13px]">Address</th>
+                      <th className="py-[2%] border-r-[1px] border-gray-300 border-b-[3px] border-black-[3px]  w-[1%] max-md:text-[.6rem] max-md:font-[400] text-center max-md:w-[2%]  text-[13px]"></th>
 
                     </tr>
 
                   </thead>
 
-                  {records?.
-                    filter((value) => {
-                      return search.toLowerCase() === ''
-                        ? value : value.name.toLowerCase().includes(search);
-                    })
-                    .map((value, index) => (
-                      <tbody className="text-[#000000] text-sm font-light w-[100%] bg-white " key={value?.id}>
+                  {paginatedData?.map((value, index) => (
+                      <tbody className="text-[#000000] text-sm font-light w-[100%] bg-yellow-300" key={value?.id}>
                         <tr className='' >
-                          <td className="py-[2%] w-[3%]   border-r-[1px] border-t-[1px]   text-center">
+                          <td className="py-[2%] w-[1%]   border-r-[1px] border-t-[1px] border-black   text-center">
                             <span className="font-bold max-md:text-[.7rem] text-[13px] text-blue-500">{value.id}</span>
                           </td>
 
-                          <td className="py-[1%] w-[2%]  max-md:text-[.7rem]  border-r-[1px] border-t-[1px]   text-center">
+                          <td className="py-[2%] w-[2%]   border-r-[1px] border-t-[1px] border-black   text-center">
                             <span className=' text-[13px] font-[350]'>{value.name}</span>
                           </td>
-                          <td className="py-[1%] w-[2%]  max-md:text-[.7rem]  border-r-[1px] border-t-[1px]   text-center">
+                          <td className="py-[2%] w-[2%]   border-r-[1px] border-t-[1px] border-black   text-center">
                             <span className=' text-[13px] font-[350]'>{value.role}</span>
                           </td>
-                          <td className="py-[1%] w-[2%]  max-md:text-[.7rem]  border-r-[1px] border-t-[1px]   text-center">
+                          <td className="py-[2%] w-[2%]   border-r-[1px] border-t-[1px] border-black   text-center">
                             <span className=' text-[13px] font-[350]'>{value.offer}</span>
                           </td>
-                          <td className="py-[1%]  max-md:text-[.7rem]  border-r-[1px] border-t-[1px]   text-center">
+                          <td className="py-[2%] w-[2%]   border-r-[1px] border-t-[1px] border-black   text-center">
                             <span className=' text-[11px] font-[350]'>{value.address}</span>
                           </td>
 
-                          <td className="py-[2%] w-[1%] max-md:text-[.7rem]  border-t-[1px]   ">
+                          <td className="py-[2%] w-[2%]   border-r-[1px] border-t-[1px] border-black   text-center">
                             <div className="w-4 m-auto transform hover:text-blue-500  hover:scale-110 " onClick={() => handleClick(value.id)}>   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" >
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
@@ -166,23 +155,16 @@ const Recommended = () => {
                       </tbody>
                     ))}
                 </table>
-                <nav className='m-auto mt-5' >
-                  <ul className="flex items-center -space-x-px h-10 text-base">
-                    <li>
-                      <Link to="#" onClick={prevPage} className="flex items-center justify-center px-4 h-10 ml-0 leading-tight text-gray-500 bg-white border border-gray-600 rounded-l-lg hover:bg-gray-100 hover:text-gray-700     " >
-                        <span className="sr-only">Previous</span>
-                        <svg className="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-                          <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 1 1 5l4 4" />
-                        </svg>
-                      </Link>
-                    </li>
-                    {Numbers?.map((n, i) => (<li> <Link to="#" onClick={() => changeCurrentPage(n)} className="flex items-center justify-center px-4 h-10 leading-tight text-gray-500 bg-white border border-gray-600 hover:bg-gray-100 hover:text-gray-700     ">{n}</Link> </li>))}
-
-                    <li>
-                      <Link to="#" onClick={nextPage} className="flex items-center justify-center px-4 h-10 leading-tight text-gray-500 bg-white border border-gray-600 rounded-r-lg hover:bg-gray-100 hover:text-gray-700     "> <span className="sr-only">Next</span><svg className="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10"> <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m1 9 4-4-4-4" /> </svg></Link>
-                    </li>
-                  </ul>
-                </nav>
+                <ThemeProvider theme={theme}>
+                  <Stack direction="row" justifyContent="center" marginTop={2}>
+                    <Pagination
+                      count={Math.ceil(recommendedSeeker?.length / itemsPerPage)}
+                      page={currentPage}
+                      onChange={handlePageChange}
+                      color="primary"
+                    />
+                  </Stack>
+                </ThemeProvider>
 
 
                 <center>
@@ -192,19 +174,6 @@ const Recommended = () => {
         </>}
     </PortalLayout>
   )
-  function prevPage() {
-    if (currentPage !== 1) {
-      setCurrentPage(currentPage - 1);
-    }
-  }
-  function changeCurrentPage(id) {
-    setCurrentPage(id)
-  }
-  function nextPage() {
-    if (currentPage !== nPage) {
-      setCurrentPage(currentPage + 1)
-    }
-  }
 }
 
 export default Recommended

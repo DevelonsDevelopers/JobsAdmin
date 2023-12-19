@@ -42,7 +42,7 @@ const JobsForm = ({}) => {
     experience: "",
     qualification: "",
     skills: "",
-    date: "",
+    date: "2020-02-12",
     tags: "",
   });
   // const [country, setCountry] = useState()
@@ -295,12 +295,12 @@ const JobsForm = ({}) => {
       jobData.description &&
       jobData.type &&
       jobData.workdays &&
-      jobData.worktime &&
+      // jobData.worktime &&
       jobData.address &&
       jobData.experience &&
       jobData.qualification &&
       jobData.skills &&
-      jobData.date &&
+      // jobData.date &&
       jobData.tags
     ) {
       dispatch(createJob(jobData));
@@ -661,7 +661,7 @@ const JobsForm = ({}) => {
               </div>
             </div>
           </div>
-          <div className="grid grid-cols-3 gap-5 mt-2">
+          {/* <div className="grid grid-cols-3 gap-5 mt-2">
             <div className="-mx-3 mt-[-1.2rem] mb-6">
               <div className="w-[100%] px-3 mb-6 md:mb-0">
                 <label
@@ -718,7 +718,7 @@ const JobsForm = ({}) => {
                 />
               </div>
             </div>
-          </div>
+          </div> */}
           <div className="grid grid-cols-2 gap-5 mt-2">
             <div className="-mx-3 mt-[-1.2rem] mb-6">
               <div className="w-[100%] px-3 mb-6 md:mb-0">
@@ -759,7 +759,11 @@ const JobsForm = ({}) => {
               </div>
             </div>
           </div>
-          <div className="grid grid-cols-2 gap-5 mt-2">
+          <div
+            className={`grid ${
+              providerLogin ? "grid-cols-1" : "grid-cols-2"
+            } gap-5 mt-2`}
+          >
             <div className="-mx-3 mt-[-1.2rem] mb-6">
               <div className="w-[100%] px-3 mb-6 md:mb-0">
                 <label
@@ -779,25 +783,29 @@ const JobsForm = ({}) => {
                 />
               </div>
             </div>
-            <div className="-mx-3 mt-[-1.2rem] mb-6">
-              <div className="w-[100%] px-3 mb-6 md:mb-0">
-                <label
-                  className="block tracking-wide uppercase text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4"
-                  htmlFor="grid-first-name"
-                >
-                  Link
-                </label>
-                <input
-                  type="text"
-                  name="link"
-                  id="floating_email"
-                  onChange={ClickInput}
-                  className="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-100 rounded-[8px] border-[0.7px] border-gray-600 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-                  placeholder="Enter Link"
-                  required
-                />
+            {providerLogin ? (
+              ""
+            ) : (
+              <div className="-mx-3 mt-[-1.2rem] mb-6">
+                <div className="w-[100%] px-3 mb-6 md:mb-0">
+                  <label
+                    className="block tracking-wide uppercase text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4"
+                    htmlFor="grid-first-name"
+                  >
+                    Link
+                  </label>
+                  <input
+                    type="text"
+                    name="link"
+                    id="floating_email"
+                    onChange={ClickInput}
+                    className="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-100 rounded-[8px] border-[0.7px] border-gray-600 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                    placeholder="Enter Link"
+                    required
+                  />
+                </div>
               </div>
-            </div>
+            )}
           </div>
           <div className="-mx-3 ">
             <div className="w-[100%]  px-3">

@@ -90,7 +90,7 @@ const JobsProvider = () => {
   };
 
   const theme = createTheme({
-    palette: { primary: { main: "#E5E7EB", contrastText: "#4B5564" } },
+    palette: { primary: { main: "#000", contrastText: "#EEE" } },
   });
 
   const itemsPerPage = 10;
@@ -219,7 +219,7 @@ const JobsProvider = () => {
                   {paginatedData?.map((value, index) => (
                     <tbody
                       className="text-[#000000] text-sm font-light w-[100%] bg-yellow-300 "
-                      key={value.id}
+                      key={index}
                     >
                       <tr className="">
                         <td className="py-[2%] w-[1%]   border-r-[1px] border-t-[1px] border-black   text-center">
