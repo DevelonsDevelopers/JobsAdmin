@@ -353,7 +353,7 @@ const JobsEdit = () => {
               className="uppercase block  tracking-wide text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4"
               for="grid-first-name"
             >
-              Type
+              Job Type
             </label>
             {/* <input value={jobData.type} type="text" name="type" id="floating_email" onChange={ClickInput} className="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[8px] border-[0.7px] border-gray-600 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="Enter Company Name" required /> */}
             <select
@@ -767,7 +767,7 @@ const JobsEdit = () => {
             </div>
           </div>
 
-          <div className="">
+          <div className="mt-5">
             <div className="w-[100%]">
               <label
                 className="uppercase block tracking-wide text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4"
