@@ -102,13 +102,15 @@ const InteractionView = ({ open, setOpen, ID }) => {
         <hr className='mt-2 mb-2' />
       </DialogContent>
       </div> 
-        <div className='!m-auto py-2 '>
-          <button variant="text" className='text-white bg-blue-500 px-8 py-2 rounded-xl !mb-[-3rem] font' onClick={handleClose}>
-            Cancel
-          </button>
-
-        </div>
-    
+      <div className="flex justify-center">
+        <button
+          onClick={handleClose}
+          className="bg-black text-white hover:bg-yellow-400 hover:text-black border-2 transition-all ease-in-out duration-75 border-black font-[600] py-2 px-[2.4rem] mt-5 cursor-pointer rounded-[8px] text-[1rem]"
+        >
+          Close
+        </button>
+      </div>
+      
     </Dialog>
   )
 }
