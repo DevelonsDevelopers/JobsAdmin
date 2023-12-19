@@ -245,7 +245,7 @@ const Plans = () => {
                         <td className="py-[2%] w-[2%] max-md:text-[.7rem]  border-r-[1px] border-t-[1px] border-black   text-center">
                           <div className="flex item-center justify-center gap-3">
                             <div
-                              className="w-4 mr-2 transform hover:text-blue-500  hover:scale-110"
+                              className="w-4 mr-2 transform hover:text-blue-500  hover:scale-110 cursor-pointer"
                               onClick={() => handleEdit(value.id)}
                             >
                               <svg
@@ -263,7 +263,7 @@ const Plans = () => {
                               </svg>
                             </div>
                             <div
-                              className="w-4 mr-2 transform hover:text-blue-500  hover:scale-110"
+                              className="w-4 mr-2 transform hover:text-blue-500  hover:scale-110 cursor-pointer"
                               onClick={() => handleDelete(value.id)}
                             >
                               <svg
@@ -285,7 +285,7 @@ const Plans = () => {
 
                         <td className="py-[2%] w-[1%] max-md:text-[.7rem]  border-t-[1px] border-black  ">
                           <div
-                            className="w-4 m-auto transform hover:text-blue-500  hover:scale-110 "
+                            className="w-4 m-auto transform hover:text-blue-500  hover:scale-110 cursor-pointer "
                             onClick={() => handleClick(value.id)}
                           >
                             {" "}
