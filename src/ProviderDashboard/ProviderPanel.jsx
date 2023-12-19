@@ -151,7 +151,7 @@ const ProviderPanel = () => {
             </Link>
           </div>
           <div className="grid grid-cols-2 max-sm:grid-cols-1 gap-5 w-[60%] max-md:w-[100%]">
-            <div className="bg-[#4D38E3] rounded-xl text-white max-md:mt-0 h-[7.9rem] shadow-xl shadow-gray-300 ">
+            <div onClick={() => router('/jobProvider')} className="bg-[#4D38E3] rounded-xl text-white max-md:mt-0 h-[7.9rem] shadow-xl shadow-gray-300 cursor-pointer">
               <ul className="flex flex-row-reverse">
                 <li>
                   <RiUserSearchLine className="w-25 text-[3rem] mb-[-2rem] pr-4 pt-2 ml-auto" />
@@ -164,7 +164,7 @@ const ProviderPanel = () => {
                 {dashboard?.jobs}
               </h1>
             </div>
-            <div className="bg-[#8AC942] rounded-xl text-white max-md:mt-0 h-[7.9rem] shadow-xl shadow-gray-300 ">
+            <div onClick={() => router('/appliedProvider')} className="bg-[#8AC942] rounded-xl text-white max-md:mt-0 h-[7.9rem] shadow-xl shadow-gray-300 cursor-pointer">
               <ul className="flex flex-row-reverse  ">
                 <li>
                   <BsSunFill className="w-25 text-[3rem] mb-[-2rem] pr-4 pt-2 ml-auto" />
@@ -177,7 +177,7 @@ const ProviderPanel = () => {
                 {dashboard?.applied}
               </h1>
             </div>
-            <div className="bg-[#4D03A3] rounded-xl text-white max-md:mt-0 h-[7.9rem] shadow-xl shadow-gray-300 ">
+            <div onClick={() => router('/offers')} className="bg-[#4D03A3] rounded-xl text-white max-md:mt-0 h-[7.9rem] shadow-xl shadow-gray-300 cursor-pointer">
               <ul className="flex flex-row-reverse">
                 <li>
                   <RiUserSearchLine className="w-25 text-[3rem] mb-[-2rem] pr-4 pt-2 ml-auto" />
@@ -190,7 +190,7 @@ const ProviderPanel = () => {
                 {dashboard?.offers}
               </h1>
             </div>
-            <div className="bg-[#EEB167] rounded-xl text-white  px-2 py-4  max-md:mt-0 h-[7.9rem] shadow-xl shadow-gray-300 ">
+            {/* <div className="bg-[#EEB167] rounded-xl text-white  px-2 py-4  max-md:mt-0 h-[7.9rem] shadow-xl shadow-gray-300 ">
               <h1 className="text-left ml-5 text-[1rem] font-[700]">
                 Current Subscribed Plan
               </h1>
@@ -203,7 +203,7 @@ const ProviderPanel = () => {
               <h1 className="text-right mr-5  mt-2 text-[0.9rem] font-[500]">
                 Paid This Month
               </h1>
-            </div>
+            </div> */}
           </div>
           </div>
           {/* <div className='border-2 p-3 h-[19rem] rounded-xl shadow-xl shadow-gray-300  max-md:mr-0'>

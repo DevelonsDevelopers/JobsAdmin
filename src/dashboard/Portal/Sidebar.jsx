@@ -97,7 +97,7 @@ const Sidebar = forwardRef(({ adminLogin, providerLogin }, ref) => {
                   <FaUserTie className="h-5 w-5" />
                 </div>
                 <div>
-                  <p>AppliedUsers</p>
+                  <p>Applied Users</p>
                 </div>
               </div>
             </div>
