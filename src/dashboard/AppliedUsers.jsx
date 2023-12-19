@@ -144,7 +144,7 @@ const AppliedUsers = () => {
                           </td>
                           <td className="py-[2%] w-[3%]   border-r-[1px] border-t-[1px] border-black text-center">
                             <span className=' text-[13px] font-[350]'>{value.job}</span>
-                          </td>
+                          </td>                    
                           <td className="py-[2%] w-[3%]   border-r-[1px] border-t-[1px] border-black text-center">
                             <span className=' text-[13px] font-[350]'>{moment(value.date).format('YYYY-MM-DD')}</span>
                           </td>
@@ -152,9 +152,7 @@ const AppliedUsers = () => {
                             <button onClick={() => handleViewCoverLetter(value.user, value.job)} className='bg-green-600 text-white font-[500] py-[3px] px-[10px] max-md:w-[8%] rounded-xl text-[0.6rem] max-md:py-1 max-md:px-2 max-md:text-[0.6rem] cursor-pointer  '>Cover Letter</button>
                           </td>
 
-
-
-                          <td className="py-[2%] w-[1%] max-md:text-[.7rem] border-t-[1px] border-black   ">
+                          <td className="py-[2%] w-[1%] max-md:text-[.7rem] border-t-[1px] border-black  cursor-pointer">
                             <div className="w-4 m-auto transform hover:text-blue-500  hover:scale-110 " onClick={() => handleClick(value.id)}>   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" >
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />

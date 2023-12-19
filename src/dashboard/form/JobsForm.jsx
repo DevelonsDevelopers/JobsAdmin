@@ -250,7 +250,7 @@ const JobsForm = ({}) => {
 
   //Skills Add
   const addSkills = (e) => {
-    if (e.keyCode === 13 || (e.keyCode === 32 && skillValue)) {
+    if (e.keyCode === 13 && skillValue) {
       setSkills([...skills, skillValue]);
       setSkillValue("");
     }
@@ -337,8 +337,8 @@ const JobsForm = ({}) => {
         ADD JOBS
       </h1>
       <div className="bg-yellow-400 shadow-md rounded-xl px-[10rem] max-md:px-4 py-10 mb-4 flex flex-col my-2">
-        <div className="-mx-3 mt-[-1.2rem] mb-6">
-          <div className="w-[100%] px-3 mb-6 md:mb-0 mt-5">
+        <div className="mt-3">
+          <div className="w-[100%] md:mb-0 ">
             <label
               className="block  tracking-wide uppercase text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4"
               htmlFor="grid-first-name"
@@ -356,7 +356,7 @@ const JobsForm = ({}) => {
             />
           </div>
         </div>
-        <div className="mt-[-1.2rem] mb-6">
+        <div className="mt-3">
           <div className="md:w-[100%] ">
             <label
               className="block text-left tracking-wide uppercase text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4"
@@ -407,9 +407,9 @@ const JobsForm = ({}) => {
           </div>
         </div>
 
-        <div className="grid grid-cols-2 gap-5 mt-2">
-          <div className="-mx-3 mt-[-1.2rem] mb-6">
-            <div className="w-[100%] px-3 mb-6 md:mb-0">
+        <div className="grid grid-cols-2 gap-5">
+          <div className="mt-3">
+            <div className="w-[100%] md:mb-0">
               <label
                 className="block  tracking-wide uppercase text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4"
                 htmlFor="grid-first-name"
@@ -427,8 +427,8 @@ const JobsForm = ({}) => {
               />
             </div>
           </div>
-          <div className="-mx-3 mt-[-1.2rem] mb-6">
-            <div className="w-[100%] px-3 mb-6 md:mb-0">
+          <div className="mt-3">
+            <div className="w-[100%] md:mb-0">
               <label
                 className="block  tracking-wide uppercase text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4"
                 htmlFor="grid-first-name"
@@ -448,13 +448,13 @@ const JobsForm = ({}) => {
           </div>
         </div>
 
-        <div className="-mx-3 mt-[-1.2rem] mb-6">
-          <div className="w-[100%] px-3 mb-6 md:mb-0 mt-0">
+        <div className="mt-3">
+          <div className="w-[100%] md:mb-0 mt-0">
             <label
               className="block  tracking-wide uppercase text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4"
               htmlFor="grid-first-name"
             >
-              Type
+              Job Type
             </label>
             <select
               onChange={ClickInput}
@@ -462,15 +462,16 @@ const JobsForm = ({}) => {
               className="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-100 rounded-[8px] border-[0.7px] border-gray-600 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer"
               id="grid-state"
             >
-              <option>Select Type</option>
+              <option disabled>Select Type</option>
               <option>Full-Time</option>
               <option>Part-Time</option>
+              <option>Contract</option>
               <option>Remote</option>
             </select>
           </div>
         </div>
 
-        <div className="grid grid-cols-2 gap-5 mt-[-12px]">
+        <div className="grid grid-cols-2 gap-5 mt-3">
           <div className="md:w-[100%] ">
             <label
               className="block text-left tracking-wide uppercase text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4"
@@ -521,7 +522,7 @@ const JobsForm = ({}) => {
             ></Select>
           </div>
         </div>
-        <div className="flex-col mt-4">
+        <div className="flex-col mt-3">
           <div className="grid grid-cols-2 gap-5 ">
             <div className="md:w-[100%] ">
               <label
@@ -547,8 +548,8 @@ const JobsForm = ({}) => {
                 id="grid-state"
               ></Select>
             </div>
-            <div className="-mx-3  mb-6 ">
-              <div className="w-[100%] px-3 mb-6 md:mb-0">
+            <div className="f">
+              <div className="w-[100%] md:mb-0">
                 <label
                   className="block  tracking-wide uppercase text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4"
                   htmlFor="grid-first-name"
@@ -585,8 +586,8 @@ const JobsForm = ({}) => {
               </div>
             </div>
           </div>
-          <div className="-mx-3 mt-[-.6rem] mb-7">
-            <div className="w-[100%] px-3 mb-6 md:mb-0 mt-0">
+          <div className="mt-3">
+            <div className="w-[100%] md:mb-0 mt-0">
               <label
                 className="block  tracking-wide uppercase text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4"
                 htmlFor="grid-first-name"
@@ -605,8 +606,8 @@ const JobsForm = ({}) => {
             </div>
           </div>
           <div className="grid grid-cols-2 gap-5 mt-2">
-            <div className="-mx-3 mt-[-1.2rem] mb-6">
-              <div className="w-[100%] px-3 mb-6 md:mb-0">
+            <div className="mt-3">
+              <div className="w-[100%] md:mb-0">
                 <label
                   className="block  tracking-wide uppercase text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4"
                   htmlFor="grid-first-name"
@@ -641,8 +642,8 @@ const JobsForm = ({}) => {
                 </div>
               </div>
             </div>
-            <div className="-mx-3 mt-[-1.2rem] mb-6">
-              <div className="w-[100%] px-3 mb-6 md:mb-0">
+            <div className="mt-3">
+              <div className="w-[100%] md:mb-0">
                 <label
                   className="block  tracking-wide uppercase text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4"
                   htmlFor="grid-first-name"
@@ -662,8 +663,8 @@ const JobsForm = ({}) => {
             </div>
           </div>
           {/* <div className="grid grid-cols-3 gap-5 mt-2">
-            <div className="-mx-3 mt-[-1.2rem] mb-6">
-              <div className="w-[100%] px-3 mb-6 md:mb-0">
+            <div className="mt-3">
+              <div className="w-[100%] md:mb-0">
                 <label
                   className="block  tracking-wide uppercase text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4"
                   htmlFor="grid-first-name"
@@ -681,8 +682,8 @@ const JobsForm = ({}) => {
                 />
               </div>
             </div>
-            <div className="-mx-3 mt-[-1.2rem] mb-6">
-              <div className="w-[100%] px-3 mb-6 md:mb-0">
+            <div className="mt-3">
+              <div className="w-[100%] md:mb-0">
                 <label
                   className="block  tracking-wide uppercase text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4"
                   htmlFor="grid-first-name"
@@ -700,8 +701,8 @@ const JobsForm = ({}) => {
                 />
               </div>
             </div>
-            <div className="-mx-3 mt-[-1.2rem] mb-6">
-              <div className="w-[100%] px-3 mb-6 md:mb-0">
+            <div className="mt-3">
+              <div className="w-[100%] md:mb-0">
                 <label
                   className="block  tracking-wide uppercase text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4"
                   htmlFor="grid-first-name"
@@ -720,8 +721,8 @@ const JobsForm = ({}) => {
             </div>
           </div> */}
           <div className="grid grid-cols-2 gap-5 mt-2">
-            <div className="-mx-3 mt-[-1.2rem] mb-6">
-              <div className="w-[100%] px-3 mb-6 md:mb-0">
+            <div className="mt-3">
+              <div className="w-[100%] md:mb-0">
                 <label
                   className="block  tracking-wide uppercase text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4"
                   htmlFor="grid-first-name"
@@ -739,8 +740,8 @@ const JobsForm = ({}) => {
                 />
               </div>
             </div>
-            <div className="-mx-3 mt-[-1.2rem] mb-6">
-              <div className="w-[100%] px-3 mb-6 md:mb-0">
+            <div className="mt-3">
+              <div className="w-[100%] md:mb-0">
                 <label
                   className="block  tracking-wide uppercase text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4"
                   htmlFor="grid-first-name"
@@ -764,8 +765,8 @@ const JobsForm = ({}) => {
               providerLogin ? "grid-cols-1" : "grid-cols-2"
             } gap-5 mt-2`}
           >
-            <div className="-mx-3 mt-[-1.2rem] mb-6">
-              <div className="w-[100%] px-3 mb-6 md:mb-0">
+            <div className="mt-3">
+              <div className="w-[100%] md:mb-0">
                 <label
                   className="block  tracking-wide uppercase text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4"
                   htmlFor="grid-first-name"
@@ -786,8 +787,8 @@ const JobsForm = ({}) => {
             {providerLogin ? (
               ""
             ) : (
-              <div className="-mx-3 mt-[-1.2rem] mb-6">
-                <div className="w-[100%] px-3 mb-6 md:mb-0">
+              <div className="mt-3">
+                <div className="w-[100%]-0">
                   <label
                     className="block tracking-wide uppercase text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4"
                     htmlFor="grid-first-name"
@@ -807,8 +808,8 @@ const JobsForm = ({}) => {
               </div>
             )}
           </div>
-          <div className="-mx-3 ">
-            <div className="w-[100%]  px-3">
+          <div className="mt-3">
+            <div className="w-[100%] ">
               <label
                 className="block uppercase tracking-wide text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4"
                 htmlFor="grid-Name"
@@ -831,7 +832,7 @@ const JobsForm = ({}) => {
           <input
             type="submit"
             onClick={handleSubmit}
-            className="bg-black text-white hover:bg-yellow-400 hover:text-black border-2 transition-all ease-in-out duration-75 border-black font-[600] py-2 px-[2.4rem] mt-5 cursor-pointer rounded-[8px] text-[1rem]"
+            className="bg-black text-white hover:bg-yellow-400 hover:text-black border-2 transition-all ease-in-out duration-75 border-black font-[600] py-2 px-[2.4rem]  cursor-pointer rounded-[8px] text-[1rem]"
             value="Submit"
           />
         </div>

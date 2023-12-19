@@ -121,7 +121,7 @@ const Jobs = () => {
     const [search, setSearch] = useState("");
     useEffect(() => {
       const result = jobs?.filter((item) => {
-        return item?.name?.toLowerCase()?.match(search?.toLocaleLowerCase());
+        return item?.title?.toLowerCase()?.match(search?.toLocaleLowerCase());
       });
       setPaginatedData(result);
     }, [search]);
