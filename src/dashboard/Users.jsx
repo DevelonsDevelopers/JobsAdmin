@@ -150,7 +150,7 @@ const Users = () => {
                   data={data}
                   ID={viewId}
                 />
-                <table className="rounded-xl p-5 bg-black text-gray-100 w-[90%] m-auto max-md:w-[100%]  mt-6 ">
+                <table className="rounded-xl shadow-lg p-5 bg-black text-gray-100 w-[90%] m-auto max-md:w-[100%]  mt-6 ">
                   <thead className="mt-10">
                     <tr className=" uppercase  text-sm leading-normal w-[100%]">
                       <th className="py-[2%] border-r-[1px] border-gray-300 border-b-[3px]   w-[3%] max-md:text-[.6rem] max-md:font-[400] text-center max-md:w-[2%]  text-[13px]">
@@ -176,7 +176,7 @@ const Users = () => {
                   </thead>
                   {paginatedData?.map((value, index) => (
                     <tbody
-                      className="text-[#000000] text-sm font-light w-[100%] bg-yellow-300"
+                      className="text-[#000000] text-sm font-light w-[100%] bg-gray-50"
                       key={value.id}
                     >
                       <tr className="">
