@@ -105,7 +105,7 @@ const Offers = () => {
 
               <h1 className='text-[3.125rem] font-[800] text-[#000] text-center max-md:text-[2rem] uppercase'>Sent Offers</h1>
 
-              <div className="w-[100%] max-md:h-full  max-md:px-2 flex flex-col justify-center bg-gray-100">
+              <div className="w-[100%] max-md:h-full  max-md:px-2 flex flex-col justify-center bg-white">
 
                 <div className='flex justify-center mt-[3rem] w-[90%] m-auto'>
 
