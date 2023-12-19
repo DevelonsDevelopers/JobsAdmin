@@ -158,7 +158,6 @@ const Seekers = () => {
                             <button onClick={() => handleViewCv(value.id)} className='bg-green-600 text-white font-[500] py-[3px] px-[10px] max-md:w-[8%] rounded-xl text-[0.6rem] max-md:py-1 max-md:px-2 max-md:text-[0.6rem] cursor-pointer'>View CV </button>
                           </td>
 
-
                           <td className="py-[2%] w-[1%] max-md:text-[.7rem]  border-t-[1px] border-black">
                             <div className="w-4 m-auto transform hover:text-blue-500  hover:scale-110 cursor-pointer" onClick={() => handleClick(value.id)}>   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" >
                               <path stroke-linecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />

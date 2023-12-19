@@ -90,6 +90,11 @@ const AppliedUserProvider = () => {
   const handleViewCoverLetter = (user, job) => {
     navigate("/coverLetter", { state: { User: user, Job: job } });
   };
+
+  const handleViewCv = (id) => {
+    navigate('/cv', { state: { Id: id } })
+  }
+
   return (
     <PortalLayout>
       {loading ? (
@@ -148,7 +153,7 @@ const AppliedUserProvider = () => {
                         Date
                       </th>
                       <th className="py-[2%] border-r-[1px] border-gray-300 border-b-[3px] border-black-[3px]  w-[1%] max-md:text-[.6rem] max-md:font-[400] text-center max-md:w-[2%]  text-[13px]">
-                        Cover Letter
+                        Cover Letter / Cv
                       </th>
                       <th className="py-[2%] border-r-[1px] border-gray-300 border-b-[3px] border-black-[3px]  w-[1%] max-md:text-[.6rem] max-md:font-[400] text-center max-md:w-[2%]  text-[13px]"></th>
                     </tr>
@@ -181,7 +186,7 @@ const AppliedUserProvider = () => {
                             {moment(value.date).format("YYYY-MM-DD")}
                           </span>
                         </td>
-                        <td className="py-[2%] w-[1%] border-r-[1px] border-t-[1px] border-black   text-center">
+                        <td className="py-[2%] w-[1%] border-r-[1px] border-t-[1px] border-black text-center">
                           <button
                             onClick={() =>
                               handleViewCoverLetter(value.user, value.job)
@@ -190,11 +195,14 @@ const AppliedUserProvider = () => {
                           >
                             Cover Letter
                           </button>
+
+                          <button onClick={() => handleViewCv(value.id)} className='bg-green-600 ml-3 text-white font-[500] py-[3px] px-[10px] max-md:w-[8%] rounded-xl text-[0.6rem] max-md:py-1 max-md:px-2 max-md:text-[0.6rem] cursor-pointer'>View CV </button>
+
                         </td>
 
                         <td className="py-[2%] w-[1%] border-r-[1px] border-t-[1px] border-black text-center">
                           <div
-                            className="w-4 m-auto transform hover:text-blue-500  hover:scale-110 "
+                            className="w-4 m-auto transform hover:text-blue-500  hover:scale-110 cursor-pointer"
                             onClick={() => handleClick(value.id)}
                           >
                             {" "}
