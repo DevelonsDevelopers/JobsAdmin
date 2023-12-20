@@ -199,7 +199,7 @@ const ProviderLogin = () => {
           <div className="w-[40%] flex flex-col items-center py-10 h-full rounded-l-[10px] bg-black max-md:hidden">
             <img src={picture} alt="" className="w-[60%] h-[60%] " />
             <h1 className="text-white mt-10 text-[2.5rem] font-[600] uppercase">
-              Sing In
+            SIGN In
             </h1>
           </div>
           <div className="w-[60%] py-10 max-md:w-[90%] max-md:m-auto flex items-center justify-center ">
@@ -221,12 +221,12 @@ const ProviderLogin = () => {
                   type="email"
                   name="email"
                   onChange={handleChange}
-                  placeholder="Enter Your Email"
-                  className="py-3 text-[.9rem] w-full text-gray-700 font-[500] outline-none hover:outline-none focus:bg-white   "
+                  placeholder="Enter Your Email(eg.admin@gmail.com)"
+                  className="py-3 text-[.9rem] w-full text-gray-700 font-[500] outline-none hover:outline-none  "
                 />
               </div>
               <br />
-              <div className=" px-3 shadow-lg flex gap-5 rounded-[10px] w-[100%] max-md:w-[100%]  border-2 border-gray-400 ">
+              <div className="pl-3 pr-[1px] shadow-lg flex gap-5 rounded-[10px] w-[100%] max-md:w-[100%]  border-2 border-gray-400 ">
                 <div className="flex items-center justify-center">
                   <FaKey className="text-[1.7rem] text-black" />
                 </div>
@@ -236,7 +236,7 @@ const ProviderLogin = () => {
                   name="password"
                   onChange={handleChange}
                   placeholder="Enter Your Password"
-                  className="py-3 text-[.9rem] text-gray-700 font-[500] outline-none hover:outline-none "
+                  className="py-3 text-[.9rem] text-gray-700  rounded-r-[10px]  font-[500] outline-none hover:outline-none select-auto "
                 />
               </div>
               {show ? (
@@ -266,7 +266,7 @@ const ProviderLogin = () => {
               ) : (
                 <input
                   type="submit"
-                  value="Sing In"
+                  value="SIGN IN"
                   onClick={() => ProviderLogin()}
                   className="bg-white text-black hover:bg-black border-black hover:text-white transition-all ease-in-out duration-150 border-2 cursor-pointer font-[600] px-10 py-[5px] w-[100%] rounded-full mt-6"
                 />

@@ -155,7 +155,7 @@ const Login = () => {
         <div className="flex bg-white rounded-xl shadow-md shadow-gray-500 h-[30rem] w-[70%] m-auto ">
           <div className="w-[40%] flex flex-col items-center py-10 h-full rounded-l-[10px] bg-black max-md:hidden">
               <img src={picture} alt="" className="w-[60%] h-[60%] " />
-              <h1 className="text-white mt-10 text-[2.5rem] font-[600] uppercase" >Sing In</h1>
+              <h1 className="text-white mt-10 text-[2.5rem] font-[600] uppercase" >SIGN In</h1>
           </div>
           <div className="w-[60%] py-10 max-md:w-[90%] max-md:m-auto flex items-center justify-center ">
             <div className="w-[50%]">
@@ -166,7 +166,7 @@ const Login = () => {
                 information by email and password
               </h1>
               <br />
-              <div className=" px-3 shadow-lg flex gap-5 rounded-[10px] w-[100%] max-md:w-[100%]  border-2 border-gray-400 ">
+              <div className=" pl-3 pr-[1px] shadow-lg flex gap-5 rounded-[10px] w-[100%] max-md:w-[100%]  border-2 border-gray-400 ">
                 <div className="flex items-center justify-center">
                   <IoMail className="text-[1.7rem] text-black" />
                 </div>
@@ -174,8 +174,8 @@ const Login = () => {
                   type="email"
                   name="email"
                   onChange={handleChange}
-                  placeholder="Enter Your Email"
-                  className="py-3 text-[.9rem] w-full text-gray-700 font-[500] outline-none hover:outline-none focus:bg-white   "
+                  placeholder="Enter Your Email(eg.admin@gmail.com)"
+                  className="py-3 text-[.9rem] w-full rounded-r-[10px] text-gray-700 font-[500] outline-none hover:outline-none focus:bg-white"
                 />
               </div>
               <br />
@@ -219,7 +219,7 @@ const Login = () => {
               ) : (
                 <input
                   type="submit"
-                  value="Sing In"
+                  value="SIGN IN"
                   onClick={() => login()}
                   className="bg-white text-black hover:bg-black border-black hover:text-white transition-all ease-in-out duration-150 border-2 cursor-pointer font-[600] px-10 py-[5px] w-[100%] rounded-full mt-6"
                 />
