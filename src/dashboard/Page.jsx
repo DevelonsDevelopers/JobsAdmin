@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react'
 import PortalLayout from '../portalLayout/PortalLayout'
 import { BarChart, Bar, Tooltip, XAxis, YAxis, PieChart, Pie, Cell, Legend, ResponsiveContainer, AreaChart, ReferenceLine, Area } from 'recharts';
-import { RiUserSearchLine } from 'react-icons/ri'
-import { BiUserCheck } from 'react-icons/bi'
+import { RiSearchFill, RiUserSearchLine } from 'react-icons/ri'
+import { BiSolidBuildingHouse, BiSolidCategory, BiUserCheck } from 'react-icons/bi'
 import { RiAccountPinCircleFill } from "react-icons/ri";
 import { BsSunFill } from "react-icons/bs";
 import { useState } from 'react';
@@ -11,6 +11,9 @@ import { getBarChart, getDashboard, getLineChart, getReports, getTransaction, ge
 import moment from 'moment/moment';
 import { SESSION_ADMIN_LOGIN, SESSION_PROVIDER_LOGIN } from '../Utils/Constant';
 import { useNavigate } from 'react-router-dom';
+import { MdWork } from 'react-icons/md';
+import { SiOpenlayers } from 'react-icons/si';
+import { FaTreeCity } from 'react-icons/fa6';
 
 
 const form03 = [
@@ -105,44 +108,44 @@ const Dashboard = () => {
         <div className='py-6'>
           <div className='flex max-md:flex-col gap-6'>
             <div className='grid grid-cols-3 max-md:grid-cols-2 md:w-[100%] gap-6' style={{ userSelect: 'none' }}>
-              <div className="bg-[#4D38E3] rounded-xl  text-white  max-md:mt-0 h-[6.5rem] shadow-xl shadow-gray-300 ">
+              <div onClick={() => navigate('/jobs')} className="bg-[#4D38E3] rounded-xl  text-white  max-md:mt-0 h-[6.5rem] shadow-xl shadow-gray-300 cursor-pointer cursor-pointer ">
                 <ul className='flex flex-row-reverse  '>
-                  <li><RiUserSearchLine className='w-25 text-[3rem] mb-[-2rem] pr-4 pt-2 ml-auto' /></li>
+                  <li><MdWork className='w-25 text-[3rem] mb-[-2rem] pr-4 pt-2 ml-auto' /></li>
                 </ul>
                 <h1 className='text-left ml-5 mt-6 text-[1rem] font-[600]'>Jobs</h1>
                 <h1 className='text-left ml-5 mt-[-0.5rem] text-[2rem] font-[700] '>{dashboard?.jobs}</h1>
               </div>
-              <div className="bg-[#47A9FA] rounded-xl  text-white  max-md:mt-0 h-[6.5rem] shadow-xl shadow-gray-300 ">
+              <div onClick={() => navigate('/categories')} className="bg-[#47A9FA] rounded-xl  text-white  max-md:mt-0 h-[6.5rem] shadow-xl shadow-gray-300 cursor-pointer ">
                 <ul className='flex flex-row-reverse  '>
-                  <li><BsSunFill className='w-25 text-[3rem] mb-[-2rem] pr-4 pt-2 ml-auto' /></li>
+                  <li><BiSolidCategory className='w-25 text-[3rem] mb-[-2rem] pr-4 pt-2 ml-auto' /></li>
                 </ul>
                 <h1 className='text-left ml-5 mt-6 text-[1rem] font-[600]'>Categories</h1>
                 <h1 className='text-left ml-5 mt-[-0.5rem] text-[2rem] font-[700] '>{dashboard?.categories}</h1>
               </div>
-              <div className="bg-[#8AC942] rounded-xl  text-white  max-md:mt-0 h-[6.5rem] shadow-xl shadow-gray-300 ">
+              <div onClick={() => navigate('/seekers')} className="bg-[#8AC942] rounded-xl  text-white  max-md:mt-0 h-[6.5rem] shadow-xl shadow-gray-300 cursor-pointer ">
                 <ul className='flex flex-row-reverse  '>
-                  <li><BiUserCheck className='w-25 text-[3rem] mb-[-2rem] pr-4 pt-2 ml-auto' /></li>
+                  <li><RiSearchFill className='w-25 text-[3rem] mb-[-2rem] pr-4 pt-2 ml-auto' /></li>
                 </ul>
                 <h1 className='text-left ml-5 mt-6 text-[1rem] font-[600]'>Seekers</h1>
                 <h1 className='text-left ml-5 mt-[-0.5rem] text-[2rem] font-[700] '>{dashboard?.seekers}</h1>
               </div>
-              <div className="bg-[#1AD185] rounded-xl  text-white  max-md:mt-0 h-[6.5rem] shadow-xl shadow-gray-300 ">
+              <div onClick={() => navigate('/cities')} className="bg-[#1AD185] rounded-xl  text-white  max-md:mt-0 h-[6.5rem] shadow-xl shadow-gray-300 cursor-pointer ">
                 <ul className='flex flex-row-reverse  '>
-                  <li><BiUserCheck className='w-25 text-[3rem] mb-[-2rem] pr-4 pt-2 ml-auto' /></li>
+                  <li><FaTreeCity className='w-25 text-[3rem] mb-[-2rem] pr-4 pt-2 ml-auto' /></li>
                 </ul>
                 <h1 className='text-left ml-5 mt-6 text-[1rem] font-[600]'>Cities</h1>
                 <h1 className='text-left ml-5 mt-[-0.5rem] text-[2rem] font-[700] '>{dashboard?.cities}</h1>
               </div>
-              <div className="bg-[#fcbf49] rounded-xl  text-white  max-md:mt-0 h-[6.5rem] shadow-xl shadow-gray-300 ">
+              <div onClick={() => navigate('/companies')} className="bg-[#fcbf49] rounded-xl  text-white  max-md:mt-0 h-[6.5rem] shadow-xl shadow-gray-300 cursor-pointer ">
                 <ul className='flex flex-row-reverse  '>
-                  <li><RiAccountPinCircleFill className='w-25 text-[3rem] mb-[-2rem] pr-4 pt-2 ml-auto' /></li>
+                  <li><BiSolidBuildingHouse className='w-25 text-[3rem] mb-[-2rem] pr-4 pt-2 ml-auto' /></li>
                 </ul>
                 <h1 className='text-left ml-5 mt-6 text-[1rem] font-[600]'>Companies</h1>
                 <h1 className='text-left ml-5 mt-[-0.5rem] text-[2rem] font-[700] '>{dashboard?.companies}</h1>
               </div>
-              <div className="bg-[#f77f00] rounded-xl  text-white  max-md:mt-0 h-[6.5rem] shadow-xl shadow-gray-300 ">
+              <div className="bg-[#f77f00] rounded-xl  text-white  max-md:mt-0 h-[6.5rem] shadow-xl shadow-gray-300 cursor-pointer ">
                 <ul className='flex flex-row-reverse  '>
-                  <li><BsSunFill className='w-25 text-[3rem] mb-[-2rem] pr-4 pt-2 ml-auto' /></li>
+                  <li><SiOpenlayers className='w-25 text-[3rem] mb-[-2rem] pr-4 pt-2 ml-auto' /></li>
                 </ul>
                 <h1 className='text-left ml-5 mt-6 text-[1rem] font-[600]'>Interactions</h1>
                 <h1 className='text-left ml-5 mt-[-0.5rem] text-[2rem] font-[700] '>{dashboard?.interactions}</h1>
@@ -152,8 +155,8 @@ const Dashboard = () => {
           </div>
 
           <div className='flex max-md:flex-col max-md:grid-cols-1 gap-8' style={{ userSelect: 'none' }}>
-            <div className='w-[70%] max-md:w-[100%] bg-white border-2 mt-10 rounded-xl shadow-xl shadow-gray-300 '>
-              <ResponsiveContainer width="100%" height={350}>
+            <div className='w-[75%] px-3 py-3 max-md:w-[100%] bg-white border-2 mt-10 rounded-xl shadow-xl shadow-gray-300 '>
+              <ResponsiveContainer width="99%" height={320}>
                 <AreaChart data={lineChart}
                   margin={{ top: 20, right: 30, left: 0, bottom: 0 }}>
                   <XAxis
@@ -164,20 +167,21 @@ const Dashboard = () => {
                   <Tooltip />
                   <ReferenceLine x="Page C" stroke="green" label="Min PAGE" />
                   {/* <ReferenceLine y={4000} label="Max" stroke="red" strokeDasharray="3 3" /> */}
-                  <Area type="monotone" dataKey="interactions" stroke="#2994FF" fill="#2994FF " />
+                  <Area type="monotone" dataKey="interactions" stroke="#4D38E3" fill="#000000 " />
                 </AreaChart>
               </ResponsiveContainer>
             </div>
 
             <div
-              className='white border-2 p-3 mt-10 md:w-[30%] h-full rounded-xl shadow-xl shadow-gray-300 max-md:mr-0'
+              className='white p-3 border-2 mt-10 md:w-[32%] h-full rounded-xl shadow-xl shadow-gray-300 max-md:mr-0'
               style={{ outline: 'none' }}
               tabIndex={0}
               onFocus={(e) => e.target.blur()}
             >
-              <span className='ml-[2rem] font-[600] text-[1rem] text '>Current Status</span>
-              <ResponsiveContainer width="100%" height={300}>
-                <PieChart width={430} height={200} margin={{ top: 10, right: 20, bottom: 0, left: 20 }}>
+              <span className='font-[600] text-[1rem] mt-3 ml-4'>Status Chart</span>
+              <p className='w-[95%] font-[400] text-[.9rem] text-center mt-2'>Here you can see the counts of Jobs, Seekers and Companies.</p>
+              <ResponsiveContainer width="100%" height={240}>
+                <PieChart width={430} height={200} margin={{right: 20, bottom: 0, left: 20 }}>
                   <Pie data={pieData} dataKey="value" nameKey="name" cx="50%" cy="50%" outerRadius={70} fill="#4D38E3" label>
                     {pieData.map((entry, index) => (
                       <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
@@ -240,7 +244,7 @@ const Dashboard = () => {
                     <div className="bg-white shadow-md h-full shadow-[#F3F3F3]">
                       <table className="rounded-xl h-full shadow-xl w-[100%] max-md:w-[100%] max-md:h-[400px] mt-4">
                         <thead className=''>
-                          <tr className="bg-[#2994FF] text-white uppercase text-sm leading-normal w-[100%]">
+                          <tr className="bg-[#000000] text-white uppercase text-sm leading-normal w-[100%]">
                             <th className="py-[2%] w-[25%] max-md:text-[.7rem] text-center">Id</th>
                             <th className="py-[2%] w-[25%] max-md:text-[.7rem] text-center">Date</th>
                             <th className="py-[2%] w-[25%] max-md:text-[.7rem] text-center">Amount</th>
@@ -256,7 +260,7 @@ const Dashboard = () => {
                                 <span>{moment(value.date).format('YYYY-MM-DD')}</span>
                               </td>
                               <td className="py-[2%] w-[25%] max-md:text-[.7rem]  text-center">
-                                <div className="flex items-center justify-center text-[#A52922] font-[500]">
+                                <div className="flex items-center justify-center text-black font-[600]">
                                   {value.amount}
                                 </div>
                               </td>
@@ -281,10 +285,10 @@ const Dashboard = () => {
                     <div className="bg-white shadow-md h-full shadow-[#F3F3F3]">
                       <table className="rounded-xl h-full shadow-xl w-[100%] max-md:w-[100%] max-md:h-[400px] mt-4">
                         <thead>
-                          <tr className="bg-[#2994FF] text-white uppercase text-sm leading-normal w-[100%]">
+                          <tr className="bg-[#000000] text-white uppercase text-sm leading-normal w-[100%]">
                             <th className="py-[2%] w-[25%] max-md:text-[.7rem] text-center">Job</th>
                             <th className="py-[2%] w-[25%] max-md:text-[.7rem] text-center">Date</th>
-                            <th className="py-[2%] w-[25%] max-md:text-[.7rem] text-center">Reports</th>
+                            <th className="py-[2%] w-[25%] max-md:text-[.7rem] text-center">feedBack</th>
                           </tr>
                         </thead>
                         {reports?.map((value) => (
@@ -297,7 +301,7 @@ const Dashboard = () => {
                                 <span>{moment(value.date).format('YYYY-MM-DD')}</span>
                               </td>
                               <td className="py-[2%] w-[25%] max-md:text-[.7rem]  text-center">
-                                <div className="flex items-center justify-center text-[#A52922] font-[500]">
+                                <div className="flex items-center justify-center text-black font-[600]">
                                   {value.feedback}
                                 </div>
                               </td>
@@ -320,7 +324,7 @@ const Dashboard = () => {
                   />
                   <YAxis />
                   <Tooltip />
-                  <Bar dataKey="applied" fill="#2994FF" />
+                  <Bar dataKey="applied" fill="#000000" />
                   <Legend />
                 </BarChart>
               </ResponsiveContainer>

@@ -32,6 +32,8 @@ import {
   SESSION_PROVIDER_ID,
   SESSION_PROVIDER_LOGIN,
 } from "../Utils/Constant";
+import { FaUserTie } from "react-icons/fa";
+import { MdLocalOffer, MdWork } from "react-icons/md";
 
 const ProviderPanel = () => {
   const form03 = [
@@ -154,7 +156,7 @@ const ProviderPanel = () => {
             <div onClick={() => router('/jobProvider')} className="bg-[#4D38E3] rounded-xl text-white max-md:mt-0 h-[7.9rem] shadow-xl shadow-gray-300 cursor-pointer">
               <ul className="flex flex-row-reverse">
                 <li>
-                  <RiUserSearchLine className="w-25 text-[3rem] mb-[-2rem] pr-4 pt-2 ml-auto" />
+                  <MdWork className="w-25 text-[3rem] mb-[-2rem] pr-4 pt-2 ml-auto" />
                 </li>
               </ul>
               <h1 className="text-left ml-5 mt-10 text-[1rem] font-[600]">
@@ -167,7 +169,7 @@ const ProviderPanel = () => {
             <div onClick={() => router('/appliedProvider')} className="bg-[#8AC942] rounded-xl text-white max-md:mt-0 h-[7.9rem] shadow-xl shadow-gray-300 cursor-pointer">
               <ul className="flex flex-row-reverse  ">
                 <li>
-                  <BsSunFill className="w-25 text-[3rem] mb-[-2rem] pr-4 pt-2 ml-auto" />
+                  <FaUserTie className="w-25 text-[3rem] mb-[-2rem] pr-4 pt-2 ml-auto" />
                 </li>
               </ul>
               <h1 className="text-left ml-5 mt-10 text-[1rem] font-[600]">
@@ -180,7 +182,7 @@ const ProviderPanel = () => {
             <div onClick={() => router('/offers')} className="bg-[#4D03A3] rounded-xl text-white max-md:mt-0 h-[7.9rem] shadow-xl shadow-gray-300 cursor-pointer">
               <ul className="flex flex-row-reverse">
                 <li>
-                  <RiUserSearchLine className="w-25 text-[3rem] mb-[-2rem] pr-4 pt-2 ml-auto" />
+                  <MdLocalOffer className="w-25 text-[3rem] mb-[-2rem] pr-4 pt-2 ml-auto" />
                 </li>
               </ul>
               <h1 className="text-left ml-5 mt-10 text-[1rem] font-[600]">
@@ -224,8 +226,8 @@ const ProviderPanel = () => {
               <Area
                 type="monotone"
                 dataKey="interactions"
-                stroke="#2994FF"
-                fill="#2994FF "
+                stroke="#4D38E3"
+                fill="#000000 "
               />
             </AreaChart>
           </ResponsiveContainer>
@@ -283,7 +285,7 @@ const ProviderPanel = () => {
             <div className="bg-white shadow-md h-full shadow-[#F3F3F3]">
               <table className="rounded-xl h-full shadow-xl w-[100%] max-md:w-[100%] max-md:h-[400px] mt-4">
                 <thead className="" >
-                  <tr className="bg-[#2994FF] text-white uppercase text-sm leading-normal w-[100%]">
+                  <tr className="bg-[#000] text-white uppercase text-sm leading-normal w-[100%]">
                     <th className="py-[2%] w-[25%] max-md:text-[.7rem] text-center">
                       Job
                     </th>
@@ -302,7 +304,7 @@ const ProviderPanel = () => {
                         <span className="font-medium">{value.job}</span>
                       </td>
                       <td className="py-[2%] w-[25%] max-md:text-[.7rem]  text-center">
-                        <div className="flex items-center justify-center text-[#A52922] font-[500]">
+                        <div className="flex items-center justify-center text-[#000000] font-[500]">
                           {value.offerType}
                         </div>
                       </td>
@@ -328,7 +330,7 @@ const ProviderPanel = () => {
             <div className="bg-white shadow-md h-full shadow-[#F3F3F3]">
               <table className="rounded-xl h-full shadow-xl w-[100%] max-md:w-[100%] max-md:h-[400px] mt-4">
                 <thead>
-                  <tr className="bg-[#2994FF] text-white uppercase text-sm leading-normal w-[100%]">
+                  <tr className="bg-[#000] text-white uppercase text-sm leading-normal w-[100%]">
                     <th className="py-[2%] w-[25%] max-md:text-[.7rem] text-center">
                       Role
                     </th>
@@ -347,7 +349,7 @@ const ProviderPanel = () => {
                         <span className="font-medium">{value.role}</span>
                       </td>
                       <td className="py-[2%] w-[25%] max-md:text-[.7rem]  text-center">
-                        <div className="flex items-center justify-center text-[#A52922] font-[500]">
+                        <div className="flex items-center justify-center text-[#000] font-[500]">
                           {value.qualification}
                         </div>
                       </td>
