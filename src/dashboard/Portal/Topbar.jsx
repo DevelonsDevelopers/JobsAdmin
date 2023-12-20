@@ -25,6 +25,7 @@ import {
 import { IoIosArrowDropup } from "react-icons/io";
 import { IoIosArrowDropdown } from "react-icons/io";
 import { CiUser } from "react-icons/ci";
+import SignoutModal from "../../components/SignoutModal";
 
 const Topbar = ({ showNav, setShowNav }) => {
   const router = useNavigate();
@@ -73,6 +74,13 @@ const Topbar = ({ showNav, setShowNav }) => {
     setIsOpen(!isOpen);
   };
 
+  const [openSingout, setOpenSignout] = useState()
+
+  const handleSignOut = () => {
+    setOpenSignout(!openSingout)
+  }
+  
+
   //   const handleSignOut = () => {
   //     signOut()
   //     router.push('/')
@@ -84,6 +92,11 @@ const Topbar = ({ showNav, setShowNav }) => {
         showNav ? "pl-[10.5rem] max-sm:pl-[14rem]" : ""
       }`}
     >
+      <SignoutModal
+        open={openSingout}
+        setOpen={setOpenSignout}
+        signOutFunction={provider ? logoutProvider : logout}
+      />
       <div className="pl-4 md:pl-16">
         <HiMenuAlt2
           className="h-8 w-10 max-md:h-[20px] max-md:w-[20px]  text-gray-700 cursor-pointer "
@@ -165,7 +178,7 @@ const Topbar = ({ showNav, setShowNav }) => {
                     </div>
                     <center>
                       <button
-                        onClick={() => logoutProvider()}
+                        onClick={() => handleSignOut()}
                         className="text-center w-[50%] rounded-[10px] bg-black hover:opacity-70 text-white font-[700] py-1 mt-3 shadow-md text-[1rem]"
                       >
                         SIGN OUT
@@ -202,7 +215,7 @@ const Topbar = ({ showNav, setShowNav }) => {
                     </div>
                     <center>
                       <button
-                        onClick={() => logout()}
+                        onClick={() => handleSignOut()}
                         className="text-center w-[50%] rounded-[10px] bg-black hover:opacity-70 text-white font-[600] py-1  mt-3 shadow-md text-[1rem]"
                       >
                         SIGN OUT

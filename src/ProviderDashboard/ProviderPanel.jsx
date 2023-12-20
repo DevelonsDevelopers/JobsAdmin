@@ -282,7 +282,7 @@ const ProviderPanel = () => {
             </div>
             <div className="bg-white shadow-md h-full shadow-[#F3F3F3]">
               <table className="rounded-xl h-full shadow-xl w-[100%] max-md:w-[100%] max-md:h-[400px] mt-4">
-                <thead className="">
+                <thead className="" >
                   <tr className="bg-[#2994FF] text-white uppercase text-sm leading-normal w-[100%]">
                     <th className="py-[2%] w-[25%] max-md:text-[.7rem] text-center">
                       Job
@@ -295,8 +295,8 @@ const ProviderPanel = () => {
                     </th>
                   </tr>
                 </thead>
-                {offerByCompany?.map((value) => (
-                  <tbody className="text-gray-600 text-sm font-light w-[100%]">
+                {offerByCompany?.map((value, index) => (
+                  <tbody key={index} className="text-gray-600 text-sm font-light w-[100%]">
                     <tr className={`border-b border-gray-300 bg-white`}>
                       <td className="py-[2%] w-[25%] max-md:text-[.7rem] text-center">
                         <span className="font-medium">{value.job}</span>
