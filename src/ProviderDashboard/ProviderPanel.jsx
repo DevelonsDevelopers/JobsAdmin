@@ -34,6 +34,8 @@ import {
 } from "../Utils/Constant";
 import { FaUserTie } from "react-icons/fa";
 import { MdLocalOffer, MdWork } from "react-icons/md";
+import { SiOpenlayers } from "react-icons/si";
+import { AiFillInteraction } from "react-icons/ai";
 
 const ProviderPanel = () => {
   const form03 = [
@@ -190,6 +192,19 @@ const ProviderPanel = () => {
               </h1>
               <h1 className="text-left ml-5  text-[2rem] font-[700] ">
                 {dashboard?.offers}
+              </h1>
+            </div>
+            <div onClick={() => router('/interaction')} className="bg-[#EEB167] rounded-xl text-white max-md:mt-0 h-[7.9rem] shadow-xl shadow-gray-300 cursor-pointer">
+              <ul className="flex flex-row-reverse">
+                <li>
+                  <AiFillInteraction  className="w-25 text-[3rem] mb-[-2rem] pr-4 pt-2 ml-auto" />
+                </li>
+              </ul>
+              <h1 className="text-left ml-5 mt-10 text-[1rem] font-[600]">
+                Interactions
+              </h1>
+              <h1 className="text-left ml-5  text-[2rem] font-[700] ">
+                {dashboard?.interactions}
               </h1>
             </div>
             {/* <div className="bg-[#EEB167] rounded-xl text-white  px-2 py-4  max-md:mt-0 h-[7.9rem] shadow-xl shadow-gray-300 ">

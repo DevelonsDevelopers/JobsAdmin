@@ -18,10 +18,11 @@ import { FaKey } from "react-icons/fa";
 const Login = () => {
   const [loading, setLoading] = useState(false);
 
-  const [loginData, setLoginData] = useState({ email: "", password: "" });
+  const [adminLoginData, setAdminLoginData] = useState({ email: "", password: "" });
+  console.log(adminLoginData)
   const navigate = useNavigate();
   const handleChange = (e) => {
-    setLoginData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+    setAdminLoginData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
   useEffect(() => {
@@ -35,16 +36,16 @@ const Login = () => {
 
   const login = () => {
     setLoading(true);
-    LoginUser(loginData.email, loginData.password).then((res) => {
+    LoginUser(adminLoginData.email, adminLoginData.password).then((res) => {
       const {
         data: { data },
       } = res;
       const {
         data: { status },
       } = res;
-      if (loginData?.email?.length || loginData?.password?.length !== 0) {
-        if (loginData?.email?.length != 0) {
-          if (loginData?.password?.length != 0) {
+      if (adminLoginData?.email?.length || adminLoginData?.password?.length !== 0) {
+        if (adminLoginData?.email?.length != 0) {
+          if (adminLoginData?.password?.length != 0) {
             if (status === "OK") {
               setLoading(false);
               sessionStorage.setItem(SESSION_ADMIN_LOGIN, "true");

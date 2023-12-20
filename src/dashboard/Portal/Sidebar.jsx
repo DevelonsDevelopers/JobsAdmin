@@ -3,7 +3,7 @@ import { HiOutlineHome, HiOutlineUsers, HiSpeakerphone } from "react-icons/hi";
 import { RiEarthLine, RiHomeOfficeLine, RiSearchFill, RiUserSearchLine } from 'react-icons/ri'
 import { FaListUl, FaRegListAlt, FaTags, FaUser, FaUserTie, } from 'react-icons/fa'
 import { BiCategoryAlt, BiSolidBuildingHouse, BiSolidCategory, BiUserCheck, BiWorld } from 'react-icons/bi'
-import { AiOutlineTag, AiOutlineTransaction, AiOutlineOrderedList, AiOutlineNotification } from 'react-icons/ai'
+import { AiOutlineTag, AiOutlineTransaction, AiOutlineOrderedList, AiOutlineNotification, AiFillInteraction } from 'react-icons/ai'
 import { PiBriefcaseLight, PiBuildingsLight } from 'react-icons/pi'
 import { useLocation, useNavigate } from "react-router-dom";
 import { SESSION_PROVIDER, SESSION_PROVIDER_LOGIN } from "../../Utils/Constant";
@@ -132,7 +132,7 @@ const Sidebar = forwardRef(({ adminLogin, providerLogin }, ref) => {
                   `}
               >
                 <div className="mr-2">
-                  <SiOpenlayers className="h-5 w-5" />
+                  <AiFillInteraction  className="h-5 w-5" />
                 </div>
                 <div>
                   <p>Interaction</p>
