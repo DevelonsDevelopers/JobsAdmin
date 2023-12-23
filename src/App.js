@@ -72,14 +72,14 @@ function App() {
           <Route path="/companies" element={<Companies />} />
           <Route path="/countries" element={<Countries />} />
           <Route path="/jobs" element={<Jobs />} />
-          <Route path="/plans" element={<Plans />} />
+          {/* <Route path="/plans" element={<Plans />} /> */}
           <Route path="/reports" element={<Reports />} />
           <Route path="/seekers" element={<Seekers />} />
           <Route path="/tags" element={<Tags />} />
           <Route path="/appliedusers" element={<AppliedUsers />} />
-          <Route path="/transactions" element={<Transactions />} />
+          {/* <Route path="/transactions" element={<Transactions />} /> */}
           <Route path="/users" element={<Users />} />
-          <Route path="/payment" element={<PaymentGateway />} />
+          {/* <Route path="/payment" element={<PaymentGateway />} /> */}
           {/* <Route path="/ads" element={<Ads />} /> */}
           <Route path="/ads" element={<AdsForm />} />
           {/* <Route path="/jobsAPI" element={<JobsAPI/>} /> */}

@@ -297,8 +297,8 @@ const ProviderPanel = () => {
                         See all
                       </button> */}
             </div>
-            <div className="bg-white shadow-md h-full shadow-[#F3F3F3]">
-              <table className="rounded-xl h-full shadow-xl w-[100%] max-md:w-[100%] max-md:h-[400px] mt-4">
+            <div className="bg-white shadow-lg h-full shadow-[#F3F3F3]">
+              <table className="w-[100%] max-md:w-[100%] max-md:h-[400px] mt-4">
                 <thead className="" >
                   <tr className="bg-[#000] text-white uppercase text-sm leading-normal w-[100%]">
                     <th className="py-[2%] w-[25%] max-md:text-[.7rem] text-center">
@@ -342,8 +342,8 @@ const ProviderPanel = () => {
                         See all
                       </button> */}
             </div>
-            <div className="bg-white shadow-md h-full shadow-[#F3F3F3]">
-              <table className="rounded-xl h-full shadow-xl w-[100%] max-md:w-[100%] max-md:h-[400px] mt-4">
+            <div className="bg-white shadow-lg h-full shadow-[#F3F3F3]">
+              <table className="w-[100%] max-md:w-[100%] max-md:h-[400px] mt-4">
                 <thead>
                   <tr className="bg-[#000] text-white uppercase text-sm leading-normal w-[100%]">
                     <th className="py-[2%] w-[25%] max-md:text-[.7rem] text-center">

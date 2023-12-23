@@ -74,8 +74,8 @@ const AdsForm = () => {
             />
 
             <form action="" onSubmit={handleUpdate} className='flex flex-col px-10 my-[5%] py-[5%] border-2 rounded-xl bg-white'>
-                <label className="block mb-2 text-gray-600 mt-6 text-[.9rem]" >App Open Status</label>
-                <select name="app_open_status" 
+                <label className="block mb-2 text-gray-600 mt-6 text-[.9rem]" >Banner Ad Status</label>
+                <select name="banner_ad_status" 
                 // value={adsData?.app_open}
                  onChange={onChangeAdsData} className='border-b-2 focus:outline-none'>
                     {selectOptions.map(option => (
@@ -92,8 +92,26 @@ const AdsForm = () => {
                     ))}
                 </select>
 
-                <label className="block mb-2 text-gray-600 mt-6 text-[.9rem]" >Banner Ad Status</label>
-                <select name="banner_ad_status" 
+                <label className="block mb-2 text-gray-600 mt-6 text-[.9rem]" >AdMob Status</label>
+                <select name="admob_status"
+                // value={adsData?.banner_ad}
+                 onChange={onChangeAdsData} className='border-b-2 focus:outline-none'>
+                    {selectOptions.map(option => (
+                        <option key={option.value} value={option.value}>{option.label}</option>
+                    ))}
+                </select>
+
+                <label className="block mb-2 text-gray-600 mt-6 text-[.9rem]" >App Open Status</label>
+                <select name="app_open_status" 
+                // value={adsData?.banner_ad}
+                 onChange={onChangeAdsData} className='border-b-2 focus:outline-none'>
+                    {selectOptions.map(option => (
+                        <option key={option.value} value={option.value}>{option.label}</option>
+                    ))}
+                </select>
+
+                <label className="block mb-2 text-gray-600 mt-6 text-[.9rem]" >Rewarded Ad Status</label>
+                <select name="rewarded_ad_status" 
                 // value={adsData?.banner_ad}
                  onChange={onChangeAdsData} className='border-b-2 focus:outline-none'>
                     {selectOptions.map(option => (
