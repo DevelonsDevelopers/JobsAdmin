@@ -213,7 +213,7 @@ const ProviderLogin = () => {
                 information by email and password
               </h1>
               <br />
-              <div className=" px-3 shadow-lg flex gap-5 rounded-[10px] w-[100%] max-md:w-[100%]  border-2 border-gray-400 ">
+              <div className=" pl-3 pr-[1px]rounded-r-[10px] shadow-lg flex gap-5 rounded-[10px] w-[100%] max-md:w-[100%]  border-2 border-gray-400 ">
                 <div className="flex items-center justify-center">
                   <IoMail className="text-[1.7rem] text-black" />
                 </div>
@@ -222,7 +222,7 @@ const ProviderLogin = () => {
                   name="email"
                   onChange={handleChange}
                   placeholder="Enter Your Email(eg.admin@gmail.com)"
-                  className="py-3 text-[.9rem] w-full text-gray-700 font-[500] outline-none hover:outline-none  "
+                  className="py-3 text-[.9rem] w-full rounded-r-[10px] text-gray-700 font-[500] outline-none hover:outline-none  "
                 />
               </div>
               <br />

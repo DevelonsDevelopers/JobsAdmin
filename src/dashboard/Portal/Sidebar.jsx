@@ -380,7 +380,7 @@ const Sidebar = forwardRef(({ adminLogin, providerLogin }, ref) => {
               </div>
             </div>
           </div>
-          <div className="flex flex-col ">
+          {/* <div className="flex flex-col ">
             <div onClick={() => router('/transactions')}>
               <div
                 className={`pl-7 py-3 mx-5 rounded text-center cursor-pointer mb-1 flex items-center transition-colors 
@@ -398,7 +398,7 @@ const Sidebar = forwardRef(({ adminLogin, providerLogin }, ref) => {
                 </div>
               </div>
             </div>
-          </div>
+          </div> */}
           {/* <div className="flex flex-col ">
             <div onClick={() => router('/reports')}>
               <div
@@ -437,7 +437,7 @@ const Sidebar = forwardRef(({ adminLogin, providerLogin }, ref) => {
               </div>
             </div>
           </div>
-          <div className="flex flex-col ">
+          {/* <div className="flex flex-col ">
             <div onClick={() => router('/plans')}>
               <div
                 className={`pl-7 py-3 mx-5 rounded text-center cursor-pointer mb-1 flex items-center transition-colors 
@@ -455,8 +455,8 @@ const Sidebar = forwardRef(({ adminLogin, providerLogin }, ref) => {
                 </div>
               </div>
             </div>
-          </div>
-          <div className="flex flex-col ">
+          </div> */}
+          {/* <div className="flex flex-col ">
             <div onClick={() => router('/payment')}>
               <div
                 className={`pl-3 py-3 mx-5 rounded text-center cursor-pointer mb-1 flex items-center justify-center transition-colors 
@@ -474,7 +474,7 @@ const Sidebar = forwardRef(({ adminLogin, providerLogin }, ref) => {
                 </div>
               </div>
             </div>
-          </div>
+          </div> */}
           <div className="flex flex-col ">
             <div onClick={() => router('/ads')}>
               <div

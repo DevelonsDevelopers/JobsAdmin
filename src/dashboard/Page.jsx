@@ -323,7 +323,7 @@ const Dashboard = () => {
                     tickFormatter={dateFormatter}
                   />
                   <YAxis />
-                  <Tooltip />
+                  <Tooltip cursor={{fill: 'transparent'}}  />
                   <Bar dataKey="applied" fill="#000000" />
                   <Legend />
                 </BarChart>

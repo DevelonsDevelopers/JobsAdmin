@@ -53,6 +53,7 @@ import EmailForm from "./dashboard/form/EmailForm";
 import JobBankEdit from "./dashboard/edit/JobBankEdit";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 import NoPage from "./dashboard/NoPage";
+import AdsForm from "./dashboard/Ads_Form";
 
 function App() {
   return (
@@ -79,7 +80,8 @@ function App() {
           <Route path="/transactions" element={<Transactions />} />
           <Route path="/users" element={<Users />} />
           <Route path="/payment" element={<PaymentGateway />} />
-          <Route path="/ads" element={<Ads />} />
+          {/* <Route path="/ads" element={<Ads />} /> */}
+          <Route path="/ads" element={<AdsForm />} />
           {/* <Route path="/jobsAPI" element={<JobsAPI/>} /> */}
           {/* <Route path="/jobsAPI" element={<ApiJobs/>} /> */}
           {/* <Route path="/careerJetApi" element={<CareerJetApi/>} /> */}
