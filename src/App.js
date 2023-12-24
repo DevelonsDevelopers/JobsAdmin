@@ -58,7 +58,7 @@ import AdsForm from "./dashboard/Ads_Form";
 function App() {
   return (
     <GoogleOAuthProvider clientId="404623696003-doe1cpjrlljj8om770ha3ri9s9vatoc8.apps.googleusercontent.com">
-      <BrowserRouter basename={"/"}>
+      <BrowserRouter basename={"/admin"}>
 
         <Routes>
           <Route
