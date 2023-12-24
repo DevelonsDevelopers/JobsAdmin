@@ -462,7 +462,7 @@ const JobsForm = ({}) => {
               className="pl-4 block py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-100 rounded-[8px] border-[0.7px] border-gray-600 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer"
               id="grid-state"
             >
-              <option disabled>Select Type</option>
+              <option selected disabled>Select Type</option>
               <option>Full-Time</option>
               <option>Part-Time</option>
               <option>Contract</option>
