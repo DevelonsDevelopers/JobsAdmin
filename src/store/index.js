@@ -2,7 +2,7 @@ import axios from "axios"
 
 
 
-const API = axios.create({ baseURL: 'http://192.168.1.20:5001/api' })
+const API = axios.create({ baseURL: 'http://182.176.99.175/job' })
 
 
 //Login
