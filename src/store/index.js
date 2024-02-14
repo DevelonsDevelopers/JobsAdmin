@@ -2,7 +2,7 @@ import axios from "axios"
 
 
 
-const API = axios.create({ baseURL: 'http://182.176.99.175/job' })
+const API = axios.create({ baseURL: 'http://194.163.132.243/job' })
 
 
 //Login
@@ -594,8 +594,8 @@ export const deleteJobBank = (id) => API.delete(`/jobBanks/:delete`, {
 //ADs
 
 export const fetchAds = () => API.get(`/ads/get`)
-export const updateAds = (banner_ad, interstitial_ad, count, app_open, publisher_id, id) => API.put(`/ads/update`, 
-{ 
+export const updateAds = (banner_ad, interstitial_ad, count, app_open, publisher_id, id) => API.put(`/ads/update`,
+{
         banner_ad: banner_ad,
         interstitial_ad: interstitial_ad,
         count: count,
